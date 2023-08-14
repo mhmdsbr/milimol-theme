@@ -1,0 +1,31 @@
+<section class="bg-primary academy-search-header">
+    <div class="container pt-5 pb-5">
+        <div class="row">
+            <div class="col-md-12">
+                {{ custom_breadcrumbs() }}
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-7 text-md-center">
+                <div class="academy-search-header__heading">
+                    {% if fields.use_default_title == true %}
+                        <h1 class="academy-search-header__title">{{ post.title }} Lorem ipsum</h1>
+                    {% else %}
+                        {{ check_value(fields.custom_title, 'h1', null) }}
+                    {% endif %}
+
+                    {% if fields.is_show_subtitle == true %}
+                        {{ check_value(fields.subtitle, 'p', 'academy-search-header__subtitle') }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="academy-search-header__form">
+                    {% filter shortcodes %}
+                        [facetwp facet="academy_search"]
+                    {% endfilter %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

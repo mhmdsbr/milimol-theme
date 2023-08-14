@@ -1,0 +1,38 @@
+<div id="typography">
+    {% set textsizes = [
+        '9xl',
+        '8xl',
+        '7xl',
+        '6xl',
+        '5xl',
+        '4xl',
+        '3xl',
+        '2xl',
+        'xl',
+        'lg',
+        'base',
+        'sm',
+        'xs',
+        'xxs',
+    ] %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 pt-5">
+                <p>
+                    All text classes are displayed below. All text classes also have bootstrap media query abilities.
+                    For instance: 'text-9xl' also has the class 'text-xl-9xl'.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                {% for size in textsizes %}
+                    <h6 class="text-{{ size }} text-sm-{{ size }} text-md-{{ size }} text-lg-{{ size }} text-xl-{{ size }} text-xxl-{{ size }}">
+                        .text-{{ size }}
+                    </h6>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

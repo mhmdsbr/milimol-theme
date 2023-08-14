@@ -1,0 +1,332 @@
+{
+    "key": "group_6447be0747830",
+    "title": "Block: Certification Program Header",
+    "fields": [
+        {
+            "key": "field_6447be0752ada",
+            "label": "Certification Program Header",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "message": "",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_6447be0752b22",
+            "label": "Info",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0,
+            "wpml_cf_preferences": 1
+        },
+        {
+            "key": "field_6447be0752b67",
+            "label": "",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "message": "The Certification Program Header is used for Certification Programs.\r\n\r\nKnowledgebase: <a href=\"https:\/\/google.com\" target=\"_blank\">Read more here<\/a>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_6447be0752bb2",
+            "label": "Settings",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0,
+            "wpml_cf_preferences": 1
+        },
+        {
+            "key": "field_6462445cbd3b4",
+            "label": "Show Breadcrumbs",
+            "name": "show_breadcrumbs",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "If switched on the given title of the insight will be used, otherwise you have to fill in a title by hand and overwrite the default title behaviour.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_6447be4510579",
+            "label": "Show Logo (Certification Program)",
+            "name": "show_logo",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "If switched on the given title of the insight will be used, otherwise you have to fill in a title by hand and overwrite the default title behaviour.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_6447be0752bfb",
+            "label": "Use Post Title",
+            "name": "use_post_title",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "If switched on the given title of the insight will be used, otherwise you have to fill in a title by hand and overwrite the default title behaviour.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_6447be0752c42",
+            "label": "Use Excerpt or Custom Text",
+            "name": "use_excerpt_or_custom_text",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "If switched on the given title of the insight will be used, otherwise you have to fill in a title by hand and overwrite the default title behaviour.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "Excerpt",
+            "ui_off_text": "Custom Text",
+            "ui": 1
+        },
+        {
+            "key": "field_64624436bd3b2",
+            "label": "Show Meta Data",
+            "name": "show_meta_data",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "If switched on the given title of the insight will be used, otherwise you have to fill in a title by hand and overwrite the default title behaviour.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_6462444fbd3b3",
+            "label": "Show Link",
+            "name": "show_link",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "If switched on the given title of the insight will be used, otherwise you have to fill in a title by hand and overwrite the default title behaviour.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_6447be0752c9b",
+            "label": "Image or Video",
+            "name": "is_image_or_video",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "Image",
+            "ui_off_text": "Video",
+            "ui": 1
+        },
+        {
+            "key": "field_6447be0752ce7",
+            "label": "Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "wpml_cf_preferences": 1
+        },
+        {
+            "key": "field_6447be0752d30",
+            "label": "Title",
+            "name": "title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6447be0752bfb",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6447be0752d7c",
+            "label": "Text",
+            "name": "text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6447be0752c42",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "default_value": "",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/block-certification-program-header"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "is_acf_component": 0,
+    "acfml_field_group_mode": "advanced",
+    "acf_component_defaults": {
+        "repeatable": "0",
+        "min": "",
+        "max": "",
+        "layout": "block",
+        "button_label": "",
+        "appearances": ""
+    },
+    "modified": 1684236136
+}

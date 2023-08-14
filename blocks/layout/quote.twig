@@ -1,0 +1,41 @@
+<section class="exp-quote {{ background_color(fields.background_color) }}" {{ anchor_block(fields.anchor_block) }}>
+    <div class="container {{ exp_mobile() ? 'g-0' : '' }}">
+        <div class="row g-0">
+            <div class="col-12 col-lg-6">
+                {% if Image(fields.image) is not empty %}
+                    <div class="exp-quote__image">
+                        {% set image = Image(fields.image) %}
+                        <picture>
+                            <img src="{{ image.src }}" srcset="{{ image.srcset }}" alt="{{ image.title }}" title="{{ image.title }}" loading="lazy" />
+                        </picture>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="exp-quote__content">
+                    {% if fields.quote is not empty %}
+                        <div class="exp-quote__icon">{{ fetch_svg('quote') }}</div>
+                        <div class="exp-quote__message" data-icon="/svg/quote.svg/">
+                            {{ fields.quote }}
+                        </div>
+                    {% endif %}
+                    {% if fields.writer is not empty %}
+                        <div class="exp-quote__writer">
+                            {{ fields.writer }}
+                        </div>
+                    {% endif %}
+                    {% if fields.quote_link is array %}
+                        {% set quoteLink = fields.quote_link %}
+                        {% include "partial/button.twig" with {
+                            url : quoteLink.url,
+                            title : quoteLink.title,
+                            target : '_blank',
+                            class : 'btn--white',
+                            icon : 'arrow-right'
+                        } %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

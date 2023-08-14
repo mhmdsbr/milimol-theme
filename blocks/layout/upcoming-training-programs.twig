@@ -1,0 +1,45 @@
+<section class="exp-accordion {{ background_color(fields.background_color) }}" {{ anchor_block(fields.anchor_block) }}>
+    <div class="container">
+        <div class="row justify-content-center pt-5 pb-5">
+            <div class="col-12 col-md-8 text-center">
+                {% if fields.is_show_title == true %}
+                    {{ check_value(fields.title, 'h2', null) }}
+                {% endif %}
+
+                {% if fields.is_show_text == true %}
+                    {{ check_value(fields.text, 'p', null) }}
+                {% endif %}
+
+                {% if fields.is_show_link == true and fields.link is array %}
+                    {% include "partial/button.twig" with {
+                        url : fields.link.url,
+                        title : fields.link.title,
+                        class : 'btn--primary',
+                        icon : 'arrow-right',
+                        target : fields.link.target
+                    } %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="row pt-5 pb-5">
+            {% for item in upcoming_trainings %}
+                {% set image = get_thumbnail(item.ID) %}
+                {% set training_fields = get_acf_fields(item.ID) %}
+                <div class="col-12 col-md-4">
+                    <div class="training__content">
+                        {% if training_fields.p2p_industry_academy is array %}
+                            <span class="badge badge--primary">{{ training_fields.p2p_industry_academy.0.post_title }}</span>
+                        {% endif %}
+
+                        <picture>
+                            <img src="{{ image }}"  loading="lazy" alt="{{ item.post_title }}">
+                        </picture>
+                        {{ check_value(item.post_title, 'h4', null) }}
+                        {{ check_value(item.post_excerpt, 'p', null) }}
+                        <a href="{{ get_link(item.ID) }}">LINK OVER CARD HERE</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

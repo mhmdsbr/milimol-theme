@@ -1,0 +1,73 @@
+{
+    "key": "group_644139b99ca8b",
+    "title": "CPT: USP",
+    "fields": [
+        {
+            "key": "field_64520fdb46388",
+            "label": "Answer",
+            "name": "answer",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "default_value": "",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_64413a3aeac67",
+            "label": "Link",
+            "name": "link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "usp"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "is_acf_component": 0,
+    "acfml_field_group_mode": "advanced",
+    "acf_component_defaults": {
+        "repeatable": "0",
+        "min": "",
+        "max": "",
+        "layout": "block",
+        "button_label": "",
+        "appearances": ""
+    },
+    "modified": 1683635792
+}

@@ -1,0 +1,40 @@
+<section class="image-banner" {{ anchor_block(fields.anchor_block) }}>
+    <div class="image-banner__background">
+        <picture>
+            {% if fields.mobile_background_image is not empty %}
+                <source media="(max-width:767px)" srcset="{{ Image(fields.mobile_background_image).src('medium_large') }}">
+            {% endif %}
+            {% if fields.tablet_background_image is not empty %}
+                <source media="(min-width:768px) and (max-width:1024px)" srcset="{{ Image(fields.tablet_background_image).src('large') }}">
+            {% endif %}
+            {% if fields.desktop_background_image is not empty %}
+                {% set desktopImage = Image(fields.desktop_background_image) %}
+            {% else %}
+                {% set desktopImage = Image(theme.link ~ '/images/image-header-placeholder.jpg') %}
+            {% endif %}
+            <img src="{{ desktopImage.src }}" srcset="{{ desktopImage.srcset }}" alt="{{ desktopImage.title }}" title="{{ desktopImage.title }}" loading="lazy" />
+        </picture>
+    </div>
+
+    <div class="image-banner__content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-xl-6">
+                    {% if fields.is_show_title == true %}
+                        {{ check_value(fields.title, 'h2', 'image-banner__title') }}
+                    {% endif %}
+
+                    {% if fields.is_show_link == true and fields.link is array %}
+                        {% include "partial/button.twig" with {
+                            url : fields.link.url,
+                            title : fields.link.title,
+                            class : 'btn--white',
+                            icon : 'chevron-left',
+                            target : fields.link.target
+                        } %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,52 @@
+<section class="exp-banner{{ fields.is_boxed ? '' : ' max-width' }} {{ background_color(fields.background_color) }}" {{ anchor_block(fields.anchor_block) }}>
+    <div class="container{{ fields.is_boxed ? '' : '-fluid' }}">
+        <div class="row">
+            <div class="col-12">
+                {% set title = function('get_the_title', fields.selected_banner.0) %}
+                {% set imageID = function('get_post_thumbnail_id', fields.selected_banner.0) %}
+                {% set has_event = banner_fields.is_event == true and banner_fields.event_date is not empty ? true : false %}
+
+                <div class="exp-banner__inner{{ fields.is_boxed ? '' : ' is--boxed' }}{{ has_event ? ' has--event' }}">
+                    {% if banner_fields.is_event == true and banner_fields.event_date is not empty %}
+                        {% set date_array = banner_fields.event_date|split(' ') %}
+
+                        <div class="exp-banner__event">
+                            <div class="exp-banner__event-inner exp-banner__event-day">{{ date_array.0 }}</div>
+                            <div class="exp-banner__event-inner exp-banner__event-month">{{ date_array.1 }}</div>
+                        </div>
+                    {% endif %}
+
+                    <div class="exp-banner__content">
+                        {{ check_value(title, 'h2', "exp-banner__title") }}
+                        {{ check_value(banner_fields.text, 'p', "exp-banner__text") }}
+
+                        {% if banner_fields.link is array %}
+                            <div class="exp-homepage-header__media-link-wrapper">
+                                {% include "partial/button.twig" with {
+                                    url : banner_fields.link.url,
+                                    title : banner_fields.link.title,
+                                    target : banner_fields.link.target,
+                                    class : 'btn--primary',
+                                    icon : 'arrow-right'
+                                } %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    {% if imageID is not empty %}
+                        {% set newImage = Image(imageID) %}
+                        <div class="exp-banner__image-wrapper">
+                            <img class="exp-banner__image"
+                                  src="{{ newImage.src }}"
+                                  srcset="{{ newImage.srcset }}"
+                                  alt="{{ newImage.title }}"
+                                  title="{{ newImage.title }}"
+                                  loading="lazy"
+                            />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,131 @@
+{
+    "key": "group_6441154c8b92d",
+    "title": "404 Error",
+    "fields": [
+        {
+            "key": "field_644115597c74d",
+            "label": "Error content",
+            "name": "error_content",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 3,
+            "layout": "block",
+            "button_label": "New row",
+            "sub_fields": [
+                {
+                    "key": "field_644115867c74e",
+                    "label": "Icon",
+                    "name": "icon",
+                    "type": "component_field",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "field_group_key": "group_64414885d353d",
+                    "repeatable": 0,
+                    "layout": "block",
+                    "button_label": "",
+                    "appearances": "",
+                    "min": null,
+                    "max": null,
+                    "collapsed": "",
+                    "sub_fields": []
+                },
+                {
+                    "key": "field_644115997c74f",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_644115a67c750",
+                    "label": "Text",
+                    "name": "text",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_644115b07c751",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-404"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "is_acf_component": 0,
+    "acf_component_defaults": {
+        "repeatable": "0",
+        "min": "",
+        "max": "",
+        "layout": "block",
+        "button_label": "",
+        "appearances": ""
+    },
+    "modified": 1682000091
+}

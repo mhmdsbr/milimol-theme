@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-4xl">
+                Styleguide
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+
+            <div class="d-flex flex-wrap" style="gap:16px">
+                <a href="#typography" class="btn btn--primary btn--small">{{ fetch_svg('arrow-right') }} typography</a>
+                <a href="#colors" class="btn btn--primary btn--small">{{ fetch_svg('arrow-right') }} colors</a>
+                <a href="#buttons" class="btn btn--primary btn--small">{{ fetch_svg('arrow-right') }} buttons</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'styleguide/typography.twig' %}
+{% include 'styleguide/colors.twig' %}
+{% include 'styleguide/buttons.twig' %}
+{% include 'styleguide/custom-icons.twig' %}
+{% include 'styleguide/cards.twig' %}

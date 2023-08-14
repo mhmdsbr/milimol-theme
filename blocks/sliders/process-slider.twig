@@ -1,0 +1,63 @@
+{% if process_fields.process_steps is array %}
+    <section class="exp-process-slider {{ background_color(fields.background_color) }}" {{ anchor_block(fields.anchor_block) }}>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-5">
+                    {{ check_value(process_fields.subtitle, 'h5', 'exp-process-slider__subtitle') }}
+                    {{ check_value(process_fields.title, 'h2', 'exp-process-slider__title') }}
+                    {{ check_value(process_fields.text, 'p', 'exp-process-slider__content') }}
+
+                    {% if process_fields.link is array %}
+                        {% include "partial/button.twig" with {
+                            url : process_fields.link.url,
+                            title : process_fields.link.title,
+                            target : process_fields.link.target,
+                            class : 'btn--primary exp-process-slider__button',
+                            icon : 'arrow-left'
+                        } %}
+                    {% endif %}
+                </div>
+
+                <div class="col-12 col-md-7">
+                    {% set isNumbered = process_fields.is_numbered_steps ? ' is--numbered' %}
+                    <div class="swiper swiper-container exp-process-slider__swiper-container js-exp-process-slider {{ isNumbered }}">
+                        <div class="swiper-wrapper">
+                            {% for slide in process_fields.process_steps %}
+                                {% set isEven = process_fields.is_numbered_steps and loop.index is even ? ' is--even' %}
+                                <div class="swiper-slide exp-process-slider__slide{{ isEven }}">
+                                    <div class="exp-process-slider__slide-header" data-number="{{ loop.index }}">
+                                        {% if process_fields.is_numbered_steps == false and slide.image is array %}
+                                            {% set slideImage = Image(slide.image) %}
+                                            <img class="exp-process-slider__slide-image"
+                                                src="{{ slideImage.src }}"
+                                                srcset="{{ slideImage.srcset }}"
+                                                alt="{{ slideImage.title }}"
+                                                title="{{ slideImage.title }}"
+                                                loading="lazy"
+                                            />
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="exp-process-slider__slide-content">
+                                        {{ check_value(slide.title, 'h4', 'exp-process-slider__slide-title') }}
+                                        {{ check_value(slide.text, 'p', 'exp-process-slider__slide-text') }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="exp-process-slider__nav-wrapper">
+                            <div class="exp-process-slider__nav exp-process-slider__nav--prev">
+                                {{ fetch_svg('chevron-right') }}
+                            </div>
+
+                            <div class="exp-process-slider__nav exp-process-slider__nav--next">
+                                {{ fetch_svg('chevron-left') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}

@@ -1,0 +1,154 @@
+{
+    "key": "group_6447ebbb96f8b",
+    "title": "CPT: Certification Industry",
+    "fields": [
+        {
+            "key": "field_645b6bfc714b2",
+            "label": "Icon",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_645b6c2a714b4",
+            "label": "Icon",
+            "name": "icon",
+            "aria-label": "",
+            "type": "component_field",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "field_group_key": "group_64414885d353d",
+            "min": "",
+            "max": "",
+            "collapsed": "",
+            "button_label": "",
+            "repeatable": 0,
+            "layout": "block",
+            "appearances": "",
+            "sub_fields": []
+        },
+        {
+            "key": "field_645b6c12714b3",
+            "label": "Connections P2P",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_6447ebbb9f2e6",
+            "label": "Connect Certification Service",
+            "name": "p2p_certi_service_industry",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 0,
+            "post_type": [
+                "certi_service"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": "",
+            "elements": ""
+        },
+        {
+            "key": "field_6447ebf948bd3",
+            "label": "Connect Certification Program",
+            "name": "p2p_certi_industry_program",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 0,
+            "post_type": [
+                "certi_program"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": "",
+            "elements": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "certi_industry"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "is_acf_component": 0,
+    "acfml_field_group_mode": "advanced",
+    "acf_component_defaults": {
+        "repeatable": "0",
+        "min": "",
+        "max": "",
+        "layout": "block",
+        "button_label": "",
+        "appearances": ""
+    },
+    "modified": 1683713086
+}

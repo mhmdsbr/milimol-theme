@@ -1,0 +1,66 @@
+<section class="exp-academy-overview" {{ anchor_block(fields.anchor_block) }}>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-3 gx-0">
+                <aside class="exp-academy-overview__filter">
+                    <div class="exp-academy-overview__heading">
+                        <h3 class="exp-academy-overview__title">{{ __('Refine your results', 'expedition') }}</h3>
+                    </div>
+                    <div class="exp-academy-overview__filter-heading">
+                        <div class="exp-academy-overview__desc">
+                            {{ fetch_svg('icon-funnel') }}
+                            {{ __('Filters', 'expedition') }}
+                        </div>
+                        {% filter shortcodes %}
+                            <div class="exp-academy-overview__remove-filter">
+                                {# currently not translatable - {{ __('Clear all filters', 'expedition') }} - since it's a shortcode #}
+                                [facetwp facet="academy_reset"]
+                            </div>
+                        {% endfilter %}
+                    </div>
+
+                    <div class="exp-academy-overview__choices sidebar-filters-active has-js">
+                        {% filter shortcodes %}
+                            <div class="exp-academy-overview__choices-cat is-accordeon accordeon-active has-js">
+                                <h4 class="aside-sub-heading">{{ __('Country', 'expedtion') }}</h4>
+                                [facetwp facet="academy_region_filter"]
+                            </div>
+                            <div class="exp-academy-overview__choices-cat is-accordeon has-js">
+                                <h4 class="aside-sub-heading">{{ __('Language', 'expedtion') }}</h4>
+                                [facetwp facet="academy_language"]
+                            </div>
+                            <div class="exp-academy-overview__choices-cat is-accordeon has-js">
+                                <h4 class="aside-sub-heading">{{ __('Industry', 'expedtion') }}</h4>
+                                [facetwp facet="academy_industry"]
+                            </div>
+                            <div class="exp-academy-overview__choices-cat is-accordeon has-js">
+                                <h4 class="aside-sub-heading">{{ __('Training type', 'expedtion') }}</h4>
+                                [facetwp facet="academy_trainings_type"]
+                            </div>
+                        {% endfilter %}
+                    </div>
+                </aside>
+            </div>
+
+            <div class="col-12 col-md-9">
+                <div class="exp-academy-overview__listing">
+                    {% filter shortcodes %}
+                        <div class="exp-academy-overview__listing_total-results-wrapper">
+                            <span class="exp-academy-overview__listing_total-results">{{ __('Showing ', 'expedtion') }}</span>
+                            [facetwp facet="number_of_results"]
+                        </div>
+                        [facetwp template="academy_listing"]
+                    {% endfilter %}
+                    <div class="row justify-content-center">
+                        <div class="col-12 text-center">
+                            {% filter shortcodes %}
+                                [facetwp facet="pagination"]
+                            {% endfilter %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

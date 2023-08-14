@@ -1,0 +1,43 @@
+<header class="image-header">
+    <div class="image-header__background">
+        <picture>
+            {% if fields.header_image is not empty %}
+                {% set headerImage = Image(fields.header_image) %}
+            {% else %}
+                {% set headerImage = Image(theme.link ~ '/images/image-header-placeholder.jpg') %}
+            {% endif %}
+            <img src="{{ headerImage.src }}" srcset="{{ headerImage.srcset }}" alt="{{ headerImage.title }}" title="{{ headerImage.title }}" loading="lazy" />
+        </picture>
+    </div>
+
+    <div class="image-header__content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    {% if fields.use_default_title == true %}
+                        <h1>{{ post.title }}</h1>
+                    {% else %}
+                        {{ check_value(fields.custom_title, 'h1', null) }}
+
+                    {% endif %}
+
+                    {% if fields.is_show_subtitle == true %}
+                        {{ check_value(fields.subtitle, 'p', 'CLASS') }}
+                    {% endif %}
+
+                    <div class="image-header__buttons">
+                        {% if fields.is_show_link == true and fields.link is array %}
+                            <a href="{{ fields.link.url }}" title="{{ fields.link.title }}" class="badge" target="{{ fields.link.target }}">{{ fields.link.title }}</a>
+                        {% endif %}
+
+                        {% if fields.is_show_tags == true and fields.tags_repeater is array %}
+                            {% for tag in fields.tags_repeater %}
+                                <span class="badge badge--primary">{{ tag.tag }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

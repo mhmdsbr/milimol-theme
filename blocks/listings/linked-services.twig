@@ -1,0 +1,35 @@
+<section {{ anchor_block(fields.anchor_block) }}>
+    <div class="container">
+        {% if services.active_terms is array %}
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>{{ __('Filter services', 'expedition') }}</h5>
+                    <ul>
+                        <li><a href="">{{ __('All services', 'expedition') }}</a></li>
+
+                        {% for item in services.active_terms  %}
+                        <li>
+                            <a href="" data-action="{{ item.slug }}">{{ item.name }} {{ __('services', 'expedition') }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+        <div class="row">
+            {% for item in services.posts %}
+                <div class="col-12 col-md-4" data-service-type="{% for term in item.terms|slice(0, 1) %} {{ term.slug}} {% endfor %}">
+                    <span class="badge badge-primary">{% for term in item.terms|slice(0, 1) %}{{ term.name}} {% endfor %}</span>
+                    {% set featuredImage = function('get_the_post_thumbnail_url', item.ID) %}
+                    {% if featuredImage is not empty %}
+                        <img src="{{ featuredImage }}" alt="{{ item.post_title }}"/>
+                    {% endif %}
+
+                    <h5>{{ item.post.post_title }}</h5>
+                    {{ check_value(item.post.post_excerpt, 'p', null) }}
+                    <a href="{{ get_link(item.post.ID) }}" title="{{ item.post.post_title }}">LINK HERE</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,38 @@
+<div class="top-menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-end">
+                <div class="header__container">
+                    {% if exp_mobile() %}
+                        <a class="navbar-brand d-flex flex-grow-2" href="{{ site.url }}" title="{{ site.name }}">
+                            {% if options.header_logo is not empty %}
+                                <img src="{{ options.header_logo.url }}" alt="{{ site.name }}" class="header__logo" />
+                            {% else %}
+                                <h1>{{ site.name }}</h1>
+                            {% endif %}
+                        </a>
+                    {% else %}
+                        <ul class="top-menu__list">
+                            <li>
+                                {{ fetch_svg('globe') }}
+
+                                {% if is_front_page %}
+                                    {{ __('پلتفرم جامع مواد شیمیای میلی مول', 'expedition') }}
+                                {% else %}
+                                    <a href="/" title="{{ __('خانه میلی مول', 'expedition') }}">{{ __('میلی مول', 'expedition') }}</a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    {% endif %}
+
+                    {% include "partial/button.twig" with {
+                        url : item.link,
+                        title : 'درخواست خرید',
+                        class : 'btn--buy-request',
+                        icon : 'chemistry'
+                    } %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

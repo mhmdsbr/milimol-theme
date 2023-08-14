@@ -1,0 +1,246 @@
+{
+    "key": "group_6450d75155670",
+    "title": "Block: Banner",
+    "fields": [
+        {
+            "key": "field_6450d751b350e",
+            "label": "Banner",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "message": "",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_6450d781b350f",
+            "label": "Info",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_6450d792b3510",
+            "label": "",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "message": "This element show a banner (optional for an event)\r\nBanner can be made by clicking in de Admin menu on \"Banner -> New\"\r\n\r\nThe banner can be selected in this element\r\n\r\nKnowledgebase: <a href=\"https:\/\/google.com\" target=\"_blank\">Read more here<\/a>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_6450d9403b633",
+            "label": "Settings",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_6450d9563b634",
+            "label": "Background color",
+            "name": "background_color",
+            "aria-label": "",
+            "type": "component_field",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "field_group_key": "group_6451fde6d5c44",
+            "min": "",
+            "max": "",
+            "collapsed": "",
+            "button_label": "",
+            "repeatable": false,
+            "layout": "block",
+            "appearances": [],
+            "sub_fields": []
+        },
+        {
+            "key": "field_6450d9863b635",
+            "label": "Width",
+            "name": "is_boxed",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "Boxed",
+            "ui_off_text": "Full-width",
+            "ui": 1
+        },
+        {
+            "key": "field_6450d80eb3511",
+            "label": "Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_6450d81eb3512",
+            "label": "Select a banner",
+            "name": "selected_banner",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "post_type": [
+                "banner"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "return_format": "id",
+            "min": 1,
+            "max": 1,
+            "elements": ""
+        },
+        {
+            "key": "field_64511bc854fb8",
+            "label": "Anchor",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_64511bd454fb9",
+            "label": "Anchor block",
+            "name": "anchor_block",
+            "aria-label": "",
+            "type": "component_field",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "field_group_key": "group_6447d3a08c965",
+            "min": "",
+            "max": "",
+            "collapsed": "",
+            "button_label": "",
+            "repeatable": 0,
+            "layout": "block",
+            "appearances": "",
+            "sub_fields": []
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/block-banner"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "is_acf_component": 0,
+    "acfml_field_group_mode": "advanced",
+    "acf_component_defaults": {
+        "repeatable": "0",
+        "min": "",
+        "max": "",
+        "layout": "block",
+        "button_label": "",
+        "appearances": ""
+    },
+    "modified": 1684843703
+}

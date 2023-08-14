@@ -1,0 +1,91 @@
+html :where(.editor-styles-wrapper) {
+    font-family: "Vazir", -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+}
+
+/* Hide ACF options in the mega menu */
+.menu-item:not(.menu-item-depth-0) .acf-field {
+    display: none;
+}
+
+/* Hide show overview link on depth 0 */
+.menu-item.menu-item-depth-0 .acf-fields .acf-field[data-name="show_overview_link"] {
+    display: none;
+}
+
+/* Show overview link on depth 1 */
+.menu-item.menu-item-depth-1 .acf-fields .acf-field[data-name="show_overview_link"] {
+    display: block !important;
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Vazir';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/vazir/Vazirmatn-Light.woff2') format('woff2');
+}
+
+
+@font-face {
+    font-display: swap;
+    font-family: 'Vazir';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/vazir/Vazirmatn-Regular.woff2') format('woff2');
+}
+
+
+@font-face {
+    font-display: swap;
+    font-family: 'Vazir';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/vazir/Vazirmatn-Medium.woff2') format('woff2');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Vazir';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/vazir/Vazirmatn-Black.woff2') format('woff2');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Vazir';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/vazir/Vazirmatn-Bold.woff2') format('woff2');
+}
+
+/* Change WordPress Admin Panel Font */
+body,
+body#wpadminbar,
+#wpadminbar .ab-item,
+#adminmenuback,
+#adminmenu,
+#adminmenu .wp-submenu,
+#adminmenu .wp-submenu a,
+#adminmenu .wp-has-current-submenu .wp-submenu,
+#adminmenu .wp-has-current-submenu .wp-submenu a,
+#wpadminbar .ab-icon:before,
+#wpadminbar .ab-icon:before,
+.acf-block-component .acf-block-fields,
+.rtl h1, .rtl h2, .rtl h3, .rtl h4, .rtl h5, .rtl h6 {
+    font-family: "Vazir", sans-serif !important;
+}
+
+body #wpadminbar {
+    background-color: #5a7778;
+    color: #ffffff;
+    box-shadow: 0 -16px 11px 14px rgba(0,0,0,01);
+}
+body #adminmenu,
+body #adminmenuback,
+body #adminmenuwrap {
+    background-color: #5a7778;
+}
+body #adminmenu .wp-submenu {
+    background-color: #526869;
+}

@@ -1,0 +1,136 @@
+<section class="exp-certi-program-header max-width">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="exp-certi-program-header__content">
+                    {% if fields.show_breadcrumbs == true %}
+                        {{ custom_breadcrumbs() }}
+                    {% endif %}
+
+                    {% if fields.show_logo == true and post.thumbnail is not empty %}
+                        {% set newImage = Image(post.thumbnail) %}
+                        <div class="exp-certi-program-header__image-wrapper">
+                            <img class="exp-certi-program-header__image"
+                                src="{{ newImage.src }}"
+                                srcset="{{ newImage.srcset }}"
+                                alt="{{ newImage.title }}"
+                                title="{{ newImage.title }}"
+                                loading="lazy"
+                            />
+                        </div>
+                    {% endif %}
+
+                    {{ check_value(getTitle, 'h1', "exp-certi-program-header__title") }}
+                    {{ check_value(getText, 'p', "exp-certi-program-header__text") }}
+
+                    {% if fields.show_meta_data %}
+                        <div class="exp-certi-program-header__meta">
+                            {% if post_fields.program_meta_date is not empty %}
+                                <div class="exp-certi-program-header__meta-item">
+                                    <span class="exp-certi-program-header__meta-icon">{{ fetch_svg('meta-calendar') }}</span>
+                                    {{ post_fields.program_meta_date }}
+                                </div>
+                            {% endif %}
+
+                            {% if post_fields.program_meta_time is not empty %}
+                                <div class="exp-certi-program-header__meta-item">
+                                    <span class="exp-certi-program-header__meta-icon">{{ fetch_svg('meta-clock') }}</span>
+                                    {{ post_fields.program_meta_time }}
+                                </div>
+                            {% endif %}
+
+                            {% if post_fields.program_meta_location is not empty %}
+                                <div class="exp-certi-program-header__meta-item">
+                                    <span class="exp-certi-program-header__meta-icon">{{ fetch_svg('meta-marker') }}</span>
+                                    {{ post_fields.program_meta_location }}
+                                </div>
+                            {% endif %}
+
+                            {% if post_fields.program_meta_language is not empty %}
+                                <div class="exp-certi-program-header__meta-item">
+                                    <span class="exp-certi-program-header__meta-icon">{{ fetch_svg('meta-globe') }}</span>
+                                    {{ post_fields.program_meta_language }}
+                                </div>
+                            {% endif %}
+
+                            {% if post_fields.program_meta_presentation is not empty %}
+                                <div class="exp-certi-program-header__meta-item">
+                                    <span class="exp-certi-program-header__meta-icon">{{ fetch_svg('meta-presentation') }}</span>
+                                    {{ post_fields.program_meta_presentation }}
+                                </div>
+                            {% endif %}
+
+                            {% if post_fields.is_live_or_recorded_webinar is not empty %}
+                                <div class="exp-certi-program-header__meta-item">
+                                    <span class="exp-certi-program-header__meta-icon">{{ fetch_svg('meta-presentation') }}</span>
+                                    {% if post_fields.is_live_or_recorded_webinar == true %}
+                                        {{ __('Live', 'expedition') }}
+                                    {% elseif post_fields.is_live_or_recorded_webinar == false %}
+                                        {{ __('Recorded', 'expedition') }}
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+
+                            {% if post_fields.program_meta_costs is not empty %}
+                                <div class="exp-certi-program-header__meta-item">
+                                    <span class="exp-certi-program-header__meta-icon">{{ fetch_svg('meta-wallet') }}</span>
+                                    {{ post_fields.program_meta_costs }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+                    {% if fields.show_link == true and post_fields.link is array %}
+                        {% include "partial/button.twig" with {
+                            url : post_fields.link.url,
+                            title : post_fields.link.title,
+                            target : post_fields.link.target,
+                            class : 'btn--primary exp-certi-program-header__link',
+                            icon : 'arrow-right'
+                        } %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if fields.is_image_or_video == true and post_fields.image is not empty %}
+        {% set newImage = Image(post_fields.image) %}
+        <div class="exp-certi-program-header__media-wrapper is--image">
+            <img class="exp-certi-program-header__media"
+                src="{{ newImage.src }}"
+                srcset="{{ newImage.srcset }}"
+                alt="{{ newImage.title }}"
+                title="{{ newImage.title }}"
+                loading="lazy"
+            />
+        </div>
+    {% elseif fields.is_image_or_video == false and post_fields.vimeo_id is not empty %}
+        {% set videoPoster = Image(post_fields.video_poster) %}
+        {% if videoPoster is not empty %}
+            <div class="exp-certi-program-header__media-wrapper is--video">
+                <button class="exp-video__button"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#videoModal"
+                >
+                    <img class="exp-video__poster"
+                        src="{{ videoPoster.src }}"
+                        srcset="{{ videoPoster.srcset }}"
+                        alt="{{ videoPoster.title }}"
+                        title="{{ videoPoster.title }}"
+                        loading="lazy"
+                        width="auto"
+                        height="auto"
+                    />
+
+                    {% include "partial/play-button.twig" %}
+                </button>
+
+                {% include 'templates/partial/modal-with-plyr.twig' with {
+                    vimeo_id: post_fields.vimeo_id
+                } %}
+            </div>
+        {% endif %}
+    {% endif %}
+</section>

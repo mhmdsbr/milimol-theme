@@ -1,0 +1,51 @@
+{% if fields.counters is array %}
+    <section class="exp-counter {{ background_color(fields.background_color) }}" {{ anchor_block(fields.anchor_block) }}>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-5">
+                    <div class="exp-counter__content">
+                        {% if fields.is_show_subtitle == true %}
+                            {{ check_value(fields.subtitle, 'h5', "exp-counter__subtitle") }}
+                        {% endif %}
+
+                        {% if fields.is_show_title == true %}
+                            {{ check_value(fields.title, 'h2', "exp-counter__title") }}
+                        {% endif %}
+
+                        {% if fields.is_show_text == true %}
+                            {{ check_value(fields.text, 'p', "exp-counter__text") }}
+                        {% endif %}
+
+                        {% if fields.is_show_link == true and fields.link is array %}
+                            {% include "partial/button.twig" with {
+                                url : fields.link.url,
+                                title : fields.link.title,
+                                target : fields.link.target,
+                                class : 'btn--white exp-counter__link',
+                                icon : 'arrow-right'
+                            } %}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-7">
+                    <div class="exp-counter__wrapper">
+                        {% for counter in fields.counters %}
+                            <div class="exp-counter__item">
+                                <div class="exp-counter__item-top">
+                                    {{ check_value(counter.counter_number, 'div', "exp-counter__item-number") }}
+                                    {{ check_value(counter.counter_append_symbol, 'div', "exp-counter__item-symbol") }}
+                                </div>
+                                {{check_value(counter.subtitle, 'h5', "exp-counter__item-subtitle") }}
+                            </div>
+
+                            {% if loop.last == false  %}
+                                <div class="exp-counter__item-divider"></div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}

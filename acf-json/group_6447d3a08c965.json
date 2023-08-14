@@ -1,0 +1,74 @@
+{
+    "key": "group_6447d3a08c965",
+    "title": "Component: Anchor link",
+    "fields": [
+        {
+            "key": "field_6447d3a1e582f",
+            "label": "Enable anchor option",
+            "name": "is_anchor_option_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "This block uses the functionality of the Anchor menu Block. \r\nThe Anchor menu block should be placed first, right underneath a header that suits the context of this page\/post. \r\n\r\nWithout the Anchor menu block, this options will not have any purpose.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_6447d3eae5830",
+            "label": "Anchor label",
+            "name": "anchor_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Set the title that will show up in the anchor menu. \r\nNOTE: This is a readable short title.",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6447d3a1e582f",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "is_acf_component": 1,
+    "acf_component_defaults": {
+        "repeatable": "0",
+        "min": "",
+        "max": "",
+        "layout": "block",
+        "button_label": "",
+        "appearances": ""
+    },
+    "modified": 1682429227
+}

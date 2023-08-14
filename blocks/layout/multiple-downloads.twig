@@ -1,0 +1,51 @@
+<section
+        class="exp-multiple-downloads {{ background_color(fields.background_color) }}" {{ anchor_block(fields.anchor_block) }}>
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-12 col-md-6 mobile-order-1">
+                {% set downloadRows = fields.download_row %}
+                {{ check_value(fields.title, 'h2', 'exp-multiple-downloads__title') }}
+                {% if downloadRows %}
+                    {% for row in downloadRows %}
+                        <div class="exp-multiple-downloads__content">
+                            {% if row.download is array %}
+                                {% if row.download_title is not empty %}
+                                    {% set downloadTitle = row.download_title %}
+                                    {% set downloadType = row.download_type %}
+                                {% else %}
+                                    {% set downloadTitle = row.download.filename %}
+                                    {% set downloadType = row.download_type %}
+                                {% endif %}
+
+                                {% include "partial/button.twig" with {
+                                    url : row.download.url,
+                                    title : downloadTitle,
+                                    target : '_blank',
+                                    class : 'btn--primary',
+                                    icon : 'download',
+                                    extra : 'download'
+                                } %}
+
+                                {% if downloadType is not empty %}
+                                    <span class="exp-multiple-downloads__content-type">({{ downloadType }})</span>
+                                {% endif %}
+
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            {% if fields.image is array %}
+                <div class="col-12 col-md-6 mobile-order-2 align-items-md-stretch">
+                    <div class="ratio ratio-16x9">
+                        {% set image = Image(fields.image) %}
+                        <img class="exp-multiple-downloads__image" src="{{ image.src }}" srcset="{{ image.srcset }}"
+                             alt="{{ image.title }}"
+                             title="{{ image.title }}" loading="lazy"/>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

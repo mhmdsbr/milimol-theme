@@ -1,0 +1,93 @@
+<div id="buttons" class="container p-5">
+    <div class="row">
+        <div class="col-12">
+            <p>
+                Buttons work with all the classes displayed. If you want to display an icon in the button left of right of the text, just use '{ { fetch_svg('plus') } }' before or after the text
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-auto">
+            <div class="d-flex flex-column mb-3" style="gap: 16px">
+                <a href="#" class="btn">
+                    {{ fetch_svg('arrow-right') }}
+                    btn arrow-right
+                </a>
+
+                <a href="#" class="btn btn--primary">
+                    {{ fetch_svg('arrow-right') }}
+                    btn--primary arrow-right
+                </a>
+
+                <a href="#" class="btn btn--outline" style="background-color: black;">
+                    {{ fetch_svg('arrow-right') }}
+                    btn--outline arrow-right
+                </a>
+                
+                <a href="#" class="btn btn--white" style="background-color: black;">
+                    {{ fetch_svg('arrow-right') }}
+                    btn--white arrow-right
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-auto">
+            <div class="d-flex flex-column mb-3" style="gap: 16px">
+                <a href="#" class="btn">
+                    {{ fetch_svg('arrow-down') }}
+                    btn arrow-down
+                </a>
+
+                <a href="#" class="btn btn--primary">
+                    {{ fetch_svg('arrow-down') }}
+                    btn--primary arrow-down
+                </a>
+
+                <a href="#" class="btn btn--outline" style="background-color: black;">
+                    {{ fetch_svg('arrow-down') }}
+                    btn--outline arrow-down
+                </a>
+                
+                <a href="#" class="btn btn--white" style="background-color: black;">
+                    {{ fetch_svg('arrow-down') }}
+                    btn--white arrow-down
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-auto">
+            <div class="d-flex flex-column mb-3" style="gap: 16px">
+                <a href="#" class="btn">
+                    {{ fetch_svg('download') }}
+                    btn download
+                </a>
+
+                <a href="#" class="btn btn--primary">
+                    {{ fetch_svg('download') }}
+                    btn--primary download
+                </a>
+
+                <a href="#" class="btn btn--outline" style="background-color: black;">
+                    {{ fetch_svg('download') }}
+                    btn--outline download
+                </a>
+                
+                <a href="#" class="btn btn--white" style="background-color: black;">
+                    {{ fetch_svg('download') }}
+                    btn--white download
+                </a>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <p>A button can be included like: </p>
+
+            {% include "partial/button.twig" with {
+                url : '#',
+                title : 'button',
+                target : '_blank',
+                class : 'btn--primary',
+                icon : 'arrow-right'
+            } %}
+        </div>
+    </div>
+</div>

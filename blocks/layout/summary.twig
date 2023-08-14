@@ -1,0 +1,43 @@
+<section class="exp-summary" {{ anchor_block(fields.anchor_block) }}>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-5">
+                <div class="exp-summary__content">
+                    {% if fields.is_show_subtitle == true %}
+                        {{ check_value(fields.subtitle, 'h5', 'exp-summary__subtitle text-base text-lg-lg') }}
+                    {% endif %}
+
+                    {% if fields.is_show_title == true %}
+                        {{ check_value(fields.title, 'h2', 'exp-summary__title text-3xl text-lg-5xl') }}
+                    {% endif %}
+
+                    {% if fields.is_show_text == true %}
+                        {{ check_value(fields.text, 'p', 'exp-summary__text text-base text-lg-lg') }}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-12 col-md-7">
+                {% if fields.usp_repeater is array %}
+                    <ul class="exp-summary__list">
+                        {% for item in fields.usp_repeater %}
+                            <li class="exp-summary__list-item">
+                                {{ check_value(item.title, 'p', 'exp-summary__list-item-text text-sm text-lg-base') }}
+
+                                {% if item.is_show_link == true and item.link is array %}
+                                    <a class="exp-summary__list-item-link btn--textlink"
+                                        href="{{ item.link.url }}"
+                                        title="{{ item.link.title }}"
+                                        target="{{ item.link.target }}"
+                                    >
+                                        {{ item.link.title }} {{ fetch_svg('chevron-right') }}
+                                    </a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

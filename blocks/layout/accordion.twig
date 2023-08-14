@@ -1,0 +1,79 @@
+<section class="exp-accordion {{ background_color(fields.background_color) }}" {{ anchor_block(fields.anchor_block) }}>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-5">
+                <div class="exp-accordion__content">
+                    {% if fields.is_show_subtitle == true %}
+                        {{ check_value(fields.subtitle, 'h5', 'exp-accordion__subtitle') }}
+                    {% endif %}
+
+                    {% if fields.is_show_title == true %}
+                        {{ check_value(fields.title, 'h2', 'exp-accordion__title') }}
+                    {% endif %}
+
+                    {% if fields.is_show_text == true %}
+                        {{ check_value(fields.text, 'p', 'exp-accordion__text') }}
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if accordionItems is array %}
+                <div class="col-12 col-md-7">
+                    <div class="exp-accordion__wrapper {{ fields.is_show_icons == true ? 'enable-icons' : '' }}"
+                         id="{{ block.id }}-{{ accordionType }}Accordion">
+                        {% for item in accordionItems %}
+                            {% set getFields = get_acf_fields(item) %}
+                            <div class="exp-accordion__item">
+                                <h2 class="exp-accordion__header" id="heading-{{ loop.index }}">
+                                    <button class="exp-accordion__button{{ loop.index != 1 ? ' collapsed' }}"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#{{ block.id }}-{{ accordionType }}Collapse-{{ loop.index }}"
+                                            aria-expanded="{{ loop.index == 1 ? "true" : "false" }}"
+                                            aria-controls="{{ block.id }}-{{ accordionType }}Collapse-{{ loop.index }}"
+                                        >
+                                        {% if fields.is_show_icons == true %}
+                                            <span class="exp-accordion__icon">
+                                                {{ fetch_svg('check-circle') }}
+                                            </span>
+                                        {% endif %}
+
+                                        <span>
+                                            {{ function('get_the_title', item) }}
+                                        </span>
+                                    </button>
+                                </h2>
+
+                                <div id="{{ block.id }}-{{ accordionType }}Collapse-{{ loop.index }}"
+                                    class="exp-accordion__collapse {{ loop.index == 1 ? 'collapse show' : 'collapse' }}"
+                                    data-bs-parent="#{{ block.id }}-{{ accordionType }}Accordion">
+                                    <div class="exp-accordion__body">
+                                        {% if getFields.answer is not empty %}
+                                            {{ check_value(getFields.answer, 'p', null) }}
+                                        {% endif %}
+
+                                        {% if fields.is_show_links == true and getFields.link is array %}
+                                            <a class="exp-accordion__body-link"
+                                                href="{{ getFields.link.url }}"
+                                                title="{{ getFields.link.title }}"
+                                                target="{{ getFields.link.target }}"
+                                            >
+                                                <span class="exp-accordion__body-link-text">
+                                                    {{ getFields.link.title }}
+                                                </span>
+
+                                                <span class="exp-accordion__body-link-icon">
+                                                    {{ fetch_svg('chevron-right') }}
+                                                </span>
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

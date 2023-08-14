@@ -1,0 +1,37 @@
+{% block content %}
+
+    <div class="pt-5 pb-5 bg-accent rounded-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    {% if posts is defined and posts|length > 0 %}
+                        <ul>
+                            {% for post in posts %}
+                                <li class="search__results-ajax-list">
+                                    <div class="search__results-ajax-image">
+                                        {% if post.thumbnail.src %}
+                                            <img src="{{post.thumbnail.src | resize(95, 95) }}" />
+                                        {% endif %}
+                                    </div> {# /.image #}
+                                    <div class="search__results-ajax-content">
+                                        <p><small>{{ post.date }}</small></p>
+                                        <p><strong>{{post.title}}</strong></p>
+                                    </div> {# /.copy #}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>متاسفم، محصول مورد نظرت پیدا نشد :(</p>
+                        {% include "partial/button.twig" with {
+                            url : '#',
+                            title : 'ثبت درخواست محصول جدید',
+                            target : '_blank',
+                            class : 'btn--primary',
+                            icon : 'arrow-left'
+                        } %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

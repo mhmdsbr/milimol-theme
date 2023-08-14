@@ -1,0 +1,33 @@
+<section class="exp-timeline {{ background_color(fields.background_color) }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {{ check_value(fields.title, 'h2', "exp-timeline__title") }}
+                {{ check_value(fields.intro_text, 'h2', "exp-timeline__text") }}
+            </div>
+            {% if fields.elements is array %}
+                {% set elementsBatched = fields.elements|batch(4) %}
+                {% for elementsRow in elementsBatched %}
+                    <div class="col-12 row gx-0 p-3 justify-content-center">
+                        {% for element in elementsRow %}
+                            <div class="col-lg-3 gx-3 col-12 {{ exp_mobile() ? 'text-center' : 'text-left'}} ">
+                                <div class="exp-timeline__content {{ element.is_highlighted == true ? 'bg--sustain-mossgreen' : '' }} step-{{ loop.index }}">
+                                    {% if element.image is not empty %}
+                                        <img class="exp-timeline__icon"
+                                             src="{{ element.image['url'] }}"
+                                             alt="{{ element.image['title'] }}"
+                                             title="{{ element.image['title'] }}"
+                                             loading="lazy"
+                                        />
+                                    {% endif %}
+                                    {{ check_value(element.title, 'h5', "exp-timeline__timeline-title") }}
+                                    {{ check_value(element.subtitle, 'p', "exp-timeline__timeline-text") }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>

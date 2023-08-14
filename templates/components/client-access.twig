@@ -1,0 +1,29 @@
+<div class="dropdown-menu client-access" aria-labelledby="clientAccessDropdown">
+    <div class="container">
+        <div class="row">
+            {% for client in options.client_blocks %}
+                <div class="col-12 col-md-4">
+                    <div class="client-access__block{{ loop.last ? ' client-access__block--last' : '' }}">
+                        {% if client.title is not empty %}
+                            <span class="client-access__title">{{ client.title }}</span>
+                        {% endif %}
+
+                        {% if client.content is not empty %}
+                            <p>{{ client.content }}</p>
+                        {% endif %}
+                        
+                        {% if client.link is not empty %}
+                            {% include "partial/button.twig" with {
+                                url : client.link.url,
+                                title : client.link.title,
+                                class : 'btn--primary',
+                                icon : 'arrow-right',
+                                target : client.link.target
+                            } %}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

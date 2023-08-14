@@ -1,0 +1,121 @@
+<footer class="footer">
+    <div class="container">
+        <div class="footer__top">
+            <div class="row">
+                {% if options.footer_logo is not empty %}
+                    <div class="col-12 col-md-6">
+                        <div class="footer__logo">
+                            <img src="{{ options.footer_logo.url }}" alt="{{ site.title }}" />
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if options.linkedin is not empty or options.twitter is not empty or options.facebook is not empty %}
+                    <div class="col-12 col-md-6">
+                        <div class="footer__socials">
+                            <ul>
+                                {% if options.linkedin is not empty %}
+                                    <li>
+                                        <a href="{{ options.linkedin }}" title="{{ __('LinkedIn', 'expedition') }}" target="_blank" rel="noindex nofollow">
+                                            {{ fetch_svg('linkedin') }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% if options.twitter is not empty %}
+                                    <li>
+                                        <a href="{{ options.twitter }}" title="{{ __('Twitter', 'expedition') }}" target="_blank" rel="noindex nofollow">
+                                            {{ fetch_svg('twitter') }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% if options.facebook is not empty %}
+                                    <li>
+                                        <a href="{{ options.facebook }}" title="{{ __('Facebook', 'expedition') }}" target="_blank" rel="noindex nofollow">
+                                            {{ fetch_svg('facebook') }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="footer__menu">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="footer__menu-wrapper">
+                        {% if options.footer_about_title is not empty %}
+                            <h3 class="footer__title">{{ options.footer_about_title }}</h3>
+                        {% endif %}
+                        {% if options.footer_about_title is not empty %}
+                            <p class="footer__about" >{{ options.footer_about_text }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-2">
+                    <div class="footer__menu-wrapper">
+                        {% if options.first_footer_menu_title %}
+                            <h3 class="footer__title">{{ options.first_footer_menu_title }}</h3>
+                        {% endif %}
+                        <ul class="menu">
+                            {% if menu %}
+                                {% for item in footermenufirst.items %}
+                                    <li class="menu-item"><a href="{{ item.link }}">{{ item.title }}</a></li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-2">
+                    <div class="footer__menu-wrapper">
+                        {% if options.second_footer_menu_title %}
+                            <h3 class="footer__title">{{ options.second_footer_menu_title }}</h3>
+                        {% endif %}
+                        <ul class="menu">
+                            {% if menu %}
+                                {% for item in footermenusecond.items %}
+                                    <li class="menu-item"><a href="{{ item.link }}">{{ item.title }}</a></li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="footer__menu-wrapper">
+                        {% if options.footer_contact_title is not empty %}
+                            <h3 class="footer__title">{{ options.footer_contact_title }}</h3>
+                        {% endif %}
+                        <ul class="menu footer__contact">
+                            <li class="menu-item">
+                                {{ fetch_svg('meta-marker') }}
+                                {{ options.footer_address_text }}
+                            </li>
+                            <li class="menu-item">
+                                {{ fetch_svg('phone') }}
+                                {{ options.footer_phone }}
+                            </li>
+                            <li class="menu-item">
+                                {{ fetch_svg('envelope') }}
+                                {{ options.footer_email }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="footer__legal">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {% if options.legal_footer_menu is not empty %}
+                    {{ options.legal_footer_menu }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

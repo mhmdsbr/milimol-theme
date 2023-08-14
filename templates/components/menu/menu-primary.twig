@@ -1,0 +1,22 @@
+{% if menu %}
+	<ul class="nav-main--items-mobile">
+	{% for item in items %}
+		{% set industriesItems = 'false' %}
+		{% if item.industries_menu_item == '1' and Post(item.industries_posts)|length > 0 %}
+			{% set industriesItems = 'true' %}
+		{% endif %}
+		<li class="{{ item.classes | join(' ') }}{{ item.children or industriesItems == 'true' ? ' dropdown has-megamenu' }}">
+			<a target="{{ item.target }}" href="{{ item.link }}" title="{{ item.title }}"{% if item.children or industriesItems == 'true' %} id="menuDropdown-{{ item.id }}" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"{% endif %}>
+				{{ item.title }}
+				{% if item.children or industriesItems == 'true' %}
+					{{ fetch_svg('chevron-down') }}
+				{% endif %}
+			</a>
+
+            {% if item.children or industriesItems == 'true' %}
+                {% include "components/menu/menu-mega.twig" with {'items': item.children} %}
+            {% endif %}
+		</li>
+	{% endfor %}
+	</ul>
+{% endif %}

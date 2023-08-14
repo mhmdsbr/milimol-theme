@@ -1,0 +1,43 @@
+<div class="dropdown-menu locations-menu" aria-labelledby="locationsMenuDropdown">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-8">
+                        {{ check_value(options.main_title, 'h2', 'locations-menu__title') }}
+                        <p class="locations-menu__cur-location">{{ __('You are currently at', 'expedition') }} <u>{{ site.name }}</u></p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="locations-menu__close">
+                            <span>
+                                {{ fetch_svg('close') }}
+                            </span>
+                            {{ __('Close', 'expedition') }}
+                        </div>
+                    </div>
+                </div>
+
+                {% for region in options.regions_repeater %}
+                    <div class="locations-menu__region">
+                        <h3 class="locations-menu__region-title">{{ region.region_name }}</h3>
+
+                        {% if region.locations is array %}
+                            <ul class="row">
+                                {% for location in region.locations %}
+                                    <li class="col-md-4 col-lg-3">
+                                        <a href="{{ location.location.url }}" title="{{ location.location.title }}" target="_blank">
+                                            {{ location.location.title }}
+
+                                            {{ fetch_svg('external') }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

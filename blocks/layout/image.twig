@@ -1,0 +1,10 @@
+<section class="exp-image" {{ anchor_block(fields.anchor_block) }}>
+    <div class="container{{ fields.is_boxed == true ? '' : '-fluid' }}">
+        <div class="row">
+            <div class="col-12">
+                <InnerBlocks allowedBlocks="{{ allowed_blocks|json_encode()|escape }}" template="{{ blocks_template|json_encode()|escape }}" templateLock="{{ template_lock }}"/>
+            </div>
+        </div>
+    </div>
+</section>
+

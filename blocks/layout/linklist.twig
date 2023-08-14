@@ -1,0 +1,122 @@
+<section class="link-list" {{ anchor_block(fields.anchor_block) }}>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2">
+                <div class="link-list__intro">
+                    {% if fields.is_show_title == true %}
+                        {{ check_value(fields.title, 'h2', 'link-list__title') }}
+                    {% endif %}
+
+                    {% if fields.is_show_text == true %}
+                        {{ check_value(fields.text, 'p', null) }}
+                    {% endif %}
+
+                    {% if fields.is_show_link == true and fields.link is array %}
+                        {% include "partial/button.twig" with {
+                            url : fields.link.url,
+                            title : fields.link.title,
+                            class : 'btn--primary',
+                            icon : 'arrow-right',
+                            target : fields.link.target
+                        } %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        {% if function('wp_is_mobile') != true %}
+            {% if fields.linklist is array %}
+                <div class="link-list__list-wrapper">
+                    <div class="row justify-content-center">
+                        {% for item in fields.linklist %}
+                            {% if item.links is array %}
+                                <div class="col-12 col-md-4">
+                                    <div class="link-list__list link-list__list-spacing">
+                                        {% if item.list_icon is array %}
+                                            {% for icon in item.list_icon %}
+                                                <span class="link-list__list-icon">{{ fetch_svg(icon.icons) }}</span>
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        {{ check_value(item.list_title, 'h4', 'link-list__list-title') }}
+
+                                        <ul>
+                                            {% for link in item.links %}
+                                                <li>
+                                                    <a href="{{ link.link.url }}" target="{{ link.link.target ?: '_self' }}" title="{{ link.link.title }}">
+                                                        {{ link.link.title }} {{ fetch_svg('chevron-right') }}
+                                                    </a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+
+                                        {% if item.overview_link is array %}
+                                            {% include "partial/button.twig" with {
+                                                url : item.overview_link.url,
+                                                title : item.overview_link.title,
+                                                class : 'btn--primary',
+                                                target : item.overview_link.target
+                                            } %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    {% if function('wp_is_mobile') == true %}
+        {% if fields.linklist is array %}
+            <div class="link-list__accordion" id="accordionLinklist">
+                {% for item in fields.linklist %}
+                    <div class="accordion-item">
+                        <div class="container">
+                            <h2 class="accordion-header" id="heading-{{ loop.index }}">
+                                <button class="accordion-button{{ loop.index != 1 ? ' collapsed' : ''}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ loop.index }}" aria-expanded="{{ loop.index == 1 ? 'true' : 'false'}}" aria-controls="collapse-{{ loop.index }}">
+                                    {% if item.list_icon is array %}
+                                        {% for icon in item.list_icon %}
+                                            <span class="link-list__list-icon">{{ fetch_svg(icon.icons) }}</span>
+                                        {% endfor %}
+                                    {% endif %}
+                                        
+                                    {{ check_value(item.list_title, 'span', 'link-list__list-title') }}
+
+                                    <span class="accordion-button__open">{{ fetch_svg('minus')}}</span>
+                                    <span class="accordion-button__closed">{{ fetch_svg('plus')}}</span>
+                                </button>
+                            </h2>
+                            
+                            <div id="collapse-{{ loop.index }}" class="accordion-collapse collapse{{ loop.index == 1 ? ' show' : ''}}" aria-labelledby="heading{{ loop.index }}" data-bs-parent="#accordionLinklist">
+                                <div class="accordion-body">
+                                    <div class="link-list__list">
+                                        <ul>
+                                            {% for link in item.links %}
+                                                <li>
+                                                    <a href="{{ link.link.url }}" target="{{ link.link.target ?: '_self' }}" title="{{ link.link.title }}">
+                                                        {{ link.link.title }} {{ fetch_svg('chevron-right') }}
+                                                    </a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+
+                                        {% if item.overview_link is array %}
+                                            {% include "partial/button.twig" with {
+                                                url : item.overview_link.url,
+                                                title : item.overview_link.title,
+                                                class : 'btn--primary',
+                                                target : item.overview_link.target
+                                            } %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endif %}
+</section>

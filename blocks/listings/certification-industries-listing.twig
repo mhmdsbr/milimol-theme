@@ -1,0 +1,45 @@
+<section class="exp-linked-industries">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8 offset-lg-2 text-lg-center">
+                {% if fields.is_show_title == true %}
+                    {{ check_value(fields.title, 'h2', 'exp-linked-industries__title') }}
+                {% endif %}
+
+                {% if fields.is_show_text == true %}
+                    {{ check_value(fields.text, 'p', 'exp-linked-industries__content') }}
+                {% endif %}
+
+                {% if fields.is_show_link == true and fields.link is array %}
+                    {% include "partial/button.twig" with {
+                        url : fields.link.url,
+                        title : fields.link.title,
+                        target : fields.link.target,
+                        class : 'btn--primary',
+                        icon : 'arrow-right'
+                    } %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="exp-linked-industries__block-wrapper">
+            <div class="row g-3 justify-content-center">
+            {% for item in certification_industries %}
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <div class="exp-linked-industries__block">
+
+                        {% set item_fields = get_acf_fields(item.ID) %}
+                        {% if item_fields.icon is array %}
+                            {% for icon in item_fields.icon %}
+                                <span>{{ fetch_svg(icon.icons) }}</span>
+                            {% endfor %}
+                        {% endif %}
+
+                        {{ check_value(item.post_title, 'h4', null) }}
+
+                        <a href="{{ get_link(item.ID) }}" class="click-url"></a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

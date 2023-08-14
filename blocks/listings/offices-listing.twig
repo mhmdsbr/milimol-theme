@@ -1,0 +1,101 @@
+<section class="exp-offices-listing" {{ anchor_block(fields.anchor_block) }}>
+    {% if fields.is_show_title == true or fields.is_show_subtitle == true %}
+        <div class="exp-offices-listing__header">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        {{ check_value(fields.title, 'h2', 'exp-offices-listing__header-title') }}
+                        {{ check_value(fields.subtitle, 'p', 'exp-offices-listing__header-content') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if regions is array %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="accordion accordion__parent" id="regionAccordion">
+                        {% for region in regions %}
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="regionHeading-{{ loop.index }}">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#region-collapse-{{ loop.index }}" aria-expanded="{{ loop.index == 1 ? 'true' : 'false'}}"
+                                            aria-controls="region-collapse-{{ loop.index }}">
+                                        {{ check_value(region.name, 'span', 'accordion-button__title') }}
+
+                                        {% if region.subregions|length > 0 %}
+                                            {% if region.subregions|length == 1 %}
+                                                {% set offices = __('office', 'expedition') %}
+                                            {% else %}
+                                                {% set offices = __('offices', 'expedition') %}
+                                            {% endif %}
+                                            <span class="accordion-button__offices">({{ region.subregions|length }} {{ offices }})</span>
+                                        {% endif %}
+                                    </button>
+                                </h2>
+
+                                <div id="region-collapse-{{ loop.index }}" class="accordion-collapse collapse {{ loop.index == 1 ? 'show' : '' }}"
+                                    aria-labelledby="regionHeading-{{ loop.index }}" data-bs-parent="#regionAccordion">
+                                    <div class="accordion-body">
+                                        {% if region.subregions is array %}
+                                            <div class="accordion" id="countryAccordion">
+                                                {% for subregion in region.subregions %}
+                                                    <div class="accordion-item accordion-item__child">
+                                                        <h2 class="accordion-header accordion-header__child" id="countryHeading-{{ loop.index }}">
+                                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                                    data-bs-target="#country-collapse-{{ loop.index }}"
+                                                                    aria-expanded="{{ loop.index == 1 ? 'true' : 'false'}}"
+                                                                    aria-controls="country-collapse-{{ loop.index }}">
+                                                                {{ check_value(subregion.name, 'span', 'accordion-button__title') }}
+                                                            </button>
+                                                        </h2>
+
+                                                        <div id="country-collapse-{{ loop.index }}"
+                                                            class="accordion-collapse collapse {{ loop.index == 1 ? 'show' : '' }}"
+                                                            aria-labelledby="countryHeading-{{ loop.index }}"
+                                                            data-bs-parent="#countryAccordion">
+                                                            <div class="accordion-body">
+                                                                {% if subregion.offices is array %}
+                                                                    <div class="row">
+                                                                        {% for office in subregion.offices %}
+                                                                            <div class="col-md-4">
+                                                                                <div class="office">
+                                                                                    {% set office_fields = get_acf_fields(office.ID) %}
+                                                                                    {{ check_value(office_fields.city, 'h4', null) }}
+                                                                                    {{ check_value(office_fields.address, 'p', null) }}
+                                                                                    
+                                                                                    {% if office_fields.emailaddress is not empty %}
+                                                                                        <span>
+                                                                                            {{ fetch_svg('envelope') }}
+                                                                                            <a href="mailto:{{ office_fields.emailaddress }}" title="{{ office_fields.emailaddress }}">{{ office_fields.emailaddress }}</a>
+                                                                                        </span>
+                                                                                    {% endif %}
+
+                                                                                    {% if office_fields.telephone_number is not empty %}
+                                                                                        <span>
+                                                                                            {{ fetch_svg('phone') }}
+                                                                                            <a href="tel:{{ office_fields.telephone_number }}" title="{{ office_fields.telephone_number }}">{{ office_fields.telephone_number }}</a>
+                                                                                        </span>
+                                                                                    {% endif %}
+                                                                                </div>
+                                                                            </div>
+                                                                        {% endfor %}
+                                                                    </div>
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</section>

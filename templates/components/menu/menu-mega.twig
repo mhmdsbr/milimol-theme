@@ -1,0 +1,113 @@
+<div class="dropdown-menu megamenu" aria-labelledby="menuDropdown-{{ item.id }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4">
+                {% if item.show_page_description == '1' %}
+                    <div class="megamenu__content">
+                        <h2>{{ item.title }}</h2>
+
+                        {% if item.page_description is not empty %}
+                            <p>{{ item.page_description }}</p>
+                        {% endif %}
+
+                        {% set linkText = item.title ~ ' ' ~ __('', 'expedition') %}
+                        {% include "partial/button.twig" with {
+                            url : item.link,
+                            title : linkText,
+                            class : 'btn--primary',
+                            icon : 'arrow-right'
+                        } %}
+                    </div>
+                {% endif %}
+
+                {% if item.children %}
+                    <div class="megamenu__menu-children">
+                       {% include "components/menu/menu-no-children.twig" with {'items': item.children} %}
+                    </div>
+                {% endif %}
+
+                {% set linkFields = function('get_field', 'menu_linklist', item) %}
+                {% if linkFields|length > 0 %}                
+                    <div class="megamenu__menu-linklist">
+                        <ul>
+                        {% for item in linkFields %}
+                            <li class="{{ item.classes | join(' ') }}">
+                                <a target="{{ item.link.target }}" href="{{ item.link.url }}" title="{{ item.link.title }}">{{ item.link.title }}</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+
+            {% if item.industries_menu_item == '1' %}
+                {% if Post(item.industries_posts)|length > 0 %}    
+                    <div class="col-12 col-md-8">
+                        <div class="megamenu__menu-cpt">           
+                            <div class="row">
+                                {% for item in Post(item.industries_posts) %}
+                                    {% set listLength = (loop.length / 2)|round(0, 'ceil') %}
+
+                                    {% if loop.first == true %}
+                                        <div class="col-12 col-md-6">
+                                            <ul>
+                                    {% endif %}
+
+                                    <li class="{{ item.classes | join(' ') }}">
+                                        <a target="{{ item.target }}" href="{{ item.link }}" title="{{ item.title }}">
+                                            {{ item.title }}
+                                        </a>
+                                    </li>
+
+                                    {% if loop.index % listLength == 0 %}
+                                            </ul>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <ul>
+                                    {% endif %}
+
+                                    {% if loop.last == true %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                {% if item.children %}
+                    <div class="col-12 col-md-4">
+                        <div class="megamenu__menu-children-sec" style="display: none;">
+                            {% for item in item.children %}
+                                {% if item.children %}
+                                    {% include "components/menu/menu-no-children.twig" with {'items': item.children} %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-md-4">
+                        <div class="megamenu__menu-children-third" style="display: none;">
+                            {% for item in item.children %}
+                                {% for item in item.children %}
+                                    {% if item.children %}
+                                        {% include "components/menu/menu-no-children.twig" with {'items': item.children} %}
+                                        
+                                        {% set linkText = item.title ~ ' ' ~ __('', 'expedition') %}
+                                        {% include "partial/button.twig" with {
+                                            url : item.link,
+                                            title : linkText,
+                                            class : 'btn--primary btn-overview-menu-third',
+                                            icon : 'arrow-left'
+                                        } %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}            
+        </div>
+    </div>
+</div>

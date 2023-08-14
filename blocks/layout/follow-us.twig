@@ -1,0 +1,37 @@
+<section class="exp-follow-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="exp-follow-us__wrapper">
+                    {% if options.follow_us_title is not empty %}
+                        <h3 class="exp-follow-us__title">{{ options.follow_us_title }}</h3>
+                    {% endif %}
+
+                    <ul>
+                        {% if options.linkedin is not empty %}
+                            <li>
+                                <a href="{{ options.linkedin }}" title="{{ __('LinkedIn', 'expedition') }}" target="_blank" rel="noindex nofollow">
+                                    {{ fetch_svg('linkedin') }}
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if options.twitter is not empty %}
+                            <li>
+                                <a href="{{ options.twitter }}" title="{{ __('Twitter', 'expedition') }}" target="_blank" rel="noindex nofollow">
+                                    {{ fetch_svg('twitter') }}
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if options.facebook is not empty %}
+                            <li>
+                                <a href="{{ options.facebook }}" title="{{ __('Facebook', 'expedition') }}" target="_blank" rel="noindex nofollow">
+                                    {{ fetch_svg('facebook') }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,21 @@
+<div class="logo-card">
+    {% set image = Image(logo) %}
+    {% if image is not empty %}
+        <img class="logo-card__image" src="{{ image }}" alt="{{ item.post_title }}" title="{{ item.post_title }}" loading="lazy"/>
+    {% endif %}
+
+    {% if title is not empty %}
+        <h3 class="logo-card__title">{{ title }}</h3>
+    {% endif %}
+
+    {% if content is not empty %}
+        <p class="logo-card__content">{{ content }}</p>
+    {% endif %}
+
+    {% include "partial/button.twig" with {
+        url : url,
+        title : __('More info', 'expedition'),
+        class : 'btn--primary',
+        arrow : true
+    } %}
+</div>

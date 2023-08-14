@@ -1,0 +1,51 @@
+{% set colors = [
+    "green",
+    "red",
+    "yellow",
+    "black",
+    "white",
+    "gray",
+    "blue",
+    "orange",
+    "cu-lightblue-500",
+    "cu-lightblue-300",
+    "cu-lightblue-200",
+    "p-red-500",
+    "shades-grey-500",
+    "shades-grey-400",
+    "shades-grey-300",
+    "shades-grey-200",
+    "shades-blue-500",
+    "shades-blue-400",
+    "shades-blue-300",
+    "shades-blue-200",
+    "error-red-900",
+    "error-red-500",
+    "error-red-100",
+    "warning-yellow-900",
+    "warning-yellow-500",
+    "warning-yellow-100",
+    "success-green-900",
+    "success-green-500",
+    "success-green-100",
+] %}
+
+<div id="colors" class="container mt-3">
+
+    <div class="row">
+        <div class="col-12">
+            <p>
+                These tyles show all the css color variables that are available. Please use --color-NAME to access the color.
+            </p>
+        </div>
+    </div>
+    <div class="row g-3">
+        {% for color in colors %}
+            <div class="col-4 col-md-2">
+                <div class="p-3 text-xs text-xs--lg d-flex justify-content-center align-items-center" style="background-color: var(--color-{{ color }});border-radius: 10px">
+                    {{ color }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

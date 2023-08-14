@@ -1,0 +1,35 @@
+<section class="exp-contact-form" {{ anchor_block(fields.anchor_block) }}>
+    <div class="container{{ fields.is_boxed ? '' : '-fluid g-0' }}">
+        <div class="row g-0">
+            {% if fields.form_image is array %}
+                <div class="col-md-6 mobile-order-2">
+                    <div class="exp-contact-form__image">
+                        {% set image = Image(fields.form_image) %}
+
+                        <picture>
+                            <img src="{{ image.src }}" srcset="{{ image.srcset }}" alt="{{ image.title }}" title="{{ image.title }}" loading="lazy" />
+                        </picture>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="col-md-6 mobile-order-1">
+                <div class="exp-contact-form__content">
+                    {% if fields.is_show_title %}
+                        {{ check_value(fields.title, 'h2', 'exp-contact-form__title') }}
+                    {% endif %}
+
+                    {% if fields.is_show_text %}
+                        {{ check_value(fields.text, 'p', 'exp-contact-form__text') }}
+                    {% endif %}
+
+                    {% if fields.form %}
+                        {% filter shortcodes %}
+                            [gravityform id="{{ fields.form }}" title="false" description="false" ajax="true"]
+                        {% endfilter %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

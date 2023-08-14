@@ -1,0 +1,75 @@
+<section class="exp-people-stories-slider {{ background_color(fields.background_color) }}" {{ anchor_block(fields.anchor_block) }}>
+    <div class="container {{ exp_mobile() ? 'g-0' : '' }}">
+        <div class="row {{ exp_mobile() ? 'ps-4 pe-4' : '' }}">
+            <div class="col-12 col-md-12">
+                {% if fields.show_slider_title == true %}
+                    {{ check_value(fields.slider_title, 'h1', 'exp-people-stories-slider__title') }}
+                {% endif %}
+                {% if fields.show_text == true %}
+                    {{ check_value(fields.text, 'h5', 'exp-people-stories-slider__subtitle') }}
+                {% endif %}
+                {% if fields.show_link == true %}
+                    {% if fields.link.url is not empty %}
+                        {% include "partial/button.twig" with {
+                            url : fields.link.url,
+                            title : fields.link.title,
+                            target : fields.link.target,
+                            class : 'btn--primary exp-people-stories-slider__button',
+                            icon : 'arrow-left'
+                        } %}
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        {% if posts is array %}
+            <div class="row g-0">
+                <div class="col-12 col-md-12 g-0">
+                    <div class="swiper swiper-container js-exp-people-stories-slider">
+                        <div class="container g-0 swiper-wrapper">
+                            {% for slide in posts %}
+                                <div class="row g-0 swiper-slide exp-people-stories-slider__slide">
+                                    <div class="col-md-6 mobile-order-2 exp-people-stories-slider__slide-content">
+                                        {%  if slide.meta('title') == true %}
+                                            {{ check_value(slide.meta('title'), 'h5', 'exp-people-stories-slider__slide-title') }}
+                                        {% else %}
+                                            {{ check_value(slide.title, 'h5', 'exp-people-stories-slider__slide-title') }}
+                                        {% endif %}
+                                            {{ check_value(slide.text, 'h2', 'exp-people-stories-slider__slide-quote') }}
+                                        {% if slide.meta('link').url is not empty %}
+                                            {% include "partial/button.twig" with {
+                                                url : slide.meta('link').url,
+                                                target : slide.meta('link').target,
+                                                class : 'btn--white exp-people-stories-slider__slide-button',
+                                                icon : 'arrow-left'
+                                            } %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-6 mobile-order-1 exp-people-stories-slider__slide-image-wrapper">
+                                        {% if slide.thumbnail.src is not empty %}
+                                            <img class="exp-people-stories-slider__slide-image"
+                                                 src="{{ slide.thumbnail.src }}"
+                                                 srcset="{{ slide.thumbnail.srcset }}"
+                                                 alt="{{ slide.thumbnail.alt }}"
+                                                 title="{{ slide.thumbnail.title }}"
+                                                 loading="lazy"
+                                            />
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="exp-people-stories-slider__nav-wrapper">
+                            <div class="exp-people-stories-slider__pagination"></div>
+                            <div class="exp-process-slider__nav exp-people-stories-slider__nav--prev">
+                                {{ fetch_svg('chevron-right') }}
+                            </div>
+                            <div class="exp-process-slider__nav exp-people-stories-slider__nav--next">
+                                {{ fetch_svg('chevron-left') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>

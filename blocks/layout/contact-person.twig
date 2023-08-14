@@ -1,0 +1,68 @@
+<section class="exp-contact-person max-width {{ background_color(fields.background_color) }}"
+    {{ anchor_block(fields.anchor_block) }}
+>
+    <div class="container-fluid exp-contact-person--no-gutter">
+        <div class="row align-items-center exp-contact-person--no-gutter">
+            {% if fields.is_use_featured_contact_image == true and contact_fields.image is array %}
+                {% set newImage = Image(contact_fields.image) %}
+                {% set image_url = image.sizes.medium_large %}
+            {% elseif fields.image is array %}
+                {% set newImage = Image(fields.image) %}
+                {% set image_url = image.sizes.medium_large %}
+            {% else %}
+                {% set newImage = theme.link ~ '/images/image-header-placeholder.jpg' %}
+            {% endif %}
+            <div class="col-12 col-lg-6 exp-contact-person--no-gutter align-self-stretch order-2 order-lg-0">
+                {% if contact_fields.image is not array and fields.image is not array %}
+                    <img class="exp-contact-person__image" src="{{ newImage }}" alt="{{ contact_fields.title }}" title="{{ contact_fields.title }}" loading="lazy" />
+                {% else %}
+                    <img class="exp-contact-person__image" src="{{ newImage.src }}" srcset="{{ newImage.srcset }}" alt="{{ newImage.title }}" title="{{ newImage.title }}" loading="lazy" />
+                {% endif %}
+            </div>
+
+            <div class="col-12 col-lg-6 exp-contact-person--no-gutter">
+                <div class="exp-contact-person__content">
+                    {% if fields.is_show_title == true %}
+                        {{ check_value(contact_fields.title, 'h2', "exp-contact-person__title") }}
+                    {% endif %}
+
+                    {% if fields.is_show_introtext == true %}
+                        {{ check_value(contact_fields.text|truncate(40, '...'), 'p', "exp-contact-person__text") }}
+                    {% endif %}
+
+                    {% if contact_fields.email_address == 'general' %}
+                        {% set emailAddress = options.email_address %}
+                    {% else %}
+                        {% set emailAddress = contact_fields.custom_email_address %}
+                    {% endif %}
+
+                    <div class="exp-contact-person__button-group">
+                        {% if emailAddress is not empty %}
+                            <div class="exp-contact-person__button">
+                                {% include "partial/button.twig" with {
+                                    url : "mailto:"~ emailAddress,
+                                    title : __('Contact us', 'expedition'),
+                                    target : false,
+                                    class : 'btn--primary',
+                                    icon : 'arrow-right'
+                                } %}
+                            </div>
+                        {% endif %}
+
+                        {% if contact_fields.link is array %}
+                            <div class="exp-contact-person__button">
+                                {% include "partial/button.twig" with {
+                                    url : contact_fields.link.url,
+                                    title : contact_fields.link.title,
+                                    target : contact_fields.link.target,
+                                    class : 'btn--outline',
+                                    icon : 'arrow-right'
+                                } %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

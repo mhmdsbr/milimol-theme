@@ -1,0 +1,9 @@
+<a href="{{ url }}" class="btn {{ class ? class : 'btn--primary' }}" title="{{ title }}" target="{{ target ? target : '_self' }}" {{ extra }}>
+    {{ title }}
+    {% if icon is not empty %}
+        <span class="btn__svg">{{ fetch_svg(icon) }}</span>
+    {% endif %}
+    {% if arrow is not empty %}
+       <span class="btn__chevron-right"> {{ fetch_svg('chevron-right') }}</span>
+    {% endif %}
+</a>

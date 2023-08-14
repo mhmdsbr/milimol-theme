@@ -1,0 +1,25 @@
+{% if menu %}
+	<ul{% if item.children %} id="menuChildren-{{ item.id }}"{% endif %}>
+	{% for item in items %}
+        <li class="{{ item.classes | join(' ') }}{{ item.children ? ' has-children' }}">
+			<a target="{{ item.target }}" href="{{ item.link }}" title="{{ item.title }}"{% if item.children %} id="menuChildren-{{ item.id }}" aria-expanded="false"{% endif %}>
+                {{ item.title }}
+                {% if item.children %}
+                    {{ fetch_svg('chevron-left') }}
+                {% endif %}
+            </a>
+		</li>
+	{% endfor %}
+    {% if item.show_overview_link == '1' %}
+        <li>
+            {% set linkText = item.title ~ ' ' ~ __('', 'expedition') %}
+            {% include "partial/button.twig" with {
+                url : item.link,
+                title : linkText,
+                class : 'btn--primary btn--overview',
+                icon : 'arrow-left'
+            } %}
+        </li>
+    {% endif %}
+	</ul>
+{% endif %}

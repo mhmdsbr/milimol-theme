@@ -1,0 +1,140 @@
+{% extends 'single.twig' %}
+
+{% block content %}
+	<header class="company-single__banner image-header">
+		<div class="image-header__background">
+			<picture>
+				<img src="{{ post.thumbnail.src }}" srcset="{{ post.thumbnail.srcset }}" alt="{{ post.thumbnail.title }}" title="{{ post.thumbnail.title }}" loading="lazy" />
+			</picture>
+		</div>
+	</header>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="company-single__sidebar">
+					{% set companyIcon = Image(post.company_icon) %}
+					<div class="company-single__icon">
+						<img src="{{ companyIcon.src }}"
+							 srcset="{{ companyIcon.srcset }}"
+							 alt="{{ companyIcon.title }}"
+							 title="{{ companyIcon.title }}"
+							 loading="lazy"
+						/>
+					</div>
+					<h3 class="company-single__company-name">{{ post.title }}</h3>
+					<div class="company-single__socials footer__socials">
+						<ul>
+							<li>
+								<a href="{{ post.company_email_icon }}" title="{{ __('ایمیل', 'expedition') }}" target="_blank" rel="noindex nofollow">
+									{{ fetch_svg('envelope') }}
+								</a>
+							</li>
+							<li>
+								<a href="{{ post.company_whatsapp }}" title="{{ __('واتس اپ', 'expedition') }}" target="_blank" rel="noindex nofollow">
+									{{ fetch_svg('whatsapp') }}
+								</a>
+							</li>
+							<li>
+								<a href="{{ post.company_instagram }}" title="{{ __('اینستاگرام', 'expedition') }}" target="_blank" rel="noindex nofollow">
+									{{ fetch_svg('instagram') }}
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="company-single__contact-btn">
+						{% include "partial/button.twig" with {
+							url : post.url,
+							title : 'ارتباط با شرکت',
+							target : fields.button.target,
+							class : 'btn--primary exp-process-slider__button',
+							icon : 'arrow-left'
+						} %}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<article id="post-{{ post.ID }}" class="container company-single__main-content post-{{ post.ID }} single-{{ post.post_type }}">
+					<div class="row">
+						<div class="col-12">
+							<div class="company-single__intro-content">
+								<span>رزومه:</span>
+								<p>{{ post.company_intro }}</p>
+							</div>
+						</div>
+					</div>
+					<div class="row company-single__info">
+						<div class="col-12 mb-3 col-lg-6 ">
+							<div class="company-single__country">
+								{{ fetch_svg('flag') }}
+								<span>کشور:</span>
+								<p>{{ post.company_ }}</p>
+							</div>
+							<div class="company-single__city">
+								{{ fetch_svg('city') }}
+								<span>شهر:</span>
+								<p>{{ post.company_ }}</p>
+							</div>
+							<div class="company-single__job-field">
+								{{ fetch_svg('chemistry') }}
+								<span>نوع فعالیت:</span>
+								<p>{{ post.company_ }}</p>
+							</div>
+							<div class="company-single__start-date">
+								{{ fetch_svg('meta-calendar') }}
+								<span>سال تاسیس:</span>
+								<p>{{ post.company_ }}</p>
+							</div>
+							<div class="company-single__ceo">
+								{{ fetch_svg('profile') }}
+								<span>مدیر عامل:</span>
+								<p>{{ post.company_ }}</p>
+							</div>
+							<div class="company-single__personnel-no">
+								{{ fetch_svg('users') }}
+								<span>تعداد پرسنل:</span>
+								<p>{{ post.company_ }}</p>
+							</div>
+						</div>
+						<div class="col-12 mb-3 col-lg-6 ">
+							<div class="company-single__office-phone">
+								{{ fetch_svg('office-phone') }}
+								<span>تلفن دفتر:</span>
+								<p>{{ post.company_ }}</p>
+							</div>
+							<div class="company-single__company-phone">
+								{{ fetch_svg('office-phone') }}
+								<span>تلفن کارخانه:</span>
+								<p>{{ post.company_ }}</p>
+							</div>
+							<div class="company-single__office-address">
+								{{ fetch_svg('tea-cup') }}
+								<span>آدرس دفتر:</span>
+								<p>{{ post.company_ }}</p>
+							</div>
+							<div class="company-single__company-address">
+								{{ fetch_svg('factory') }}
+								<span>آدرس کارخانه:</span>
+								<p>{{ post.company_ }}</p>
+							</div>
+							<div class="company-single__mobile">
+								{{ fetch_svg('phone') }}
+								<span>موبایل:</span>
+								<p>{{ post.company_phone }}</p>
+							</div>
+							<div class="company-single__fax">
+								{{ fetch_svg('fax') }}
+								<span>دورنگار:</span>
+								<p>{{ post.company_ }}</p>
+							</div>
+							<div class="company-single__email">
+								{{ fetch_svg('envelope') }}
+								<span>پست الکترونیک:</span>
+								<p>{{ post.company_email }}</p>
+							</div>
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
+	</div>
+{% endblock %}

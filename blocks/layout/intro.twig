@@ -1,0 +1,19 @@
+<section class="exp-intro {{ background_color(fields.background_color) }}" {{ anchor_block(fields.anchor_block) }}>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-5">
+                {% if fields.is_show_subtitle %}
+                    {{ check_value(fields.subtitle, 'h5', 'exp-intro__subtitle') }}
+                {% endif %}
+
+                {% if fields.is_show_title %}
+                    {{ check_value(fields.title, 'h2', 'exp-intro__title') }}
+                {% endif %}
+            </div>
+
+            <div class="col-12 col-md-7">
+                {{ check_value(fields.text, 'div', 'exp-intro__text') }}
+            </div>
+        </div>
+    </div>
+</section>

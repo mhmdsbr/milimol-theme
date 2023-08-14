@@ -1,0 +1,9 @@
+    <!-- The pop-up login form -->
+    <div id="js-login-popup" class="login-popup">
+        <div class="login-popup__content">
+            <h2>Login</h2>
+            {% filter shortcodes %}
+                [woocommerce_my_account]
+            {% endfilter %}
+        </div>
+    </div>

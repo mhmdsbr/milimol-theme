@@ -1,0 +1,19 @@
+<div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="modal-close" data-bs-dismiss="modal" aria-label="Close">
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.0625 12.9375L12.9375 23.0625" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M23.0625 23.0625L12.9375 12.9375" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="0.5" y="0.5" width="35" height="35" rx="17.5" stroke="currentColor"/>
+                    </svg>
+                </button>
+
+                <div class="js-video-modal insight-header__video"
+                    data-plyr-provider="vimeo"
+                    data-plyr-embed-id="{{ vimeo_id }}"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<section class="exp-industries-listing" {{ anchor_block(fields.anchor_block) }}>
+    <div class="container">
+           {% filter shortcodes %}
+                [facetwp template="insights_listing"]
+            {% endfilter %}
+        <div class="row">
+            <div class="col-12">
+                {% filter shortcodes %}
+                    [facetwp facet="pagination"]
+                {% endfilter %}
+            </div>
+        </div>
+    </div>
+</section>

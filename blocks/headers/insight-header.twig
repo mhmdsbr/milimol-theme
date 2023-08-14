@@ -1,0 +1,53 @@
+<section class="insight-header max-width">
+    <div class="insight-header__split">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-11 offset-lg-1 px-lg-0">
+                    <div class="insight-header__content">
+                        <div class="insight-header__breadcrumbs">
+                            {{ custom_breadcrumbs() }}
+                        </div>
+
+                        {% if fields.use_insight_title == true %}
+                            {{ check_value(post.post_title, 'h1', 'insight-header__title text-3xl text-lg-5xl') }}
+                        {% else  %}
+                            {{ check_value(fields.title, 'h1', 'insight-header__title') }}
+                        {% endif %}
+
+                        {% if post_fields.p2p_service_industry is array or insight_types is array %}
+                            <div class="insight-header__post-meta">
+                                {% if post_fields.p2p_service_industry is array %}
+                                    {% for item in post_fields.p2p_service_industry %}
+                                        <span class="insight-header__post-meta-item insight-header__post-meta-item--filled">{{ item.post_title }}</span>
+                                    {% endfor %}
+                                {% endif %}
+
+                                {% if insight_types is array %}
+                                    {% for item in insight_types %}
+                                        <span class="insight-header__post-meta-item">{{ item.name }}</span>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="insight-header__split">
+        {% if fields.is_image_or_video == true and fields.image is array %}
+            <div class="insight-header__image-wrapper">
+                {% set headerImage = Image(fields.image) %}
+                <img class="insight-header__image" src="{{ headerImage.src }}" srcset="{{ headerImage.srcset }}" alt="{{ headerImage.title }}" title="{{ headerImage.title }}" loading="lazy" />
+            </div>
+        {% elseif fields.is_image_or_video == false and fields.vimeo_id is not empty %}
+            <div class="insight-header__image-wrapper insight-header__image-wrapper--video" data-bs-toggle="modal" data-bs-target="#videoModal">
+                {% set headerImage = Image(fields.image) %}
+                <img class="insight-header__image" src="{{ headerImage.src }}" srcset="{{ headerImage.srcset }}" alt="{{ headerImage.title }}" title="{{ headerImage.title }}" loading="lazy" />
+            </div>
+
+            {% include 'templates/partial/modal-with-plyr.twig' with { vimeo_id : fields.vimeo_id } %}
+        {% endif %}
+    </div>
+</section>

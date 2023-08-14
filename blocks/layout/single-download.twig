@@ -1,0 +1,79 @@
+<section class="exp-single-download {{ background_color(fields.background_color) }}" {{ anchor_block(fields.anchor_block) }}>
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-12 col-md-6 mobile-order-2">
+                <div class="exp-single-download__content">
+                    {{ check_value(fields.title, 'h2', 'exp-single-download__title') }}
+
+                    {{ check_value(fields.text, 'p', 'exp-single-download__text') }}
+
+                    {% if fields.download_title is not empty %}
+                        {% set downloadTitle = fields.download_title %}
+                    {% else %}
+                        {% set downloadTitle = fields.download.filename %}
+                    {% endif %}
+                    
+                    {% if fields.download_type == true %}
+                        <a class="btn btn--primary" title="{{ downloadTitle }}" data-bs-toggle="modal" data-bs-target="#singleDownload-{{ fields.form }}">
+                            <span class="btn__svg">{{ fetch_svg('download') }}</span>
+                            {{ downloadTitle }}
+                        </a>
+
+                        <div class="exp-single-download__modal modal fade" id="singleDownload-{{ fields.form }}" tabindex="-1" aria-labelledby="singleDownload-{{ fields.form }}Label" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">                                    
+                                    <div class="modal-body">
+                                        <div class="row g-0">
+                                            <div class="col-md-5">
+                                                <div class="exp-single-download__modal-image">
+                                                    {% set image = Image(fields.modal_image) %}
+
+                                                    <picture>
+                                                        <img src="{{ image.src }}" srcset="{{ image.srcset }}" alt="{{ image.title }}" title="{{ image.title }}" loading="lazy" />
+                                                    </picture>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-7">
+                                                <div class="exp-single-download__modal-head">
+                                                    <span class="btn-close" data-bs-dismiss="modal" aria-label="Close">{{ fetch_svg('close') }}</span>
+                                                </div>
+
+                                                <div class="exp-single-download__modal-content">
+                                                    {% filter shortcodes %}
+                                                        [gravityform id="{{ fields.form }}" title="true" description="false" ajax="true" field_values="download_link={{ download }}"]
+                                                    {% endfilter %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        {% include "partial/button.twig" with {
+                            url : fields.download.url,
+                            title : downloadTitle,
+                            target : '_blank',
+                            class : 'btn--primary',
+                            icon : 'download',
+                            extra : 'download'
+                        } %}
+                    {% endif %}
+                </div>
+            </div>
+    
+            {% if fields.image is array %}
+                <div class="col-12 col-md-6 mobile-order-1">
+                    <div class="exp-single-download__image">
+                        {% set image = Image(fields.image) %}
+
+                        <picture>
+                            <img src="{{ image.src }}" srcset="{{ image.srcset }}" alt="{{ image.title }}" title="{{ image.title }}" loading="lazy" />
+                        </picture>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

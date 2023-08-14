@@ -1,0 +1,32 @@
+<section class="exp-related-sub-services-listing" {{ anchor_block(fields.anchor_block) }}>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8 offset-lg-2 text-lg-center">
+                {% if fields.is_show_title == true %}
+                    {{ check_value(fields.title, 'h2', "exp-related-sub-services-listing__title") }}
+                {% endif %}
+
+                {% if fields.is_show_text == true %}
+                    {{ check_value(fields.text, 'p', "exp-related-sub-services-listing__text") }}
+                {% endif %}
+            </div>
+        </div>
+
+        {% if related_services is array %}
+            <div class="row exp-related-sub-services-listing__card-wrapper">
+                {% for service in related_services  %}
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        {% include "partial/card.twig" with {
+                            id : service.ID,
+                            image : function('get_the_post_thumbnail_url', service.ID),
+                            title : service.post_title,
+                            content: service.post_excerpt,
+                            url : get_link(service.ID),
+                            customClass : ' service-listing__card'
+                        } %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</section>
