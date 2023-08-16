@@ -19,7 +19,8 @@
             "wpml_cf_preferences": 3,
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_64536de10ea4c",
@@ -37,7 +38,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64536de10ea94",
@@ -56,7 +58,8 @@
             "wpml_cf_preferences": 3,
             "message": "This element shows a linklist with icons and introduction text (optional)\r\nMax number of lists is 3 and max number of links per list is 3. You can set a link to the overview page below the links\r\n\r\nKnowledge-base: <a href=\"https:\/\/google.com\">Read more<\/a>",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_64536de10ead7",
@@ -74,7 +77,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64536de10eb6c",
@@ -95,7 +99,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64536de10ec01",
@@ -116,7 +121,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64536de10ec36",
@@ -137,7 +143,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64536de10ed55",
@@ -177,7 +184,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64536de10ed9b",
@@ -206,7 +214,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64536de10ede3",
@@ -235,7 +244,8 @@
             "maxlength": "",
             "rows": 5,
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         },
         {
             "key": "field_64536de10ee2a",
@@ -260,7 +270,8 @@
                 "id": ""
             },
             "wpml_cf_preferences": 3,
-            "return_format": "array"
+            "return_format": "array",
+            "repeatable": true
         },
         {
             "key": "field_645374f162d95",
@@ -278,7 +289,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64536e3736dfa",
@@ -302,6 +314,7 @@
             "collapsed": "",
             "button_label": "Add list",
             "rows_per_page": 20,
+            "repeatable": true,
             "sub_fields": [
                 {
                     "key": "field_64537044da75c",
@@ -319,15 +332,15 @@
                     },
                     "wpml_cf_preferences": 3,
                     "field_group_key": "group_64414885d353d",
-                    "repeatable": 0,
+                    "repeatable": true,
                     "layout": "block",
                     "button_label": "",
                     "appearances": "",
                     "min": "",
                     "max": "",
                     "collapsed": "",
-                    "sub_fields": [],
-                    "parent_repeater": "field_64536e3736dfa"
+                    "parent_repeater": "field_64536e3736dfa",
+                    "sub_fields": []
                 },
                 {
                     "key": "field_64537031da75b",
@@ -349,7 +362,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_64536e3736dfa"
+                    "parent_repeater": "field_64536e3736dfa",
+                    "repeatable": true
                 },
                 {
                     "key": "field_6453718ea62ad",
@@ -373,6 +387,8 @@
                     "collapsed": "",
                     "button_label": "Add link",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_64536e3736dfa",
+                    "repeatable": true,
                     "sub_fields": [
                         {
                             "key": "field_64536e4636dfb",
@@ -390,10 +406,10 @@
                             },
                             "wpml_cf_preferences": 3,
                             "return_format": "array",
-                            "parent_repeater": "field_6453718ea62ad"
+                            "parent_repeater": "field_6453718ea62ad",
+                            "repeatable": true
                         }
-                    ],
-                    "parent_repeater": "field_64536e3736dfa"
+                    ]
                 },
                 {
                     "key": "field_645371b5a62ae",
@@ -411,7 +427,8 @@
                     },
                     "wpml_cf_preferences": 3,
                     "return_format": "array",
-                    "parent_repeater": "field_64536e3736dfa"
+                    "parent_repeater": "field_64536e3736dfa",
+                    "repeatable": true
                 }
             ]
         },
@@ -431,7 +448,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64536de10ef04",
@@ -453,7 +471,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "appearances": "",
             "sub_fields": []
@@ -487,5 +505,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1683191671
+    "modified": 1692216688
 }

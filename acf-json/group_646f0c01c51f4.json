@@ -19,7 +19,8 @@
             "wpml_cf_preferences": 3,
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_646f0c01ebfd6",
@@ -37,7 +38,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_646f0c01ec01e",
@@ -56,7 +58,8 @@
             "wpml_cf_preferences": 3,
             "message": "This is a header with a full size image as background.  \r\nAutomatically the post\/page title wil be shown and can be overwritten. \r\n\r\nNavigate to the \"Settings\" tab to adjust in to your needs.\r\n\r\nKnowledge-base: <a href=\"https:\/\/google.com\" target=\"_blank\">Read more<\/a>",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_646f0c01ec066",
@@ -74,7 +77,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_646f1b9dc66df",
@@ -95,7 +99,8 @@
             "default_value": 1,
             "ui_on_text": "Image",
             "ui_off_text": "Video",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_646f0c01ec0b2",
@@ -116,7 +121,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_646f0c01ec0fa",
@@ -137,7 +143,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_646f0c01ec141",
@@ -158,7 +165,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_646f0c01ec1d3",
@@ -176,7 +184,8 @@
             },
             "wpml_cf_preferences": 0,
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_646f0c01ec224",
@@ -210,7 +219,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "repeatable": true
         },
         {
             "key": "field_646f1bbcc66e0",
@@ -239,7 +249,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_646f0c01ec271",
@@ -268,7 +279,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_646f0c01ec2b2",
@@ -297,7 +309,8 @@
             "maxlength": "",
             "rows": 3,
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         }
     ],
     "location": [
@@ -328,5 +341,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1685003340
+    "modified": 1692216692
 }

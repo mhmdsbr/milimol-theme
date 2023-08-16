@@ -26,7 +26,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "repeatable": true
         },
         {
             "key": "field_64414680b3ebb",
@@ -170,7 +171,9 @@
             "return_format": "object",
             "min": "",
             "max": "",
-            "elements": ""
+            "elements": "",
+            "bidirectional_target": [],
+            "repeatable": true
         },
         {
             "key": "field_644664c45a6f8",
@@ -200,7 +203,8 @@
             "min": "",
             "max": "",
             "elements": "",
-            "repeatable": true
+            "repeatable": true,
+            "bidirectional_target": []
         }
     ],
     "location": [
@@ -231,5 +235,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1682934633
+    "modified": 1692216685
 }

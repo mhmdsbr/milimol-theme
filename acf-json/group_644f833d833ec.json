@@ -19,7 +19,8 @@
             "wpml_cf_preferences": 3,
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_644f833d9c385",
@@ -37,7 +38,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_644f833d9c3ce",
@@ -56,7 +58,8 @@
             "wpml_cf_preferences": 3,
             "message": "This is block to contact default or person\r\nYou can select a person or a default contact (from contacts). \r\n\r\nThe image on the left will show the featured image of the contact, but can be overwritten in this block. \r\n\r\nKnowledge-base: <a href=\"https:\/\/google.com\" target=\"_blank\">Read more<\/a>",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_644f833d9c3d7",
@@ -74,7 +77,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_644f833d9c468",
@@ -95,7 +99,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_6450cc8d928a3",
@@ -117,7 +122,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": false,
+            "repeatable": true,
             "layout": "block",
             "appearances": [],
             "sub_fields": []
@@ -141,7 +146,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_644f842ce0f33",
@@ -162,7 +168,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_644f833d9c53c",
@@ -180,7 +187,8 @@
             },
             "wpml_cf_preferences": 0,
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_644f84bae0f35",
@@ -214,7 +222,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "repeatable": true
         },
         {
             "key": "field_644f84d3e0f36",
@@ -244,7 +253,9 @@
             "return_format": "id",
             "min": 1,
             "max": 1,
-            "elements": ""
+            "elements": "",
+            "bidirectional_target": [],
+            "repeatable": false
         },
         {
             "key": "field_645b8deb4e8fd",
@@ -262,7 +273,8 @@
             },
             "wpml_cf_preferences": 0,
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_645b8d9e0b3a4",
@@ -284,7 +296,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "appearances": "",
             "sub_fields": []
@@ -318,5 +330,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1683721722
+    "modified": 1692216691
 }

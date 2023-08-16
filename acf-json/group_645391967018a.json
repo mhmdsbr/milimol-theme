@@ -18,7 +18,8 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_645391968a99b",
@@ -35,7 +36,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_645391968a9e3",
@@ -53,7 +55,8 @@
             },
             "message": "از طریق این بلاک میتوانید لیست شرکت ها را نمایش دهید.",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_645392c3749f6",
@@ -70,7 +73,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_645392d1749f7",
@@ -87,7 +91,7 @@
                 "id": ""
             },
             "field_group_key": "group_6451fde6d5c44",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "button_label": "",
             "appearances": "",
@@ -111,7 +115,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_645391968aa71",
@@ -140,7 +145,9 @@
             "return_format": "id",
             "min": 1,
             "max": 1,
-            "elements": ""
+            "elements": "",
+            "bidirectional_target": [],
+            "repeatable": false
         },
         {
             "key": "field_6453943a9eb3e",
@@ -158,7 +165,8 @@
             },
             "wpml_cf_preferences": 0,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_645394479eb3f",
@@ -180,7 +188,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "appearances": "",
             "sub_fields": []
@@ -213,5 +221,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1689846146
+    "modified": 1692216688
 }

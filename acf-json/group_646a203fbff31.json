@@ -18,7 +18,8 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_646f277228a30",
@@ -35,7 +36,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_646f277e28a31",
@@ -53,7 +55,8 @@
             },
             "message": "این بلاک آخرین درخواست های ثبت شده مربوط به خرید را نشان می دهد.",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_646a204058875",
@@ -70,7 +73,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_646f299228a35",
@@ -90,7 +94,8 @@
             "default_value": 1,
             "ui_on_text": "Show",
             "ui_off_text": "Hide",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_646f28ba28a32",
@@ -110,7 +115,8 @@
             "default_value": 1,
             "ui_on_text": "Show",
             "ui_off_text": "Hide",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_646f28d728a33",
@@ -130,7 +136,8 @@
             "default_value": 1,
             "ui_on_text": "Show",
             "ui_off_text": "Hide",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_646f29a928a36",
@@ -150,7 +157,8 @@
             "default_value": 1,
             "ui_on_text": "Show",
             "ui_off_text": "Hide",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_646a2040588b3",
@@ -167,7 +175,7 @@
                 "id": ""
             },
             "field_group_key": "group_6451fde6d5c44",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "button_label": "",
             "appearances": "",
@@ -191,7 +199,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_646f298b28a34",
@@ -219,7 +228,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_646a20b59278a",
@@ -248,7 +258,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_646a20bc9278b",
@@ -276,7 +287,8 @@
             "maxlength": "",
             "rows": "",
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         },
         {
             "key": "field_646a217af22a9",
@@ -300,7 +312,8 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "return_format": "array",
+            "repeatable": true
         }
     ],
     "location": [
@@ -330,5 +343,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1689873011
+    "modified": 1692216689
 }

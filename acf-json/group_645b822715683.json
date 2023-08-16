@@ -18,7 +18,8 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_645b827bc5024",
@@ -35,7 +36,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_645b828ac5025",
@@ -53,7 +55,8 @@
             },
             "message": "This element show linked industries with optional title, text and text link.\r\n\r\nKnowledge-base: <a href=\"https:\/\/google.com\">Read more<\/a>",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_645b82b8c5026",
@@ -70,7 +73,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_645b82c0c5027",
@@ -90,7 +94,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_645b82e5c5028",
@@ -110,7 +115,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_645b82fdc5029",
@@ -130,7 +136,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_645b8310c502a",
@@ -147,7 +154,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_645b831fc502b",
@@ -175,7 +183,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_645b832ac502c",
@@ -203,7 +212,8 @@
             "maxlength": "",
             "rows": "",
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         },
         {
             "key": "field_645b833ac502d",
@@ -227,7 +237,8 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "return_format": "array",
+            "repeatable": true
         },
         {
             "key": "field_645b8348c502e",
@@ -244,7 +255,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_645b8354c502f",
@@ -265,7 +277,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "appearances": "",
             "sub_fields": []
@@ -298,5 +310,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1683719038
+    "modified": 1692216689
 }

@@ -20,7 +20,8 @@
             "maxlength": "",
             "rows": "",
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         }
     ],
     "location": [
@@ -50,5 +51,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1689861248
+    "modified": 1692216685
 }

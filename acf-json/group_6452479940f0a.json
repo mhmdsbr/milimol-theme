@@ -18,7 +18,8 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_6452479957e74",
@@ -35,7 +36,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6452479957ec6",
@@ -53,7 +55,8 @@
             },
             "message": "ایتم های مورد نظر خود را انتخاب کنید",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_6452479957f0f",
@@ -70,7 +73,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6452479957f58",
@@ -87,7 +91,7 @@
                 "id": ""
             },
             "field_group_key": "group_6451fde6d5c44",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "button_label": "",
             "appearances": "",
@@ -114,7 +118,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_645247f7fb614",
@@ -134,7 +139,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_6452479957fd1",
@@ -154,7 +160,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_645a625bc2186",
@@ -174,7 +181,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_645a627cc2187",
@@ -194,7 +202,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_645247995805d",
@@ -233,7 +242,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64524799580a5",
@@ -261,7 +271,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64524ea695f2f",
@@ -289,7 +300,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64524799580ec",
@@ -317,7 +329,8 @@
             "maxlength": "",
             "rows": 5,
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         },
         {
             "key": "field_6452479958129",
@@ -334,7 +347,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6452479958170",
@@ -364,7 +378,9 @@
             "return_format": "id",
             "min": 1,
             "max": 5,
-            "elements": ""
+            "elements": "",
+            "bidirectional_target": [],
+            "repeatable": true
         },
         {
             "key": "field_64524799581b7",
@@ -382,7 +398,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64524799581fe",
@@ -404,7 +421,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "appearances": "",
             "sub_fields": []
@@ -437,5 +454,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1689504418
+    "modified": 1692216690
 }

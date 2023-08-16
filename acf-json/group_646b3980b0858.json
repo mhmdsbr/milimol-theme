@@ -19,7 +19,8 @@
             "wpml_cf_preferences": 3,
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_646b3980d359b",
@@ -36,7 +37,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_646b3980d35e5",
@@ -55,7 +57,8 @@
             "wpml_cf_preferences": 3,
             "message": "This element show linked Certification industries with optional title, text and text link.\r\n\r\nKnowledge-base: <a href=\"https:\/\/google.com\">Read more<\/a>",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_646b3980d362c",
@@ -73,7 +76,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_646b3980d3679",
@@ -94,7 +98,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_646b3980d36c5",
@@ -115,7 +120,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_646b3980d370d",
@@ -136,7 +142,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_646b3980d3756",
@@ -154,7 +161,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_646b3980d379a",
@@ -183,7 +191,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_646b3980d37e2",
@@ -212,7 +221,8 @@
             "maxlength": "",
             "rows": "",
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         },
         {
             "key": "field_646b3980d3829",
@@ -237,7 +247,8 @@
                 "id": ""
             },
             "wpml_cf_preferences": 3,
-            "return_format": "array"
+            "return_format": "array",
+            "repeatable": true
         },
         {
             "key": "field_646b3980d3875",
@@ -255,7 +266,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_646b3980d38bd",
@@ -273,7 +285,7 @@
             },
             "wpml_cf_preferences": 3,
             "field_group_key": "group_6447d3a08c965",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "button_label": "",
             "appearances": "",
@@ -311,5 +323,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1684748852
+    "modified": 1692216691
 }

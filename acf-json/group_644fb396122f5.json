@@ -19,7 +19,8 @@
             "wpml_cf_preferences": 3,
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_644fb3962736b",
@@ -37,7 +38,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_644fb396273ad",
@@ -56,7 +58,8 @@
             "wpml_cf_preferences": 3,
             "message": "This block shows a slider with cases\r\nYou can select a select (max 4) cases.\r\n\r\n\r\nKnowledge-base: <a href=\"https:\/\/google.com\" target=\"_blank\">Read more<\/a>",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_644fb39627520",
@@ -74,7 +77,8 @@
             },
             "wpml_cf_preferences": 0,
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_644fb396275af",
@@ -104,7 +108,9 @@
             "return_format": "id",
             "min": 1,
             "max": 4,
-            "elements": ""
+            "elements": "",
+            "bidirectional_target": [],
+            "repeatable": true
         },
         {
             "key": "field_6450f5344ee62",
@@ -121,7 +127,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6450f53b4ee63",
@@ -142,7 +149,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "appearances": "",
             "sub_fields": []
@@ -175,5 +182,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1683027268
+    "modified": 1692216691
 }

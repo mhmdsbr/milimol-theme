@@ -18,7 +18,8 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_64535c8a4a2ba",
@@ -35,7 +36,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64535c8a4a309",
@@ -53,7 +55,8 @@
             },
             "message": "متن و عکس دلخواه خود را وارد کنید.",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_64535c8a4a357",
@@ -70,7 +73,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64535c8a4a3a1",
@@ -87,7 +91,7 @@
                 "id": ""
             },
             "field_group_key": "group_6451fde6d5c44",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "button_label": "",
             "appearances": "",
@@ -114,7 +118,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64535e58200ed",
@@ -148,7 +153,8 @@
             "allow_null": 0,
             "ui": 1,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "repeatable": true
         },
         {
             "key": "field_64535c8a4a478",
@@ -168,7 +174,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64535c8a4a431",
@@ -188,7 +195,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_645365898162a",
@@ -209,7 +217,8 @@
             "default_value": 1,
             "ui_on_text": "Rounded",
             "ui_off_text": "Square",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64535d55548fd",
@@ -229,7 +238,8 @@
             "default_value": 1,
             "ui_on_text": "Left\/right",
             "ui_off_text": "Right\/left",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64535c8a4a4c0",
@@ -268,7 +278,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64535c8a4a507",
@@ -296,7 +307,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64535c8a4a597",
@@ -324,7 +336,8 @@
             "maxlength": "",
             "rows": 5,
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         },
         {
             "key": "field_64535c8a4a54f",
@@ -348,7 +361,8 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "return_format": "array",
+            "repeatable": true
         },
         {
             "key": "field_64535d3e548fc",
@@ -373,7 +387,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "repeatable": true
         },
         {
             "key": "field_64535c8a4a670",
@@ -391,7 +406,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64535c8a4a6b7",
@@ -413,7 +429,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "appearances": "",
             "sub_fields": []
@@ -446,5 +462,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1689438706
+    "modified": 1692216687
 }

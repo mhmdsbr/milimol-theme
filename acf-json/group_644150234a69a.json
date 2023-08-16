@@ -20,7 +20,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64415042000d4",
@@ -40,7 +41,8 @@
             "maxlength": "",
             "rows": "",
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         },
         {
             "key": "field_6441504c000d5",
@@ -56,7 +58,8 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "return_format": "array",
+            "repeatable": true
         },
         {
             "key": "field_6441505a000d6",
@@ -79,6 +82,7 @@
             "collapsed": "",
             "button_label": "Nieuwe regel",
             "rows_per_page": 20,
+            "repeatable": true,
             "sub_fields": [
                 {
                     "key": "field_6441509d000d7",
@@ -104,7 +108,8 @@
                     "max_size": "",
                     "mime_types": "",
                     "preview_size": "medium",
-                    "parent_repeater": "field_6441505a000d6"
+                    "parent_repeater": "field_6441505a000d6",
+                    "repeatable": true
                 },
                 {
                     "key": "field_644150ac000d8",
@@ -125,7 +130,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_6441505a000d6"
+                    "parent_repeater": "field_6441505a000d6",
+                    "repeatable": true
                 },
                 {
                     "key": "field_644150b6000da",
@@ -146,7 +152,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_6441505a000d6"
+                    "parent_repeater": "field_6441505a000d6",
+                    "repeatable": true
                 },
                 {
                     "key": "field_644150c3000db",
@@ -163,7 +170,8 @@
                         "id": ""
                     },
                     "return_format": "array",
-                    "parent_repeater": "field_6441505a000d6"
+                    "parent_repeater": "field_6441505a000d6",
+                    "repeatable": true
                 }
             ]
         }
@@ -186,5 +194,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1682002195
+    "modified": 1692216685
 }

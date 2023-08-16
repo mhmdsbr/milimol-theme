@@ -30,7 +30,9 @@
             "return_format": "object",
             "min": "",
             "max": "",
-            "elements": ""
+            "elements": "",
+            "bidirectional_target": [],
+            "repeatable": true
         },
         {
             "key": "field_64467ff128adf",
@@ -60,7 +62,9 @@
             "return_format": "object",
             "min": "",
             "max": "",
-            "elements": ""
+            "elements": "",
+            "bidirectional_target": [],
+            "repeatable": true
         }
     ],
     "location": [
@@ -91,5 +95,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1684743568
+    "modified": 1692216685
 }

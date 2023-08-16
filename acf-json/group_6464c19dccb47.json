@@ -19,7 +19,8 @@
             "wpml_cf_preferences": 3,
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_6464c19df3290",
@@ -37,7 +38,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6464c19df32de",
@@ -56,7 +58,8 @@
             "wpml_cf_preferences": 3,
             "message": "This block shows a google map or listview with all offices per region\r\n\r\n\r\nKnowledge-base: <a href=\"#\">Read more<\/a>",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_6464c310a1a94",
@@ -74,7 +77,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6464c2e3a1a92",
@@ -95,7 +99,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_6464c2fea1a93",
@@ -116,7 +121,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_6464c19df3334",
@@ -134,7 +140,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6464c327a1a95",
@@ -163,7 +170,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_6464c336a1a96",
@@ -192,7 +200,8 @@
             "maxlength": "",
             "rows": 3,
             "placeholder": "",
-            "new_lines": "br"
+            "new_lines": "br",
+            "repeatable": true
         },
         {
             "key": "field_6464c19df33af",
@@ -210,7 +219,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6464c19df33ff",
@@ -232,7 +242,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "appearances": "",
             "sub_fields": []
@@ -266,5 +276,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1684325248
+    "modified": 1692216688
 }

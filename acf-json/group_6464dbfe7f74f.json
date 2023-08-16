@@ -19,7 +19,8 @@
             "wpml_cf_preferences": 3,
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_646de241fc010",
@@ -37,7 +38,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_646de24dfc011",
@@ -56,7 +58,8 @@
             "wpml_cf_preferences": 3,
             "message": "This block shows an option for multiple downloads\r\n\r\n\r\nKnowledgebase: <a href=\"https:\/\/google.com\" target=\"_blank\">Read more here<\/a>",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_6464dbff0f22b",
@@ -74,7 +77,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6464dbff0f2a5",
@@ -92,7 +96,7 @@
             },
             "wpml_cf_preferences": 3,
             "field_group_key": "group_6451fde6d5c44",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "button_label": "",
             "appearances": "",
@@ -117,7 +121,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6465c2d48d600",
@@ -138,7 +143,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_6465c51b8d605",
@@ -164,7 +170,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "repeatable": true
         },
         {
             "key": "field_646de3515d7b0",
@@ -182,7 +189,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6465c2af8d5ff",
@@ -206,6 +214,7 @@
             "collapsed": "",
             "button_label": "Add Row",
             "rows_per_page": 20,
+            "repeatable": true,
             "sub_fields": [
                 {
                     "key": "field_6465c4ae8d603",
@@ -227,7 +236,8 @@
                     "min_size": "",
                     "max_size": "",
                     "mime_types": "",
-                    "parent_repeater": "field_6465c2af8d5ff"
+                    "parent_repeater": "field_6465c2af8d5ff",
+                    "repeatable": true
                 },
                 {
                     "key": "field_6465c5098d604",
@@ -249,7 +259,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_6465c2af8d5ff"
+                    "parent_repeater": "field_6465c2af8d5ff",
+                    "repeatable": true
                 },
                 {
                     "key": "field_646600851fc53",
@@ -271,7 +282,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_6465c2af8d5ff"
+                    "parent_repeater": "field_6465c2af8d5ff",
+                    "repeatable": true
                 }
             ]
         },
@@ -290,7 +302,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6464dbff0f48c",
@@ -308,7 +321,7 @@
             },
             "wpml_cf_preferences": 3,
             "field_group_key": "group_6447d3a08c965",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "button_label": "",
             "appearances": "",
@@ -346,5 +359,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1684923877
+    "modified": 1692216688
 }

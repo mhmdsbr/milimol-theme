@@ -18,7 +18,8 @@
             },
             "wpml_cf_preferences": 1,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64638e053c6db",
@@ -39,7 +40,8 @@
             "maxlength": 35,
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64638e323c6dc",
@@ -60,7 +62,8 @@
             "maxlength": "",
             "rows": 5,
             "placeholder": "",
-            "new_lines": "br"
+            "new_lines": "br",
+            "repeatable": true
         },
         {
             "key": "field_64638eaa3c6dd",
@@ -80,7 +83,8 @@
             "default_value": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64638ec83c6de",
@@ -101,7 +105,8 @@
             "maxlength": 20,
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64638f753c6e0",
@@ -119,7 +124,8 @@
             },
             "wpml_cf_preferences": 1,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_646391a46ff0c",
@@ -138,7 +144,8 @@
             "wpml_cf_preferences": 2,
             "message": "The fields below are for showing the office on the map. \r\nWhen left empty the office will not show on the map. \r\n\r\nTo get the latitude and longitude fields, you can use this website:\r\n<a href=\"https:\/\/www.latlong.net\/\">latlong.net<\/a>\r\n\r\nYou can use this site 10 times per per day.",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_6463918a3c6e1",
@@ -159,7 +166,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_646391933c6e2",
@@ -180,7 +188,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         }
     ],
     "location": [
@@ -211,5 +220,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1684247370
+    "modified": 1692216685
 }

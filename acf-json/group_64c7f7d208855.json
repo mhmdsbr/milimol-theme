@@ -18,7 +18,8 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_64c7fa04e0d77",
@@ -35,7 +36,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64c7fa1de0d78",
@@ -62,7 +64,9 @@
             "return_format": "object",
             "min": "",
             "max": "",
-            "elements": ""
+            "elements": "",
+            "bidirectional_target": [],
+            "repeatable": true
         }
     ],
     "location": [
@@ -92,5 +96,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1691408334
+    "modified": 1692216683
 }

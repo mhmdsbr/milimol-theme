@@ -22,7 +22,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "appearances": "",
             "sub_fields": []
@@ -51,7 +51,8 @@
             "taxonomy": "",
             "allow_archives": 1,
             "multiple": 0,
-            "allow_null": 0
+            "allow_null": 0,
+            "repeatable": true
         }
     ],
     "location": [
@@ -82,5 +83,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1684483288
+    "modified": 1692216684
 }

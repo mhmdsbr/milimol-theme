@@ -18,7 +18,8 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_64632e98d8026",
@@ -35,7 +36,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64632ea0d8027",
@@ -53,7 +55,8 @@
             },
             "message": "This block will show a follow us element. The social media accounts can be filled in the Theme Settings.",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         }
     ],
     "location": [
@@ -83,5 +86,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1684221811
+    "modified": 1692216690
 }

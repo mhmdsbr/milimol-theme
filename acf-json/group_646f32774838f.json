@@ -19,7 +19,8 @@
             "wpml_cf_preferences": 3,
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_646f32776f02d",
@@ -37,7 +38,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_646f32776f037",
@@ -56,7 +58,8 @@
             "wpml_cf_preferences": 3,
             "message": "This is the search block. \r\nNo settings.\r\n\r\nKnowledge-base: <a href=\"https:\/\/google.com\" target=\"_blank\">Read more<\/a>",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         }
     ],
     "location": [
@@ -87,5 +90,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1685009113
+    "modified": 1692216690
 }

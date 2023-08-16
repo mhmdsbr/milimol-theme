@@ -19,7 +19,8 @@
             "wpml_cf_preferences": 3,
             "display_format": "d\/m\/Y",
             "return_format": "d\/m\/Y",
-            "first_day": 1
+            "first_day": 1,
+            "repeatable": true
         },
         {
             "key": "field_646221ee151b8",
@@ -37,7 +38,8 @@
             },
             "wpml_cf_preferences": 3,
             "display_format": "H:i",
-            "return_format": "H:i"
+            "return_format": "H:i",
+            "repeatable": true
         },
         {
             "key": "field_6462223b151b9",
@@ -58,7 +60,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64622254151ba",
@@ -79,7 +82,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_6462227a151bb",
@@ -100,7 +104,8 @@
             "default_value": 1,
             "ui_on_text": "Live",
             "ui_off_text": "Recorder webinar",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64622289151bc",
@@ -121,7 +126,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_646366df73416",
@@ -138,7 +144,8 @@
                 "id": ""
             },
             "wpml_cf_preferences": 3,
-            "return_format": "array"
+            "return_format": "array",
+            "repeatable": true
         },
         {
             "key": "field_646366f373417",
@@ -164,7 +171,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "repeatable": true
         },
         {
             "key": "field_6463670573418",
@@ -185,7 +193,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_6463673b73419",
@@ -211,7 +220,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "repeatable": true
         },
         {
             "key": "field_6447ef4a72f26",
@@ -241,7 +251,9 @@
             "return_format": "object",
             "min": "",
             "max": "",
-            "elements": ""
+            "elements": "",
+            "bidirectional_target": [],
+            "repeatable": true
         },
         {
             "key": "field_6447ef4a72f6e",
@@ -271,7 +283,9 @@
             "return_format": "object",
             "min": "",
             "max": "",
-            "elements": ""
+            "elements": "",
+            "bidirectional_target": [],
+            "repeatable": true
         }
     ],
     "location": [
@@ -302,5 +316,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1684242046
+    "modified": 1692216685
 }

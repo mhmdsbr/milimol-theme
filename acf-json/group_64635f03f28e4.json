@@ -18,7 +18,8 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_646c8e0341bd5",
@@ -35,7 +36,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_646c8e1141bd6",
@@ -53,7 +55,8 @@
             },
             "message": "This element show a single download block.",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_646361224cce0",
@@ -70,7 +73,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6463612f4cce1",
@@ -90,7 +94,8 @@
             "default_value": 0,
             "ui_on_text": "Modal with form",
             "ui_off_text": "Directly",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_646361c48efe3",
@@ -111,7 +116,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "appearances": "",
             "sub_fields": []
@@ -131,7 +136,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64638e53c3e26",
@@ -157,7 +163,8 @@
             },
             "return_format": "id",
             "allow_null": 0,
-            "multiple": 0
+            "multiple": 0,
+            "repeatable": true
         },
         {
             "key": "field_64635f0481abb",
@@ -177,7 +184,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_646361004ccde",
@@ -197,7 +205,8 @@
             "maxlength": "",
             "rows": "",
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         },
         {
             "key": "field_6463610e4ccdf",
@@ -217,7 +226,8 @@
             "library": "all",
             "min_size": "",
             "max_size": "",
-            "mime_types": ""
+            "mime_types": "",
+            "repeatable": true
         },
         {
             "key": "field_646365c76d808",
@@ -237,7 +247,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64636187d475c",
@@ -262,7 +273,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "repeatable": true
         },
         {
             "key": "field_64638bb1d45fc",
@@ -295,7 +307,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "repeatable": true
         },
         {
             "key": "field_6463636e8c841",
@@ -312,7 +325,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_646363768c842",
@@ -333,7 +347,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "appearances": "",
             "sub_fields": []
@@ -366,5 +380,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1684835946
+    "modified": 1692216687
 }

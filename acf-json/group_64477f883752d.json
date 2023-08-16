@@ -18,7 +18,8 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_644789ef94b6f",
@@ -35,7 +36,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_644789dd94b6e",
@@ -53,7 +55,8 @@
             },
             "message": "The insights header is used for insights.\r\n\r\nKnowledgebase: <a href=\"https:\/\/google.com\" target=\"_blank\">Read more here<\/a>",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_644780d162201",
@@ -70,7 +73,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64478c4a1d950",
@@ -91,7 +95,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64478d1d368cb",
@@ -112,7 +117,8 @@
             "default_value": 1,
             "ui_on_text": "Image",
             "ui_off_text": "Video",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_644780e362202",
@@ -129,7 +135,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64478c811d951",
@@ -158,7 +165,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64478cae1d952",
@@ -184,7 +192,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "repeatable": true
         },
         {
             "key": "field_64478d5d368cc",
@@ -213,7 +222,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         }
     ],
     "location": [
@@ -244,5 +254,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1683033857
+    "modified": 1692216689
 }

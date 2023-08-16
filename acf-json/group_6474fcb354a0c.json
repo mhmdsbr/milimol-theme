@@ -18,7 +18,8 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_6474fcb383d30",
@@ -35,7 +36,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6474fcb383d78",
@@ -53,7 +55,8 @@
             },
             "message": "در این قسمت میتوانید ایتم نمایش یک فرآیند را اضافه کنید",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_6474fcb383dc0",
@@ -70,7 +73,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6474fcb383e08",
@@ -87,7 +91,7 @@
                 "id": ""
             },
             "field_group_key": "group_6451fde6d5c44",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "button_label": "",
             "appearances": "",
@@ -111,7 +115,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6474fcb383e95",
@@ -131,7 +136,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_6474fce2f78e9",
@@ -151,7 +157,8 @@
             "maxlength": "",
             "rows": "",
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         },
         {
             "key": "field_6474fcb383edb",
@@ -174,6 +181,7 @@
             "collapsed": "",
             "button_label": "Add Row",
             "rows_per_page": 20,
+            "repeatable": true,
             "sub_fields": [
                 {
                     "key": "field_6474fcb5df4ac",
@@ -194,7 +202,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_6474fcb383edb"
+                    "parent_repeater": "field_6474fcb383edb",
+                    "repeatable": true
                 },
                 {
                     "key": "field_6474fcb5df503",
@@ -215,7 +224,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_6474fcb383edb"
+                    "parent_repeater": "field_6474fcb383edb",
+                    "repeatable": true
                 },
                 {
                     "key": "field_6474fd1af78ea",
@@ -236,7 +246,8 @@
                     "ui_on_text": "",
                     "ui_off_text": "",
                     "ui": 1,
-                    "parent_repeater": "field_6474fcb383edb"
+                    "parent_repeater": "field_6474fcb383edb",
+                    "repeatable": true
                 },
                 {
                     "key": "field_64b52cb24b1c0",
@@ -262,6 +273,7 @@
                     "max_size": "",
                     "mime_types": "",
                     "preview_size": "medium",
+                    "repeatable": true,
                     "parent_repeater": "field_6474fcb383edb"
                 }
             ]
@@ -294,5 +306,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1689849676
+    "modified": 1692216684
 }

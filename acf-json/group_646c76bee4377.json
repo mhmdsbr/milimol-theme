@@ -19,7 +19,8 @@
             "wpml_cf_preferences": 3,
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_646c76bf13b38",
@@ -36,7 +37,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_646c76bf13b7f",
@@ -55,7 +57,8 @@
             "wpml_cf_preferences": 3,
             "message": "This element shows the Insights listing. (with filters and search in future)\r\n\r\nKnowledge-base: <a href=\"https:\/\/google.com\">Read more<\/a>",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         }
     ],
     "location": [
@@ -86,5 +89,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1684829956
+    "modified": 1692216689
 }

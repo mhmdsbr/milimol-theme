@@ -18,7 +18,8 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_644f7dd6f0911",
@@ -35,7 +36,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_644f7debf0912",
@@ -53,7 +55,8 @@
             },
             "message": "از طریق این بلاک میتوانید لیست تمامی شرکت ها را اضافه کنید.\r\nبرای تغییر مکان شرکت ها به قسمت لیست همه ی شرکت ها در منو سایت رفته و شرکت ها را به دلخواه جا به جا کنید.",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_64c500896ca8f",
@@ -70,7 +73,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64c500a06ca90",
@@ -90,7 +94,8 @@
             "default_value": 0,
             "ui_on_text": "نمایش همه",
             "ui_off_text": "نمایش ۶ شرکت آخر",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64c506a7a1638",
@@ -110,7 +115,8 @@
             "default_value": 0,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64b91117d2070",
@@ -127,7 +133,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64b91132d2071",
@@ -147,7 +154,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64b91140d2072",
@@ -171,7 +179,8 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "return_format": "array",
+            "repeatable": true
         },
         {
             "key": "field_6450f55a61141",
@@ -189,7 +198,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6450f56661142",
@@ -207,7 +217,7 @@
             },
             "wpml_cf_preferences": 3,
             "field_group_key": "group_6447d3a08c965",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "button_label": "",
             "appearances": "",
@@ -244,5 +254,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1690715883
+    "modified": 1692216689
 }
