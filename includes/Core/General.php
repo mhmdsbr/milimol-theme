@@ -113,7 +113,7 @@ class General
      */
     public function customAdminFooterText(): string
     {
-        return 'Ontwikkeling door <a href="https://www.bitfactory.nl/" target="_blank" rel="noopener">Bitfactory</a>';
+        return 'طراح: <a href="https://www.bitfactory.nl/" target="_blank" rel="noopener"> محمد صابر </a>';
     }
 
     /**

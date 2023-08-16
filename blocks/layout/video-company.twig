@@ -1,0 +1,27 @@
+<section class="row video video-company">
+    <div class="col-12 gx-0">
+        <div class="ratio ratio-16x9">
+            <button class="video__button"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#videoModal"
+            >
+                <img class="video__poster"
+                    src="/wp-content/uploads/2023/07/close-up-researcher-holding-glassware-1.jpg"
+                    srcset="{{ videoPoster.srcset }}"
+                    alt="{{ videoPoster.title }}"
+                    title="{{ videoPoster.title }}"
+                    loading="lazy"
+                    width="auto"
+                    height="auto"
+                />
+
+                {% include "partial/play-button.twig" %}
+            </button>
+        </div>
+    </div>
+
+    {% include 'templates/partial/modal-with-plyr.twig' with {
+        vimeo_id: fields.vimeo_id
+    } %}
+</section>

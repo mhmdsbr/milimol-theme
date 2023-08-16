@@ -1,17 +1,17 @@
 {% if fields.vimeo_id is not empty and fields.video_poster is array %}
     {% set videoPoster = Image(fields.video_poster) %}
 
-    <section class="exp-video{{ fields.is_boxed == true ? '' : ' max-width' }}" {{ anchor_block(fields.anchor_block) }}>
+    <section class="video{{ fields.is_boxed == true ? '' : ' max-width' }}" {{ anchor_block(fields.anchor_block) }}>
         <div class="container{{ fields.is_boxed == true ? '' : '-fluid g-0' }}">
             <div class="row{{ fields.is_boxed == true ? '' : ' g-0' }}">
                 <div class="col-12">
                     <div class="ratio ratio-16x9">
-                        <button class="exp-video__button"
+                        <button class="video__button"
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#videoModal"
                         >
-                            <img class="exp-video__poster"
+                            <img class="video__poster"
                                 src="{{ videoPoster.src }}"
                                 srcset="{{ videoPoster.srcset }}"
                                 alt="{{ videoPoster.title }}"
