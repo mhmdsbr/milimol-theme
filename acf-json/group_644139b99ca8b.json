@@ -21,7 +21,8 @@
             "maxlength": "",
             "rows": 4,
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         },
         {
             "key": "field_64413a3aeac67",
@@ -38,7 +39,8 @@
                 "id": ""
             },
             "wpml_cf_preferences": 3,
-            "return_format": "array"
+            "return_format": "array",
+            "repeatable": true
         }
     ],
     "location": [
@@ -69,5 +71,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1683635792
+    "modified": 1692216684
 }

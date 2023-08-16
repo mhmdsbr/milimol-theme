@@ -19,7 +19,8 @@
             "wpml_cf_preferences": 3,
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_645242da91b93",
@@ -37,7 +38,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_645242da91be3",
@@ -56,7 +58,8 @@
             "wpml_cf_preferences": 3,
             "message": "This element shows an image\r\nClick on the view (eye) icon to add the image. \r\n\r\nKnowledge-base: <a href=\"https:\/\/google.com\" target=\"_blank\">Read more<\/a>",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_645242da91c2b",
@@ -74,7 +77,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_645242da91c7c",
@@ -95,7 +99,8 @@
             "default_value": 1,
             "ui_on_text": "Boxed",
             "ui_off_text": "Full-width",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_645242da91fb7",
@@ -113,7 +118,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_645242da92007",
@@ -135,7 +141,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "appearances": "",
             "sub_fields": []
@@ -169,5 +175,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1683112959
+    "modified": 1692216690
 }

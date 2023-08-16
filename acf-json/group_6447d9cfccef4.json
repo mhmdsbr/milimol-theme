@@ -20,7 +20,8 @@
             "default_value": 0,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_6447e56f360ee",
@@ -48,7 +49,8 @@
             "maxlength": "",
             "rows": "",
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         },
         {
             "key": "field_6447d9cf54966",
@@ -79,6 +81,7 @@
             "collapsed": "",
             "button_label": "Nieuwe regel",
             "rows_per_page": 20,
+            "repeatable": true,
             "sub_fields": [
                 {
                     "key": "field_6447d9fe54967",
@@ -95,7 +98,8 @@
                         "id": ""
                     },
                     "return_format": "array",
-                    "parent_repeater": "field_6447d9cf54966"
+                    "parent_repeater": "field_6447d9cf54966",
+                    "repeatable": true
                 }
             ]
         },
@@ -117,7 +121,8 @@
             "default_value": 0,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64492083b1042",
@@ -152,7 +157,9 @@
             "return_format": "object",
             "min": "",
             "max": "",
-            "elements": ""
+            "elements": "",
+            "bidirectional_target": [],
+            "repeatable": true
         },
         {
             "key": "field_644fb2dcd8097",
@@ -172,7 +179,8 @@
             "default_value": 0,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         }
     ],
     "location": [
@@ -202,5 +210,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1682944762
+    "modified": 1692216684
 }

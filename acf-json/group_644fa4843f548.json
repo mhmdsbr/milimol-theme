@@ -18,7 +18,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_644fa4abef561",
@@ -38,7 +39,8 @@
             "default_value": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         }
     ],
     "location": [
@@ -69,5 +71,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1682941132
+    "modified": 1692216684
 }

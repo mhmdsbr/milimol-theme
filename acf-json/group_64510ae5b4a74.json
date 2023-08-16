@@ -19,7 +19,8 @@
             "wpml_cf_preferences": 3,
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_64510ae5cdf44",
@@ -37,7 +38,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64510ae5cdf53",
@@ -56,7 +58,8 @@
             "wpml_cf_preferences": 3,
             "message": "This element show value propositions with optional title, text and image above.\r\n\r\nKnowledge-base: <a href=\"https:\/\/google.com\">Read more<\/a>",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_64510ae5cdf9b",
@@ -74,7 +77,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64510ae5cdfea",
@@ -95,7 +99,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": false,
+            "repeatable": true,
             "layout": "block",
             "appearances": [],
             "sub_fields": []
@@ -119,7 +123,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64510c60a80c4",
@@ -140,7 +145,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64510c78a80c5",
@@ -161,7 +167,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64510da9a80cf",
@@ -182,7 +189,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64510ae5ce07d",
@@ -222,7 +230,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64510c46a80c2",
@@ -251,7 +260,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64510cc6a80c7",
@@ -280,7 +290,8 @@
             "maxlength": "",
             "rows": 5,
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         },
         {
             "key": "field_64510c98a80c6",
@@ -314,7 +325,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "repeatable": true
         },
         {
             "key": "field_64510dbea80d0",
@@ -339,7 +351,8 @@
                 "id": ""
             },
             "wpml_cf_preferences": 3,
-            "return_format": "array"
+            "return_format": "array",
+            "repeatable": true
         },
         {
             "key": "field_64510ce0a80c8",
@@ -357,7 +370,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64510cf4a80c9",
@@ -381,6 +395,7 @@
             "collapsed": "",
             "button_label": "Add Row",
             "rows_per_page": 20,
+            "repeatable": true,
             "sub_fields": [
                 {
                     "key": "field_64510d49a80cd",
@@ -402,7 +417,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_64510cf4a80c9"
+                    "parent_repeater": "field_64510cf4a80c9",
+                    "repeatable": true
                 },
                 {
                     "key": "field_64510d54a80ce",
@@ -424,7 +440,8 @@
                     "rows": 4,
                     "placeholder": "",
                     "new_lines": "",
-                    "parent_repeater": "field_64510cf4a80c9"
+                    "parent_repeater": "field_64510cf4a80c9",
+                    "repeatable": true
                 }
             ]
         },
@@ -444,7 +461,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64511b01e5fb6",
@@ -466,7 +484,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "appearances": "",
             "sub_fields": []
@@ -499,5 +517,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1683709209
+    "modified": 1692216686
 }

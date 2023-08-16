@@ -20,7 +20,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64413466f0c83",
@@ -40,7 +41,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_6441346bf0c84",
@@ -60,7 +62,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_6441346ff0c85",
@@ -80,7 +83,8 @@
             "maxlength": "",
             "rows": 4,
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         },
         {
             "key": "field_6441347cf0c86",
@@ -96,7 +100,8 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "return_format": "array",
+            "repeatable": true
         },
         {
             "key": "field_64538c6123b98",
@@ -116,7 +121,8 @@
             "default_value": 1,
             "ui_on_text": "Numbers",
             "ui_off_text": "Images",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_644134908c436",
@@ -139,6 +145,7 @@
             "collapsed": "",
             "button_label": "New step",
             "rows_per_page": 20,
+            "repeatable": true,
             "sub_fields": [
                 {
                     "key": "field_644135888c437",
@@ -159,6 +166,7 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
+                    "repeatable": true,
                     "parent_repeater": "field_644134908c436"
                 },
                 {
@@ -180,6 +188,7 @@
                     "rows": "",
                     "placeholder": "",
                     "new_lines": "",
+                    "repeatable": true,
                     "parent_repeater": "field_644134908c436"
                 },
                 {
@@ -214,6 +223,7 @@
                     "max_size": "",
                     "mime_types": "",
                     "preview_size": "medium",
+                    "repeatable": true,
                     "parent_repeater": "field_644134908c436"
                 }
             ]
@@ -246,5 +256,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1689776832
+    "modified": 1692216685
 }

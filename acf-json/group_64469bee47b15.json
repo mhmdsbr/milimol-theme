@@ -18,7 +18,8 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_644783dabcd00",
@@ -35,7 +36,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_644783d2bccff",
@@ -53,7 +55,8 @@
             },
             "message": "The Homepage Header is used for the homepage.\r\n\r\nKnowledgebase: <a href=\"https:\/\/google.com\" target=\"_blank\">Read more here<\/a>",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_64469bee501e0",
@@ -71,7 +74,8 @@
             },
             "wpml_cf_preferences": 0,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64469bee50222",
@@ -92,7 +96,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64469bee50269",
@@ -113,7 +118,8 @@
             "default_value": 1,
             "ui_on_text": "",
             "ui_off_text": "",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64469bee50342",
@@ -131,7 +137,8 @@
             },
             "wpml_cf_preferences": 0,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64469bee50388",
@@ -159,7 +166,8 @@
             "tabs": "visual",
             "toolbar": "very_simple",
             "media_upload": 0,
-            "delay": 1
+            "delay": 1,
+            "repeatable": true
         },
         {
             "key": "field_64469bee503cf",
@@ -188,7 +196,8 @@
             "maxlength": "",
             "rows": "",
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         },
         {
             "key": "field_6446a10939d40",
@@ -211,6 +220,7 @@
             "collapsed": "",
             "button_label": "Nieuwe regel",
             "rows_per_page": 20,
+            "repeatable": true,
             "sub_fields": [
                 {
                     "key": "field_6446a11939d41",
@@ -231,7 +241,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_6446a10939d40"
+                    "parent_repeater": "field_6446a10939d40",
+                    "repeatable": true
                 },
                 {
                     "key": "field_6446a0111e1b5",
@@ -252,7 +263,8 @@
                     "min_size": "",
                     "max_size": "",
                     "mime_types": "",
-                    "parent_repeater": "field_6446a10939d40"
+                    "parent_repeater": "field_6446a10939d40",
+                    "repeatable": true
                 },
                 {
                     "key": "field_6446a15139d42",
@@ -269,7 +281,8 @@
                         "id": ""
                     },
                     "return_format": "array",
-                    "parent_repeater": "field_6446a10939d40"
+                    "parent_repeater": "field_6446a10939d40",
+                    "repeatable": true
                 }
             ]
         }
@@ -292,5 +305,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1682417715
+    "modified": 1692216690
 }

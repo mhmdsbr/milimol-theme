@@ -19,7 +19,8 @@
             "wpml_cf_preferences": 3,
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_6450d781b350f",
@@ -37,7 +38,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6450d792b3510",
@@ -56,7 +58,8 @@
             "wpml_cf_preferences": 3,
             "message": "This element show a banner (optional for an event)\r\nBanner can be made by clicking in de Admin menu on \"Banner -> New\"\r\n\r\nThe banner can be selected in this element\r\n\r\nKnowledgebase: <a href=\"https:\/\/google.com\" target=\"_blank\">Read more here<\/a>",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_6450d9403b633",
@@ -74,7 +77,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6450d9563b634",
@@ -96,7 +100,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": false,
+            "repeatable": true,
             "layout": "block",
             "appearances": [],
             "sub_fields": []
@@ -120,7 +124,8 @@
             "default_value": 1,
             "ui_on_text": "Boxed",
             "ui_off_text": "Full-width",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_6450d80eb3511",
@@ -138,7 +143,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6450d81eb3512",
@@ -168,7 +174,9 @@
             "return_format": "id",
             "min": 1,
             "max": 1,
-            "elements": ""
+            "elements": "",
+            "bidirectional_target": [],
+            "repeatable": false
         },
         {
             "key": "field_64511bc854fb8",
@@ -186,7 +194,8 @@
             },
             "wpml_cf_preferences": 3,
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64511bd454fb9",
@@ -208,7 +217,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "appearances": "",
             "sub_fields": []
@@ -242,5 +251,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1684843703
+    "modified": 1692216692
 }

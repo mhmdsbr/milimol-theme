@@ -18,7 +18,8 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_6474f90baa023",
@@ -35,7 +36,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6474f90baa06e",
@@ -53,7 +55,8 @@
             },
             "message": "در این قسمت میتوانید یک ردیف از محتوای مورد نظر خود را به همراه آیکون اضافه کنید",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_6474fabd4c55a",
@@ -70,7 +73,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6474fac74c55b",
@@ -87,7 +91,7 @@
                 "id": ""
             },
             "field_group_key": "group_6451fde6d5c44",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "button_label": "",
             "appearances": "",
@@ -111,7 +115,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6474f9a3b6807",
@@ -131,7 +136,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_6474f98eb6805",
@@ -154,6 +160,7 @@
             "collapsed": "",
             "button_label": "Add Row",
             "rows_per_page": 20,
+            "repeatable": true,
             "sub_fields": [
                 {
                     "key": "field_6474f997b6806",
@@ -179,6 +186,7 @@
                     "max_size": "",
                     "mime_types": "jpg,jpeg,png,gif,bmp,tiff,svg,ico,webp,raw",
                     "preview_size": "thumbnail",
+                    "repeatable": true,
                     "parent_repeater": "field_6474f98eb6805"
                 },
                 {
@@ -200,6 +208,7 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
+                    "repeatable": true,
                     "parent_repeater": "field_6474f98eb6805"
                 },
                 {
@@ -221,6 +230,7 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
+                    "repeatable": true,
                     "parent_repeater": "field_6474f98eb6805"
                 },
                 {
@@ -238,6 +248,7 @@
                         "id": ""
                     },
                     "return_format": "array",
+                    "repeatable": true,
                     "parent_repeater": "field_6474f98eb6805"
                 }
             ]
@@ -270,5 +281,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1689849677
+    "modified": 1692216684
 }

@@ -24,7 +24,8 @@
             "taxonomy": "",
             "allow_archives": 0,
             "multiple": 0,
-            "allow_null": 0
+            "allow_null": 0,
+            "repeatable": true
         },
         {
             "key": "field_644920c5b4b28",
@@ -48,7 +49,8 @@
             "taxonomy": "",
             "allow_archives": 0,
             "multiple": 0,
-            "allow_null": 0
+            "allow_null": 0,
+            "repeatable": true
         },
         {
             "key": "field_6449236b5a9e1",
@@ -72,7 +74,8 @@
             "taxonomy": "",
             "allow_archives": 0,
             "multiple": 0,
-            "allow_null": 0
+            "allow_null": 0,
+            "repeatable": true
         },
         {
             "key": "field_644925d08d1e2",
@@ -96,7 +99,8 @@
             "taxonomy": "",
             "allow_archives": 0,
             "multiple": 0,
-            "allow_null": 0
+            "allow_null": 0,
+            "repeatable": true
         },
         {
             "key": "field_644927688bc0b",
@@ -120,7 +124,8 @@
             "taxonomy": "",
             "allow_archives": 0,
             "multiple": 0,
-            "allow_null": 0
+            "allow_null": 0,
+            "repeatable": true
         },
         {
             "key": "field_644927aa8cc9d",
@@ -144,7 +149,8 @@
             "taxonomy": "",
             "allow_archives": 0,
             "multiple": 0,
-            "allow_null": 0
+            "allow_null": 0,
+            "repeatable": true
         },
         {
             "key": "field_64492cdb6bdbb",
@@ -168,7 +174,8 @@
             "taxonomy": "",
             "allow_archives": 0,
             "multiple": 0,
-            "allow_null": 0
+            "allow_null": 0,
+            "repeatable": true
         },
         {
             "key": "field_64492d22ee295",
@@ -192,7 +199,8 @@
             "taxonomy": "",
             "allow_archives": 0,
             "multiple": 0,
-            "allow_null": 0
+            "allow_null": 0,
+            "repeatable": true
         },
         {
             "key": "field_64492d9d8eead",
@@ -216,7 +224,8 @@
             "taxonomy": "",
             "allow_archives": 0,
             "multiple": 0,
-            "allow_null": 0
+            "allow_null": 0,
+            "repeatable": true
         }
     ],
     "location": [
@@ -247,5 +256,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1682517419
+    "modified": 1692216684
 }

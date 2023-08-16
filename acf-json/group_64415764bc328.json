@@ -19,7 +19,8 @@
             "wpml_cf_preferences": 3,
             "display_format": "d\/m\/Y",
             "return_format": "d\/m\/Y",
-            "first_day": 1
+            "first_day": 1,
+            "repeatable": true
         },
         {
             "key": "field_6447a9a3a710d",
@@ -37,7 +38,8 @@
             },
             "wpml_cf_preferences": 3,
             "display_format": "H:i",
-            "return_format": "H:i"
+            "return_format": "H:i",
+            "repeatable": true
         },
         {
             "key": "field_64415a8380131",
@@ -58,7 +60,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64415a8d80132",
@@ -79,7 +82,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_6447a9eaa710e",
@@ -100,7 +104,8 @@
             "default_value": 1,
             "ui_on_text": "Live",
             "ui_off_text": "Recorded",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_6447a96774d85",
@@ -121,7 +126,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_6447ab4d3d0de",
@@ -145,7 +151,8 @@
                 "id": ""
             },
             "wpml_cf_preferences": 3,
-            "return_format": "array"
+            "return_format": "array",
+            "repeatable": true
         },
         {
             "key": "field_64635a31f4f28",
@@ -166,7 +173,8 @@
             "default_value": 1,
             "ui_on_text": "Image",
             "ui_off_text": "Video",
-            "ui": 1
+            "ui": 1,
+            "repeatable": true
         },
         {
             "key": "field_64635a59f4f29",
@@ -200,7 +208,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "repeatable": true
         },
         {
             "key": "field_64635a84f4f2a",
@@ -229,7 +238,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64635a98f4f2b",
@@ -263,7 +273,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "repeatable": true
         },
         {
             "key": "field_644664955c312",
@@ -293,7 +304,9 @@
             "return_format": "object",
             "min": "",
             "max": "",
-            "elements": ""
+            "elements": "",
+            "bidirectional_target": [],
+            "repeatable": true
         },
         {
             "key": "field_646c7431c42e4",
@@ -322,7 +335,9 @@
             "return_format": "object",
             "min": "",
             "max": "",
-            "elements": ""
+            "elements": "",
+            "bidirectional_target": [],
+            "repeatable": true
         }
     ],
     "location": [
@@ -353,5 +368,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1684829275
+    "modified": 1692216684
 }
