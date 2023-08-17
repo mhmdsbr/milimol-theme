@@ -1,4 +1,10 @@
 <?php
+/* alireza start */
+define('MILIMOL_THEME_DIR', get_stylesheet_directory());
+require MILIMOL_THEME_DIR . '/includes/custom-shortcodes.php';
+require MILIMOL_THEME_DIR . '/includes/custom-functions.php';
+/* alireza end */
+
 require 'includes/timber.php';
 
 /** Autoload classes in `includes` folder */
