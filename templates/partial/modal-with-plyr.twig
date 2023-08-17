@@ -10,9 +10,17 @@
                     </svg>
                 </button>
 
-                <div class="js-video-modal insight-header__video"
-                    data-plyr-provider="vimeo"
-                    data-plyr-embed-id="{{ vimeo_id }}"></div>
+                <div class="js-video-modal insight-header__video">
+                    <div class="plyr__video-embed" id="player">
+                        <iframe
+                                src="https://www.aparat.com/video/video/embed/videohash/{{ aparat_id }}/vt/frame"
+                                allowfullscreen
+                                allowtransparency
+                                allow="autoplay"
+                        ></iframe>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

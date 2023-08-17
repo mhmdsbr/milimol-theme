@@ -46,7 +46,8 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "thumbnail",
-            "library": "all"
+            "library": "all",
+            "repeatable": true
         },
         {
             "key": "field_64b9056e4e12a",
@@ -68,7 +69,8 @@
             "maxlength": "",
             "rows": "",
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         },
         {
             "key": "field_64dd27a42f2e9",
@@ -89,7 +91,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64b907304e12d",
@@ -110,7 +113,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64b905a14e12b",
@@ -131,7 +135,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64dd27bc2f2ea",
@@ -152,7 +157,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64c66679a239c",
@@ -173,7 +179,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64dd27e52f2eb",
@@ -194,7 +201,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64b907484e12e",
@@ -215,7 +223,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64dd285d2f2ec",
@@ -236,7 +245,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64dd28882f2ed",
@@ -257,7 +267,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64dd28a22f2ee",
@@ -278,7 +289,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64dd28c72f2ef",
@@ -299,7 +311,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64dd28f02f2f0",
@@ -320,7 +333,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64b9071c4e12c",
@@ -340,7 +354,25 @@
             "default_value": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
+        },
+        {
+            "key": "field_64de3d0c925cc",
+            "label": "محتوا",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
         },
         {
             "key": "field_64c50c21c0c95",
@@ -361,6 +393,78 @@
             "zoom": "",
             "height": "",
             "repeatable": true
+        },
+        {
+            "key": "field_64de39ebdc18a",
+            "label": "آیدی ویدیو (آپارات)",
+            "name": "company_video_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "repeatable": true
+        },
+        {
+            "key": "field_64de3a1cdc18b",
+            "label": "تصویر ویدیو",
+            "name": "company_video_bg",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium",
+            "repeatable": true
+        },
+        {
+            "key": "field_64de3d2c925cd",
+            "label": "بنر تبلیغاتی",
+            "name": "company_ad_banner",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
         },
         {
             "key": "field_64dd26702f2e3",
@@ -410,8 +514,8 @@
             "repeatable": true
         },
         {
-            "key": "field_64dd23402f2d9",
-            "label": "مشتریان شرکت",
+            "key": "field_64de0f58259cf",
+            "label": "مشتریان",
             "name": "company_clients",
             "aria-label": "",
             "type": "repeater",
@@ -423,20 +527,19 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_save_meta": 0,
-            "acfe_repeater_stylised_button": 0,
             "layout": "table",
             "pagination": 0,
             "min": 0,
             "max": 0,
             "collapsed": "",
-            "button_label": "افزودن مشتری",
+            "button_label": "سطر جدید",
             "rows_per_page": 20,
+            "repeatable": true,
             "sub_fields": [
                 {
-                    "key": "field_64dd238f2f2da",
-                    "label": "تصویر مشتری",
-                    "name": "company_client-img",
+                    "key": "field_64de0f58259d0",
+                    "label": "تصویر کاتالوگ",
+                    "name": "client_img",
                     "aria-label": "",
                     "type": "image",
                     "instructions": "",
@@ -447,8 +550,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "",
-                    "library": "",
+                    "return_format": "array",
+                    "library": "all",
                     "min_width": "",
                     "min_height": "",
                     "min_size": "",
@@ -458,9 +561,7 @@
                     "mime_types": "",
                     "preview_size": "medium",
                     "repeatable": true,
-                    "uploader": "",
-                    "acfe_thumbnail": 0,
-                    "parent_repeater": "field_64dd23402f2d9"
+                    "parent_repeater": "field_64de0f58259cf"
                 }
             ]
         },
@@ -508,7 +609,7 @@
                 {
                     "key": "field_64dd24142f2dd",
                     "label": "تصویر کاتالوگ",
-                    "name": "cataglog_img",
+                    "name": "catalog_img",
                     "aria-label": "",
                     "type": "image",
                     "instructions": "",
@@ -519,8 +620,10 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "",
-                    "library": "",
+                    "acfe_save_meta": 0,
+                    "uploader": "",
+                    "return_format": "array",
+                    "acfe_thumbnail": 0,
                     "min_width": "",
                     "min_height": "",
                     "min_size": "",
@@ -529,9 +632,8 @@
                     "max_size": "",
                     "mime_types": "",
                     "preview_size": "medium",
+                    "library": "all",
                     "repeatable": true,
-                    "uploader": "",
-                    "acfe_thumbnail": 0,
                     "parent_repeater": "field_64dd24142f2dc"
                 },
                 {
@@ -548,17 +650,15 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "",
-                    "library": "",
+                    "return_format": "url",
+                    "library": "all",
                     "min_size": "",
-                    "max_size": "",
+                    "max_size": 1,
                     "mime_types": "",
                     "repeatable": true,
-                    "uploader": "",
                     "parent_repeater": "field_64dd24142f2dc"
                 }
-            ],
-            "acfe_repeater_stylised_button": 0
+            ]
         },
         {
             "key": "field_64dd25a92f2df",
@@ -626,8 +726,6 @@
                     "mime_types": "",
                     "preview_size": "medium",
                     "repeatable": true,
-                    "uploader": "",
-                    "acfe_thumbnail": 0,
                     "parent_repeater": "field_64dd25b52f2e0"
                 },
                 {
@@ -652,8 +750,7 @@
                     "repeatable": true,
                     "parent_repeater": "field_64dd25b52f2e0"
                 }
-            ],
-            "acfe_repeater_stylised_button": 0
+            ]
         },
         {
             "key": "field_64c6a339a239e",
@@ -689,7 +786,8 @@
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "",
+            "repeatable": true
         },
         {
             "key": "field_64c6a34ba239f",
@@ -707,7 +805,8 @@
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "",
+            "repeatable": true
         },
         {
             "key": "field_64c6a362a23a1",
@@ -725,7 +824,8 @@
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "",
+            "repeatable": true
         },
         {
             "key": "field_64c6a361a23a0",
@@ -743,7 +843,8 @@
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "",
+            "repeatable": true
         },
         {
             "key": "field_64dd26af2f2e8",
@@ -761,7 +862,8 @@
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "",
+            "repeatable": true
         },
         {
             "key": "field_64dd26af2f2e7",
@@ -779,7 +881,8 @@
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "",
+            "repeatable": true
         },
         {
             "key": "field_64dd26ae2f2e6",
@@ -797,7 +900,8 @@
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "",
+            "repeatable": true
         },
         {
             "key": "field_64dd26ad2f2e5",
@@ -815,7 +919,8 @@
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "",
+            "repeatable": true
         },
         {
             "key": "field_64dd26ac2f2e4",
@@ -833,7 +938,8 @@
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "",
+            "repeatable": true
         }
     ],
     "location": [
@@ -854,12 +960,7 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "acfe_display_title": "",
-    "acfe_autosync": [
-        "json"
-    ],
     "is_acf_component": 0,
-    "acfe_form": 0,
     "acf_component_defaults": {
         "repeatable": "0",
         "min": "",
@@ -868,7 +969,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "acfe_meta": "",
-    "acfe_note": "",
-    "modified": 1692218995
+    "modified": 1692286289
 }

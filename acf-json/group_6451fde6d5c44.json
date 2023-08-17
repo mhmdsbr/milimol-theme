@@ -1,13 +1,13 @@
 {
-    "key": "group_64524d2b8f62a",
-    "title": "تنظیمات CPT: سوالات پر تکرار",
+    "key": "group_6451fde6d5c44",
+    "title": "Comp: Background color",
     "fields": [
         {
-            "key": "field_64524d2cff0c5",
-            "label": "پاسخ",
-            "name": "answer",
+            "key": "field_6451fde754af5",
+            "label": "Background_color",
+            "name": "background_color",
             "aria-label": "",
-            "type": "textarea",
+            "type": "select",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,23 +16,22 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "rows": "",
+            "choices": {
+                "white": "White",
+                "accent": "Accent",
+                "primary": "Primary"
+            },
+            "default_value": "white",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 1,
+            "ajax": 0,
             "placeholder": "",
-            "new_lines": "",
             "repeatable": true
         }
     ],
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "faq"
-            }
-        ]
-    ],
+    "location": [],
     "menu_order": 0,
     "position": "normal",
     "style": "default",
@@ -42,7 +41,7 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "is_acf_component": 0,
+    "is_acf_component": true,
     "acf_component_defaults": {
         "repeatable": "0",
         "min": "",
@@ -51,5 +50,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1692274358
+    "modified": 1692288415
 }

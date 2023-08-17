@@ -65,8 +65,10 @@
             "min": "",
             "max": "",
             "elements": "",
-            "bidirectional_target": [],
-            "repeatable": true
+            "bidirectional": 1,
+            "bidirectional_target": [
+                "field_64411230b1657"
+            ]
         }
     ],
     "location": [
@@ -96,5 +98,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1692216683
+    "modified": 1692288376
 }
