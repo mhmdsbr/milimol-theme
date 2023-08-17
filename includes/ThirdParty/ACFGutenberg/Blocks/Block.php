@@ -15,22 +15,9 @@ class Block
         // add your block class name here
         return [
             // Templates
-            'BlockHomepageTemplate',
-            'BlockServicesTemplate',
             'BlockIndustriesTemplate',
             'BlockInsightsTemplate',
-            'BlockTrainingsTemplate',
-            'BlockCasesTemplate',
-            'BlockCertificationTemplate',
-            'BlockVacanciesTemplate',
-            'BlockPressReleasesTemplate',
             'BlockWorkingAreasTemplate',
-            'BlockCertificationIndustryDetailTemplate',
-            'BlockCertificationIndustriesOverviewTemplate',
-            'BlockServiceTypeOneTemplate',
-            'BlockServiceTypeTwoTemplate',
-            'BlockServiceTypeThreeTemplate',
-            'BlockIndustryDetailTemplate',
 
            //Headers
             'BlockHomepageHeader',
@@ -38,29 +25,22 @@ class Block
             'BlockSplitContentHeader',
             'BlockTrainingHeader',
             'BlockImageHeader',
-            'BlockCertificationProgramHeader',
-            'BlockAcademySearchHeader',
             'BlockFeaturedInsightHeader',
             'BlockBigVisualHeader',
 
             // Blocks
-            'BlockContactPerson',
             'BlockCasesSlider',
             'BlockSummary',
             'BlockBanner',
-            'BlockValuePropositions',
-            'BlockUspAccordion',
             'BlockIntro',
             'BlockImageBanner',
             'BlockImage',
             'BlockFaqAccordion',
             'BlockSplitContent',
-            'BlockLinkList',
             'BlockProcessSlider',
             'BlockVideo',
             'BlockCounter',
             'BlockContent',
-            'BlockFollowUs',
             'BlockSingleDownload',
             'BlockQuote',
             'BlockPeopleStoriesSlider',
@@ -73,20 +53,8 @@ class Block
 
             // Listings
             'BlockIndustryListing',
-            'BlockLinkedIndustries',
-            'BlockServicesListing',
-            'BlockLinkedCertificationPrograms',
-            'BlockCertificationIndustriesListing',
-            'BlockRelatedOrSubServicesListing',
             'BlockLatestProducts',
-            'BlockLinkedServices',
-            'BlockOfficeListing',
-            'BlockUpcomingTrainingsPrograms',
 
-            // Facet WP blocks
-            'BlockCertificationProgramsOverviewFacetWP',
-            'BlockInsightsOverviewFacetWP',
-            'BlockAcademyOverviewFacetWP',
         ];
     }
 }

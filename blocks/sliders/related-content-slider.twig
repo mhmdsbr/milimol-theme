@@ -9,19 +9,22 @@
     <div class="col-12 gx-0">
         <div class="swiper swiper-container related-content-slider__swiper-container js-related-content-slider">
             <div class="swiper-wrapper">
-                {% for i in range(1, 6) %}
+                {% for item in items %}
                     <div class="swiper-slide related-content-slider__slide">
                         <div class="related-content-slider__content-header">
                             <img class="related-content-slider__content-image"
-                                 src="/wp-content/uploads/2023/07/close-up-researcher-holding-glassware-1.jpg"
-                                 alt="{{ product.get_title }}"
+                                 src="{{ item.src.url }}"
+                                 alt="{{ item.src.title }}"
                                  loading="lazy"
                             />
                         </div>
                         <div class="related-content-slider__content-text">
-                            <p class="related-content-slider__content-title">{{ relatedContentBtn }}</p>
+                            {%  if item.catalog_upload %}
+                                <a href="{{ item.catalog_upload }}" class="related-content-slider__content-title">دانلود</a>
+                            {% else %}
+                                <p  class="related-content-slider__content-title"> {{ item.document_title}} </p>
+                            {% endif %}
                         </div>
-                        <a href="{{ product.get_permalink() }}" class="related-content-slider__product-link"></a>
                     </div>
                 {% endfor %}
             </div>

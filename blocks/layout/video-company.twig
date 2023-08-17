@@ -7,7 +7,7 @@
                 data-bs-target="#videoModal"
             >
                 <img class="video__poster"
-                    src="/wp-content/uploads/2023/07/close-up-researcher-holding-glassware-1.jpg"
+                    src="{{ videoPoster.url }}"
                     srcset="{{ videoPoster.srcset }}"
                     alt="{{ videoPoster.title }}"
                     title="{{ videoPoster.title }}"
@@ -20,8 +20,7 @@
             </button>
         </div>
     </div>
-
     {% include 'templates/partial/modal-with-plyr.twig' with {
-        vimeo_id: fields.vimeo_id
+        aparat_id : aparat
     } %}
 </section>

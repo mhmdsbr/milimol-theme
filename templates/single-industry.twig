@@ -1,10 +1,16 @@
 {% extends 'single.twig' %}
 
 {% block content %}
+
 	<header class="company-single__banner image-header">
 		<div class="image-header__background">
 			<picture>
-				<img src="{{ post.thumbnail.src }}" srcset="{{ post.thumbnail.srcset }}" alt="{{ post.thumbnail.title }}" title="{{ post.thumbnail.title }}" loading="lazy" />
+				<img
+					src="{{ post.thumbnail.src }}"
+					srcset="{{ post.thumbnail.srcset }}"
+					alt="{{ post.thumbnail.title }}"
+					title="{{ post.thumbnail.title }}"
+					loading="lazy" />
 			</picture>
 		</div>
 		<div class="company-single__socials footer__socials">
@@ -52,8 +58,8 @@
 			</ul>
 		</div>
 		<div class="company-single__url">
-			<a href="{{ post.company_url }}" title="{{ post.company_url }}" target="_blank" rel="noindex nofollow">
-				milimol.com
+			<a href="{{ post.company_website }}" title="{{ post.company_website }}" target="_blank" rel="noindex nofollow">
+				{{ post.company_website }}
             </a>
         </div>
 	</header>
@@ -73,7 +79,7 @@
 					<h3 class="company-single__company-name">{{ post.title }}</h3>
 					<div class="company-single__contact-btn">
 						{% include "partial/button.twig" with {
-							url : post.url,
+							url : 'tel:' ~ post.get_field('company_mobile'),
 							title : 'تماس با شرکت',
 							target : fields.button.target,
 							class : 'btn--primary company-single__button',
@@ -81,42 +87,15 @@
 						} %}
 					</div>
 					<div class="company-single__image-gallery">
-						<div class="company-single__image-gallery-item">
-							<img src="/wp-content/uploads/2023/07/close-up-researcher-holding-glassware-1.jpg"
-								 alt="image-gallery"
-								 loading="lazy"
-							/>
-						</div>
-						<div class="company-single__image-gallery-item">
-							<img src="/wp-content/uploads/2023/07/close-up-researcher-holding-glassware-1.jpg"
-								 alt="image-gallery"
-								 loading="lazy"
-							/>
-						</div>
-						<div class="company-single__image-gallery-item">
-							<img src="/wp-content/uploads/2023/07/close-up-researcher-holding-glassware-1.jpg"
-								 alt="image-gallery"
-								 loading="lazy"
-							/>
-						</div>
-						<div class="company-single__image-gallery-item">
-							<img src="/wp-content/uploads/2023/07/close-up-researcher-holding-glassware-1.jpg"
-								 alt="image-gallery"
-								 loading="lazy"
-							/>
-						</div>
-						<div class="company-single__image-gallery-item">
-							<img src="/wp-content/uploads/2023/07/close-up-researcher-holding-glassware-1.jpg"
-								 alt="image-gallery"
-								 loading="lazy"
-							/>
-						</div>
-						<div class="company-single__image-gallery-item">
-							<img src="/wp-content/uploads/2023/07/close-up-researcher-holding-glassware-1.jpg"
-								 alt="image-gallery"
-								 loading="lazy"
-							/>
-						</div>
+						{% set companyImgGallery = post.get_field('company_img_gallery') %}
+						{% for image in companyImgGallery %}
+							<div class="company-single__image-gallery-item">
+								<img src="{{ image.url }}"
+									 alt="image-gallery"
+									 loading="lazy"
+								/>
+							</div>
+						{% endfor %}
 					</div>
 				</div>
 			</div>
@@ -133,8 +112,14 @@
 					<div class="row company-single--ad-banner">
 						<div class="image-banner">
 							<div class="image-banner__background">
+								{% set companyAd = post.get_field('company_ad_banner') %}
 								<picture>
-									<img src="/wp-content/uploads/2023/07/chemistry-gc45c6f7a0.jpg" srcset="{{ desktopImage.srcset }}" alt="{{ desktopImage.title }}" title="{{ desktopImage.title }}" loading="lazy" />
+									<img
+										src="{{ companyAd.url }}"
+										srcset="{{ companyAd.srcset }}"
+										alt="{{ companyAd.title }}"
+										title="{{ companyAd.title }}"
+										loading="lazy" />
 								</picture>
 							</div>
 						</div>
@@ -144,54 +129,54 @@
 							<div class="company-single__info-icon company-single--country">
 								{{ fetch_svg('flag') }}
 								<span>کشور:</span>
-								<p>{{ post.company_ }}</p>
+								<p>{{ post.company_country }}</p>
 							</div>
 							<div class="company-single__info-icon company-single--city">
 								{{ fetch_svg('city') }}
 								<span>شهر:</span>
-								<p>{{ post.company_ }}</p>
+								<p>{{ post.company_city }}</p>
 							</div>
 							<div class="company-single__info-icon company-single--job-field">
 								{{ fetch_svg('chemistry') }}
 								<span>نوع فعالیت:</span>
-								<p>{{ post.company_ }}</p>
+								<p>{{ post.company_job_field }}</p>
 							</div>
 							<div class="company-single__info-icon company-single--start-date">
 								{{ fetch_svg('meta-calendar') }}
 								<span>سال تاسیس:</span>
-								<p>{{ post.company_ }}</p>
+								<p>{{ post.company_start_date }}</p>
 							</div>
 							<div class="company-single__info-icon company-single--ceo">
 								{{ fetch_svg('profile') }}
 								<span>مدیر عامل:</span>
-								<p>{{ post.company_ }}</p>
+								<p>{{ post.company_ceo }}</p>
 							</div>
 							<div class="company-single__info-icon company-single--personnel-no">
 								{{ fetch_svg('users') }}
 								<span>تعداد پرسنل:</span>
-								<p>{{ post.company_ }}</p>
+								<p>{{ post.company_personnel }}</p>
 							</div>
 						</div>
 						<div class="col-12 mb-3 col-lg-6 ">
 							<div class="company-single__info-icon company-single--office-phone">
 								{{ fetch_svg('office-phone') }}
 								<span>تلفن دفتر:</span>
-								<p>{{ post.company_ }}</p>
+								<p>{{ post.company_office_phone }}</p>
 							</div>
 							<div class="company-single__info-icon company-single--company-phone">
 								{{ fetch_svg('office-phone') }}
 								<span>تلفن کارخانه:</span>
-								<p>{{ post.company_ }}</p>
+								<p>{{ post.company_phone }}</p>
 							</div>
 							<div class="company-single__info-icon company-single--office-address">
 								{{ fetch_svg('tea-cup') }}
 								<span>آدرس دفتر:</span>
-								<p>{{ post.company_ }}</p>
+								<p>{{ post.company_office_address }}</p>
 							</div>
 							<div class="company-single__info-icon company-single--company-address">
 								{{ fetch_svg('factory') }}
 								<span>آدرس کارخانه:</span>
-								<p>{{ post.company_ }}</p>
+								<p>{{ post.company_address }}</p>
 							</div>
 							<div class="company-single__info-icon company-single--mobile">
 								{{ fetch_svg('phone') }}
@@ -201,7 +186,7 @@
 							<div class="company-single__info-icon company-single--fax">
 								{{ fetch_svg('fax') }}
 								<span>دورنگار:</span>
-								<p>{{ post.company_ }}</p>
+								<p>{{ post.company_fax }}</p>
 							</div>
 							<div class="company-single__info-icon company-single--email">
 								{{ fetch_svg('envelope') }}
@@ -210,24 +195,59 @@
 							</div>
 						</div>
 					</div>
+
 					{% include 'blocks/sliders/related-products-slider.twig' with {
 						relatedProductTitle : 'محصولات شرکت'
 					} %}
-					{% include 'blocks/layout/video-company.twig' %}
+
+					{% set poster = post.get_field('company_video_bg') %}
+					{% set aparatId = post.get_field('company_video_id') %}
+					{% include 'blocks/layout/video-company.twig' with {
+						videoPoster : poster,
+						aparat : aparatId
+					} %}
+
+					{% set companyClients = post.get_field('company_clients') %}
+					{% set clientImages = [] %}
+					{% for client in companyClients %}
+						{% set clientImg = client.client_img %}
+						{% if clientImg %}
+							{% set clientImages = clientImages|merge([{'src' : clientImg}]) %}
+						{% endif %}
+					{% endfor %}
 					{% include 'blocks/sliders/related-content-slider.twig' with {
 						relatedContentTitle : 'مشتریان',
-						relatedContentBtn : ''
+						items: clientImages
 					} %}
+
+					{% set companyCatalogs = post.get_field('company_catalog') %}
+					{% set catalogs = [] %}
+					{% for catalog in companyCatalogs %}
+						{% set catalogImg = catalog.catalog_img %}
+						{% set catalogUpload = catalog.catalog_upload %}
+						{% set catalogs = catalogs|merge([{'src' : catalogImg, 'catalog_upload' : catalogUpload}]) %}
+					{% endfor %}
 					{% include 'blocks/sliders/related-content-slider.twig' with {
 						relatedContentTitle : 'کاتالوگ',
-						relatedContentBtn : 'دانلود'
+						items: catalogs,
 					} %}
+
+					{% set companyDocuments = post.get_field('company_documents') %}
+					{% set documents = [] %}
+					{% for document in companyDocuments %}
+						{% set docImg = document.document_img %}
+						{% set docTitle = document.document_title %}
+						{% set documents = documents|merge([{'src' : docImg, 'document_title' : docTitle}]) %}
+					{% endfor %}
 					{% include 'blocks/sliders/related-content-slider.twig' with {
 						relatedContentTitle : 'مجوز و گواهی ها',
-						relatedContentBtn : 'استاندارد تیترازول'
+						items: documents,
 					} %}
+
 				</article>
 			</div>
 		</div>
 	</section>
+
+
 {% endblock %}

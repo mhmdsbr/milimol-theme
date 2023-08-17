@@ -72,13 +72,6 @@ class PostType
             $supports_faq
         );
 
-        $this->registerTaxonomy(
-            'Categories',
-            'Category',
-            'faq_category',
-            ['faq'],
-            'faq-category',
-        );
 
         $supports_process = array('title', 'revisions', 'page-attributes');
         $this->registerPostType(
@@ -97,29 +90,6 @@ class PostType
             $supports_process,
         );
 
-        $this->registerPostType(
-            'service',
-            'Services',
-            'Service',
-            'service',
-            true,
-            'service',
-            true,
-            false,
-            [],
-            true,
-            'dashicons-admin-generic',
-            true,
-            $supports
-        );
-
-        $this->registerTaxonomy(
-            'Service types',
-            'Service type',
-            'service_type',
-            ['service'],
-            'service-type',
-        );
 
         $supports_cases = array('title', 'thumbnail', 'revisions', 'page-attributes');
         $this->registerPostType(
@@ -138,56 +108,6 @@ class PostType
             $supports_cases
         );
 
-        $supports_banners = array('title', 'thumbnail', 'revisions', 'page-attributes');
-        $this->registerPostType(
-            'banner',
-            'Banners',
-            'Banner',
-            'banner',
-            false,
-            'banner',
-            true,
-            false,
-            [],
-            true,
-            'dashicons-images-alt',
-            true,
-            $supports_banners
-        );
-
-        $supports_usp = array('title', 'revisions', 'page-attributes');
-        $this->registerPostType(
-            'usp',
-            'USP\'s',
-            'USP',
-            'usp',
-            false,
-            'usp',
-            true,
-            false,
-            [],
-            true,
-            'dashicons-awards',
-            true,
-            $supports_usp,
-    );
-
-        $supports_contact = array('title', 'revisions', 'page-attributes');
-        $this->registerPostType(
-            'contact',
-            'Contacts',
-            'Contact',
-            'contact',
-            false,
-            'contact',
-            true,
-            false,
-            [],
-            true,
-            'dashicons-businessperson',
-            false,
-            $supports_contact
-        );
 
         $this->registerPostType(
             'people_story',
@@ -203,128 +123,6 @@ class PostType
             'dashicons-admin-comments',
             true,
             $supports
-        );
-
-
-        $this->registerPostType(
-            'training',
-            'Trainings',
-            'Training',
-            'training',
-            false,
-            'training',
-            true,
-            false,
-            [],
-            true,
-            'dashicons-welcome-learn-more',
-            true,
-            $supports
-        );
-
-        $this->registerTaxonomy(
-            'Regions',
-            'Region',
-            'region',
-            ['training', 'certi_program'],
-            'region',
-        );
-
-        $this->registerTaxonomy(
-            'Training types',
-            'Training type',
-            'trainings_type',
-            ['training'],
-            'trainings-type',
-        );
-
-        $this->registerPostType(
-            'press_release',
-            'Press Releases',
-            'Press Release',
-            'press_release',
-            false,
-            'press_release',
-            true,
-            false,
-            [],
-            true,
-            'dashicons-admin-comments',
-            true,
-            $supports
-        );
-
-        $this->registerPostType(
-            'certi_service',
-            'Certification Services',
-            'Certification Service',
-            'certi_service',
-            false,
-            'certi_service',
-            true,
-            false,
-            [],
-            true,
-            'dashicons-admin-generic',
-            true,
-            $supports
-        );
-
-        $this->registerPostType(
-            'certi_industry',
-            'Certification Industries',
-            'Certification Industry',
-            'certi_industry',
-            false,
-            'certi_industry',
-            true,
-            false,
-            [],
-            true,
-            'dashicons-building',
-            true,
-            $supports
-        );
-
-        $this->registerPostType(
-            'certi_program',
-            'Certification Programs',
-            'Certification Program',
-            'certi_program',
-            false,
-            'certi_program',
-            true,
-            false,
-            [],
-            true,
-            'dashicons-awards',
-            true,
-            $supports
-        );
-
-        $supports_office = array('title');
-        $this->registerPostType(
-            'office',
-            'Offices',
-            'Office',
-            'office',
-            false,
-            'office',
-            true,
-            false,
-            [],
-            true,
-            'dashicons-building',
-            false,
-            $supports_office
-        );
-
-        $this->registerTaxonomy(
-            'Office Regions',
-            'Office Region',
-            'office_region',
-            ['office'],
-            'office_region',
         );
 
         $this->registerTaxonomy(
