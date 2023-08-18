@@ -1,54 +1,129 @@
 <header class="header">
     {% block header %}
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    {% if exp_mobile() %}
-                        <div class="header__container header__container-mobile">
-                            <a href="#" class="header__hamburger-menu">
-                                {{ fetch_svg('hamburger') }}
-                            </a>
+        {%  if is_home() %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        {% if exp_mobile() %}
+                            <div class="header__container header__container-mobile">
+                                <a href="#" class="header__hamburger-menu">
+                                    {{ fetch_svg('hamburger') }}
+                                </a>
 
-                            <nav id="nav-main" class="nav-main" role="navigation">
-                                {% include "components/menu/menu-primary.twig" with {'items': primarymenu.get_items} %}
-                            </nav>
+                                <nav id="nav-main" class="nav-main" role="navigation">
+                                    {% include "components/menu/menu-primary.twig" with {'items': primarymenu.get_items} %}
+                                </nav>
 
-                            <div class="header__account">
-                                <span id="js-open-search" class="header__search">
-                                    {{ fetch_svg('magnifyingglass') }}
-                                </span>
+                                <div class="header__account">
+                                    <span id="js-open-search" class="header__search">
+                                        {{ fetch_svg('magnifyingglass') }}
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                    {% else %}
-                        <div class="header__container">
-                            <a class="navbar-brand d-flex flex-grow-2" href="{{ site.url }}" title="{{ site.name }}">
-                                {% if options.header_logo is not empty %}
-                                    <img src="{{ options.header_logo.url }}" alt="{{ site.name }}" class="header__logo" />
-                                {% else %}
-                                    <h1>{{ site.name }}</h1>
-                                {% endif %}
-                            </a>
+                        {% else %}
+                            <div class="header__container">
+                                <a class="header__navbar-brand d-flex flex-grow-2" href="{{ site.url }}" title="{{ site.name }}">
+                                    {% if options.header_logo is not empty %}
+                                        <img src="{{ options.header_logo.url }}" alt="{{ site.name }}" class="header__logo" />
+                                    {% else %}
+                                        <h1>{{ site.name }}</h1>
+                                    {% endif %}
+                                </a>
 
-                            <nav id="nav-main" class="nav-main" role="navigation">
-                                {% include "components/menu/menu-primary.twig" with {'items': primarymenu.get_items} %}
-                            </nav>
+                                <nav id="nav-main" class="nav-main" role="navigation">
+                                    {% include "components/menu/menu-primary.twig" with {'items': primarymenu.get_items} %}
+                                </nav>
 
-                            <div class="header__account">
-                                 <span id="js-open-search" class="header__search">
-                                    {{ fetch_svg('magnifyingglass') }}
-                                </span>
-                                <span id="js-open-login" class="header__profile">
-                                    {{ fetch_svg('profile') }}
-                                </span>
+                                <div class="header__cta">
+                                    {% include "partial/button.twig" with {
+                                        url : item.link,
+                                        title : 'درخواست خرید',
+                                        class : 'btn--buy-request',
+                                        icon : 'chemistry'
+                                    } %}
+                                </div>
+
+                                <div class="header__account">
+                                    {% include "partial/button.twig" with {
+                                        url : '#',
+                                        title : 'ورود | عضویت رایگان',
+                                        class : 'btn--login-cta',
+                                        icon : 'profile',
+                                        id : 'js-open-login',
+                                    } %}
+                                </div>
 
                             </div>
-                        </div>
-                    {% endif %}
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-    {% endblock %}
+        {% else %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        {% if exp_mobile() %}
+                            <div class="header__container header__container-mobile">
+                                <a href="#" class="header__hamburger-menu">
+                                    {{ fetch_svg('hamburger') }}
+                                </a>
 
-    {% include 'components/search.twig' %}
+                                <nav id="nav-main" class="nav-main" role="navigation">
+                                    {% include "components/menu/menu-primary.twig" with {'items': primarymenu.get_items} %}
+                                </nav>
+
+                                <div class="header__account">
+                                    <span id="js-open-search" class="header__search">
+                                        {{ fetch_svg('magnifyingglass') }}
+                                    </span>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="header__container">
+                                <a class="header__navbar-brand d-flex flex-grow-2" href="{{ site.url }}" title="{{ site.name }}">
+                                    {% if options.header_logo is not empty %}
+                                        <img src="{{ options.header_logo.url }}" alt="{{ site.name }}" class="header__logo" />
+                                    {% else %}
+                                        <h1>{{ site.name }}</h1>
+                                    {% endif %}
+                                </a>
+
+                                <div class="header__search">
+                                    <div class="search-box">
+                                         {%  include "searchform.twig" %}
+                                    </div>
+                                </div>
+
+                                <div class="header__cta">
+                                    {% include "partial/button.twig" with {
+                                        url : item.link,
+                                        title : 'درخواست خرید',
+                                        class : 'btn--buy-request',
+                                        icon : 'chemistry'
+                                    } %}
+                                </div>
+
+                                <div class="header__account">
+                                    {% include "partial/button.twig" with {
+                                        url : '#',
+                                        title : 'ورود | عضویت رایگان',
+                                        class : 'btn--login-cta',
+                                        icon : 'profile',
+                                        id : 'js-open-login',
+
+                                    } %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="header__nav header--nav-not-home">
+                <nav id="nav-main" class="nav-main" role="navigation">
+                    {% include "components/menu/menu-primary.twig" with {'items': primarymenu.get_items} %}
+                </nav>
+            </div>
+        {% endif %}
+    {% endblock %}
     {% include 'layout/login.twig' %}
 </header>

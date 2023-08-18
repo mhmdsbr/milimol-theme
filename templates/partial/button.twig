@@ -1,4 +1,4 @@
-<a href="{{ url }}" class="btn {{ class ? class : 'btn--primary' }}" title="{{ title }}" target="{{ target ? target : '_self' }}" {{ extra }}>
+<a id="{{ id }}" href="{{ url }}" class="btn {{ class ? class : 'btn--primary' }}" title="{{ title }}" target="{{ target ? target : '_self' }}" {{ extra }}>
     {{ title }}
     {% if icon is not empty %}
         <span class="btn__svg">{{ fetch_svg(icon) }}</span>
