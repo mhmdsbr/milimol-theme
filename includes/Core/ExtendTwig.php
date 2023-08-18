@@ -131,9 +131,9 @@ class ExtendTwig
         }
     }
 
-    public function is_home( $data ){
-        $data['is_home'] = is_home();
-        return $data;
+    public function is_home( )
+    {
+        return is_front_page();
     }
 
 }

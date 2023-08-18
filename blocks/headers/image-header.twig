@@ -13,28 +13,31 @@
     <div class="image-header__content">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-6">
+                <div class="col-md-8">
                     {% if fields.use_default_title == true %}
                         <h1>{{ post.title }}</h1>
                     {% else %}
                         {{ check_value(fields.custom_title, 'h1', null) }}
-
                     {% endif %}
 
                     {% if fields.is_show_subtitle == true %}
                         {{ check_value(fields.subtitle, 'p', 'CLASS') }}
                     {% endif %}
 
+                    {% if fields.is_show_search == true %}
+                        <div class="image-header__search">
+                            <div class="search-box">
+                                {%  include "searchform.twig" %}
+                            </div>
+                        </div>
+                    {% endif %}
+
                     <div class="image-header__buttons">
                         {% if fields.is_show_link == true and fields.link is array %}
-                            <a href="{{ fields.link.url }}" title="{{ fields.link.title }}" class="badge" target="{{ fields.link.target }}">{{ fields.link.title }}</a>
+                            <a href="{{ fields.link.url }}" title="{{ fields.link.title }}" target="{{ fields.link.target }}">{{ fields.link.title }}</a>
+                            <a href="{{ fields.link_second.url }}" title="{{ fields.link_second.title }}" target="{{ fields.link_second.target }}">{{ fields.link_second.title }}</a>
                         {% endif %}
 
-                        {% if fields.is_show_tags == true and fields.tags_repeater is array %}
-                            {% for tag in fields.tags_repeater %}
-                                <span class="badge badge--primary">{{ tag.tag }}</span>
-                            {% endfor %}
-                        {% endif %}
                     </div>
                 </div>
             </div>

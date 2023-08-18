@@ -1,6 +1,9 @@
 <form role="search" method="get" id="searchform" class="searchform">
-    <label class="screen-reader-text" for="s">{{ __('پیدا کنید...', 'expedition') }}:</label>
-    <input type="text" placeholder="{{ __('پیدا کنید...', 'expedition') }}" value="{{ function('get_search_query') }}" name="s" id="s" />
+    <label class="screen-reader-text" for="s">
+        {{ __('نام محصول یا Cas No مورد نظر خود را وارد کنید.', 'expedition') }}:
+    </label>
+    {{ fetch_svg('magnifier') }}
+    <input type="text" placeholder="{{ __('نام محصول یا Cas No مورد نظر خود را وارد کنید.', 'expedition') }}" value="{{ function('get_search_query') }}" name="s" id="s" />
     <!-- <input type="submit" id="searchsubmit" value="Search" /> -->
 </form>
 <section class="search__results-ajax">
