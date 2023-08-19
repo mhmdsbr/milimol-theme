@@ -1,10 +1,10 @@
 {
     "key": "group_64424f4958b4b",
-    "title": "Footer",
+    "title": "فوتر",
     "fields": [
         {
             "key": "field_64425300d16f1",
-            "label": "Footer",
+            "label": "فوتر",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -17,12 +17,11 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0,
-            "repeatable": true
+            "endpoint": 0
         },
         {
             "key": "field_64424f4923fd0",
-            "label": "Footer logo",
+            "label": "لوگو",
             "name": "footer_logo",
             "aria-label": "",
             "type": "image",
@@ -34,8 +33,10 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
+            "uploader": "",
             "return_format": "array",
-            "library": "all",
+            "acfe_thumbnail": 0,
             "min_width": "",
             "min_height": "",
             "min_size": "",
@@ -44,11 +45,39 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium",
-            "repeatable": true
+            "library": "all"
+        },
+        {
+            "key": "field_64e0a511b30c0",
+            "label": "تصویر پس زمینه",
+            "name": "footer_bg_img",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "uploader": "",
+            "return_format": "array",
+            "acfe_thumbnail": 0,
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium",
+            "library": "all"
         },
         {
             "key": "field_64425769d1006",
-            "label": "First footer menu title",
+            "label": "تیتر ستون اول",
             "name": "first_footer_menu_title",
             "aria-label": "",
             "type": "text",
@@ -60,16 +89,16 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_644257efcb7ab",
-            "label": "Second footer menu title",
+            "label": "تیتر ستون دوم",
             "name": "second_footer_menu_title",
             "aria-label": "",
             "type": "text",
@@ -81,16 +110,16 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64b17cc97a96c",
-            "label": "Footer About Title",
+            "label": "تیتر درباره ما",
             "name": "footer_about_title",
             "aria-label": "",
             "type": "text",
@@ -102,16 +131,16 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64b17d0eb1d51",
-            "label": "Footer About Text",
+            "label": "متن درباره ما",
             "name": "footer_about_text",
             "aria-label": "",
             "type": "textarea",
@@ -123,16 +152,17 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "default_value": "",
+            "acfe_textarea_code": 0,
             "maxlength": "",
             "rows": "",
             "placeholder": "",
-            "new_lines": "",
-            "repeatable": true
+            "new_lines": ""
         },
         {
             "key": "field_64b17d28b1d52",
-            "label": "Footer Contact Title",
+            "label": "تیتر تماس با ما",
             "name": "footer_contact_title",
             "aria-label": "",
             "type": "text",
@@ -144,16 +174,16 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64b180ddaa799",
-            "label": "Address",
+            "label": "آدرس",
             "name": "footer_address_text",
             "aria-label": "",
             "type": "text",
@@ -165,16 +195,16 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64b1814baa79a",
-            "label": "Phone",
+            "label": "شماره تماس",
             "name": "footer_phone",
             "aria-label": "",
             "type": "number",
@@ -186,18 +216,18 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "default_value": "",
             "min": "",
             "max": "",
             "placeholder": "",
             "step": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64b18168aa79b",
-            "label": "Email",
+            "label": "ایمیل",
             "name": "footer_email",
             "aria-label": "",
             "type": "email",
@@ -209,15 +239,15 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "default_value": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_644253d86bbb3",
-            "label": "Legal footer menu",
+            "label": "متن فوتر پایانی",
             "name": "legal_footer_menu",
             "aria-label": "",
             "type": "text",
@@ -229,12 +259,12 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         }
     ],
     "location": [
@@ -242,7 +272,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "acf-options-footer"
+                "value": "theme-footer-settings"
             }
         ]
     ],
@@ -255,7 +285,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
     "is_acf_component": 0,
+    "acfe_form": 0,
     "acf_component_defaults": {
         "repeatable": "0",
         "min": "",
@@ -264,5 +299,7 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1692274357
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1692445730
 }
