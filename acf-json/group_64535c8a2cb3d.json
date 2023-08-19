@@ -3,7 +3,7 @@
     "title": "بلاک: متن\/عکس",
     "fields": [
         {
-            "key": "field_64535c8a4a26d",
+            "key": "field_64535c8a4a26d__trashed",
             "label": "بلاک متن و عکس",
             "name": "",
             "aria-label": "",
@@ -22,7 +22,7 @@
             "repeatable": true
         },
         {
-            "key": "field_64535c8a4a2ba",
+            "key": "field_64535c8a4a2ba__trashed",
             "label": "اطلاعات",
             "name": "",
             "aria-label": "",
@@ -40,7 +40,7 @@
             "repeatable": true
         },
         {
-            "key": "field_64535c8a4a309",
+            "key": "field_64535c8a4a309__trashed",
             "label": "",
             "name": "",
             "aria-label": "",
@@ -59,7 +59,7 @@
             "repeatable": true
         },
         {
-            "key": "field_64535c8a4a357",
+            "key": "field_64535c8a4a357__trashed",
             "label": "تنظیمات",
             "name": "",
             "aria-label": "",
@@ -77,7 +77,7 @@
             "repeatable": true
         },
         {
-            "key": "field_64535c8a4a3a1",
+            "key": "field_64535c8a4a3a1__trashed",
             "label": "رنگ پس زمینه",
             "name": "background_color",
             "aria-label": "",
@@ -101,7 +101,7 @@
             "sub_fields": []
         },
         {
-            "key": "field_64535c8a4a3e9",
+            "key": "field_64535c8a4a3e9__trashed",
             "label": "نمایش تیتر",
             "name": "is_show_title",
             "aria-label": "",
@@ -122,7 +122,7 @@
             "repeatable": true
         },
         {
-            "key": "field_64535e58200ed",
+            "key": "field_64535e58200ed__trashed",
             "label": "اندازه تیتر",
             "name": "title_size",
             "aria-label": "",
@@ -154,10 +154,12 @@
             "ui": 1,
             "ajax": 0,
             "placeholder": "",
-            "repeatable": true
+            "repeatable": true,
+            "allow_custom": 0,
+            "search_placeholder": ""
         },
         {
-            "key": "field_64535c8a4a478",
+            "key": "field_64535c8a4a478__trashed",
             "label": "نمایش متن",
             "name": "is_show_text",
             "aria-label": "",
@@ -178,7 +180,7 @@
             "repeatable": true
         },
         {
-            "key": "field_64535c8a4a431",
+            "key": "field_64535c8a4a431__trashed",
             "label": "نمایش لینک",
             "name": "is_show_link",
             "aria-label": "",
@@ -199,7 +201,7 @@
             "repeatable": true
         },
         {
-            "key": "field_645365898162a",
+            "key": "field_645365898162a__trashed",
             "label": "Rounded corners",
             "name": "is_rounder_corners_active",
             "aria-label": "",
@@ -221,7 +223,7 @@
             "repeatable": true
         },
         {
-            "key": "field_64535d55548fd",
+            "key": "field_64535d55548fd__trashed",
             "label": "چپ\/راست",
             "name": "is_left_right",
             "aria-label": "",
@@ -249,40 +251,17 @@
             "type": "tab",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_64535c8a4a3e9",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_64535c8a4a478",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_64535c8a4a3e9",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0,
-            "repeatable": true
+            "endpoint": 0
         },
         {
-            "key": "field_64535c8a4a507",
+            "key": "field_64e0a0b6a3b97",
             "label": "تیتر",
             "name": "title",
             "aria-label": "",
@@ -292,7 +271,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64535c8a4a3e9",
+                        "field": "field_64535c8a4a3e9__trashed",
                         "operator": "==",
                         "value": "1"
                     }
@@ -303,12 +282,12 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64535c8a4a597",
@@ -321,7 +300,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64535c8a4a478",
+                        "field": "field_64535c8a4a478__trashed",
                         "operator": "==",
                         "value": "1"
                     }
@@ -332,12 +311,13 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "default_value": "",
+            "acfe_textarea_code": 0,
             "maxlength": "",
             "rows": 5,
             "placeholder": "",
-            "new_lines": "",
-            "repeatable": true
+            "new_lines": ""
         },
         {
             "key": "field_64535c8a4a54f",
@@ -350,7 +330,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64535c8a4a431",
+                        "field": "field_64535c8a4a431__trashed",
                         "operator": "==",
                         "value": "1"
                     }
@@ -361,11 +341,11 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
-            "repeatable": true
+            "acfe_save_meta": 0,
+            "return_format": "array"
         },
         {
-            "key": "field_64535d3e548fc",
+            "key": "field_64535d3e548fc__trashed",
             "label": "تصویر",
             "name": "image",
             "aria-label": "",
@@ -388,51 +368,36 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium",
-            "repeatable": true
-        },
-        {
-            "key": "field_64535c8a4a670",
-            "label": "Anchor",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "wpml_cf_preferences": 3,
-            "placement": "left",
-            "endpoint": 0,
-            "repeatable": true
-        },
-        {
-            "key": "field_64535c8a4a6b7",
-            "label": "Anchor block",
-            "name": "anchor_block",
-            "aria-label": "",
-            "type": "component_field",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "wpml_cf_preferences": 3,
-            "field_group_key": "group_6447d3a08c965",
-            "min": "",
-            "max": "",
-            "collapsed": "",
-            "button_label": "",
             "repeatable": true,
-            "layout": "block",
-            "appearances": "",
-            "sub_fields": []
+            "uploader": "",
+            "acfe_thumbnail": 0
+        },
+        {
+            "key": "field_64e099dbd31d4__trashed",
+            "label": "تصویر پس زمینه",
+            "name": "background_img",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium",
+            "uploader": "",
+            "acfe_thumbnail": 0
         }
     ],
     "location": [
@@ -453,7 +418,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
     "is_acf_component": 0,
+    "acfe_form": 0,
     "acf_component_defaults": {
         "repeatable": "0",
         "min": "",
@@ -462,5 +432,7 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1692274359
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1692443027
 }

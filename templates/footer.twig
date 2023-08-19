@@ -1,5 +1,13 @@
-<footer class="footer">
-    <div class="container">
+<footer class="footer position-relative">
+    {% if options.footer_bg_img is not empty %}
+        <div class="footer__background">
+            <picture>
+                {% set bgImage = Image(options.footer_bg_img) %}
+                <img src="{{ bgImage.src }}" srcset="{{ bgImage.srcset }}" alt="{{ bgImage.title }}" title="{{ bgImage.title }}" loading="lazy" />
+            </picture>
+        </div>
+    {% endif %}
+    <div class="container position-relative">
         <div class="footer__top">
             <div class="row">
                 {% if options.footer_logo is not empty %}
@@ -107,7 +115,6 @@
         </div>
     </div>
 </footer>
-
 <div class="footer__legal">
     <div class="container">
         <div class="row">

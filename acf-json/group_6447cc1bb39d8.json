@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_6447cc1bdef2a",
-            "label": "General",
+            "label": "عمومی",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -16,14 +16,12 @@
                 "class": "",
                 "id": ""
             },
-            "wpml_cf_preferences": 0,
             "placement": "left",
-            "endpoint": 0,
-            "repeatable": true
+            "endpoint": 0
         },
         {
             "key": "field_6447cc3adef2b",
-            "label": "Header logo",
+            "label": "لوگو هدر",
             "name": "header_logo",
             "aria-label": "",
             "type": "image",
@@ -35,8 +33,10 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
+            "uploader": "",
             "return_format": "array",
-            "library": "all",
+            "acfe_thumbnail": 0,
             "min_width": "",
             "min_height": "",
             "min_size": "",
@@ -45,11 +45,11 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium",
-            "repeatable": true
+            "library": "all"
         },
         {
             "key": "field_64632f87ad1c4",
-            "label": "Social media",
+            "label": "شبکه های اجتماعی",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -62,33 +62,11 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0,
-            "repeatable": true
-        },
-        {
-            "key": "field_64632ff9e3ab7",
-            "label": "Follow us title",
-            "name": "follow_us_title",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "repeatable": true
+            "endpoint": 0
         },
         {
             "key": "field_64632f93ad1c5",
-            "label": "LinkedIn",
+            "label": "لینکدین",
             "name": "linkedin",
             "aria-label": "",
             "type": "url",
@@ -100,13 +78,13 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": "",
-            "repeatable": true
+            "placeholder": ""
         },
         {
             "key": "field_64632f9cad1c6",
-            "label": "Twitter",
+            "label": "توییتر",
             "name": "twitter",
             "aria-label": "",
             "type": "url",
@@ -118,13 +96,13 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": "",
-            "repeatable": true
+            "placeholder": ""
         },
         {
             "key": "field_64632fa4ad1c7",
-            "label": "Facebook",
+            "label": "فیسبوک",
             "name": "facebook",
             "aria-label": "",
             "type": "url",
@@ -136,82 +114,9 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": "",
-            "repeatable": true
-        },
-        {
-            "key": "field_6464ea7661fd9",
-            "label": "Page links",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "wpml_cf_preferences": 3,
-            "placement": "left",
-            "endpoint": 0,
-            "repeatable": true
-        },
-        {
-            "key": "field_6464eaa161fda",
-            "label": "Testing service",
-            "name": "testing_service",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "wpml_cf_preferences": 3,
-            "return_format": "array",
-            "repeatable": true
-        },
-        {
-            "key": "field_6464eae361fdb",
-            "label": "Inspection service",
-            "name": "inspection_service",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "wpml_cf_preferences": 3,
-            "return_format": "array",
-            "repeatable": true
-        },
-        {
-            "key": "field_6464eb45d6c3a",
-            "label": "Certification service",
-            "name": "certification_service",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "wpml_cf_preferences": 3,
-            "return_format": "array",
-            "repeatable": true
+            "placeholder": ""
         }
     ],
     "location": [
@@ -232,7 +137,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
     "is_acf_component": 0,
+    "acfe_form": 0,
     "acf_component_defaults": {
         "repeatable": "0",
         "min": "",
@@ -241,5 +151,7 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1692274356
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1692444624
 }

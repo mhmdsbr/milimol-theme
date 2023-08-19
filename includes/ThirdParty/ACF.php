@@ -55,6 +55,7 @@ class ACF
         acf_add_options_sub_page(array(
             'page_title'  => __('Theme Footer Settings', 'expedition'),
             'menu_title'  => __('فوتر', 'expedition'),
+            'menu_slug'  => 'theme-footer-settings',
             'parent_slug' => 'theme-general-settings',
         ));
 

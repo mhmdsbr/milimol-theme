@@ -1,5 +1,13 @@
 <section class="exp-split-content {{ background_color(fields.background_color) }}" {{ anchor_block(fields.anchor_block) }}>
-    <div class="container">
+    {% if fields.background_img is not empty %}
+        <div class="exp-split-content__background">
+            <picture>
+                {% set bgImage = Image(fields.background_img) %}
+                <img src="{{ bgImage.src }}" srcset="{{ bgImage.srcset }}" alt="{{ bgImage.title }}" title="{{ bgImage.title }}" loading="lazy" />
+            </picture>
+        </div>
+    {% endif %}
+    <div class="container position-relative">
         <div class="row align-items-center">
             <div class="col-12 col-md-6{{ fields.is_left_right == true ? '' : ' order-md-2' }}">
                 <div class="exp-split-content__content">
