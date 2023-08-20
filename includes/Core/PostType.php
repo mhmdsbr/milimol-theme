@@ -24,12 +24,12 @@ class PostType
         $supports = array('title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'page-attributes');
 
         $this->registerPostType(
-            'industry',
+            'company',
             'شرکت ها',
             'شرکت',
-            'industry',
+            'company',
             true,
-            'industry',
+            'company',
             true,
             false,
             [],
@@ -40,12 +40,12 @@ class PostType
         );
 
         $this->registerPostType(
-            'insight',
+            'request',
             'درخواست های خرید',
             'درخواست خرید',
-            'insight',
+            'request',
             true,
-            'insight',
+            'request',
             true,
             false,
             [],

@@ -4,7 +4,7 @@
     {% else %}
         {% set image = Image(function('get_stylesheet_directory') ~ '/images/image-header-placeholder.jpg') %}
     {% endif %}
-    <img class="card__image" src="{{ image.src }}" srcset="{{ image.srcset }}" alt="{{ image.alt }}" title="{{ image.alt }}" loading="lazy" />
+    <img class="card__image" src="{{ image.src }}" srcset="{{ image.srcset }}" alt="{{ image.alt }}" title="{{ title }}" loading="lazy" />
 
     <div class="card__head">
         <div class="card__title-block">

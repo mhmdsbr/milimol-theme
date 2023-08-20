@@ -288,7 +288,8 @@
             "rows": "",
             "placeholder": "",
             "new_lines": "",
-            "repeatable": true
+            "repeatable": true,
+            "acfe_textarea_code": 0
         },
         {
             "key": "field_646a217af22a9",
@@ -321,7 +322,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/block-latest-insight-slider"
+                "value": "acf\/block-requests-slider"
             }
         ]
     ],
@@ -334,7 +335,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
     "is_acf_component": 0,
+    "acfe_form": 0,
     "acf_component_defaults": {
         "repeatable": "0",
         "min": "",
@@ -343,5 +349,7 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1692274361
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1692562989
 }

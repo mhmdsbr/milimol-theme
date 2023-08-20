@@ -1,0 +1,78 @@
+<section class="requests-slider {{ background_color(fields.background_color) }}" {{ anchor_block(fields.anchor_block) }}>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="requests-slider__content">
+                    {% if fields.show_subtitle == true %}
+                        {{ check_value(fields.subtitle, 'h5', 'requests-slider__subtitle text-sm text-lg-lg') }}
+                    {% endif %}
+
+                    {% if fields.show_title == true %}
+                        {{ check_value(fields.title, 'h1', 'requests-slider__title text-4xl text-lg-5xl') }}
+                    {% endif %}
+
+                    {% if fields.show_text == true %}
+                        {{ check_value(fields.text, 'p', 'requests-slider__text text-base text-md-lg') }}
+                    {% endif %}
+
+                    {% if fields.show_link == true and fields.link is array %}
+                        {% include "partial/button.twig" with {
+                            url : fields.link.url,
+                            title : fields.link.title,
+                            target : fields.link.target,
+                            class : 'btn--primary requests-slider__button',
+                            icon : 'arrow-left'
+                        } %}
+                    {% endif %}
+
+                    <div class="requests-slider__controls">
+                        <div class="requests-slider__pagination"></div>
+
+                        <div class="requests-slider__nav-wrapper">
+                            <div class="requests-slider__nav requests-slider__nav--prev">
+                                {{ fetch_svg('chevron-right') }}
+                            </div>
+
+                            <div class="requests-slider__nav requests-slider__nav--next">
+                                {{ fetch_svg('chevron-left') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                {% if requests is array %}
+                    <div class="swiper swiper-container requests-slider__swiper-container js-requests-slider">
+                        <div class="swiper-wrapper">
+                            {% for slide in requests %}
+                                <div class="swiper-slide requests-slider__request">
+                                    <div class="requests-slider__request-content">
+                                        {{ check_value( slide.post_title, 'h2', 'requests-slider__request-title') }}
+                                        <span>{{ __('توضیحات: ', 'expedition') }}</span>
+                                        {{ check_value(slide.desc, 'p', 'requests-slider__request-desc') }}
+                                        <p class="requests-slider__request-expiry">مدت اعتبار باقی مانده: 7 روز</p>
+                                        {{ check_value(slide.cas_number,'p', 'requests-slider__request-number') }}
+                                        <div class="requests-slider__request-purity">
+                                            <div class= "progress-container js-progress-container" data-percentage='{{ slide.purity }}'>
+                                                <div class="progress"></div>
+                                                <div class="percentage">0%</div>
+                                            </div>
+                                        </div>
+                                        <span>{{ __('تاریخ انتشار: ', 'expedition') }}</span>
+                                        <p class="requests-slider__request-date" >{{ slide.date }}</p>
+                                    </div>
+
+                                    <a href="{{ function('get_the_permalink', slide.ID) }}" class="requests-slider__request-link"></a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

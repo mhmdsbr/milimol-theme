@@ -9,9 +9,9 @@ use Timber\Timber;
 use EXP\ThirdParty\ACFGutenberg\Abstracts\Blockable;
 
 
-class BlockIndustryListing extends Blockable
+class BlockCompanyListing extends Blockable
 {
-    protected $block_name = 'block_industry_listing';
+    protected $block_name = 'block_company_listing';
 
     protected $block_title = 'لیست شرکت ها';
 
@@ -19,7 +19,7 @@ class BlockIndustryListing extends Blockable
 
     protected $block_icon = 'building';
 
-    protected $block_keywords = ['industries', 'industry', 'list', 'overview'];
+    protected $block_keywords = ['company', 'companies', 'list', 'overview', 'شرکت'];
 
     /**
      * Callback method that displays the block
@@ -35,31 +35,31 @@ class BlockIndustryListing extends Blockable
         $context['block']      = $block;
         $context['fields']     = get_fields();
         $context['is_preview'] = $is_preview;
-        $context['industries'] = $this->getIndustries();
+        $context['companies'] = $this->getCompanies();
 
         // Get all industries
-        $allIndustries = $this->getIndustries();
+        $allCompanies = $this->getCompanies();
         // Check the checkbox value
-        $showAllIndustries = isset($context['fields']['show_all_industries']) && $context['fields']['show_all_industries'];
+        $showAllCompanies = isset($context['fields']['show_all_companies']) && $context['fields']['show_all_companies'];
 
         // Prepare the data based on the checkbox value
-        if ($showAllIndustries) {
+        if ($showAllCompanies) {
             // Show all industries
-            $context['industries'] = $allIndustries;
+            $context['companies'] = $allCompanies;
         } else {
             // Show the 6 latest companies
-            $context['industries'] = array_slice($allIndustries, 0, 6);
+            $context['companies'] = array_slice($allCompanies, 0, 6);
         }
 
-        if (count($context['industries']) > 0) {
-            Timber::render('blocks/listings/industries-listing.twig', $context);
+        if (count($context['companies']) > 0) {
+            Timber::render('blocks/listings/companies-listing.twig', $context);
         }
     }
 
-    public function getIndustries(): array
+    public function getCompanies(): array
     {
         $args = [
-            'post_type' => 'industry',
+            'post_type' => 'company',
             'orderby' => 'menu_order',
             'order' => 'DESC',
             'posts_per_page' => -1,

@@ -95,7 +95,8 @@
             "rows": "",
             "placeholder": "",
             "new_lines": "",
-            "repeatable": true
+            "repeatable": true,
+            "acfe_textarea_code": 0
         },
         {
             "key": "field_64b93b0fe5edb",
@@ -117,6 +118,27 @@
             "prepend": "",
             "append": "",
             "repeatable": true
+        },
+        {
+            "key": "field_64e2797a8f7ca",
+            "label": "درصد خلوص",
+            "name": "purity",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -124,7 +146,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "insight"
+                "value": "request"
             }
         ]
     ],
@@ -137,7 +159,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
     "is_acf_component": 0,
+    "acfe_form": 0,
     "acf_component_defaults": {
         "repeatable": "0",
         "min": "",
@@ -146,5 +173,7 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1692274356
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1692565299
 }
