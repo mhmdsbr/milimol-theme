@@ -1,11 +1,10 @@
-<section class="product-slider {{ background_color(fields.background_color) }}" {{ anchor_block(fields.anchor_block) }}>
+<section class="{{ fields.is_show_product == 'searched_product' ? 'searched-product' : 'product-slider' }}  {{ background_color(fields.background_color) }}">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="exp-insight-latest-slider__content">
-
+                <div class="product-slider__content">
                     {% if fields.is_show_title == true %}
-                        {{ check_value(fields.title, 'h1', 'exp-insight-latest-slider__title text-4xl text-lg-5xl') }}
+                        {{ check_value(fields.title, 'h1', 'product-slider__title text-2xl text-lg-3xl') }}
                     {% endif %}
 
                     {% if fields.is_show_link == true and fields.link is array %}
@@ -13,72 +12,103 @@
                             url : fields.link.url,
                             title : fields.link.title,
                             target : fields.link.target,
-                            class : 'btn--primary exp-insight-latest-slider__button',
+                            class : 'btn--primary product-slider__button',
                             icon : 'arrow-left'
                         } %}
                     {% endif %}
+                    {%  if fields.is_show_product != 'searched_product' %}
+                        <div class="product-slider__controls">
+                            <div class="product-slider__pagination"></div>
 
-                    <div class="exp-insight-latest-slider__controls">
-                        <div class="exp-insight-latest-slider__pagination"></div>
+                            <div class="product-slider__nav-wrapper">
+                                <div class="product-slider__nav product-slider__nav--prev">
+                                    {{ fetch_svg('chevron-right') }}
+                                </div>
 
-                        <div class="exp-insight-latest-slider__nav-wrapper">
-                            <div class="exp-insight-latest-slider__nav exp-insight-latest-slider__nav--prev">
-                                {{ fetch_svg('chevron-right') }}
+                                <div class="product-slider__nav product-slider__nav--next">
+                                    {{ fetch_svg('chevron-left') }}
+                                </div>
                             </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if fields.is_show_product == 'searched_product' %}
+        <div class="container mt-4">
+            <div class="row">
+                {% for product in products %}
+                    {% for category in product.product_cat_cas %}
+                        {% set productCasNo = category.name %}
+                        <div class="col-12 col-md-6 gx-2 col-lg-4">
+                            {% include "partial/card.twig" with {
+                                image : product.image_url.src,
+                                title : product.get_name,
+                                content: productCasNo,
+                                url : get_link(product.ID),
+                                customClass : ' card--searchedproduct'
+                            } %}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="swiper swiper-container product-slider__swiper-container js-product-slider">
+                        <div class="swiper-wrapper">
+                            {% if products is not empty %}
+                                {% for product in products %}
+                                    <div class="swiper-slide product-slider__slide">
+                                        <div class="product-slider__slide-product-header">
+                                            {% if product.image_url %}
+                                                <img class="product-slider__slide-product-image"
+                                                     src="{{ product.image_url.src }}"
+                                                     srcset="{{ product.image_url.srcset }}"
+                                                     alt="{{ product.get_title }}"
+                                                     title="{{ product.thumbnail.title }}"
+                                                     loading="lazy"
+                                                />
+                                            {% endif %}
+                                        </div>
+                                        <div class="product-slider__slide-product-content">
+                                            {% if product.associated_company[0] %}
+                                                <div class="product-slider__slide-product-associated-company">
+                                                    {{ check_value(product.associated_company[0].post_title, 'p', '') }}
+                                                </div>
+                                            {% endif %}
 
-                            <div class="exp-insight-latest-slider__nav exp-insight-latest-slider__nav--next">
-                                {{ fetch_svg('chevron-left') }}
-                            </div>
+                                            {{ check_value(product.get_name, 'p', 'product-slider__slide-product-name') }}
+
+                                            {% if product.product_cat %}
+                                                {% for category in product.product_cat|slice(0,1) %}
+                                                    {{ check_value(category.name, 'p', 'product-slider__slide-product-category') }}
+                                                {% endfor %}
+                                            {% endif %}
+
+                                            {% if product.product_cat_cas %}
+                                                {% for category in product.product_cat_cas %}
+                                                    {{ check_value('Cas No : ' ~ category.name, 'p', 'product-slider__slide-product-cas') }}
+                                                {% endfor %}
+                                            {% endif %}
+
+                                            {% if product.product_purity %}
+                                                {{ check_value('Purity : ' ~ product.product_purity~'%', 'p', 'product-slider__slide-product-purity') }}
+                                            {%  endif %}
+
+                                            {{ check_value('تاریخ انتشار: '  ~ product.post_date|date('H:i Y-m-d') , 'p', 'product-slider__slide-product-date') }}
+                                        </div>
+                                        <a href="{{ product.get_permalink() }}" class="product-slider__slide-product-link"></a>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="swiper swiper-container product-slider__swiper-container js-product-slider">
-                    <div class="swiper-wrapper">
-                        {% if products is not empty %}
-                            {% for product in products %}
-                                <div class="swiper-slide product-slider__slide">
-                                    <div class="product-slider__slide-header">
-                                        {% if product.image_url %}
-                                            <img class="product-slider__slide-image"
-                                                 src="{{ product.image_url }}"
-                                                 alt="{{ product.get_title }}"
-                                                 loading="lazy"
-                                            />
-                                        {% endif %}
-                                    </div>
-                                    <div class="product-slider__slider-content">
-                                        {{ check_value(product.get_name, 'p', 'product-slider__product-name') }}
-                                        {% if product.categories %}
-                                            <ul>
-                                                {% for category in product.categories %}
-                                                    <li>{{ category.name }}</li>
-                                                {% endfor %}
-                                            </ul>
-                                        {% endif %}
-                                            <p>{{ product.associated_company[0].post_title }}</p>
-                                            <p>{{ product.post_date|date('H:i Y-m-d') }}</p>
-                                        {% for category in product.categories %}
-                                            {% if category.taxonomy == 'product_cas_no' %}
-                                                CAS No: {{ category.name }}
-                                            {% endif %}
-                                        {% endfor %}
-                                        {% if product.product_purity %}
-                                            <p>Purity: {{ product.product_purity }}</p>
-                                        {%  endif %}
-                                    </div>
-                                    <a href="{{ product.get_permalink() }}" class="exp-insight-latest-slider__slide-link"></a>
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% endif %}
 </section>

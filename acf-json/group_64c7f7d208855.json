@@ -40,6 +40,29 @@
             "repeatable": true
         },
         {
+            "key": "field_64e1dd76798e0",
+            "label": "درصد خلوص",
+            "name": "product_purity",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_64c7fa1de0d78",
             "label": "تامین کننده مورد نظر",
             "name": "product_supplier_linked",
@@ -68,7 +91,8 @@
             "bidirectional": 1,
             "bidirectional_target": [
                 "field_64411230b1657"
-            ]
+            ],
+            "repeatable": true
         }
     ],
     "location": [
@@ -89,7 +113,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
     "is_acf_component": 0,
+    "acfe_form": 0,
     "acf_component_defaults": {
         "repeatable": "0",
         "min": "",
@@ -98,5 +127,7 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1692288376
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1692523991
 }

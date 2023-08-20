@@ -8,17 +8,17 @@ namespace EXP\ThirdParty\ACFGutenberg\Blocks;
 use Timber\Timber;
 use EXP\ThirdParty\ACFGutenberg\Abstracts\Blockable;
 
-class BlockLatestInsightSlider extends Blockable
+class BlockRequestsSlider extends Blockable
 {
-    protected $block_name = 'block_latest_insight_slider';
+    protected $block_name = 'block_requests_slider';
 
-    protected $block_title = 'آخرین درخواست های خرید';
+    protected $block_title = 'درخواست های خرید';
 
     protected $block_category = 'slider';
 
     protected $block_icon = 'slides';
 
-    protected $block_keywords = ['request', 'slider', 'buy'];
+    protected $block_keywords = ['request', 'slider', 'buy', 'درخواست'];
 
     protected $block_jsx = true;
 
@@ -39,18 +39,18 @@ class BlockLatestInsightSlider extends Blockable
         $context['is_preview'] = $is_preview;
         $context['post_fields'] = get_fields($timber_post);
 
-        $collectInsights = [];
+        $collectRequests = [];
 
-        $context['latest_insights'] = Timber::get_posts([
-            'post_type' => 'insight',
+        $context['requests'] = Timber::get_posts([
+            'post_type' => 'request',
             'posts_per_page' => -1,
             'post_status' => 'publish',
-            'post__in' => $collectInsights,
+            'post__in' => $collectRequests,
         ]);
 
-        if (empty($context['latest_insights'])) {
+        if (empty($context['requests'])) {
             return;
         }
-        Timber::render('blocks/sliders/latest-insight-slider.twig', $context);
+        Timber::render('blocks/sliders/requests-slider.twig', $context);
     }
 }

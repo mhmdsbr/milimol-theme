@@ -1,15 +1,15 @@
-<section class="exp-industries-listing" {{ anchor_block(fields.anchor_block) }}>
-    <div class="exp-industries-listing__header">
+<section class="companies-listing">
+    <div class="companies-listing__header">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    {{ check_value(fields.title, 'h2', 'exp-industries-listing_header-title') }}
+                    {{ check_value(fields.title, 'h2', 'companies-listing__header-title') }}
                     {% if fields.button is array %}
                         {% include "partial/button.twig" with {
                             url : fields.button.url,
                             title : fields.button.title,
                             target : fields.button.target,
-                            class : 'btn--primary exp-process-slider__button',
+                            class : 'btn--primary companies-listing__button',
                             icon : 'arrow-left'
                         } %}
                     {% endif %}
@@ -18,17 +18,16 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            {% for item in industries %}
-                {% set featuredImage = function('get_the_post_thumbnail_url', item.ID) %}
-                <div class="col-12 col-md-6 col-lg-3">
+        <div class="row col-10 m-auto">
+            {% for item in companies %}
+                {% set featuredImage = Image(item) %}
+                <div class="col-12 col-md-6 gx-0 col-lg-2">
                     {% include "partial/card.twig" with {
                         id : item.ID,
                         image : featuredImage,
                         title : item.post_title,
-                        content: item.post_excerpt,
                         url : get_link(item.ID),
-                        customClass : ' card--listview'
+                        customClass : ' card--companieslisting'
                     } %}
                 </div>
             {% endfor %}

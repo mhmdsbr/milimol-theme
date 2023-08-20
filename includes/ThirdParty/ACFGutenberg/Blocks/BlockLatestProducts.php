@@ -14,7 +14,7 @@ class BlockLatestProducts extends Blockable
 {
     protected $block_name = 'block_latest_products';
 
-    protected $block_title = 'آخرین محصولات';
+    protected $block_title = 'محصولات';
 
     protected $block_category = 'slider';
 
@@ -43,20 +43,27 @@ class BlockLatestProducts extends Blockable
 
             $selected_products = array();
 
-            // Get the image URLs for each selected product
             foreach ($selectedProductIDs as $productID) {
                 $product = wc_get_product($productID);
 
+                // Get the image URLs for each selected product
                 if ($product) {
                     $product_image_id = $product->get_image_id();
                     if ($product_image_id) {
                         $product_image = new Image($product_image_id);
-                        $product_image_url = $product_image->src('thumbnail');
-                        $product->image_url = $product_image_url;
+                        $product->image_url = $product_image;
                     }
 
                     $product_categories = get_the_terms($productID, 'product_cat');
-                    $product->categories = $product_categories;
+                    $product->product_cat = $product_categories;
+                    $selected_products[] = $product;
+
+                    $product_cas_no = get_the_terms($productID, 'product_cas_no');
+                    $product->product_cat_cas = $product_cas_no;
+                    $selected_products[] = $product;
+
+                    $product_purity = get_field('product_purity', $product->get_id());
+                    $product->product_purity = $product_purity;
                     $selected_products[] = $product;
 
                     // Get the associated company from the custom ACF relationship field
@@ -74,25 +81,25 @@ class BlockLatestProducts extends Blockable
                 'status' => 'publish',
                 'orderby' => 'date',
                 'order' => 'DESC',
-                'posts_per_page' => 6, // Display six latest products
+                'posts_per_page' => 10, // Display six latest products
             );
 
             $latest_products = wc_get_products($args_latest);
 
-            // Get the image URLs for each latest product
             foreach ($latest_products as $product) {
+
+                // Get the image URLs for each latest product
                 $product_image_id = $product->get_image_id();
                 if ($product_image_id) {
                     $product_image = new Image($product_image_id);
-                    $product_image_url = $product_image->src('thumbnail');
-                    $product->image_url = $product_image_url;
+                    $product->image_url = $product_image;
                 }
 
                 $product_categories = get_the_terms($product->get_id(), 'product_cat');
-                $product->categories = $product_categories;
+                $product->product_cat = $product_categories;
 
                 $product_cas_no = get_the_terms($product->get_id(), 'product_cas_no');
-                $product->categories = $product_cas_no;
+                $product->product_cat_cas = $product_cas_no;
 
 
                 $product_purity = get_field('product_purity', $product->get_id());

@@ -372,7 +372,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64c50c21c0c95",
@@ -439,7 +440,9 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium",
-            "repeatable": true
+            "repeatable": true,
+            "uploader": "",
+            "acfe_thumbnail": 0
         },
         {
             "key": "field_64de3d2c925cd",
@@ -464,7 +467,10 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "repeatable": true,
+            "uploader": "",
+            "acfe_thumbnail": 0
         },
         {
             "key": "field_64dd26702f2e3",
@@ -561,9 +567,12 @@
                     "mime_types": "",
                     "preview_size": "medium",
                     "repeatable": true,
+                    "uploader": "",
+                    "acfe_thumbnail": 0,
                     "parent_repeater": "field_64de0f58259cf"
                 }
-            ]
+            ],
+            "acfe_repeater_stylised_button": 0
         },
         {
             "key": "field_64dd23d62f2db",
@@ -656,9 +665,11 @@
                     "max_size": 1,
                     "mime_types": "",
                     "repeatable": true,
+                    "uploader": "",
                     "parent_repeater": "field_64dd24142f2dc"
                 }
-            ]
+            ],
+            "acfe_repeater_stylised_button": 0
         },
         {
             "key": "field_64dd25a92f2df",
@@ -726,6 +737,8 @@
                     "mime_types": "",
                     "preview_size": "medium",
                     "repeatable": true,
+                    "uploader": "",
+                    "acfe_thumbnail": 0,
                     "parent_repeater": "field_64dd25b52f2e0"
                 },
                 {
@@ -750,7 +763,8 @@
                     "repeatable": true,
                     "parent_repeater": "field_64dd25b52f2e0"
                 }
-            ]
+            ],
+            "acfe_repeater_stylised_button": 0
         },
         {
             "key": "field_64c6a339a239e",
@@ -947,7 +961,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "industry"
+                "value": "company"
             }
         ]
     ],
@@ -960,7 +974,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
     "is_acf_component": 0,
+    "acfe_form": 0,
     "acf_component_defaults": {
         "repeatable": "0",
         "min": "",
@@ -969,5 +988,7 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1692286289
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1692554428
 }

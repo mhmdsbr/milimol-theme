@@ -45,14 +45,14 @@ class Block
             'BlockQuote',
             'BlockPeopleStoriesSlider',
             'BlockMultipleDownloads',
-            'BlockLatestInsightSlider',
+            'BlockRequestsSlider',
             'BlockContactForm',
             'BlockAnchorMenu',
             'BlockProcess',
             'BlockHighlights',
 
             // Listings
-            'BlockIndustryListing',
+            'BlockCompanyListing',
             'BlockLatestProducts',
 
         ];
