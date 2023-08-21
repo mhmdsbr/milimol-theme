@@ -174,8 +174,9 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "field_group_key": "group_6451fde6d5c44",
-            "repeatable": true,
+            "repeatable": 0,
             "layout": "block",
             "button_label": "",
             "appearances": "",
@@ -351,5 +352,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1692562989
+    "modified": 1692619029
 }

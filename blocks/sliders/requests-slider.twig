@@ -8,7 +8,7 @@
                     {% endif %}
 
                     {% if fields.show_title == true %}
-                        {{ check_value(fields.title, 'h1', 'requests-slider__title text-4xl text-lg-5xl') }}
+                        {{ check_value(fields.title, 'h1', 'requests-slider__title text-3xl text-lg-4xl') }}
                     {% endif %}
 
                     {% if fields.show_text == true %}
@@ -52,18 +52,17 @@
                                 <div class="swiper-slide requests-slider__request">
                                     <div class="requests-slider__request-content">
                                         {{ check_value( slide.post_title, 'h2', 'requests-slider__request-title') }}
+                                        {{ check_value(slide.cas_number,'p', 'requests-slider__request-number') }}
                                         <span>{{ __('توضیحات: ', 'expedition') }}</span>
                                         {{ check_value(slide.desc, 'p', 'requests-slider__request-desc') }}
                                         <p class="requests-slider__request-expiry">مدت اعتبار باقی مانده: 7 روز</p>
-                                        {{ check_value(slide.cas_number,'p', 'requests-slider__request-number') }}
                                         <div class="requests-slider__request-purity">
-                                            <div class= "progress-container js-progress-container" data-percentage='{{ slide.purity }}'>
+                                            <div class= "progress-container js-progress-container" data-percentage='{{ slide.purity }}' id="progress-{{ slide.ID }}">
                                                 <div class="progress"></div>
                                                 <div class="percentage">0%</div>
                                             </div>
                                         </div>
-                                        <span>{{ __('تاریخ انتشار: ', 'expedition') }}</span>
-                                        <p class="requests-slider__request-date" >{{ slide.date }}</p>
+                                        <p class="requests-slider__request-date" >{{ 'تاریخ انتشار: ' ~ slide.date }}</p>
                                     </div>
 
                                     <a href="{{ function('get_the_permalink', slide.ID) }}" class="requests-slider__request-link"></a>
