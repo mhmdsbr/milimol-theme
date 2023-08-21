@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_6474fcb383d1b",
-            "label": "ُفرآیند خرید و فروش",
+            "label": "فرآیند خرید و فروش",
             "name": "",
             "aria-label": "",
             "type": "message",
@@ -18,8 +18,7 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0,
-            "repeatable": true
+            "esc_html": 0
         },
         {
             "key": "field_6474fcb383d30",
@@ -90,8 +89,9 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "field_group_key": "group_6451fde6d5c44",
-            "repeatable": true,
+            "repeatable": 0,
             "layout": "block",
             "button_label": "",
             "appearances": "",
@@ -158,7 +158,8 @@
             "rows": "",
             "placeholder": "",
             "new_lines": "",
-            "repeatable": true
+            "repeatable": true,
+            "acfe_textarea_code": 0
         },
         {
             "key": "field_6474fcb383edb",
@@ -274,9 +275,12 @@
                     "mime_types": "",
                     "preview_size": "medium",
                     "repeatable": true,
+                    "uploader": "",
+                    "acfe_thumbnail": 0,
                     "parent_repeater": "field_6474fcb383edb"
                 }
-            ]
+            ],
+            "acfe_repeater_stylised_button": 0
         }
     ],
     "location": [
@@ -297,7 +301,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
     "is_acf_component": 0,
+    "acfe_form": 0,
     "acf_component_defaults": {
         "repeatable": "0",
         "min": "",
@@ -306,5 +315,7 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1692274356
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1692619067
 }

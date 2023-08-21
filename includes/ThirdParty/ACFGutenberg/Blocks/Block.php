@@ -49,7 +49,7 @@ class Block
             'BlockContactForm',
             'BlockAnchorMenu',
             'BlockProcess',
-            'BlockHighlights',
+            'BlockAdvertisements',
 
             // Listings
             'BlockCompanyListing',

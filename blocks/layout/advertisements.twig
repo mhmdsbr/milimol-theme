@@ -1,0 +1,55 @@
+<section class="advertisements {{ background_color(fields.background_color) }}">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                {{ check_value(fields.title, 'h2', "advertisements__title") }}
+            </div>
+            {% if fields.elements is array %}
+                {% set elementsBatched = fields.elements|batch(4) %}
+                {% for elementsRow in elementsBatched %}
+                    <div class="col-12 row">
+                        {% for element in elementsRow %}
+                            <div class="col-lg-3 mb-3">
+                                <div class="advertisements__content">
+                                    <div class="advertisements__content-inner">
+                                        <div class="advertisements__card-front">
+                                            {% if element.image is not empty %}
+                                                <img class="advertisements__image"
+                                                     src="{{ element.image['url'] }}"
+                                                     alt="{{ element.image['title'] }}"
+                                                     title="{{ element.image['title'] }}"
+                                                     loading="lazy"
+                                                />
+                                            {% endif %}
+                                        </div>
+                                        <div class="advertisements__card-back">
+                                            {% if element.icon is not empty %}
+                                                <img class="advertisements__icon"
+                                                     src="{{ element.icon['url'] }}"
+                                                     alt="{{ element.icon['title'] }}"
+                                                     title="{{ element.icon['title'] }}"
+                                                     loading="lazy"
+                                                />
+                                            {% endif %}
+                                            {{ check_value(element.title|slice(0, 36), 'h5', "advertisements__advertisement-title") }}
+                                            {{ check_value(element.subtitle|slice(0, 85) , 'p', "advertisements__advertisement-text") }}
+                                            {% if element.call_to_action is array %}
+                                                {% include "partial/button.twig" with {
+                                                    url : element.call_to_action.url,
+                                                    title : element.call_to_action.title,
+                                                    target : element.call_to_action.url,
+                                                    class : 'btn--primary advertisements__advertisement-link',
+                                                    icon : 'arrow-left',
+                                                } %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>

@@ -9,17 +9,17 @@ use Timber\Timber;
 use EXP\ThirdParty\ACFGutenberg\Abstracts\Blockable;
 
 
-class BlockHighlights extends Blockable
+class BlockAdvertisements extends Blockable
 {
-    protected $block_name = 'block_highlights';
+    protected $block_name = 'block_advertisements';
 
-    protected $block_title = 'بلاک هایلایت';
+    protected $block_title = 'بلاک تبلیغات';
 
     protected $block_category = 'process';
 
-    protected $block_icon = 'slides';
+    protected $block_icon = 'block';
 
-    protected $block_keywords = ['process', 'timeline' , 'highlight'];
+    protected $block_keywords = ['تبلیغات', 'کارت' , 'بنر'];
 
     protected $block_jsx = true;
 
@@ -40,6 +40,6 @@ class BlockHighlights extends Blockable
         $context['fields']     = get_fields();
         $context['is_preview'] = $is_preview;
 
-        Timber::render('blocks/layout/highlights.twig', $context);
+        Timber::render('blocks/layout/advertisements.twig', $context);
     }
 }

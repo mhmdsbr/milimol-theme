@@ -1,10 +1,10 @@
 {
     "key": "group_6474f90b7d3f6",
-    "title": "بلاک: هایلایت",
+    "title": "بلاک: کارت تبلیغات",
     "fields": [
         {
             "key": "field_6474f90ba9fd6",
-            "label": "هایلایت",
+            "label": "تبلیغات",
             "name": "",
             "aria-label": "",
             "type": "message",
@@ -18,8 +18,7 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0,
-            "repeatable": true
+            "esc_html": 0
         },
         {
             "key": "field_6474f90baa023",
@@ -53,10 +52,9 @@
                 "class": "",
                 "id": ""
             },
-            "message": "در این قسمت میتوانید یک ردیف از محتوای مورد نظر خود را به همراه آیکون اضافه کنید",
+            "message": "در این قسمت میتوانید یک ردیف از محتوای مورد نظر خود را به منظور نمایش تبلیغات اضافه کنید.",
             "new_lines": "wpautop",
-            "esc_html": 0,
-            "repeatable": true
+            "esc_html": 0
         },
         {
             "key": "field_6474fabd4c55a",
@@ -90,8 +88,9 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "field_group_key": "group_6451fde6d5c44",
-            "repeatable": true,
+            "repeatable": 0,
             "layout": "block",
             "button_label": "",
             "appearances": "",
@@ -187,6 +186,37 @@
                     "mime_types": "jpg,jpeg,png,gif,bmp,tiff,svg,ico,webp,raw",
                     "preview_size": "thumbnail",
                     "repeatable": true,
+                    "uploader": "",
+                    "acfe_thumbnail": 0,
+                    "parent_repeater": "field_6474f98eb6805"
+                },
+                {
+                    "key": "field_64e34845ba3d8",
+                    "label": "آیکون",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "acfe_save_meta": 0,
+                    "uploader": "",
+                    "return_format": "array",
+                    "acfe_thumbnail": 0,
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "jpg,jpeg,png,gif,bmp,tiff,svg,ico,webp,raw",
+                    "preview_size": "thumbnail",
+                    "library": "all",
                     "parent_repeater": "field_6474f98eb6805"
                 },
                 {
@@ -251,7 +281,8 @@
                     "repeatable": true,
                     "parent_repeater": "field_6474f98eb6805"
                 }
-            ]
+            ],
+            "acfe_repeater_stylised_button": 0
         }
     ],
     "location": [
@@ -259,7 +290,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/block-highlights"
+                "value": "acf\/block-advertisements"
             }
         ]
     ],
@@ -272,7 +303,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
     "is_acf_component": 0,
+    "acfe_form": 0,
     "acf_component_defaults": {
         "repeatable": "0",
         "min": "",
@@ -281,5 +317,7 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1692274356
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1692619044
 }
