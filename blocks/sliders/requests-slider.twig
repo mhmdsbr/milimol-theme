@@ -52,17 +52,30 @@
                                 <div class="swiper-slide requests-slider__request">
                                     <div class="requests-slider__request-content">
                                         {{ check_value( slide.post_title, 'h2', 'requests-slider__request-title') }}
-                                        {{ check_value(slide.cas_number,'p', 'requests-slider__request-number') }}
+
+                                        {% set casNumber = slide.cas_number %}
+                                        {{ check_value(casNumber,'p', 'requests-slider__request-number') }}
                                         <span>{{ __('توضیحات: ', 'expedition') }}</span>
                                         {{ check_value(slide.desc, 'p', 'requests-slider__request-desc') }}
-                                        <p class="requests-slider__request-expiry">مدت اعتبار باقی مانده: 7 روز</p>
+
+                                        {% set publishedDate = slide.date %}
+                                        {% set expiryDuration = slide.expire_duration|default(0) %}
+                                        {% set remainingDays = expiry_date(publishedDate, expiryDuration) %}
+                                        <div class="requests-slider__request-expiry">
+                                            {% if remainingDays < 0 %}
+                                                <p>تاریخ انتشار: منقضی شده</p>
+                                            {% else %}
+                                                <p>مدت اعتبار باقی مانده: {{ english_numbers(remainingDays) }} روز</p>
+                                            {% endif %}
+                                        </div>
+
                                         <div class="requests-slider__request-purity">
                                             <div class= "progress-container js-progress-container" data-percentage='{{ slide.purity }}' id="progress-{{ slide.ID }}">
                                                 <div class="progress"></div>
                                                 <div class="percentage">0%</div>
                                             </div>
                                         </div>
-                                        <p class="requests-slider__request-date" >{{ 'تاریخ انتشار: ' ~ slide.date }}</p>
+                                        <p class="requests-slider__request-date" >{{ 'تاریخ انتشار: ' ~ english_numbers(slide.date('d-m-Y')) }}</p>
                                     </div>
 
                                     <a href="{{ function('get_the_permalink', slide.ID) }}" class="requests-slider__request-link"></a>

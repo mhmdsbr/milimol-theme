@@ -99,7 +99,7 @@
                                                 {{ check_value('Purity : ' ~ product.product_purity~'%', 'p', 'product-slider__slide-product-purity') }}
                                             {%  endif %}
 
-                                            {{ check_value('تاریخ انتشار: '  ~ product.post_date|date('H:i Y-m-d') , 'p', 'product-slider__slide-product-date') }}
+                                            {{ check_value('تاریخ انتشار: '  ~ english_numbers(product.post_date|date('d-m-Y')) , 'p', 'product-slider__slide-product-date') }}
                                         </div>
                                         <a href="{{ product.get_permalink() }}" class="product-slider__slide-product-link"></a>
                                     </div>

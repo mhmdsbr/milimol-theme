@@ -104,8 +104,14 @@
 					<div class="row company-single__intro">
 						<div class="col-12">
 							<div class="company-single__intro-content">
-								<span>رزومه:</span>
-								<p>{{ post.company_intro }}</p>
+								<label>رزومه:</label>
+								<p>
+									{{ post.company_intro|slice(0, 200) }} <!-- Display a portion of the content -->
+									<span class="company-single__intro-full-content" style="display: none;">
+										{{ post.company_intro }} <!-- Full content -->
+									</span>
+								</p>
+								<a href="#" class="company-single__intro-read-more-btn">بیشتر بخوانید</a>
 							</div>
 						</div>
 					</div>
@@ -196,8 +202,27 @@
 						</div>
 					</div>
 
+					{% set relatedProducts = [] %}
+					{% for product in products %}
+						{% set relatedCompaniesTitle =  product.associated_company[0].post_title %}
+						{% set productsImg =  product.image_url %}
+						{% set productsName =  product.get_name %}
+						{% set productsCat =  product.product_cat|slice(0,1) %}
+						{% set productsCatCas =  product.product_cat_cas %}
+						{% set productsPurity =  product.product_purity %}
+						{% set relatedProducts = relatedProducts|merge([{
+							'post_title' : post.title,
+							'image_url' : productsImg,
+							'name' : productsName,
+							'company_title' : relatedCompaniesTitle,
+							'product_cat' : productsCat,
+							'product_cat_cas' : productsCatCas,
+							'product_purity' : productsPurity,
+						}]) %}
+					{% endfor %}
 					{% include 'blocks/sliders/related-products-slider.twig' with {
-						relatedProductTitle : 'محصولات شرکت'
+						relatedProductSliderTitle : 'محصولات شرکت',
+						products : relatedProducts,
 					} %}
 
 					{% set poster = post.get_field('company_video_bg') %}

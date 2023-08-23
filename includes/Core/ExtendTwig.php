@@ -6,6 +6,9 @@ use EXP\Core\TwigFunctions\TwigFunctions;
 use Twig\Environment;
 use Twig\TwigFunction;
 use Twig\TwigTest;
+// Jalali date
+use Carbon\Carbon;
+use Morilog\Jalali\Jalalian;
 
 /**
  * Timber/Twig extend functions
@@ -39,6 +42,10 @@ class ExtendTwig
         $twig->addFunction(new TwigFunction('exp_mobile', array($this, 'exp_is_mobile')));
         $twig->addFunction(new TwigFunction('get_value', array($this, 'check_get')));
         $twig->addFunction(new TwigFunction('is_home', array($this, 'is_home')));
+        $twig->addFunction(new TwigFunction('jalali_date', array($this, 'get_jalali_date')));
+        $twig->addFunction(new TwigFunction('expiry_date', array($this, 'get_jalali_expiry_date')));
+        $twig->addFunction(new TwigFunction('english_numbers', array($this, 'get_english_to_persian')));
+
 
         return $twig;
     }
@@ -136,4 +143,30 @@ class ExtendTwig
         return is_front_page();
     }
 
+function get_jalali_date(): string
+{
+    return Jalalian::now()->format('Y-m-d');
 }
+
+// Calculate Jalali expiry date based on published date and ACF field
+    function get_jalali_expiry_date($publishedDate, $expiryDuration)
+    {
+        $now = date('Y-m-d H:i:s');
+        $carbonPublishedDate = Carbon::parse($publishedDate);
+        $diffPubNow = $carbonPublishedDate->diff($now)->format("%d");
+        $remainingDays = $expiryDuration - $diffPubNow;
+
+        return $remainingDays;
+
+    }
+
+    // Add a filter to convert Persian digits to English
+    function get_english_to_persian($number): array|string
+    {
+        $englishNumbers = \Morilog\Jalali\CalendarUtils::convertNumbers($number);
+
+        return $englishNumbers;
+    }
+
+}
+
