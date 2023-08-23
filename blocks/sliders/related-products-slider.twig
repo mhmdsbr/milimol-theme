@@ -2,7 +2,7 @@
     <div class="col-12 gx-0">
         <div class="related-product-slider__header">
             <h3 class="related-product-slider__title">
-                {{ relatedProductTitle }}
+                {{ relatedProductSliderTitle }}
             </h3>
             <div class="related-product-slider__controls">
                 <div class="related-product-slider__pagination"></div>
@@ -21,25 +21,41 @@
     <div class="col-12 gx-0">
         <div class="swiper swiper-container related-product-slider__swiper-container js-related-product-slider">
             <div class="swiper-wrapper">
-                {% for i in range(1, 6) %}
-                    <div class="swiper-slide related-product-slider__slide">
-                        <div class="related-product-slider__product-header">
-                            <img class="related-product-slider__product-image"
-                                 src="/wp-content/uploads/2023/07/close-up-researcher-holding-glassware-1.jpg"
-                                 alt="{{ product.get_title }}"
-                                 loading="lazy"
-                            />
+                {% for product in products %}
+                    {% if product.company_title|replace({'\\s+': ''}) == product.post_title|replace({'\\s+': ''}) %}
+                        <div class="swiper-slide related-product-slider__slide">
+                            <div class="related-product-slider__product-header">
+                                <img class="related-product-slider__product-image"
+                                     src="{{ product.image_url.src }}"
+                                     srcset="{{ product.image_url.srcset }}"
+                                     alt="{{ product.name }}"
+                                     title="{{ product.name }}"
+                                     loading="lazy"
+                                />
+                            </div>
+                            <div class="related-product-slider__product-content">
+                                <p class="related-product-slider__product-company">{{ product.company_title }}</p>
+                                <p class="related-product-slider__product-name">{{ product.name }}</p>
+
+                                {% for category in product.product_cat %}
+                                    {{ check_value(category.name, 'p', 'related-product-slider__product-category') }}
+                                {% endfor %}
+
+                                {% if product.product_cat_cas %}
+                                    {% for category in product.product_cat_cas %}
+                                        {{ check_value('Cas No : ' ~ category.name, 'p', 'related-product-slider__product-cas') }}
+                                    {% endfor %}
+                                {% endif %}
+
+                                {% if product.product_purity %}
+                                    {{ check_value('Purity : ' ~ product.product_purity~'%', 'p', 'related-product-slider__product-purity') }}
+                                {%  endif %}
+
+                                {{ check_value('تاریخ انتشار: '  ~ english_numbers(product.post_date|date('d-m-Y')) , 'p', 'related-product-slider__product-publish-date') }}
+                            </div>
+                            <a href="{{ product.get_permalink() }}" class="related-product-slider__product-link"></a>
                         </div>
-                        <div class="related-product-slider__product-content">
-                            <p class="related-product-slider__product-company">شرکت دکتر مجللی</p>
-                            <p class="related-product-slider__product-name">متانول</p>
-                            <p class="related-product-slider__product-category">صنایع شیمیایی</p>
-                            <p class="related-product-slider__product-cas"> CAS No: 2324-23-222 </p>
-                            <p class="related-product-slider__product-purity">Purity: 90%</p>
-                            <p class="related-product-slider__product-publish-date">تاریخ انتشار: 2022/12/02</p>
-                        </div>
-                        <a href="{{ product.get_permalink() }}" class="related-product-slider__product-link"></a>
-                    </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>

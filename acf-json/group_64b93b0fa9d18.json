@@ -139,6 +139,29 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_64e4f1225a0a3",
+            "label": "مدت اعتبار",
+            "name": "expire_duration",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "min": "",
+            "max": 30,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "روز"
         }
     ],
     "location": [
@@ -175,5 +198,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1692565299
+    "modified": 1692725635
 }

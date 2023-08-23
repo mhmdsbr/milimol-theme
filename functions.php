@@ -1,7 +1,9 @@
 <?php
-require 'includes/timber.php';
 
-/** Autoload classes in `includes` folder */
+
+require 'includes/timber.php';
+require_once __DIR__ . '/vendor/autoload.php';
+
 spl_autoload_register(function ($classname) {
     $parts = explode('\\', $classname);
     array_shift($parts);
@@ -118,7 +120,17 @@ function ajax_search_results() {
 
     // Update 2: Make sure the search query is not empty before performing the query
     if (!empty($search_query)) {
-        $posts = new Timber\PostQuery(array('s' => $search_query)); // Assign the Timber\PostQuery object to a variable
+
+        $args = array(
+            's' => $search_query,
+            'post_type' => 'product',
+            'post_status' => 'publish',
+            'posts_per_page' => -1, // Retrieve all matching results
+        );
+
+
+        $posts = new Timber\PostQuery($args);
+
         $context['posts'] = $posts; // Use the Timber\PostQuery object directly in the context
     } else {
         // If the search query is empty, set an empty array for the posts.
@@ -136,13 +148,16 @@ add_action('wp_ajax_ajax_search', 'ajax_search_results');
 add_action('wp_ajax_nopriv_ajax_search', 'ajax_search_results');
 
 
-function theme_add_woocommerce_support() {
+
+function theme_add_woocommerce_support(): void
+{
     add_theme_support( 'woocommerce' );
 }
 
 add_action( 'after_setup_theme', 'theme_add_woocommerce_support' );
 
-function timber_set_product( $post ) {
+function timber_set_product( $post ): void
+{
     global $product;
 
     if ( is_woocommerce() ) {

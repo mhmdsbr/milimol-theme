@@ -1,6 +1,6 @@
 {% block content %}
 
-    <div class="pt-5 pb-5 bg-white rounded-4">
+    <div class="pt-5 pb-5 bg-white rounded-4 h-100">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -14,9 +14,9 @@
                                         {% endif %}
                                     </div> {# /.image #}
                                     <div class="search__results-ajax-content">
-                                        <p><small>{{ post.date }}</small></p>
                                         <p><strong>{{post.title}}</strong></p>
                                     </div> {# /.copy #}
+                                    <a href="{{ post.get_permalink() }}" class="search__results-ajax-link"></a>
                                 </li>
                             {% endfor %}
                         </ul>
