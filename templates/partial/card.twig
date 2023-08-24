@@ -25,9 +25,11 @@
             {% if expireDate is not empty %}
                 <p>{{ expireDate }}</p>
             {% endif %}
-            <a href="{{ btnTitle }}" title="{{ btnTitle }}" class="card__contact-btn">
-                {{ btnTitle }}
-            </a>
+            {% if btnTitle is not empty %}
+                <a href="{{ btnTitle }}" title="{{ btnTitle }}" class="card__contact-btn">
+                    {{ btnTitle }}
+                </a>
+            {% endif %}
         </div>
     </div>
 

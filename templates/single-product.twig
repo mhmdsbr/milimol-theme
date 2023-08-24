@@ -1,29 +1,208 @@
 {% extends "base.twig" %}
 
+{#{% block content %}#}
+
+{#    {% do action('woocommerce_before_single_product') %}#}
+
+{#    <article itemscope itemtype="http://schema.org/Product" class="single-product-details {{ post.class }}">#}
+
+{#        <div class="entry-images">#}
+{#            {% do action('woocommerce_before_single_product_summary') %}#}
+
+{#            <img src="{{ post.thumbnail.src('shop_single') }}" />#}
+{#        </div>#}
+
+{#        <div class="summary entry-summary">#}
+{#            {% do action('woocommerce_single_product_summary') %}#}
+{#        </div>#}
+
+{#        {% do action('woocommerce_after_single_product_summary') %}#}
+
+{#        <meta itemprop="url" content="{{ post.link }}" />#}
+
+{#    </article>#}
+
+{#    {% include ["tease-product.twig"] with { products: related_products } %}#}
+
+{#    {% do action('woocommerce_after_single_product') %}#}
+
+{#{% endblock  %}#}
+
 {% block content %}
 
-    {% do action('woocommerce_before_single_product') %}
+        <header class="product-single__banner image-header">
+            <div class="image-header__background">
+                <picture>
+                    {% set productHeaderBg = Image(post.product_header_bg) %}
+                    <img
+                        src="{{ productHeaderBg.src }}"
+                        srcset="{{ productHeaderBg.srcset }}"
+                        alt="{{ productHeaderBg.title }}"
+                        title="{{ productHeaderBg.title }}"
+                        loading="lazy" />
+                </picture>
+            </div>
+        </header>
+        <section class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <article itemscope itemtype="http://schema.org/Product" id="post-{{ post.ID }}" class="product-single__main-content post-{{ post.ID }} single-{{ post.post_type }}">
+                        <div class="row product-single__info">
+                            <div class="col-md-3">
+                                <div class="product-single__thumbnail">
+                                    <picture>
+                                        <img
+                                            src="{{ post.thumbnail.src }}"
+                                            srcset="{{ post.thumbnail.srcset }}"
+                                            alt="{{ post.thumbnail.title }}"
+                                            title="{{ post.thumbnail.title }}"
+                                            loading="lazy" />
+                                    </picture>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h4 class="product-single__product-name">{{ post.title }}</h4>
+                                        <p class="product-single__cas_number">231-254-1</p>
+                                        <p class="product-single__product_date">{{ post.date('d-m-Y') }}</p>
+                                    </div>
+                                    <div class="col-12 mb-3 col-lg-6 ">
+                                        <div class="product-single__info-content product-single--country">
+                                            <span>برند: </span>
+                                            <p>{{ post.product_brand }}</p>
+                                        </div>
+                                        <div class="product-single__info-content product-single--city">
+                                            <span>شکل ظاهری: </span>
+                                            <p>{{ post.product_appearence }}</p>
+                                        </div>
+                                        <div class="product-single__info-content product-single--job-field">
+                                            <span>کشور تولید کننده: </span>
+                                            <p>{{ post.product_country }}</p>
+                                        </div>
+                                        <div class="product-single__info-content product-single--start-date">
+                                            <span>برگه آنالیز: </span>
+                                            <p>{{ post.product_analyse }}</p>
+                                        </div>
+                                        <div class="product-single__info-content product-single--ceo">
+                                            <span>محل تحویل: </span>
+                                            <p>{{ post.product_location }}</p>
+                                        </div>
+                                        <div class="product-single__info-content product-single--personnel-no">
+                                            <span>کد شناسایی یا نام اختصاصی: </span>
+                                            <p>{{ post.product_unique_id }}</p>
+                                        </div>
+                                        <div class="product-single__info-content product-single--analyse-download">
+                                            <a href="{{ post.get_field('product_analyse_download').url }}">دانلود برگه آنالیز(COA)</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3 col-lg-6 ">
+                                        <div class="product-single__info-content product-single--office-phone">
+                                            <span>درصد خلوص: </span>
+                                            <p>{{ post.product_purity }}</p>
+                                        </div>
+                                        <div class="product-single__info-content product-single--company-phone">
+                                            <span>گرید: </span>
+                                            <p>{{ post.product_grade }}</p>
+                                        </div>
+                                        <div class="product-single__info-content product-single--office-address">
+                                            <span>بسته بندی: </span>
+                                            <p>{{ post.product_package }}</p>
+                                        </div>
+                                        <div class="product-single__info-content product-single--company-address">
+                                            <span>حداقل سفارش: </span>
+                                            <p>{{ post.product_order_quantity }}</p>
+                                        </div>
+                                        <div class="product-single__info-content product-single--mobile">
+                                            <span>قیمت: </span>
+                                            <p>{{ post.product_price }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-    <article itemscope itemtype="http://schema.org/Product" class="single-product-details {{ post.class }}">
+                        <div class="row product-single__intro">
+                            <div class="col-12">
+                                <div class="product-single__intro-content">
+                                    <label>توضیحات:</label>
+                                    {{ check_value(post.content, 'p', '')}}
+                                </div>
+                            </div>
+                        </div>
 
-        <div class="entry-images">
-            {% do action('woocommerce_before_single_product_summary') %}
-
-            <img src="{{ post.thumbnail.src('shop_single') }}" />
-        </div>
-
-        <div class="summary entry-summary">
-            {% do action('woocommerce_single_product_summary') %}
-        </div>
-
-        {% do action('woocommerce_after_single_product_summary') %}
-
-        <meta itemprop="url" content="{{ post.link }}" />
-
-    </article>
-
-    {% include ["tease-product.twig"] with { products: related_products } %}
-
-    {% do action('woocommerce_after_single_product') %}
+                        <div class="row product-single--ad-banner mt-8">
+                            <div class="col-12 col-md-6">
+                                <div class="image-banner image-banner--first">
+                                    <div class="image-banner__background">
+                                        {% set productAdOne = post.get_field('product_ad_banner_first') %}
+                                        <picture>
+                                            <img
+                                                    src="{{ productAdOne.url }}"
+                                                    srcset="{{ productAdOne.srcset }}"
+                                                    alt="{{ productAdOne.title }}"
+                                                    title="{{ productAdOne.title }}"
+                                                    loading="lazy" />
+                                        </picture>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="image-banner image-banner--second">
+                                    <div class="image-banner__background">
+                                        {% set productAdTwo = post.get_field('product_ad_banner_second') %}
+                                        <picture>
+                                            <img
+                                                    src="{{ productAdTwo.url }}"
+                                                    srcset="{{ productAdTwo.srcset }}"
+                                                    alt="{{ productAdTwo.title }}"
+                                                    title="{{ productAdTwo.title }}"
+                                                    loading="lazy" />
+                                        </picture>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4">
+                    <div class="product-single__sidebar">
+                        {% set productIcon = Image(post.product_icon) %}
+                        <div class="product-single__icon">
+                            <img src="{{ productIcon.src }}"
+                                 srcset="{{ productIcon.srcset }}"
+                                 alt="{{ productIcon.title }}"
+                                 title="{{ productIcon.title }}"
+                                 loading="lazy"
+                            />
+                        </div>
+                        {% set productSuppliers = post.get_field('product_supplier_linked') %}
+                        {% for productSupplier in productSuppliers %}
+                            <h3 class="product-single__product-supplier">{{ productSupplier.post_title }}</h3>
+                            <div class="product-single__contact-btn">
+                                {% include "partial/button.twig" with {
+                                    url : 'tel:' ~ productSupplier.get_field('company_mobile'),
+                                    title : 'تماس با شرکت',
+                                    target : fields.button.target,
+                                    class : 'btn--primary product-single__button',
+                                    icon : 'phone'
+                                } %}
+                            </div>
+                        {% endfor %}
+                        <div class="company-single__image-gallery">
+                            {% set productImgGallery = post.get_field('product_img_gallery') %}
+                            {% for image in productImgGallery %}
+                                <div class="product-single__image-gallery-item">
+                                    <img src="{{ image.url }}"
+                                         alt="image-gallery"
+                                         loading="lazy"
+                                    />
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 {% endblock  %}
