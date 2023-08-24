@@ -1,0 +1,59 @@
+<section class="requests-listing">
+    <div class="requests-listing__header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+
+                    {% if fields.show_title == true %}
+                        {{ check_value(fields.title, 'h1', 'requests-listing__title text-3xl text-lg-4xl') }}
+                    {% endif %}
+
+                    {% if fields.show_text == true %}
+                        {{ check_value(fields.text, 'p', 'requests-listing__text text-base text-md-lg') }}
+                    {% endif %}
+
+                    {% if fields.show_link == true and fields.link is array %}
+                        {% include "partial/button.twig" with {
+                            url : fields.link.url,
+                            title : fields.link.title,
+                            target : fields.link.target,
+                            class : 'btn--primary requests-listing__button',
+                            icon : 'arrow-left'
+                        } %}
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-9">
+                {% for item in requests %}
+                    <div class="col-12">
+                        {% set publishedDate = item.post_date|date('d-m-Y') %}
+                        {% set expiryDuration = item.expire_duration|default(0) %}
+                        {% set remainingDays = english_numbers(expiry_date(publishedDate, expiryDuration)) %}
+                        {% if remainingDays < 0 %}
+                            {% set remainingDays = 'منقضی شده' %}
+                        {% endif %}
+                        {% include "partial/card.twig" with {
+                            id : item.ID,
+                            image : '',
+                            title : item.post_title,
+                            content : 'Cas No: ' ~ item.cas_number,
+                            weight : 'مقدار: ' ~ item.request_weight|default('-'),
+                            expireDate : 'مدت اعتبار: ' ~ remainingDays,
+                            btnTitle : 'تماس با خریدار',
+                            url : get_link(item.ID),
+                            customClass : ' card--requestslisting'
+                        } %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

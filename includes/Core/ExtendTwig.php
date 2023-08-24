@@ -151,7 +151,7 @@ function get_jalali_date(): string
 // Calculate Jalali expiry date based on published date and ACF field
     function get_jalali_expiry_date($publishedDate, $expiryDuration)
     {
-        $now = date('Y-m-d H:i:s');
+        $now = Jalalian::now()->format('Y-m-d');
         $carbonPublishedDate = Carbon::parse($publishedDate);
         $diffPubNow = $carbonPublishedDate->diff($now)->format("%d");
         $remainingDays = $expiryDuration - $diffPubNow;

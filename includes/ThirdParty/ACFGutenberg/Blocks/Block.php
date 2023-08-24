@@ -29,7 +29,6 @@ class Block
             'BlockBigVisualHeader',
 
             // Blocks
-            'BlockCasesSlider',
             'BlockSummary',
             'BlockBanner',
             'BlockIntro',
@@ -43,7 +42,6 @@ class Block
             'BlockContent',
             'BlockSingleDownload',
             'BlockQuote',
-            'BlockPeopleStoriesSlider',
             'BlockMultipleDownloads',
             'BlockRequestsSlider',
             'BlockContactForm',
@@ -54,6 +52,7 @@ class Block
             // Listings
             'BlockCompanyListing',
             'BlockLatestProducts',
+            'BlockRequestsListing',
 
         ];
     }

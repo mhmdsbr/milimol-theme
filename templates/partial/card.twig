@@ -1,22 +1,11 @@
 <div class="card{{ customClass }}">
     {% if image is not empty %}
         {% set image = Image(image) %}
-    {% else %}
-        {% set image = Image(function('get_stylesheet_directory') ~ '/images/image-header-placeholder.jpg') %}
-    {% endif %}
     <img class="card__image" src="{{ image.src }}" srcset="{{ image.srcset }}" alt="{{ image.alt }}" title="{{ title }}" loading="lazy" />
+    {% endif %}
 
     <div class="card__head">
         <div class="card__title-block">
-{#            {% if id is not empty %}#}
-{#                {% set item_fields = get_acf_fields(id) %}#}
-{#                {% if item_fields.icon is array %}#}
-{#                    {% for icon in item_fields.icon %}#}
-{#                        <span>{{ fetch_svg(icon.icons) }}</span>#}
-{#                    {% endfor %}#}
-{#                {% endif %}#}
-{#            {% endif %}#}
-
             {% if title is not empty %}
                 <h3 class="card__title">
                     {{ title }}
@@ -24,10 +13,22 @@
                 </h3>
             {% endif %}
         </div>                        
+        <div class="card__content">
+            {% if content is not empty %}
+                <p>{{ content }}</p>
+            {% endif %}
 
-        {% if content is not empty %}
-            <p class="card__content">{{ content }}</p>
-        {% endif %}
+            {% if weight is not empty %}
+                <p>{{ weight }}</p>
+            {% endif %}
+
+            {% if expireDate is not empty %}
+                <p>{{ expireDate }}</p>
+            {% endif %}
+            <a href="{{ btnTitle }}" title="{{ btnTitle }}" class="card__contact-btn">
+                {{ btnTitle }}
+            </a>
+        </div>
     </div>
 
     {% if url is not empty %}

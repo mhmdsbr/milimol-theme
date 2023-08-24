@@ -56,9 +56,9 @@
                                         {% set casNumber = slide.cas_number %}
                                         {{ check_value(casNumber,'p', 'requests-slider__request-number') }}
                                         <span>{{ __('توضیحات: ', 'expedition') }}</span>
-                                        {{ check_value(slide.desc, 'p', 'requests-slider__request-desc') }}
+                                        {{ check_value(slide.desc|slice(0,100) ~ '...', 'p', 'requests-slider__request-desc') }}
 
-                                        {% set publishedDate = slide.date %}
+                                        {% set publishedDate = slide.post_date|date('d-m-Y') %}
                                         {% set expiryDuration = slide.expire_duration|default(0) %}
                                         {% set remainingDays = expiry_date(publishedDate, expiryDuration) %}
                                         <div class="requests-slider__request-expiry">
@@ -75,7 +75,7 @@
                                                 <div class="percentage">0%</div>
                                             </div>
                                         </div>
-                                        <p class="requests-slider__request-date" >{{ 'تاریخ انتشار: ' ~ english_numbers(slide.date('d-m-Y')) }}</p>
+                                        <p class="requests-slider__request-date" >{{ 'تاریخ انتشار: ' ~ english_numbers(slide.post_date('d-m-Y')) }}</p>
                                     </div>
 
                                     <a href="{{ function('get_the_permalink', slide.ID) }}" class="requests-slider__request-link"></a>

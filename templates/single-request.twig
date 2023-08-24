@@ -1,0 +1,98 @@
+{% extends 'single.twig' %}
+
+{% block content %}
+	<header class="request-single__banner image-header">
+		<div class="image-header__background">
+			<picture>
+				<img
+					src="{{ post.thumbnail.src }}"
+					srcset="{{ post.thumbnail.srcset }}"
+					alt="{{ post.thumbnail.title }}"
+					title="{{ post.thumbnail.title }}"
+					loading="lazy" />
+			</picture>
+		</div>
+	</header>
+	<section class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="request-single__sidebar">
+					<div class="request-single__username">
+						<span>نام کاربری یا شرکت:</span>
+						<p>شرکت شیمیایی آروین</p>
+					</div>
+					<div class="request-single__contact-btn">
+						{% include "partial/button.twig" with {
+							url : 'tel:' ~ post.get_field('request_mobile'),
+							title : 'تماس با خریدار',
+							target : fields.button.target,
+							class : 'btn--primary request-single__button',
+							icon : 'phone'
+						} %}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<article id="post-{{ post.ID }}" class="container request-single__main-content post-{{ post.ID }} single-{{ post.post_type }}">
+					<div class="row request-single__intro">
+						<div class="col-12">
+							<h3 class="request-single__company-name">{{ post.title }}</h3>
+							<div class="request-single__intro-content">
+								<label>توضیحات:</label>
+								<p>
+									{{ post.desc }} <!-- Display a portion of the content -->
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="row request-single__info">
+						<div class="col-12 mb-3 col-lg-6 ">
+							<div class="request-single__info-content request-single--date">
+								{{ fetch_svg('meta-calendar') }}
+								<div class="request-single__info-text">
+									<span>تاریخ ثبت:</span>
+									<p>{{ english_numbers(post.date('Y-m-d')) }}</p>
+								</div>
+							</div>
+							<div class="request-single__info-content request-single--cas">
+								{{ fetch_svg('numbers') }}
+								<div class="request-single__info-text">
+									<span>Cas No:</span>
+									<p>{{ post.cas_number }}</p>
+								</div>
+							</div>
+							<div class="request-single__info-content request-single--expire">
+								{{ fetch_svg('expire') }}
+								<div class="request-single__info-text">
+									{% set publishedDate = post.date %}
+									{% set expiryDuration = post.expire_duration|default(0) %}
+									{% set remainingDays = expiry_date(publishedDate, expiryDuration) %}
+									<span>مدت اعتبار:</span>
+									{% if remainingDays < 0 %}
+										<p>منقضی شده</p>
+									{% else %}
+										<p>{{ english_numbers(remainingDays) }} روز</p>
+									{% endif %}
+								</div>
+							</div>
+							<div class="request-single__info-content request-single--purity">
+								{{ fetch_svg('chemic-container') }}
+								<div class="request-single__info-text">
+									<span>درصد خلوص:</span>
+									<p>{{ post.purity ~ '%' }}</p>
+								</div>
+							</div>
+							<div class="request-single__info-content request-single--weight">
+								{{ fetch_svg('weight') }}
+								<div class="request-single__info-text">
+									<span>مقدار سفارش:</span>
+									<p>{{ post.request_weight }}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+{% endblock %}

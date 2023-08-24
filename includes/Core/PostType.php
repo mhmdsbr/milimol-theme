@@ -90,41 +90,6 @@ class PostType
             $supports_process,
         );
 
-
-        $supports_cases = array('title', 'thumbnail', 'revisions', 'page-attributes');
-        $this->registerPostType(
-            'case',
-            'Cases',
-            'Case',
-            'case',
-            true,
-            'case',
-            true,
-            false,
-            [],
-            true,
-            'dashicons-portfolio',
-            true,
-            $supports_cases
-        );
-
-
-        $this->registerPostType(
-            'people_story',
-            'People Stories',
-            'People Story',
-            'people_story',
-            false,
-            'people_story',
-            true,
-            false,
-            [],
-            true,
-            'dashicons-admin-comments',
-            true,
-            $supports
-        );
-
         $this->registerTaxonomy(
             'شماره هویت',
             ' شماره هویت',

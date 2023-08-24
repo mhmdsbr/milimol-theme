@@ -162,6 +162,27 @@
             "step": "",
             "prepend": "",
             "append": "روز"
+        },
+        {
+            "key": "field_64e73a67e5ec4",
+            "label": "مقدار سفارش",
+            "name": "request_weight",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -198,5 +219,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1692725635
+    "modified": 1692876170
 }
