@@ -273,7 +273,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64535c8a4a3e9__trashed",
+                        "field": "field_64535c8a4a3e9",
                         "operator": "==",
                         "value": "1"
                     }
@@ -289,8 +289,7 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64535c8a4a597",
@@ -303,7 +302,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64535c8a4a478__trashed",
+                        "field": "field_64535c8a4a478",
                         "operator": "==",
                         "value": "1"
                     }
@@ -320,8 +319,7 @@
             "maxlength": "",
             "rows": 5,
             "placeholder": "",
-            "new_lines": "",
-            "repeatable": true
+            "new_lines": ""
         },
         {
             "key": "field_64535c8a4a54f",
@@ -334,7 +332,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64535c8a4a431__trashed",
+                        "field": "field_64535c8a4a431",
                         "operator": "==",
                         "value": "1"
                     }
@@ -346,8 +344,7 @@
                 "id": ""
             },
             "acfe_save_meta": 0,
-            "return_format": "array",
-            "repeatable": true
+            "return_format": "array"
         },
         {
             "key": "field_64535d3e548fc",
@@ -440,5 +437,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1692954690
+    "modified": 1692985627
 }

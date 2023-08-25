@@ -40,9 +40,7 @@
                 "publish"
             ],
             "taxonomy": "",
-            "filters": [
-                "search"
-            ],
+            "filters": "",
             "return_format": "object",
             "acfe_bidirectional": {
                 "acfe_bidirectional_enabled": "1",
@@ -447,5 +445,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1692955267
+    "modified": 1692986611
 }

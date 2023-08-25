@@ -63,62 +63,64 @@
                             <div class="col-md-9">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h4 class="product-single__product-name">{{ post.title }}</h4>
-                                        {% set productCasNumbers = post.terms('product_cas_no') %}
-                                        {% for productCasNo in productCasNumbers %}
-                                            <p class="product-single__cas_number">{{ 'Cas No:' ~ productCasNo.name }}</p>
-                                        {% endfor %}
-                                        <p class="product-single__product_date">{{'تاریخ ثبت: ' ~ english_numbers(post.date('Y-m-d')) }}</p>
+                                        <div class="product-single__info-content-head">
+                                            <h4 class="product-single__product-name">{{ post.title }}</h4>
+                                            {% set productCasNumbers = post.terms('product_cas_no') %}
+                                            {% for productCasNo in productCasNumbers %}
+                                                <p class="product-single__cas_number">{{ 'Cas No: ' ~  productCasNo.name }}</p>
+                                            {% endfor %}
+                                            <p class="product-single__product_date">{{'تاریخ ثبت: ' ~ english_numbers(post.date('d-m-Y')) }}</p>
+                                        </div>
                                     </div>
                                     <div class="col-12 mb-3 col-lg-6 ">
-                                        <div class="product-single__info-content product-single--country">
+                                        <div class="product-single__info-content-main product-single--country">
                                             <span>برند: </span>
                                             <p>{{ post.product_brand }}</p>
                                         </div>
-                                        <div class="product-single__info-content product-single--city">
+                                        <div class="product-single__info-content-main product-single--city">
                                             <span>شکل ظاهری: </span>
                                             <p>{{ post.product_appearence }}</p>
                                         </div>
-                                        <div class="product-single__info-content product-single--job-field">
+                                        <div class="product-single__info-content-main product-single--job-field">
                                             <span>کشور تولید کننده: </span>
                                             <p>{{ post.product_country }}</p>
                                         </div>
-                                        <div class="product-single__info-content product-single--start-date">
+                                        <div class="product-single__info-content-main product-single--start-date">
                                             <span>برگه آنالیز: </span>
                                             <p>{{ post.product_analyse }}</p>
                                         </div>
-                                        <div class="product-single__info-content product-single--ceo">
+                                        <div class="product-single__info-content-main product-single--ceo">
                                             <span>محل تحویل: </span>
                                             <p>{{ post.product_location }}</p>
                                         </div>
-                                        <div class="product-single__info-content product-single--personnel-no">
+                                        <div class="product-single__info-content-main product-single--personnel-no">
                                             <span>کد شناسایی یا نام اختصاصی: </span>
                                             <p>{{ post.product_unique_id }}</p>
                                         </div>
-                                        <div class="product-single__info-content product-single--analyse-download">
-                                            <a href="{{ post.get_field('product_analyse_download').url }}">دانلود برگه آنالیز(COA)</a>
-                                        </div>
                                     </div>
                                     <div class="col-12 mb-3 col-lg-6 ">
-                                        <div class="product-single__info-content product-single--office-phone">
+                                        <div class="product-single__info-content-main product-single--office-phone">
                                             <span>درصد خلوص: </span>
                                             <p>{{ post.product_purity }}</p>
                                         </div>
-                                        <div class="product-single__info-content product-single--company-phone">
+                                        <div class="product-single__info-content-main product-single--company-phone">
                                             <span>گرید: </span>
                                             <p>{{ post.product_grade }}</p>
                                         </div>
-                                        <div class="product-single__info-content product-single--office-address">
+                                        <div class="product-single__info-content-main product-single--office-address">
                                             <span>بسته بندی: </span>
                                             <p>{{ post.product_package }}</p>
                                         </div>
-                                        <div class="product-single__info-content product-single--company-address">
+                                        <div class="product-single__info-content-main product-single--company-address">
                                             <span>حداقل سفارش: </span>
                                             <p>{{ post.product_order_quantity }}</p>
                                         </div>
-                                        <div class="product-single__info-content product-single--mobile">
+                                        <div class="product-single__info-content-main product-single--mobile">
                                             <span>قیمت: </span>
                                             <p>{{ post.product_price }}</p>
+                                        </div>
+                                        <div class="product-single__info-content product-single--analyse-download">
+                                            <a href="{{ post.get_field('product_analyse_download').url }}">دانلود برگه آنالیز(COA)</a>
                                         </div>
                                     </div>
                                 </div>
@@ -127,14 +129,14 @@
 
                         <div class="row product-single__intro">
                             <div class="col-12">
+                                <label class="product-single__intro-content-label">توضیحات:</label>
                                 <div class="product-single__intro-content">
-                                    <label>توضیحات:</label>
                                     {{ check_value(post.content, 'p', '')}}
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row product-single--ad-banner mt-8">
+                        <div class="row product-single__ad-banner mt-8">
                             <div class="col-12 col-md-6">
                                 <div class="image-banner image-banner--first">
                                     <div class="image-banner__background">
@@ -174,7 +176,7 @@
                         {% set productIcon = Image(post.product_icon) %}
                         {% for productSupplier in productSuppliers %}
                             {% set supplierIcon = Image(productSupplier.get_field('company_icon')) %}
-                            <div class="product-single__icon">
+                            <div class="product-single__supplier-icon">
                                 <img src="{{ supplierIcon.src }}"
                                      srcset="{{ supplierIcon.srcset }}"
                                      alt="{{ supplierIcon.post_title }}"
@@ -195,8 +197,7 @@
                             <div class="product-single__supplier-gallery">
                                 {% set companyImgGallery = Image(productSupplier.get_field('company_reward')) %}
                                 {% for gallery in companyImgGallery %}
-{#                                    {{ dump(gallery) }}#}
-                                    <div class="company-single__image-gallery-item">
+                                    <div class="product-single__image-gallery-item">
                                         <img src="{{ gallery.src }}"
                                              srcset="{{ gallery.srcset }}"
                                              alt="{{ gallery.post_title }}"
@@ -207,20 +208,10 @@
                                 {% endfor %}
                             </div>
                         {% endfor %}
-                        <div class="company-single__image-gallery">
-                            {% set productImgGallery = post.get_field('product_img_gallery') %}
-                            {% for image in productImgGallery %}
-                                <div class="product-single__image-gallery-item">
-                                    <img src="{{ image.url }}"
-                                         alt="image-gallery"
-                                         loading="lazy"
-                                    />
-                                </div>
-                            {% endfor %}
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        {% include ["tease-product.twig"] with { products: related_products } %}
 {% endblock  %}

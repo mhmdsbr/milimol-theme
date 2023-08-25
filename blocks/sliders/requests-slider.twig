@@ -51,7 +51,7 @@
                             {% for slide in requests %}
                                 <div class="swiper-slide requests-slider__request">
                                     <div class="requests-slider__request-content">
-                                        {{ check_value( slide.post_title, 'h2', 'requests-slider__request-title') }}
+                                        {{ check_value(slide.post_title, 'h2', 'requests-slider__request-title') }}
 
                                         {% set casNumber = slide.cas_number %}
                                         {{ check_value(casNumber,'p', 'requests-slider__request-number') }}
@@ -75,7 +75,7 @@
                                                 <div class="percentage">0%</div>
                                             </div>
                                         </div>
-                                        <p class="requests-slider__request-date" >{{ 'تاریخ انتشار: ' ~ english_numbers(slide.post_date('d-m-Y')) }}</p>
+                                        <p class="requests-slider__request-date" >{{ 'تاریخ انتشار: ' ~ english_numbers(slide.post_date|date('d-m-Y')) }}</p>
                                     </div>
 
                                     <a href="{{ function('get_the_permalink', slide.ID) }}" class="requests-slider__request-link"></a>
