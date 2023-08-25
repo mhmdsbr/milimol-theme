@@ -34,23 +34,29 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "industry"
-            ],
+            "acfe_save_meta": 0,
+            "post_type": "",
             "post_status": [
                 "publish"
             ],
             "taxonomy": "",
-            "filters": "",
+            "filters": [
+                "search"
+            ],
             "return_format": "object",
+            "acfe_bidirectional": {
+                "acfe_bidirectional_enabled": "1",
+                "acfe_bidirectional_related": [
+                    "field_645ccf0efb743"
+                ]
+            },
             "min": "",
             "max": "",
             "elements": "",
             "bidirectional": 1,
             "bidirectional_target": [
                 "field_64411230b1657"
-            ],
-            "repeatable": true
+            ]
         },
         {
             "key": "field_64e7ba3a88bf0",
@@ -78,7 +84,8 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "thumbnail",
-            "library": "all"
+            "library": "all",
+            "repeatable": true
         },
         {
             "key": "field_64e7b6a1174bc",
@@ -99,7 +106,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64e7b6d0174bd",
@@ -120,7 +128,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64e7b6db174be",
@@ -141,7 +150,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64e7b6ec174bf",
@@ -162,7 +172,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64e7b6fa174c0",
@@ -183,7 +194,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64e7b70c174c1",
@@ -204,7 +216,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64e1dd76798e0",
@@ -227,7 +240,8 @@
             "placeholder": "",
             "step": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64e7b71c174c2",
@@ -248,7 +262,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64e7b737174c3",
@@ -269,7 +284,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64e7b745174c4",
@@ -290,7 +306,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64e7b751174c5",
@@ -311,7 +328,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64e7b851174c6",
@@ -333,7 +351,8 @@
             "min_size": "",
             "max_size": "",
             "mime_types": "",
-            "library": "all"
+            "library": "all",
+            "repeatable": true
         },
         {
             "key": "field_64e7bea34db34",
@@ -361,7 +380,8 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "thumbnail",
-            "library": "all"
+            "library": "all",
+            "repeatable": true
         },
         {
             "key": "field_64e7becf4db35",
@@ -389,7 +409,8 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "thumbnail",
-            "library": "all"
+            "library": "all",
+            "repeatable": true
         }
     ],
     "location": [
@@ -426,5 +447,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1692909398
+    "modified": 1692955267
 }

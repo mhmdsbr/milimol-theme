@@ -21,7 +21,8 @@
             "rows": "",
             "placeholder": "",
             "new_lines": "",
-            "repeatable": true
+            "repeatable": true,
+            "acfe_textarea_code": 0
         }
     ],
     "location": [
@@ -42,7 +43,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
     "is_acf_component": 0,
+    "acfe_form": 0,
     "acf_component_defaults": {
         "repeatable": "0",
         "min": "",
@@ -51,5 +57,7 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1692274358
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1692955019
 }

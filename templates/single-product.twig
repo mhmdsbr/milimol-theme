@@ -64,8 +64,11 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <h4 class="product-single__product-name">{{ post.title }}</h4>
-                                        <p class="product-single__cas_number">231-254-1</p>
-                                        <p class="product-single__product_date">{{ post.date('d-m-Y') }}</p>
+                                        {% set productCasNumbers = post.terms('product_cas_no') %}
+                                        {% for productCasNo in productCasNumbers %}
+                                            <p class="product-single__cas_number">{{ 'Cas No:' ~ productCasNo.name }}</p>
+                                        {% endfor %}
+                                        <p class="product-single__product_date">{{'تاریخ ثبت: ' ~ english_numbers(post.date('Y-m-d')) }}</p>
                                     </div>
                                     <div class="col-12 mb-3 col-lg-6 ">
                                         <div class="product-single__info-content product-single--country">
@@ -138,11 +141,11 @@
                                         {% set productAdOne = post.get_field('product_ad_banner_first') %}
                                         <picture>
                                             <img
-                                                    src="{{ productAdOne.url }}"
-                                                    srcset="{{ productAdOne.srcset }}"
-                                                    alt="{{ productAdOne.title }}"
-                                                    title="{{ productAdOne.title }}"
-                                                    loading="lazy" />
+                                                src="{{ productAdOne.url }}"
+                                                srcset="{{ productAdOne.srcset }}"
+                                                alt="{{ productAdOne.title }}"
+                                                title="{{ productAdOne.title }}"
+                                                loading="lazy" />
                                         </picture>
                                     </div>
                                 </div>
@@ -153,11 +156,11 @@
                                         {% set productAdTwo = post.get_field('product_ad_banner_second') %}
                                         <picture>
                                             <img
-                                                    src="{{ productAdTwo.url }}"
-                                                    srcset="{{ productAdTwo.srcset }}"
-                                                    alt="{{ productAdTwo.title }}"
-                                                    title="{{ productAdTwo.title }}"
-                                                    loading="lazy" />
+                                                src="{{ productAdTwo.url }}"
+                                                srcset="{{ productAdTwo.srcset }}"
+                                                alt="{{ productAdTwo.title }}"
+                                                title="{{ productAdTwo.title }}"
+                                                loading="lazy" />
                                         </picture>
                                     </div>
                                 </div>
@@ -167,17 +170,18 @@
                 </div>
                 <div class="col-md-4">
                     <div class="product-single__sidebar">
-                        {% set productIcon = Image(post.product_icon) %}
-                        <div class="product-single__icon">
-                            <img src="{{ productIcon.src }}"
-                                 srcset="{{ productIcon.srcset }}"
-                                 alt="{{ productIcon.title }}"
-                                 title="{{ productIcon.title }}"
-                                 loading="lazy"
-                            />
-                        </div>
                         {% set productSuppliers = post.get_field('product_supplier_linked') %}
+                        {% set productIcon = Image(post.product_icon) %}
                         {% for productSupplier in productSuppliers %}
+                            {% set supplierIcon = Image(productSupplier.get_field('company_icon')) %}
+                            <div class="product-single__icon">
+                                <img src="{{ supplierIcon.src }}"
+                                     srcset="{{ supplierIcon.srcset }}"
+                                     alt="{{ supplierIcon.post_title }}"
+                                     title="{{ supplierIcon.post_title }}"
+                                     loading="lazy"
+                                />
+                            </div>
                             <h3 class="product-single__product-supplier">{{ productSupplier.post_title }}</h3>
                             <div class="product-single__contact-btn">
                                 {% include "partial/button.twig" with {
@@ -187,6 +191,20 @@
                                     class : 'btn--primary product-single__button',
                                     icon : 'phone'
                                 } %}
+                            </div>
+                            <div class="product-single__supplier-gallery">
+                                {% set companyImgGallery = Image(productSupplier.get_field('company_reward')) %}
+                                {% for gallery in companyImgGallery %}
+{#                                    {{ dump(gallery) }}#}
+                                    <div class="company-single__image-gallery-item">
+                                        <img src="{{ gallery.src }}"
+                                             srcset="{{ gallery.srcset }}"
+                                             alt="{{ gallery.post_title }}"
+                                             title="{{ gallery.post_title }}"
+                                             loading="lazy"
+                                        />
+                                    </div>
+                                {% endfor %}
                             </div>
                         {% endfor %}
                         <div class="company-single__image-gallery">

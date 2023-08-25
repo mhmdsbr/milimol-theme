@@ -23,6 +23,7 @@
             "button_label": "New row",
             "rows_per_page": 20,
             "repeatable": true,
+            "acfe_repeater_stylised_button": 0,
             "sub_fields": [
                 {
                     "key": "field_644115867c74e",
@@ -112,8 +113,7 @@
                     "repeatable": true,
                     "parent_repeater": "field_644115597c74d"
                 }
-            ],
-            "acfe_repeater_stylised_button": 0
+            ]
         }
     ],
     "location": [
@@ -150,5 +150,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1692445421
+    "modified": 1692954570
 }

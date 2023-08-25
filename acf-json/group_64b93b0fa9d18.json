@@ -138,7 +138,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64e4f1225a0a3",
@@ -161,7 +162,8 @@
             "placeholder": "",
             "step": "",
             "prepend": "",
-            "append": "روز"
+            "append": "روز",
+            "repeatable": true
         },
         {
             "key": "field_64e73a67e5ec4",
@@ -182,7 +184,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         }
     ],
     "location": [
@@ -219,5 +222,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1692876170
+    "modified": 1692954684
 }

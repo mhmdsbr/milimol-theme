@@ -18,7 +18,8 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_645cce47db99d",
@@ -95,7 +96,7 @@
             "max": "",
             "collapsed": "",
             "button_label": "",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "appearances": "",
             "sub_fields": []
@@ -170,7 +171,8 @@
             "ajax": 0,
             "placeholder": "",
             "allow_custom": 0,
-            "search_placeholder": ""
+            "search_placeholder": "",
+            "repeatable": true
         },
         {
             "key": "field_645cce47dbb08",
@@ -267,7 +269,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_645ccf0efb743",
@@ -296,13 +299,17 @@
             ],
             "return_format": "object",
             "acfe_bidirectional": {
-                "acfe_bidirectional_enabled": "0"
+                "acfe_bidirectional_enabled": true,
+                "acfe_bidirectional_related": [
+                    "field_64c7fa1de0d78"
+                ]
             },
             "min": 1,
             "max": 12,
             "elements": "",
             "bidirectional": 0,
-            "bidirectional_target": []
+            "bidirectional_target": [],
+            "repeatable": true
         }
     ],
     "location": [
@@ -339,5 +346,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1692561785
+    "modified": 1692955247
 }

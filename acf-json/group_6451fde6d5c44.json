@@ -28,7 +28,9 @@
             "ui": 1,
             "ajax": 0,
             "placeholder": "",
-            "repeatable": true
+            "repeatable": true,
+            "allow_custom": 0,
+            "search_placeholder": ""
         }
     ],
     "location": [],
@@ -50,5 +52,5 @@
         "button_label": "",
         "appearances": ""
     },
-    "modified": 1692288415
+    "modified": 1692954843
 }

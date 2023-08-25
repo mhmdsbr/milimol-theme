@@ -502,6 +502,36 @@
             "repeatable": true
         },
         {
+            "key": "field_64e862af1e7d1",
+            "label": "جوایز و استاندارد ها",
+            "name": "comapny_reward",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "return_format": "array",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "medium",
+            "repeatable": true
+        },
+        {
             "key": "field_64dd231b2f2d8",
             "label": "مشتریان",
             "name": "",
@@ -541,6 +571,7 @@
             "button_label": "سطر جدید",
             "rows_per_page": 20,
             "repeatable": true,
+            "acfe_repeater_stylised_button": 0,
             "sub_fields": [
                 {
                     "key": "field_64de0f58259d0",
@@ -571,8 +602,7 @@
                     "acfe_thumbnail": 0,
                     "parent_repeater": "field_64de0f58259cf"
                 }
-            ],
-            "acfe_repeater_stylised_button": 0
+            ]
         },
         {
             "key": "field_64dd23d62f2db",
@@ -614,6 +644,7 @@
             "button_label": "سطر جدید",
             "rows_per_page": 20,
             "repeatable": true,
+            "acfe_repeater_stylised_button": 0,
             "sub_fields": [
                 {
                     "key": "field_64dd24142f2dd",
@@ -668,8 +699,7 @@
                     "uploader": "",
                     "parent_repeater": "field_64dd24142f2dc"
                 }
-            ],
-            "acfe_repeater_stylised_button": 0
+            ]
         },
         {
             "key": "field_64dd25a92f2df",
@@ -711,6 +741,7 @@
             "button_label": "سطر جدید",
             "rows_per_page": 20,
             "repeatable": true,
+            "acfe_repeater_stylised_button": 0,
             "sub_fields": [
                 {
                     "key": "field_64dd25b52f2e1",
@@ -763,8 +794,7 @@
                     "repeatable": true,
                     "parent_repeater": "field_64dd25b52f2e0"
                 }
-            ],
-            "acfe_repeater_stylised_button": 0
+            ]
         },
         {
             "key": "field_64c6a339a239e",
@@ -990,5 +1020,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1692554428
+    "modified": 1692954980
 }

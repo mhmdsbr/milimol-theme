@@ -17,7 +17,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_6447cc3adef2b",
@@ -45,7 +46,8 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium",
-            "library": "all"
+            "library": "all",
+            "repeatable": true
         },
         {
             "key": "field_64632f87ad1c4",
@@ -62,7 +64,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64632f93ad1c5",
@@ -80,7 +83,8 @@
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "",
+            "repeatable": true
         },
         {
             "key": "field_64632f9cad1c6",
@@ -98,7 +102,8 @@
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "",
+            "repeatable": true
         },
         {
             "key": "field_64632fa4ad1c7",
@@ -116,7 +121,8 @@
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "",
+            "repeatable": true
         }
     ],
     "location": [
@@ -153,5 +159,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1692444624
+    "modified": 1692954670
 }

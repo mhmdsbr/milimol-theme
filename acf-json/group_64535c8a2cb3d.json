@@ -3,7 +3,7 @@
     "title": "بلاک: متن\/عکس",
     "fields": [
         {
-            "key": "field_64535c8a4a26d__trashed",
+            "key": "field_64535c8a4a26d",
             "label": "بلاک متن و عکس",
             "name": "",
             "aria-label": "",
@@ -22,7 +22,7 @@
             "repeatable": true
         },
         {
-            "key": "field_64535c8a4a2ba__trashed",
+            "key": "field_64535c8a4a2ba",
             "label": "اطلاعات",
             "name": "",
             "aria-label": "",
@@ -40,7 +40,7 @@
             "repeatable": true
         },
         {
-            "key": "field_64535c8a4a309__trashed",
+            "key": "field_64535c8a4a309",
             "label": "",
             "name": "",
             "aria-label": "",
@@ -59,7 +59,7 @@
             "repeatable": true
         },
         {
-            "key": "field_64535c8a4a357__trashed",
+            "key": "field_64535c8a4a357",
             "label": "تنظیمات",
             "name": "",
             "aria-label": "",
@@ -92,7 +92,7 @@
             },
             "acfe_save_meta": 0,
             "field_group_key": "group_6451fde6d5c44",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "button_label": "",
             "appearances": "",
@@ -102,7 +102,7 @@
             "sub_fields": []
         },
         {
-            "key": "field_64535c8a4a3e9__trashed",
+            "key": "field_64535c8a4a3e9",
             "label": "نمایش تیتر",
             "name": "is_show_title",
             "aria-label": "",
@@ -123,7 +123,7 @@
             "repeatable": true
         },
         {
-            "key": "field_64535e58200ed__trashed",
+            "key": "field_64535e58200ed",
             "label": "اندازه تیتر",
             "name": "title_size",
             "aria-label": "",
@@ -160,7 +160,7 @@
             "search_placeholder": ""
         },
         {
-            "key": "field_64535c8a4a478__trashed",
+            "key": "field_64535c8a4a478",
             "label": "نمایش متن",
             "name": "is_show_text",
             "aria-label": "",
@@ -181,7 +181,7 @@
             "repeatable": true
         },
         {
-            "key": "field_64535c8a4a431__trashed",
+            "key": "field_64535c8a4a431",
             "label": "نمایش لینک",
             "name": "is_show_link",
             "aria-label": "",
@@ -202,7 +202,7 @@
             "repeatable": true
         },
         {
-            "key": "field_645365898162a__trashed",
+            "key": "field_645365898162a",
             "label": "Rounded corners",
             "name": "is_rounder_corners_active",
             "aria-label": "",
@@ -224,7 +224,7 @@
             "repeatable": true
         },
         {
-            "key": "field_64535d55548fd__trashed",
+            "key": "field_64535d55548fd",
             "label": "چپ\/راست",
             "name": "is_left_right",
             "aria-label": "",
@@ -259,7 +259,8 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 0,
+            "repeatable": true
         },
         {
             "key": "field_64e0a0b6a3b97",
@@ -288,7 +289,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "repeatable": true
         },
         {
             "key": "field_64535c8a4a597",
@@ -318,7 +320,8 @@
             "maxlength": "",
             "rows": 5,
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "repeatable": true
         },
         {
             "key": "field_64535c8a4a54f",
@@ -343,10 +346,11 @@
                 "id": ""
             },
             "acfe_save_meta": 0,
-            "return_format": "array"
+            "return_format": "array",
+            "repeatable": true
         },
         {
-            "key": "field_64535d3e548fc__trashed",
+            "key": "field_64535d3e548fc",
             "label": "تصویر",
             "name": "image",
             "aria-label": "",
@@ -374,7 +378,7 @@
             "acfe_thumbnail": 0
         },
         {
-            "key": "field_64e099dbd31d4__trashed",
+            "key": "field_64e099dbd31d4",
             "label": "تصویر پس زمینه",
             "name": "background_img",
             "aria-label": "",
@@ -398,7 +402,8 @@
             "mime_types": "",
             "preview_size": "medium",
             "uploader": "",
-            "acfe_thumbnail": 0
+            "acfe_thumbnail": 0,
+            "repeatable": true
         }
     ],
     "location": [
@@ -435,5 +440,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1692619056
+    "modified": 1692954690
 }

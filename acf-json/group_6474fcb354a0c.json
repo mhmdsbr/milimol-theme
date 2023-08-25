@@ -18,7 +18,8 @@
             },
             "message": "",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "repeatable": true
         },
         {
             "key": "field_6474fcb383d30",
@@ -91,7 +92,7 @@
             },
             "acfe_save_meta": 0,
             "field_group_key": "group_6451fde6d5c44",
-            "repeatable": 0,
+            "repeatable": true,
             "layout": "block",
             "button_label": "",
             "appearances": "",
@@ -183,6 +184,7 @@
             "button_label": "Add Row",
             "rows_per_page": 20,
             "repeatable": true,
+            "acfe_repeater_stylised_button": 0,
             "sub_fields": [
                 {
                     "key": "field_6474fcb5df4ac",
@@ -279,8 +281,7 @@
                     "acfe_thumbnail": 0,
                     "parent_repeater": "field_6474fcb383edb"
                 }
-            ],
-            "acfe_repeater_stylised_button": 0
+            ]
         }
     ],
     "location": [
@@ -317,5 +318,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1692619067
+    "modified": 1692954700
 }
