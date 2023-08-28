@@ -15,7 +15,7 @@ if ( is_singular( 'product' ) ) {
     $context['product'] = $product;
 
     // Get related products
-    $related_limit               = wc_get_loop_prop( 'columns' );
+    $related_limit               = -1;
     $related_ids                 = wc_get_related_products( $context['post']->id, $related_limit );
     $context['related_products'] =  Timber::get_posts( $related_ids );
 
@@ -26,13 +26,32 @@ if ( is_singular( 'product' ) ) {
 } else {
     $posts = Timber::get_posts();
     $context['products'] = $posts;
-
-    if ( is_product_category() ) {
-        $queried_object = get_queried_object();
-        $term_id = $queried_object->term_id;
-        $context['category'] = get_term( $term_id, 'product_cat' );
-        $context['title'] = single_term_title( '', false );
+    $queried_object = get_queried_object();
+    $term_id = $queried_object->term_id;
+    $context['category'] = get_term( $term_id, 'product_cat' );
+    $context['cas'] = get_term( $term_id, 'product_cas_no' );
+    $cas_image_url = get_field( 'cas_image', $context['cas'] );
+    $context['cas_image'] = $cas_image_url;
+    $cas_fields = get_fields( $context['cas'] ); // Retrieve all ACF fields for the term
+    $context['cas_fields'] = $cas_fields; // Pass the fields to the context
+    // Get the product_cat thumbnail image URL
+    $category_thumbnail_id = get_term_meta( $term_id, 'thumbnail_id', true );
+    if ( $category_thumbnail_id ) {
+        $category_thumbnail = wp_get_attachment_image_src( $category_thumbnail_id, 'medium' );
+        if ( $category_thumbnail ) {
+            $context['product_cat_image_url'] = $category_thumbnail[0];
+        }
     }
 
-    Timber::render( 'templates/archive-product.twig', $context );
+
+    if ( get_term( $term_id, 'product_cas_no' ) ) {
+
+        Timber::render( 'templates/archive-product-cas.twig', $context );
+
+    } else {
+
+        Timber::render( 'templates/archive-product.twig', $context );
+
+    }
+
 }

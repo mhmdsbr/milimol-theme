@@ -1,0 +1,105 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+
+    <header class="archive-product__category-content">
+        <div class="archive-product__category-head">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <h1>{{ cas_fields.cas_fa_name }}</h1>
+                        <p>{{ cas.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="archive-product__category-details">
+            <div class="container">
+                <div class="row archive-product__category-info">
+                    <div class="col-md-3 m-auto p-0">
+                        <div class="archive-product__category-thumbnail">
+                            <picture>
+                                <img
+                                    src="{{ cas_image.url }}"
+                                    srcset="{{ cas_image.srcset }}"
+                                    alt="{{ cas.title }}"
+                                    title="{{ cas.title }}"
+                                    loading="lazy" />
+                            </picture>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="archive-product__category-info-content-head">
+                                    <p class="archive-product__cas-en-name">{{ cas_fields.cas_eng_name }}</p>
+                                    <p class="archive-product__category-cas-number">{{ 'Cas No: ' ~  cas.name }}</p>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-3 col-lg-6 ">
+                                <div class="archive-product__category-info-content-main archive-product--weight">
+                                    <span>وزن ملوکولی:</span>
+                                    <p>{{ english_numbers(cas_fields.cas_weight) }}</p>
+                                </div>
+                                <div class="archive-product__category-info-content-main archive-product--melt">
+                                    <span>نقطه ذوب:</span>
+                                    <p>{{ english_numbers(cas_fields.cas_melting) }}</p>
+                                </div>
+                                <div class="archive-product__category-info-content-main archive-product--boil">
+                                    <span>نقطه جوش:</span>
+                                    <p>{{ english_numbers(cas_fields.cas_boil) }}</p>
+                                </div>
+                                <div class="archive-product__category-info-content-main archive-product--flash">
+                                    <span>نقطه اشتعال:</span>
+                                    <p>{{ english_numbers(cas_fields.cas_point) }}</p>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-3 col-lg-6 ">
+                                <div class="archive-product__category-info-content-main archive-product--constant ">
+                                    <span>گذردهی نسبی:</span>
+                                    <p>{{ english_numbers(cas_fields.cas_constant) }}</p>
+                                </div>
+                                <div class="archive-product__category-info-content-main archive-product--density">
+                                    <span>چگالی:</span>
+                                    <p>{{ english_numbers(cas_fields.cas_density) }}</p>
+                                </div>
+                                <div class="archive-product__category-info-content-main archive-product--solubility">
+                                    <span>حلالیت در آب:</span>
+                                    <p>{{ cas_fields.cas_water }}</p>
+                                </div>
+                                <div class="archive-product__category-info-content-main archive-product--msds">
+                                    <a href="#">MSDS</a>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="archive-product__category-info-content-main archive-product--synonyms">
+                                    <span>هم خانواده ها:</span>
+                                    {% for synonym in cas_fields.cas_synonyms %}
+                                        <p>{{ synonym.cas_synonym }}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+        <section class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="filters">
+                        {% do action('woocommerce_before_shop_loop') %}
+                        {% filter shortcodes %}
+                            [woof_front_builder name=’My Filter’]
+                        {% endfilter %}
+                    </div>
+                </div>
+                {% include 'components/products/category-related-product.twig' %}
+            </div>
+        </section>
+
+        {% do action('woocommerce_after_shop_loop') %}
+        {% do action('woocommerce_after_main_content') %}
+
+{% endblock  %}

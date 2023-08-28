@@ -2,19 +2,31 @@
 
 {% block content %}
 
-    {% do action('woocommerce_before_main_content') %}
+{#    {% do action('woocommerce_before_main_content') %}#}
+    <header class="archive-product__category-content">
+        <div class="archive-product__category-head">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <h1>{{ category.name }}</h1>
+                        <p>{{ category.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+        <section class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="filters">
+                        {% do action('woocommerce_before_shop_loop') %}
+                    </div>
+                </div>
+                {% include 'components/products/category-related-product.twig' %}
+            </div>
+        </section>
 
-    <div class="before-shop-loop">
-        {% do action('woocommerce_before_shop_loop') %}
-    </div>
-
-    <div class="loop">
-        {% for post in products %}
-            {% include ["tease-product.twig"] %}
-        {% endfor %}
-    </div>
-
-    {% do action('woocommerce_after_shop_loop') %}
-    {% do action('woocommerce_after_main_content') %}
+        {% do action('woocommerce_after_shop_loop') %}
+        {% do action('woocommerce_after_main_content') %}
 
 {% endblock  %}

@@ -299,10 +299,8 @@
             ],
             "return_format": "object",
             "acfe_bidirectional": {
-                "acfe_bidirectional_enabled": true,
-                "acfe_bidirectional_related": [
-                    "field_64c7fa1de0d78"
-                ]
+                "acfe_bidirectional_enabled": false,
+                "acfe_bidirectional_related": false
             },
             "min": 1,
             "max": 12,
@@ -346,5 +344,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1692986611
+    "modified": 1693047607
 }

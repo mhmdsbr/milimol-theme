@@ -35,18 +35,19 @@
                 "id": ""
             },
             "acfe_save_meta": 0,
-            "post_type": "",
+            "post_type": [
+                "company"
+            ],
             "post_status": [
                 "publish"
             ],
             "taxonomy": "",
-            "filters": "",
+            "filters": [
+                "search"
+            ],
             "return_format": "object",
             "acfe_bidirectional": {
-                "acfe_bidirectional_enabled": "1",
-                "acfe_bidirectional_related": [
-                    "field_645ccf0efb743"
-                ]
+                "acfe_bidirectional_enabled": "0"
             },
             "min": "",
             "max": "",
@@ -445,5 +446,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1692986611
+    "modified": 1693047628
 }

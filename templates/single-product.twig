@@ -136,38 +136,6 @@
                             </div>
                         </div>
 
-                        <div class="row product-single__ad-banner mt-8">
-                            <div class="col-12 col-md-6">
-                                <div class="image-banner image-banner--first">
-                                    <div class="image-banner__background">
-                                        {% set productAdOne = post.get_field('product_ad_banner_first') %}
-                                        <picture>
-                                            <img
-                                                src="{{ productAdOne.url }}"
-                                                srcset="{{ productAdOne.srcset }}"
-                                                alt="{{ productAdOne.title }}"
-                                                title="{{ productAdOne.title }}"
-                                                loading="lazy" />
-                                        </picture>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="image-banner image-banner--second">
-                                    <div class="image-banner__background">
-                                        {% set productAdTwo = post.get_field('product_ad_banner_second') %}
-                                        <picture>
-                                            <img
-                                                src="{{ productAdTwo.url }}"
-                                                srcset="{{ productAdTwo.srcset }}"
-                                                alt="{{ productAdTwo.title }}"
-                                                title="{{ productAdTwo.title }}"
-                                                loading="lazy" />
-                                        </picture>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </article>
                 </div>
                 <div class="col-md-4">
@@ -212,6 +180,38 @@
                 </div>
             </div>
         </section>
+        <div class="row product-single__ad-banner">
+            <div class="col-12 col-md-6">
+                <div class="image-banner image-banner--first">
+                    <div class="image-banner__background">
+                        {% set productAdOne = post.get_field('product_ad_banner_first') %}
+                        <picture>
+                            <img
+                                    src="{{ productAdOne.url }}"
+                                    srcset="{{ productAdOne.srcset }}"
+                                    alt="{{ productAdOne.title }}"
+                                    title="{{ productAdOne.title }}"
+                                    loading="lazy" />
+                        </picture>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="image-banner image-banner--second">
+                    <div class="image-banner__background">
+                        {% set productAdTwo = post.get_field('product_ad_banner_second') %}
+                        <picture>
+                            <img
+                                    src="{{ productAdTwo.url }}"
+                                    srcset="{{ productAdTwo.srcset }}"
+                                    alt="{{ productAdTwo.title }}"
+                                    title="{{ productAdTwo.title }}"
+                                    loading="lazy" />
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         {% include ["tease-product.twig"] with { products: related_products } %}
 {% endblock  %}

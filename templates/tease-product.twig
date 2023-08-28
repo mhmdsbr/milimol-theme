@@ -1,36 +1,108 @@
-<article {{ fn('post_class', ['$classes', 'entry'] ) }}>
+{#<article {{ fn('post_class', ['$classes', 'entry'] ) }}>#}
+
+{#	{{ fn('timber_set_product', post) }}#}
+
+{#	<div class="media">#}
+
+{#		{% if showthumb %}#}
+{#			<div class="media-figure {% if not post.thumbnail %}placeholder{% endif %}">#}
+{#				<a href="{{ post.link }}">#}
+{#					{% if post.thumbnail %}#}
+{#						<img src="{{ post.thumbnail.src|resize(post_thumb_size[0], post_thumb_size[1]) }}" />#}
+{#					{% else %}#}
+{#						<span class="thumb-placeholder"><i class="icon-camera"></i></span>#}
+{#					{% endif %}#}
+{#				</a>#}
+{#			</div>#}
+{#		{% endif %}#}
+
+{#		<div class="media-content">#}
+
+{#			{% do action('woocommerce_before_shop_loop_item_title') %}#}
+
+{#			{% if post.title %}#}
+{#				<h3 class="entry-title"><a href="{{ post.link }}">{{ post.title }}</a></h3>#}
+{#			{% else %}#}
+{#				<h3 class="entry-title"><a href="{{ post.link }}">{{ fn('the_title') }}</a></h3>#}
+{#			{% endif %}#}
+
+{#			{% do action( 'woocommerce_after_shop_loop_item_title' ) %}#}
+{#			{% do action( 'woocommerce_after_shop_loop_item' ) %}#}
+
+{#		</div>#}
+
+{#	</div>#}
+
+{#</article>#}
+
+<article {{ fn('post_class', ['$classes', 'product-slider'] ) }}>
 
 	{{ fn('timber_set_product', post) }}
 
-	<div class="media">
-
-		{% if showthumb %}
-			<div class="media-figure {% if not post.thumbnail %}placeholder{% endif %}">
-				<a href="{{ post.link }}">
-					{% if post.thumbnail %}
-						<img src="{{ post.thumbnail.src|resize(post_thumb_size[0], post_thumb_size[1]) }}" />
-					{% else %}
-						<span class="thumb-placeholder"><i class="icon-camera"></i></span>
-					{% endif %}
-				</a>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="product-slider__header">
+					<h4  class="product-slider__title">
+						محصولات مشابه
+					</h4>
+				</div>
 			</div>
-		{% endif %}
-
-		<div class="media-content">
-
-			{% do action('woocommerce_before_shop_loop_item_title') %}
-
-			{% if post.title %}
-				<h3 class="entry-title"><a href="{{ post.link }}">{{ post.title }}</a></h3>
-			{% else %}
-				<h3 class="entry-title"><a href="{{ post.link }}">{{ fn('the_title') }}</a></h3>
-			{% endif %}
-
-			{% do action( 'woocommerce_after_shop_loop_item_title' ) %}
-			{% do action( 'woocommerce_after_shop_loop_item' ) %}
-
 		</div>
-
 	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<div class="swiper swiper-container product-slider__swiper-container js-product-slider">
+					<div class="swiper-wrapper">
+						{% if products is not empty %}
+							{% for product in products %}
+								<div class="swiper-slide product-slider__slide">
+									<div class="product-slider__slide-product-header">
+										{% set relatedProductImages = product.thumbnail.src %}
+											<img class="product-slider__slide-product-image"
+												 src="{{ relatedProductImages }}"
+												 srcset="{{ product.relatedProductImages.srcset }}"
+												 alt="{{ product.title }}"
+												 title="{{ product.title }}"
+												 loading="lazy"
+											/>
+									</div>
+									<div class="product-slider__slide-product-content">
+										{% set productSupplierTitle = product.get_field('product_supplier_linked')[0].post_title %}
+										{% if productSupplierTitle %}
+											<div class="product-slider__slide-product-associated-company">
+												<p>{{ productSupplierTitle }}</p>
+											</div>
+										{% endif %}
+										{{ check_value(product.post_title, 'p', 'product-slider__slide-product-name') }}
+										{% set productCategories = product.get_terms('product_cat') %}
+										{% if productCategories %}
+											{% for category in productCategories %}
+												{{ check_value(category.name, 'p', 'product-slider__slide-product-category') }}
+											{% endfor %}
+										{% endif %}
 
+										{% set productCatCas = product.get_terms('product_cas_no') %}
+										{% if productCatCas %}
+											{% for category in productCatCas %}
+												{{ check_value('Cas No : ' ~ category.name, 'p', 'product-slider__slide-product-cas') }}
+											{% endfor %}
+										{% endif %}
+
+										{% if product.product_purity %}
+											{{ check_value('Purity : ' ~ product.product_purity~'%', 'p', 'product-slider__slide-product-purity') }}
+										{%  endif %}
+
+										{{ check_value('تاریخ انتشار: '  ~ english_numbers(product.post_date|date('d-m-Y')) , 'p', 'product-slider__slide-product-date') }}
+									</div>
+									<a href="{{ product.get_permalink() }}" class="product-slider__slide-product-link"></a>
+								</div>
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </article>

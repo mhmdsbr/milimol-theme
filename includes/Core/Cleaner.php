@@ -45,6 +45,9 @@ class Cleaner
 
         /** Remove default modules */
         add_action('admin_menu', [&$this, 'removeModules']);
+
+        remove_filter( 'the_content', 'wpautop' );
+        remove_filter( 'the_excerpt', 'wpautop' );
     }
 
     /**
@@ -217,4 +220,5 @@ class Cleaner
             }
         }
     }
+
 }

@@ -1,0 +1,144 @@
+<div class="col-md-10">
+    {% for post in products %}
+        <div class="row mb-6">
+            <div class="col-md-8">
+                <article itemscope itemtype="http://schema.org/Product" id="post-{{ post.ID }}" class="archive-product__main-content post-{{ post.ID }} single-{{ post.post_type }}">
+                    <div class="row archive-product__info">
+                        <div class="col-md-3 m-auto p-0">
+                            <div class="archive-product__thumbnail">
+                                <picture>
+                                    <img
+                                        src="{{ post.thumbnail.src }}"
+                                        srcset="{{ post.thumbnail.srcset }}"
+                                        alt="{{ post.thumbnail.title }}"
+                                        title="{{ post.thumbnail.title }}"
+                                        loading="lazy" />
+                                </picture>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="archive-product__info-content-head">
+                                        <h4 class="archive-product__product-name">{{ post.title }}</h4>
+                                        {% set productCasNumbers = post.terms('product_cas_no') %}
+                                        {% for productCasNo in productCasNumbers %}
+                                            <p class="archive-product__cas-number">{{ 'Cas No: ' ~  productCasNo.name }}</p>
+                                        {% endfor %}
+                                        <p class="archive-product__product-date">{{'تاریخ ثبت: ' ~ english_numbers(post.date('d-m-Y')) }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-12 mb-3 col-lg-6 ">
+                                    <div class="archive-product__info-content-main product-single--country">
+                                        <span>برند: </span>
+                                        <p>{{ post.product_brand }}</p>
+                                    </div>
+                                    <div class="archive-product__info-content-main product-single--city">
+                                        <span>شکل ظاهری: </span>
+                                        <p>{{ post.product_appearence }}</p>
+                                    </div>
+                                    <div class="archive-product__info-content-main product-single--job-field">
+                                        <span>کشور تولید کننده: </span>
+                                        <p>{{ post.product_country }}</p>
+                                    </div>
+                                    <div class="archive-product__info-content-main product-single--start-date">
+                                        <span>برگه آنالیز: </span>
+                                        <p>{{ post.product_analyse }}</p>
+                                    </div>
+                                    <div class="archive-product__info-content-main product-single--ceo">
+                                        <span>محل تحویل: </span>
+                                        <p>{{ post.product_location }}</p>
+                                    </div>
+                                    <div class="archive-product__info-content-main product-single--personnel-no">
+                                        <span>کد شناسایی یا نام اختصاصی: </span>
+                                        <p>{{ post.product_unique_id }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-12 mb-3 col-lg-6 ">
+                                    <div class="archive-product__info-content-main product-single--office-phone">
+                                        <span>درصد خلوص: </span>
+                                        <p>{{ post.product_purity }}</p>
+                                    </div>
+                                    <div class="archive-product__info-content-main product-single--company-phone">
+                                        <span>گرید: </span>
+                                        <p>{{ post.product_grade }}</p>
+                                    </div>
+                                    <div class="archive-product__info-content-main product-single--office-address">
+                                        <span>بسته بندی: </span>
+                                        <p>{{ post.product_package }}</p>
+                                    </div>
+                                    <div class="archive-product__info-content-main product-single--company-address">
+                                        <span>حداقل سفارش: </span>
+                                        <p>{{ post.product_order_quantity }}</p>
+                                    </div>
+                                    <div class="archive-product__info-content-main product-single--mobile">
+                                        <span>قیمت: </span>
+                                        <p>{{ post.product_price }}</p>
+                                    </div>
+                                    <div class="archive-product__info-content-main product-single--analyse-download">
+                                        <a href="{{ post.get_field('product_analyse_download').url }}">دانلود برگه آنالیز(COA)</a>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <h5 class="archive-product__intro-content-label">توضیحات:</h5>
+                                    <div class="archive-product__intro-content">
+                                        {{ check_value(post.content, 'p', '')}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="col-md-4 m-auto">
+                <div class="archive-product__sidebar">
+                    {% set productSuppliers = post.get_field('product_supplier_linked') %}
+                    {% set productIcon = Image(post.product_icon) %}
+                    {% for productSupplier in productSuppliers %}
+                        {% set supplierIcon = Image(productSupplier.get_field('company_icon')) %}
+                        <div class="archive-product__supplier-icon">
+                            <img src="{{ supplierIcon.src }}"
+                                 srcset="{{ supplierIcon.srcset }}"
+                                 alt="{{ supplierIcon.post_title }}"
+                                 title="{{ supplierIcon.post_title }}"
+                                 loading="lazy"
+                            />
+                        </div>
+                        <h3 class="archive-product__product-supplier">{{ productSupplier.post_title }}</h3>
+                        <div class="archive-product__contact-btn">
+                            {% include "partial/button.twig" with {
+                                url : 'tel:' ~ productSupplier.get_field('company_mobile'),
+                                title : 'تماس با شرکت',
+                                target : fields.button.target,
+                                class : 'btn--primary product-single__button',
+                                icon : 'phone'
+                            } %}
+                        </div>
+                        <div class="archive-product__supplier-gallery">
+                            {% set companyImgGallery = Image(productSupplier.get_field('company_reward')) %}
+                            {% for gallery in companyImgGallery %}
+                                <div class="archive-product__image-gallery-item">
+                                    <img src="{{ gallery.src }}"
+                                         srcset="{{ gallery.srcset }}"
+                                         alt="{{ gallery.post_title }}"
+                                         title="{{ gallery.post_title }}"
+                                         loading="lazy"
+                                    />
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="archive-product__company-products-btn">
+                            {% include "partial/button.twig" with {
+                                url : productSupplier.permalink,
+                                title : 'همه محصولات تامین کننده',
+                                target : fields.button.target,
+                                class : 'btn--primary product-single__button',
+                                icon : 'chemistry'
+                            } %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

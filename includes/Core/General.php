@@ -27,6 +27,10 @@ class General
         /** Add classes to the body element */
         add_filter( 'body_class',[&$this, 'addBodyClasses'] );
 
+        /** Ajax Search */
+        add_action('wp_ajax_ajax_search', 'ajax_search_results');
+        add_action('wp_ajax_nopriv_ajax_search', 'ajax_search_results');
+
         /** Helper to delete the adminbar when developing */
         if (isset($_GET['nobar'])) {
             add_filter('show_admin_bar', '__return_false');
@@ -82,6 +86,7 @@ class General
 
             return $init_array;
         });
+
     }
 
     /**
@@ -170,6 +175,50 @@ class General
     {
         $classes[] = "cu-theme";
         return $classes;
+    }
+
+    /**
+     * Ajax Global Search
+     * @return array
+     *
+     */
+    function ajax_search_results(): array
+    {
+        $search_query = $_GET['search_query'] ?? '';
+        $templates = array('search.twig', 'archive.twig', 'index.twig');
+        $context = Timber::context();
+        $context['search_query'] = $search_query;
+        $search_query = urldecode($search_query); // Decode the search query
+
+        // Update 1: Sanitize the search query to prevent SQL injection
+        $search_query = sanitize_text_field($search_query);
+
+        // Update 2: Make sure the search query is not empty before performing the query
+        if (!empty($search_query)) {
+
+            $args = array(
+                's' => $search_query,
+                'post_type' => 'product',
+                'post_status' => 'publish',
+                'posts_per_page' => -1, // Retrieve all matching results
+            );
+
+
+            $posts = new Timber\PostQuery($args);
+
+            $context['posts'] = $posts; // Use the Timber\PostQuery object directly in the context
+        } else {
+            // If the search query is empty, set an empty array for the posts.
+            $context['posts'] = array();
+        }
+
+        $context['pagination'] = Timber::get_pagination();
+
+        // Render the search results template and send it back as JSON
+        $html = Timber::compile($templates, $context);
+        wp_send_json_success(array('html' => $html));
+
+        return $html;
     }
 
 }

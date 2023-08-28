@@ -25,6 +25,7 @@ new EXP\Core\Gutenberg();
 new EXP\Core\PostType();
 new Exp\Core\ExtendTwig();
 new Exp\Core\Breadcrumbs();
+new Exp\Core\Woocommerce();
 
 /** ThirdParty */
 new EXP\ThirdParty\ACF();
@@ -103,66 +104,14 @@ function fix_svg() {
 }
 add_action( 'admin_head', 'fix_svg' );
 
-/**
- * Ajax Global Search
- * @return array
- *
- */
-function ajax_search_results() {
-    $search_query = $_GET['search_query'] ?? '';
-    $templates = array('search.twig', 'archive.twig', 'index.twig');
-    $context = Timber::context();
-    $context['search_query'] = $search_query;
-    $search_query = urldecode($search_query); // Decode the search query
-
-    // Update 1: Sanitize the search query to prevent SQL injection
-    $search_query = sanitize_text_field($search_query);
-
-    // Update 2: Make sure the search query is not empty before performing the query
-    if (!empty($search_query)) {
-
-        $args = array(
-            's' => $search_query,
-            'post_type' => 'product',
-            'post_status' => 'publish',
-            'posts_per_page' => -1, // Retrieve all matching results
-        );
-
-
-        $posts = new Timber\PostQuery($args);
-
-        $context['posts'] = $posts; // Use the Timber\PostQuery object directly in the context
-    } else {
-        // If the search query is empty, set an empty array for the posts.
-        $context['posts'] = array();
-    }
-
-    $context['pagination'] = Timber::get_pagination();
-
-    // Render the search results template and send it back as JSON
-    $html = Timber::compile($templates, $context);
-    wp_send_json_success(array('html' => $html));
-}
-
-add_action('wp_ajax_ajax_search', 'ajax_search_results');
-add_action('wp_ajax_nopriv_ajax_search', 'ajax_search_results');
-
-
-
-function theme_add_woocommerce_support(): void
-{
-    add_theme_support( 'woocommerce' );
-}
-
-add_action( 'after_setup_theme', 'theme_add_woocommerce_support' );
 
 function timber_set_product( $post ): void
 {
     global $product;
 
     if ( is_woocommerce() ) {
-        $product = wc_get_product( $post->ID );
+       $product = wc_get_product( $post->ID );
     }
 }
 
-remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail' );
+
