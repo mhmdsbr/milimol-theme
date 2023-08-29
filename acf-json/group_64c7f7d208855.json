@@ -91,7 +91,7 @@
             "label": "برند",
             "name": "product_brand",
             "aria-label": "",
-            "type": "text",
+            "type": "select",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -101,12 +101,22 @@
                 "id": ""
             },
             "acfe_save_meta": 0,
-            "default_value": "",
-            "maxlength": "",
+            "choices": {
+                "adidas": "Adidas",
+                "nike": "Nike",
+                "gucci": "Gucci",
+                "agilent-technologie": "Agilent Technologie",
+                "krayden": "Krayden"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
             "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "repeatable": true
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "allow_custom": 0,
+            "search_placeholder": ""
         },
         {
             "key": "field_64e7b6d0174bd",
@@ -155,10 +165,10 @@
             "default_value": false,
             "return_format": "value",
             "multiple": 0,
-            "placeholder": "",
-            "allow_null": 1,
+            "allow_null": 0,
             "ui": 0,
             "ajax": 0,
+            "placeholder": "",
             "allow_custom": 0,
             "search_placeholder": ""
         },
@@ -511,5 +521,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1693323476
+    "modified": 1693334372
 }

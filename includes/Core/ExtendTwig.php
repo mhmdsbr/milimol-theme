@@ -45,9 +45,10 @@ class ExtendTwig
         $twig->addFunction(new TwigFunction('jalali_date', array($this, 'get_jalali_date')));
         $twig->addFunction(new TwigFunction('expiry_date', array($this, 'get_jalali_expiry_date')));
         $twig->addFunction(new TwigFunction('english_numbers', array($this, 'get_english_to_persian')));
-        $twig->addFunction(new TwigFunction('acf_select_field', array($this, 'get_acf_select_field')));
-        $twig->addFunction(new TwigFunction('acf_select_field_label', array($this, 'get_acf_select_field_label')));
-        $twig->addFunction(new TwigFunction('acf_checkbox_field', array($this, 'get_acf_checkbox_field')));
+        $twig->addFunction(new TwigFunction('acf_select_field', array($this, 'render_acf_select_field')));
+        $twig->addFunction(new TwigFunction('acf_select_field_label', array($this, 'render_acf_select_field_label')));
+        $twig->addFunction(new TwigFunction('acf_checkbox_field', array($this, 'render_acf_checkbox_field')));
+        $twig->addFunction(new TwigFunction('acf_relationship_checkboxes', array($this, 'render_acf_relationship_checkboxes')));
 
 
         return $twig;
@@ -171,14 +172,14 @@ function get_jalali_date(): string
         return $englishNumbers;
     }
 
-    function get_acf_select_field($fname, $currentValue, $defaultLabel = ''): string
+    function render_acf_select_field($fieldName, $currentValue, $defaultLabel = ''): string
     {
         $result = '';
         if (!empty($defaultLabel)) {
             $result .= "<option value=''>{$defaultLabel}</option>";
         }
-        $finfo = acf_maybe_get_field($fname, false, false);
-        foreach ($finfo['choices'] as $key => $val) {
+        $fieldInfo = acf_maybe_get_field($fieldName, false, false);
+        foreach ($fieldInfo['choices'] as $key => $val) {
             $sel = '';
             if ($currentValue == trim($key)) {
                 $sel = 'selected';
@@ -188,29 +189,49 @@ function get_jalali_date(): string
         return $result;
     }
 
-    function get_acf_checkbox_field($fname, $currentValue)
+    function render_acf_checkbox_field($fieldName, $currentValue): string
     {
         $result = '';
-        $finfo = acf_maybe_get_field($fname, false, false);
-        foreach ($finfo['choices'] as $key => $val) {
+        $fieldInfo = acf_maybe_get_field($fieldName, false, false);
+        foreach ($fieldInfo['choices'] as $key => $val) {
             $checked = '';
             if (is_array($currentValue) && in_array(trim($key), $currentValue)) {
                 $checked = 'checked';
             }
-            $result .= "<label><input type='checkbox' name='{$fname}[]' value='{$key}' {$checked}> {$val}</label><br>";
+            $result .= "<label><input type='checkbox' name='{$fieldName}[]' value='{$key}' {$checked}> {$val}</label>";
         }
         return $result;
     }
 
-    function get_acf_select_field_label($fieldName, $selectedValue): string
+    function render_acf_select_field_label($fieldName, $selectedValue): string
     {
         $result = '';
-        $finfo = acf_maybe_get_field($fieldName, false, false);
+        $fieldInfo = acf_maybe_get_field($fieldName, false, false);
 
-        if (isset($finfo['choices'][$selectedValue])) {
-            $result = $finfo['choices'][$selectedValue];
+        if (isset($fieldInfo['choices'][$selectedValue])) {
+            $result = $fieldInfo['choices'][$selectedValue];
         }
         return $result;
     }
+    function render_acf_relationship_checkboxes($fieldName, $currentValue): string
+    {
+        $result = '';
+        $fieldInfo = acf_maybe_get_field($fieldName, true, false);
+        // Check if the field is an ACF relationship field
+        if ($fieldInfo['type'] === 'relationship') {
+            $relatedPosts = get_posts(array(
+                'post_type' => 'company', // Set the related post type
+                'posts_per_page' => -1,
+            ));
+
+            foreach ($relatedPosts as $post) {
+                $postId = (int) $post->ID; // Cast the post ID to integer
+                $checked = in_array($postId, $currentValue) ? 'checked' : '';
+                $result .= "<label><input type='checkbox' name='{$fieldName}[]' value='{$postId}' {$checked}> {$post->post_title}</label>";
+            }
+        }
+        return $result;
+    }
+
 }
 
