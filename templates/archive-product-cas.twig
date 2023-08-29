@@ -89,10 +89,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="filters">
-                        {% do action('woocommerce_before_shop_loop') %}
-                        {% filter shortcodes %}
-                            [woof_front_builder name=’My Filter’]
-                        {% endfilter %}
+
                     </div>
                 </div>
                 {% include 'components/products/category-related-product.twig' %}

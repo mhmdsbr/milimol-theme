@@ -1,0 +1,36 @@
+<div class="product-filters">
+    <form action="{{ app.request.uri }}" method="get">
+{#        <label for="product-country">همه کشورها</label>#}
+{#        <select name="product_country" id="product-country">#}
+{#            {{ acf_select_field('product_country', country_filter, 'همه کشورها') }}#}
+{#        </select>#}
+        <input type="text" id="country-search" placeholder="Search countries">
+        {{ acf_checkbox_field('product_country', country_filter) }}
+
+{#        <label for="product-unit">واحد اندازه گیری</label>#}
+{#        <select name="product_unit" id="product-unit">#}
+{#            {{ acf_select_field('product_unit', unit_filter, 'همه واحدها') }}#}
+{#        </select>#}
+
+        {{ acf_checkbox_field('product_unit', unit_filter) }}
+
+        <label for="min-order-quantity">حداقل سفارش</label>
+        <div class="range-input-container">
+            <input type="range" name="min_order_quantity" id="min-order-quantity"
+                   min="0" max="100" step="1"
+                   value="{{ min_order_filter|default('') }}">
+            <output for="min-order-quantity" id="min-order-quantity-value">{{ min_order_filter|default('') }}</output>
+        </div>
+        <label for="product-purity-filter">درصد خلوص</label>
+        <div class="range-input-container">
+            <input type="range" name="product_purity_filter" id="product-purity-filter"
+                   min="0" max="100" step="1"
+                   value="{{ product_purity_filter|default(0) }}">
+            <output for="product-purity-filter" id="product-purity-filter-value">{{ product_purity_filter|default(0) }}</output>
+        </div>
+
+        <input type="submit" value="جست و جو">
+        <button type="reset">بازنشانی</button> <!-- Add Reset Button -->
+
+    </form>
+</div>

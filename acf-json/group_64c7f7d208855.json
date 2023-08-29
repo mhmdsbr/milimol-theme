@@ -135,7 +135,7 @@
             "label": "کشور تولید کننده",
             "name": "product_country",
             "aria-label": "",
-            "type": "text",
+            "type": "select",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -145,12 +145,22 @@
                 "id": ""
             },
             "acfe_save_meta": 0,
-            "default_value": "",
-            "maxlength": "",
+            "choices": {
+                "iran": "ایران",
+                "china": "چین",
+                "turkey": "ترکیه",
+                "india": "هند",
+                "usa": "آمریکا"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
             "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "repeatable": true
+            "allow_null": 1,
+            "ui": 0,
+            "ajax": 0,
+            "allow_custom": 0,
+            "search_placeholder": ""
         },
         {
             "key": "field_64e7b6ec174bf",
@@ -283,15 +293,46 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
-            "key": "field_64e7b745174c4",
-            "label": "حداقل سفارش",
-            "name": "product_order_quantity",
+            "key": "field_64ed9eade43d2",
+            "label": "واحد اندازه گیری",
+            "name": "product_unit",
             "aria-label": "",
-            "type": "text",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "choices": {
+                "kg": "کیلوگرم",
+                "mg": "میلی گرم",
+                "liter": "لیتر",
+                "ml": "میلی لیتر",
+                "ton": "تن"
+            },
+            "default_value": "kg",
+            "return_format": "array",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": ""
+        },
+        {
+            "key": "field_64ed9de4a05cf",
+            "label": "وزن",
+            "name": "product_weight",
+            "aria-label": "",
+            "type": "number",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -302,11 +343,35 @@
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "maxlength": "",
+            "min": 1,
+            "max": 100,
             "placeholder": "",
+            "step": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
+        },
+        {
+            "key": "field_64e7b745174c4",
+            "label": "حداقل سفارش",
+            "name": "product_order_quantity",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "min": 1,
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_64e7b751174c5",
@@ -446,5 +511,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1693047628
+    "modified": 1693323476
 }

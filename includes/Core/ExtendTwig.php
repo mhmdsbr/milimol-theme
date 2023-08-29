@@ -45,6 +45,9 @@ class ExtendTwig
         $twig->addFunction(new TwigFunction('jalali_date', array($this, 'get_jalali_date')));
         $twig->addFunction(new TwigFunction('expiry_date', array($this, 'get_jalali_expiry_date')));
         $twig->addFunction(new TwigFunction('english_numbers', array($this, 'get_english_to_persian')));
+        $twig->addFunction(new TwigFunction('acf_select_field', array($this, 'get_acf_select_field')));
+        $twig->addFunction(new TwigFunction('acf_select_field_label', array($this, 'get_acf_select_field_label')));
+        $twig->addFunction(new TwigFunction('acf_checkbox_field', array($this, 'get_acf_checkbox_field')));
 
 
         return $twig;
@@ -168,5 +171,46 @@ function get_jalali_date(): string
         return $englishNumbers;
     }
 
+    function get_acf_select_field($fname, $currentValue, $defaultLabel = ''): string
+    {
+        $result = '';
+        if (!empty($defaultLabel)) {
+            $result .= "<option value=''>{$defaultLabel}</option>";
+        }
+        $finfo = acf_maybe_get_field($fname, false, false);
+        foreach ($finfo['choices'] as $key => $val) {
+            $sel = '';
+            if ($currentValue == trim($key)) {
+                $sel = 'selected';
+            }
+            $result .= "<option value='{$key}' {$sel}>{$val}</option>";
+        }
+        return $result;
+    }
+
+    function get_acf_checkbox_field($fname, $currentValue)
+    {
+        $result = '';
+        $finfo = acf_maybe_get_field($fname, false, false);
+        foreach ($finfo['choices'] as $key => $val) {
+            $checked = '';
+            if (is_array($currentValue) && in_array(trim($key), $currentValue)) {
+                $checked = 'checked';
+            }
+            $result .= "<label><input type='checkbox' name='{$fname}[]' value='{$key}' {$checked}> {$val}</label><br>";
+        }
+        return $result;
+    }
+
+    function get_acf_select_field_label($fieldName, $selectedValue): string
+    {
+        $result = '';
+        $finfo = acf_maybe_get_field($fieldName, false, false);
+
+        if (isset($finfo['choices'][$selectedValue])) {
+            $result = $finfo['choices'][$selectedValue];
+        }
+        return $result;
+    }
 }
 
