@@ -1,5 +1,5 @@
 {
-    "key": "group_64589eccf3547",
+    "key": "group_64f349f44eecb",
     "title": "تنظیمات CTP: شرکت ها",
     "fields": [
         {
@@ -19,6 +19,31 @@
             "placement": "left",
             "endpoint": 0,
             "repeatable": true
+        },
+        {
+            "key": "field_64f3496d77597",
+            "label": "وضعیت اطلاعات پایه",
+            "name": "basic_status",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": [],
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": ""
         },
         {
             "key": "field_64c6660ba239b",
@@ -50,6 +75,34 @@
             "repeatable": true
         },
         {
+            "key": "field_64f345fa77571",
+            "label": "آیکون (پیش نمایش)",
+            "name": "company_icon_draft",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "uploader": "",
+            "return_format": "array",
+            "acfe_thumbnail": 0,
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "thumbnail",
+            "library": "all"
+        },
+        {
             "key": "field_64b9056e4e12a",
             "label": "معرفی شرکت",
             "name": "company_intro",
@@ -71,6 +124,28 @@
             "placeholder": "",
             "new_lines": "",
             "repeatable": true
+        },
+        {
+            "key": "field_64f345fd77572",
+            "label": "معرفی شرکت (پیش نمایش)",
+            "name": "company_intro_draft",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "80",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "acfe_textarea_code": 0,
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
         },
         {
             "key": "field_64dd27a42f2e9",
@@ -95,6 +170,27 @@
             "repeatable": true
         },
         {
+            "key": "field_64f3460077573",
+            "label": "کشور (پیش نمایش)",
+            "name": "company_country_draft",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_64b907304e12d",
             "label": "شهر",
             "name": "company_city",
@@ -115,6 +211,27 @@
             "prepend": "",
             "append": "",
             "repeatable": true
+        },
+        {
+            "key": "field_64f3460277574",
+            "label": "شهر (پیش نمایش)",
+            "name": "company_city_draft",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_64b905a14e12b",
@@ -139,6 +256,27 @@
             "repeatable": true
         },
         {
+            "key": "field_64f3460577575",
+            "label": "سال تاسیس (پیش نمایش)",
+            "name": "company_start_date_draft",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_64dd27bc2f2ea",
             "label": "نوع فعالیت",
             "name": "company_job_field",
@@ -159,6 +297,27 @@
             "prepend": "",
             "append": "",
             "repeatable": true
+        },
+        {
+            "key": "field_64f3460777576",
+            "label": "نوع فعالیت (پیش نمایش)",
+            "name": "company_job_field_draft",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_64c66679a239c",
@@ -183,6 +342,27 @@
             "repeatable": true
         },
         {
+            "key": "field_64f3460977577",
+            "label": "مدیر (پیش نمایش)",
+            "name": "company_ceo_draft",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_64dd27e52f2eb",
             "label": "تعداد پرسنل",
             "name": "company_personnel",
@@ -203,6 +383,27 @@
             "prepend": "",
             "append": "",
             "repeatable": true
+        },
+        {
+            "key": "field_64f3460c77578",
+            "label": "تعداد پرسنل (پیش نمایش)",
+            "name": "company_personnel_draft",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_64b907484e12e",
@@ -227,6 +428,27 @@
             "repeatable": true
         },
         {
+            "key": "field_64f3460e77579",
+            "label": "تلفن دفتر (پیش نمایش)",
+            "name": "company_office_phone_draft",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_64dd285d2f2ec",
             "label": "تلفن کارخانه",
             "name": "company_phone",
@@ -247,6 +469,27 @@
             "prepend": "",
             "append": "",
             "repeatable": true
+        },
+        {
+            "key": "field_64f346107757a",
+            "label": "تلفن کارخانه (پیش نمایش)",
+            "name": "company_phone_draft",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_64dd28882f2ed",
@@ -271,6 +514,27 @@
             "repeatable": true
         },
         {
+            "key": "field_64f346127757b",
+            "label": "آدرس دفتر (پیش نمایش)",
+            "name": "company_office_address_draft",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_64dd28a22f2ee",
             "label": "آدرس کارخانه",
             "name": "company_address",
@@ -291,6 +555,27 @@
             "prepend": "",
             "append": "",
             "repeatable": true
+        },
+        {
+            "key": "field_64f346147757c",
+            "label": "آدرس کارخانه (پیش نمایش)",
+            "name": "company_address_draft",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_64dd28c72f2ef",
@@ -315,6 +600,27 @@
             "repeatable": true
         },
         {
+            "key": "field_64f346177757d",
+            "label": "موبایل (پیش نمایش)",
+            "name": "company_mobile_draft",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_64dd28f02f2f0",
             "label": "دورنگار",
             "name": "company_fax",
@@ -337,6 +643,27 @@
             "repeatable": true
         },
         {
+            "key": "field_64f346197757e",
+            "label": "دورنگار (پیش نمایش)",
+            "name": "company_fax_draft",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_64b9071c4e12c",
             "label": "ایمیل",
             "name": "company_email",
@@ -356,6 +683,26 @@
             "prepend": "",
             "append": "",
             "repeatable": true
+        },
+        {
+            "key": "field_64f3461b7757f",
+            "label": "ایمیل (پیش نمایش)",
+            "name": "company_email_draft",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_64de3d0c925cc",
@@ -396,6 +743,26 @@
             "repeatable": true
         },
         {
+            "key": "field_64f3462377580",
+            "label": "نقشه (پیش نمایش)",
+            "name": "company_map_draft",
+            "aria-label": "",
+            "type": "google_map",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "center_lat": "",
+            "center_lng": "",
+            "zoom": "",
+            "height": ""
+        },
+        {
             "key": "field_64de39ebdc18a",
             "label": "آیدی ویدیو (آپارات)",
             "name": "company_video_id",
@@ -415,6 +782,46 @@
             "prepend": "",
             "append": "",
             "repeatable": true
+        },
+        {
+            "key": "field_64dd26ae2f2e6",
+            "label": "توییتر",
+            "name": "company_twitter",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "placeholder": "",
+            "repeatable": true
+        },
+        {
+            "key": "field_64f3462777581",
+            "label": "آیدی ویدیو (آپارات) (پیش نمایش)",
+            "name": "company_video_id_draft",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_64de3a1cdc18b",
@@ -445,6 +852,72 @@
             "acfe_thumbnail": 0
         },
         {
+            "key": "field_64dd26ad2f2e5",
+            "label": "تلگرام",
+            "name": "company_telegram",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "placeholder": "",
+            "repeatable": true
+        },
+        {
+            "key": "field_64dd26ac2f2e4",
+            "label": "یوتیوب",
+            "name": "company_youtube",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "placeholder": "",
+            "repeatable": true
+        },
+        {
+            "key": "field_64f3462977582",
+            "label": "تصویر ویدیو (پیش نمایش)",
+            "name": "company_video_bg_draft",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "uploader": "",
+            "return_format": "array",
+            "acfe_thumbnail": 0,
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
             "key": "field_64de3d2c925cd",
             "label": "بنر تبلیغاتی",
             "name": "company_ad_banner",
@@ -471,6 +944,34 @@
             "repeatable": true,
             "uploader": "",
             "acfe_thumbnail": 0
+        },
+        {
+            "key": "field_64f3462c77583",
+            "label": "بنر تبلیغاتی (پیش نمایش)",
+            "name": "company_ad_banner_draft",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "uploader": "",
+            "return_format": "array",
+            "acfe_thumbnail": 0,
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium",
+            "library": "all"
         },
         {
             "key": "field_64dd26702f2e3",
@@ -502,6 +1003,35 @@
             "repeatable": true
         },
         {
+            "key": "field_64f3462e77584",
+            "label": "گالری تصاویر (پیش نمایش)",
+            "name": "company_img_gallery_draft",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "return_format": "array",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "medium"
+        },
+        {
             "key": "field_64e862af1e7d1",
             "label": "جوایز و استاندارد ها",
             "name": "comapny_reward",
@@ -530,6 +1060,35 @@
             "insert": "append",
             "preview_size": "medium",
             "repeatable": true
+        },
+        {
+            "key": "field_64f3463077585",
+            "label": "جوایز و استاندارد ها (پیش نمایش)",
+            "name": "comapny_reward_draft",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "return_format": "array",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "medium"
         },
         {
             "key": "field_64dd231b2f2d8",
@@ -601,6 +1160,61 @@
                     "uploader": "",
                     "acfe_thumbnail": 0,
                     "parent_repeater": "field_64de0f58259cf"
+                }
+            ]
+        },
+        {
+            "key": "field_64f3463777586",
+            "label": "مشتریان (پیش نمایش)",
+            "name": "company_clients_draft",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "در این قسمت میتوانید تصویر مشتری مربوط خود را انتخاب نمایید",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "acfe_repeater_stylised_button": 0,
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "سطر جدید",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_64f3463777587",
+                    "label": "تصویر کاتالوگ",
+                    "name": "client_img",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "acfe_save_meta": 0,
+                    "uploader": "",
+                    "return_format": "array",
+                    "acfe_thumbnail": 0,
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "parent_repeater": "field_64f3463777586"
                 }
             ]
         },
@@ -702,6 +1316,84 @@
             ]
         },
         {
+            "key": "field_64f3463a77588",
+            "label": "کاتالوگ ها (پیش نمایش)",
+            "name": "company_catalog_draft",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "در این قسمت میتوانید تصویر مشتری مربوط خود را انتخاب نمایید",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "acfe_repeater_stylised_button": 0,
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "سطر جدید",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_64f3463a77589",
+                    "label": "تصویر کاتالوگ",
+                    "name": "catalog_img",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "acfe_save_meta": 0,
+                    "uploader": "",
+                    "return_format": "array",
+                    "acfe_thumbnail": 0,
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "parent_repeater": "field_64f3463a77588"
+                },
+                {
+                    "key": "field_64f3463a7758a",
+                    "label": "آپلود کاتالوگ",
+                    "name": "catalog_upload",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "acfe_save_meta": 0,
+                    "uploader": "",
+                    "return_format": "url",
+                    "min_size": "",
+                    "max_size": 1,
+                    "mime_types": "",
+                    "library": "all",
+                    "parent_repeater": "field_64f3463a77588"
+                }
+            ]
+        },
+        {
             "key": "field_64dd25a92f2df",
             "label": "گواهی و مجوز",
             "name": "",
@@ -797,6 +1489,83 @@
             ]
         },
         {
+            "key": "field_64f3463e7758b",
+            "label": "گواهی و مجوز ها (پیش نمایش)",
+            "name": "company_documents_draft",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "در این قسمت میتوانید تصویر مشتری مربوط خود را انتخاب نمایید",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "acfe_repeater_stylised_button": 0,
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "سطر جدید",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_64f3463e7758c",
+                    "label": "تصویر مجوز یا گواهی",
+                    "name": "document_img",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "acfe_save_meta": 0,
+                    "uploader": "",
+                    "return_format": "array",
+                    "acfe_thumbnail": 0,
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "parent_repeater": "field_64f3463e7758b"
+                },
+                {
+                    "key": "field_64f3463e7758d",
+                    "label": "تیتر مجوز یا گواهی",
+                    "name": "document_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "acfe_save_meta": 0,
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_64f3463e7758b"
+                }
+            ]
+        },
+        {
             "key": "field_64c6a339a239e",
             "label": "شبکه های اجتماعی",
             "name": "",
@@ -834,6 +1603,24 @@
             "repeatable": true
         },
         {
+            "key": "field_64f346427758e",
+            "label": "وب سایت شرکت (پیش نمایش)",
+            "name": "company_website_draft",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
             "key": "field_64c6a34ba239f",
             "label": "واتس اپ",
             "name": "company_whatsapp",
@@ -851,6 +1638,24 @@
             "default_value": "",
             "placeholder": "",
             "repeatable": true
+        },
+        {
+            "key": "field_64f346487758f",
+            "label": "واتس اپ (پیش نمایش)",
+            "name": "company_whatsapp_draft",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "placeholder": ""
         },
         {
             "key": "field_64c6a362a23a1",
@@ -872,6 +1677,24 @@
             "repeatable": true
         },
         {
+            "key": "field_64f3464a77590",
+            "label": "اینستاگرام (پیش نمایش)",
+            "name": "company_instagram_draft",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
             "key": "field_64c6a361a23a0",
             "label": "ایمیل",
             "name": "company_email_icon",
@@ -889,6 +1712,24 @@
             "default_value": "",
             "placeholder": "",
             "repeatable": true
+        },
+        {
+            "key": "field_64f3464e77591",
+            "label": "ایمیل (پیش نمایش)",
+            "name": "company_email_icon_draft",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "placeholder": ""
         },
         {
             "key": "field_64dd26af2f2e8",
@@ -910,6 +1751,24 @@
             "repeatable": true
         },
         {
+            "key": "field_64f3465077592",
+            "label": "آپارات (پیش نمایش)",
+            "name": "company_aparat_draft",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
             "key": "field_64dd26af2f2e7",
             "label": "فیسبوک",
             "name": "company_facebook",
@@ -929,96 +1788,38 @@
             "repeatable": true
         },
         {
-            "key": "field_64dd26ae2f2e6",
-            "label": "توییتر",
-            "name": "company_twitter",
+            "key": "field_64f3465377593",
+            "label": "فیسبوک (پیش نمایش)",
+            "name": "company_facebook_draft",
             "aria-label": "",
             "type": "url",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": false,
             "wrapper": {
-                "width": "50",
+                "width": "",
                 "class": "",
                 "id": ""
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": "",
-            "repeatable": true
-        },
-        {
-            "key": "field_64dd26ad2f2e5",
-            "label": "تلگرام",
-            "name": "company_telegram",
-            "aria-label": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "acfe_save_meta": 0,
-            "default_value": "",
-            "placeholder": "",
-            "repeatable": true
-        },
-        {
-            "key": "field_64dd26ac2f2e4",
-            "label": "یوتیوب",
-            "name": "company_youtube",
-            "aria-label": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "acfe_save_meta": 0,
-            "default_value": "",
-            "placeholder": "",
-            "repeatable": true
+            "placeholder": ""
         }
     ],
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "company"
-            }
-        ]
-    ],
+    "location": [],
     "menu_order": 0,
-    "position": "acf_after_title",
+    "position": "normal",
     "style": "default",
-    "label_placement": "top",
+    "label_placement": "left",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [],
     "active": true,
     "description": "",
-    "show_in_rest": 0,
+    "show_in_rest": false,
     "acfe_display_title": "",
     "acfe_autosync": [
         "json"
     ],
     "is_acf_component": 0,
-    "acfe_form": 0,
-    "acf_component_defaults": {
-        "repeatable": "0",
-        "min": "",
-        "max": "",
-        "layout": "block",
-        "button_label": "",
-        "appearances": ""
-    },
-    "acfe_meta": "",
-    "acfe_note": "",
-    "modified": 1692954980
+    "modified": 1693665780
 }
