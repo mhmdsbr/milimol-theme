@@ -4,6 +4,10 @@
 require 'includes/timber.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
+define('MILIMOL_THEME_DIR', get_stylesheet_directory());
+require MILIMOL_THEME_DIR . '/includes/ThirdParty/Woocommerce/custom-shortcodes.php';
+require MILIMOL_THEME_DIR . '/includes/ThirdParty/Woocommerce/custom-functions.php';
+
 spl_autoload_register(function ($classname) {
     $parts = explode('\\', $classname);
     array_shift($parts);
