@@ -1,6 +1,6 @@
 <?php
 /**
- * Helper class for custom Contact Gutenberg block
+ * Helper class for custom Follow Us Gutenberg block
  */
 
 namespace EXP\ThirdParty\ACFGutenberg\Blocks;
@@ -8,18 +8,17 @@ namespace EXP\ThirdParty\ACFGutenberg\Blocks;
 use Timber\Timber;
 use EXP\ThirdParty\ACFGutenberg\Abstracts\Blockable;
 
-
-class BlockContent extends Blockable
+class BlockFollowUs extends Blockable
 {
-    protected $block_name = 'block_content';
+    protected $block_name = 'block_follow_us';
 
-    protected $block_title = 'محتوا';
+    protected $block_title = 'ما را دنبال کنید';
 
     protected $block_category = 'layout';
 
-    protected $block_icon = 'media-document';
+    protected $block_icon = 'share';
 
-    protected $block_keywords = ['content', 'text', 'editor', 'paragraph', 'متن', 'تیتر'];
+    protected $block_keywords = ['follow', 'share', 'sharing', 'social', 'media'];
 
     /**
      * Callback method that displays the block
@@ -34,8 +33,9 @@ class BlockContent extends Blockable
     {
         $context['block']      = $block;
         $context['fields']     = get_fields();
+        $context['options']    = get_fields('options');
         $context['is_preview'] = $is_preview;
 
-        Timber::render('blocks/layout/content.twig', $context);
+        Timber::render('blocks/layout/follow-us.twig', $context);
     }
 }

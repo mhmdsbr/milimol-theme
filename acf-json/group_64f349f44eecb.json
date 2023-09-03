@@ -1806,20 +1806,39 @@
             "placeholder": ""
         }
     ],
-    "location": [],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "company"
+            }
+        ]
+    ],
     "menu_order": 0,
     "position": "normal",
     "style": "default",
     "label_placement": "left",
     "instruction_placement": "label",
-    "hide_on_screen": [],
+    "hide_on_screen": "",
     "active": true,
     "description": "",
-    "show_in_rest": false,
+    "show_in_rest": 0,
     "acfe_display_title": "",
     "acfe_autosync": [
         "json"
     ],
     "is_acf_component": 0,
-    "modified": 1693665780
+    "acfe_form": 0,
+    "acf_component_defaults": {
+        "repeatable": "0",
+        "min": "",
+        "max": "",
+        "layout": "block",
+        "button_label": "",
+        "appearances": ""
+    },
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1693732509
 }

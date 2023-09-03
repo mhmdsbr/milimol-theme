@@ -1,10 +1,10 @@
 {
-    "key": "group_6474fcb354a0c",
-    "title": "بلاک: کارت ها",
+    "key": "group_646ca571cd16a",
+    "title": "بلاک: فرم تماس",
     "fields": [
         {
-            "key": "field_6474fcb383d1b",
-            "label": "کارت ها",
+            "key": "field_646ca5724b697",
+            "label": "فرم تماس",
             "name": "",
             "aria-label": "",
             "type": "message",
@@ -21,7 +21,7 @@
             "esc_html": 0
         },
         {
-            "key": "field_6474fcb383d30",
+            "key": "field_646ca5bb4b698",
             "label": "اطلاعات",
             "name": "",
             "aria-label": "",
@@ -35,11 +35,10 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0,
-            "repeatable": true
+            "endpoint": 0
         },
         {
-            "key": "field_6474fcb383d78",
+            "key": "field_646ca6d34b69d",
             "label": "",
             "name": "",
             "aria-label": "",
@@ -52,12 +51,12 @@
                 "class": "",
                 "id": ""
             },
-            "message": "در این قسمت میتوانید کارت های خود را اضافه نمایید",
+            "message": "این بلاک نمایش فرم و اطلاعات تماس با ما می باشد",
             "new_lines": "wpautop",
             "esc_html": 0
         },
         {
-            "key": "field_6474fcb383dc0",
+            "key": "field_646ca6044b699",
             "label": "تنظیمات",
             "name": "",
             "aria-label": "",
@@ -71,68 +70,12 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0,
-            "repeatable": true
+            "endpoint": 0
         },
         {
-            "key": "field_6474fcb383e08",
-            "label": "رنگ پس زمینه",
-            "name": "background_color",
-            "aria-label": "",
-            "type": "component_field",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "acfe_save_meta": 0,
-            "field_group_key": "group_6451fde6d5c44",
-            "repeatable": true,
-            "layout": "block",
-            "button_label": "",
-            "appearances": "",
-            "min": "",
-            "max": "",
-            "collapsed": "",
-            "sub_fields": []
-        },
-        {
-            "key": "field_64f45bba5bc8f",
-            "label": "محل قرارگیری تیتر",
-            "name": "text_alignment",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "acfe_save_meta": 0,
-            "choices": {
-                "left": "چپ",
-                "right": "راست",
-                "center": "وسط"
-            },
-            "default_value": false,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_custom": 0,
-            "search_placeholder": "",
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
-            "key": "field_64f458efa8780",
-            "label": "عرض ردیف",
-            "name": "is_boxed",
+            "key": "field_646ca7824b69f",
+            "label": "نمایش تیتر",
+            "name": "is_show_title",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
@@ -145,15 +88,15 @@
             },
             "acfe_save_meta": 0,
             "message": "",
-            "default_value": 0,
-            "ui_on_text": "Boxed",
-            "ui_off_text": "Full-width",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
             "ui": 1
         },
         {
-            "key": "field_64f45a297993a",
-            "label": "ستون ها",
-            "name": "columns",
+            "key": "field_646ca7994b6a0",
+            "label": "نمایش متن",
+            "name": "is_show_text",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
@@ -166,13 +109,13 @@
             },
             "acfe_save_meta": 0,
             "message": "",
-            "default_value": 0,
-            "ui_on_text": "four columns",
-            "ui_off_text": "five columns",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
             "ui": 1
         },
         {
-            "key": "field_6474fcb383e4e",
+            "key": "field_646ca6104b69a",
             "label": "محتوا",
             "name": "",
             "aria-label": "",
@@ -186,58 +129,73 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0,
-            "repeatable": true
+            "endpoint": 0
         },
         {
-            "key": "field_6474fcb383e95",
+            "key": "field_646ca7c14b6a1",
             "label": "تیتر",
             "name": "title",
             "aria-label": "",
             "type": "text",
             "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_646ca7824b69f",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
-            "key": "field_6474fce2f78e9",
+            "key": "field_646ca7d74b6a2",
             "label": "متن",
-            "name": "intro_text",
+            "name": "text",
             "aria-label": "",
             "type": "textarea",
             "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_646ca7994b6a0",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "default_value": "",
+            "acfe_textarea_code": 0,
             "maxlength": "",
             "rows": "",
             "placeholder": "",
-            "new_lines": "",
-            "repeatable": true,
-            "acfe_textarea_code": 0
+            "new_lines": ""
         },
         {
-            "key": "field_6474fcb383edb",
-            "label": "آیتم ها",
-            "name": "elements",
+            "key": "field_646ca8034b6a4",
+            "label": "فرم",
+            "name": "form",
             "aria-label": "",
-            "type": "repeater",
+            "type": "forms",
             "instructions": "",
             "required": 1,
             "conditional_logic": 0,
@@ -247,23 +205,42 @@
                 "id": ""
             },
             "acfe_save_meta": 0,
+            "return_format": "id",
+            "allow_null": 0,
+            "multiple": 0
+        },
+        {
+            "key": "field_64f47355ceae7",
+            "label": "اطلاعات تماس",
+            "name": "elements",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
             "acfe_repeater_stylised_button": 0,
-            "layout": "row",
+            "layout": "table",
             "pagination": 0,
             "min": 0,
-            "max": 0,
+            "max": 4,
             "collapsed": "",
-            "button_label": "Add Row",
+            "button_label": "سطر جدید",
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_6474fcb5df4ac",
+                    "key": "field_64f47373ceae8",
                     "label": "تیتر",
                     "name": "title",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
-                    "required": 1,
+                    "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
@@ -276,10 +253,10 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_6474fcb383edb"
+                    "parent_repeater": "field_64f47355ceae7"
                 },
                 {
-                    "key": "field_6474fcb5df503",
+                    "key": "field_64f47381ceae9",
                     "label": "زیرنویس",
                     "name": "subtitle",
                     "aria-label": "",
@@ -298,32 +275,10 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_6474fcb383edb"
+                    "parent_repeater": "field_64f47355ceae7"
                 },
                 {
-                    "key": "field_6474fd1af78ea",
-                    "label": "هایلایت شود",
-                    "name": "is_highlighted",
-                    "aria-label": "",
-                    "type": "true_false",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "acfe_save_meta": 0,
-                    "message": "",
-                    "default_value": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": "",
-                    "ui": 1,
-                    "parent_repeater": "field_6474fcb383edb"
-                },
-                {
-                    "key": "field_64b52cb24b1c0",
+                    "key": "field_64f47384ceaea",
                     "label": "تصویر",
                     "name": "image",
                     "aria-label": "",
@@ -336,8 +291,10 @@
                         "class": "",
                         "id": ""
                     },
+                    "acfe_save_meta": 0,
+                    "uploader": "",
                     "return_format": "array",
-                    "library": "all",
+                    "acfe_thumbnail": 0,
                     "min_width": "",
                     "min_height": "",
                     "min_size": "",
@@ -346,10 +303,8 @@
                     "max_size": "",
                     "mime_types": "",
                     "preview_size": "medium",
-                    "repeatable": true,
-                    "uploader": "",
-                    "acfe_thumbnail": 0,
-                    "parent_repeater": "field_6474fcb383edb"
+                    "library": "all",
+                    "parent_repeater": "field_64f47355ceae7"
                 }
             ]
         }
@@ -359,7 +314,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/block-flow-process"
+                "value": "acf\/block-contact-form"
             }
         ]
     ],
@@ -388,5 +343,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1693741907
+    "modified": 1693742243
 }

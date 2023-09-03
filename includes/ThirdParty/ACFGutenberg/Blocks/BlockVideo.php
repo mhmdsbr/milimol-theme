@@ -13,13 +13,13 @@ class BlockVideo extends Blockable
 {
     protected $block_name = 'block_video';
 
-    protected $block_title = 'Video';
+    protected $block_title = 'ویدیو';
 
     protected $block_category = 'layout';
 
     protected $block_icon = 'format-video';
 
-    protected $block_keywords = ['video', 'media'];
+    protected $block_keywords = ['video', 'media', 'ویدیو'];
 
     protected $block_jsx = false;
 

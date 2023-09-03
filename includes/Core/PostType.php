@@ -72,24 +72,6 @@ class PostType
             $supports_faq
         );
 
-
-        $supports_process = array('title', 'revisions', 'page-attributes');
-        $this->registerPostType(
-            'process',
-            'فرآیند ها',
-            'فرآیند',
-            'process',
-            false,
-            'process',
-            true,
-            false,
-            [],
-            true,
-            'dashicons-admin-generic',
-            false,
-            $supports_process,
-        );
-
         $this->registerTaxonomy(
             'شماره هویت',
             ' شماره هویت',

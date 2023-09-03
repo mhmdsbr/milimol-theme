@@ -1,27 +1,36 @@
-<section class="exp-timeline {{ background_color(fields.background_color) }}">
-    <div class="container">
+<section class="process-cards {{ background_color(fields.background_color) }}">
+    <div class="container{{ fields.is_boxed == true ? '' : '-fluid' }}">
         <div class="row">
             <div class="col-12">
-                {{ check_value(fields.title, 'h2', "exp-timeline__title") }}
-                {{ check_value(fields.intro_text, 'h2', "exp-timeline__text") }}
+                {% if fields.text_alignment == 'left' %}
+                  {% set alignment = '-end' %}
+                {% elseif fields.text_alignment == 'right' %}
+                  {% set alignment = '-start' %}
+                {% else %}
+                   {% set alignment = '-center' %}
+                {% endif %}
+                <h2 class="process-cards__title text{{ alignment }}">
+                    {{ fields.title }}
+                </h2>
+                {{ check_value(fields.intro_text, 'p', "process-cards__text") }}
             </div>
             {% if fields.elements is array %}
-                {% set elementsBatched = fields.elements|batch(4) %}
+                {% set elementsBatched = fields.columns == true ? fields.elements|batch(4) : fields.elements|batch(5) %}
                 {% for elementsRow in elementsBatched %}
                     <div class="col-12 row gx-0 p-3 justify-content-center">
                         {% for element in elementsRow %}
-                            <div class="col-lg-3 gx-3 col-12 {{ exp_mobile() ? 'text-center' : 'text-left'}} ">
-                                <div class="exp-timeline__content {{ element.is_highlighted == true ? 'bg--sustain-mossgreen' : '' }} step-{{ loop.index }}">
+                            <div class="{{ fields.columns == true ? 'col-lg-3' : 'col-lg-2' }} gx-3 col-12 {{ exp_mobile() ? 'text-center' : 'text-left'}} ">
+                                <div class="process-cards__content {{ element.is_highlighted == true ? 'bg--sustain-mossgreen' : '' }} step-{{ loop.index }}">
                                     {% if element.image is not empty %}
-                                        <img class="exp-timeline__icon"
+                                        <img class="process-cards__icon"
                                              src="{{ element.image['url'] }}"
                                              alt="{{ element.image['title'] }}"
                                              title="{{ element.image['title'] }}"
                                              loading="lazy"
                                         />
                                     {% endif %}
-                                    {{ check_value(element.title, 'h5', "exp-timeline__timeline-title") }}
-                                    {{ check_value(element.subtitle, 'p', "exp-timeline__timeline-text") }}
+                                    {{ check_value(element.title, 'h5', "process-cards__timeline-title") }}
+                                    {{ check_value(element.subtitle, 'p', "process-cards__timeline-text") }}
                                 </div>
                             </div>
                         {% endfor %}

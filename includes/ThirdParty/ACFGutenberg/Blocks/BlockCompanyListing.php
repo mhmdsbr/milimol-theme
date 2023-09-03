@@ -48,7 +48,7 @@ class BlockCompanyListing extends Blockable
             $context['companies'] = $allCompanies;
         } else {
             // Show the 6 latest companies
-            $context['companies'] = array_slice($allCompanies, 0, 6);
+            $context['companies'] = array_slice($allCompanies, 0, 12);
         }
 
         if (count($context['companies']) > 0) {

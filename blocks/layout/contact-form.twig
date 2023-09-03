@@ -1,19 +1,36 @@
-<section class="exp-contact-form" {{ anchor_block(fields.anchor_block) }}>
-    <div class="container{{ fields.is_boxed ? '' : '-fluid g-0' }}">
-        <div class="row g-0">
-            {% if fields.form_image is array %}
-                <div class="col-md-6 mobile-order-2">
-                    <div class="exp-contact-form__image">
-                        {% set image = Image(fields.form_image) %}
+<section class="exp-contact-form">
+    <div class="container">
 
-                        <picture>
-                            <img src="{{ image.src }}" srcset="{{ image.srcset }}" alt="{{ image.title }}" title="{{ image.title }}" loading="lazy" />
-                        </picture>
+        <div class="row col-10 gx-0 p-3 exp-contact-form__cards-container justify-content-center">
+            {% for element in fields.elements %}
+                <div class="col-lg-3 gx-3 col-12 {{ exp_mobile() ? 'text-center' : 'text-left'}} ">
+                    <div class="exp-contact-form__cards step-{{ loop.index }}">
+                        {% if element.image is not empty %}
+                            <img class="exp-contact-form__cards-icon"
+                                 src="{{ element.image['url'] }}"
+                                 alt="{{ element.image['title'] }}"
+                                 title="{{ element.image['title'] }}"
+                                 loading="lazy"
+                            />
+                        {% endif %}
+                        {{ check_value(element.title, 'h5', "exp-contact-form__cards-title") }}
+                        {{ check_value(element.subtitle, 'p', "exp-contact-form__cards-text") }}
                     </div>
                 </div>
-            {% endif %}
+            {% endfor %}
+        </div>
 
-            <div class="col-md-6 mobile-order-1">
+        <div class="row">
+            <div class="col-12 col-md-6 mobile-order-1">
+                <div class="exp-contact-form__form">
+                    {% if fields.form %}
+                        {% filter shortcodes %}
+                            [gravityform id="{{ fields.form }}" title="false" description="false" ajax="true"]
+                        {% endfilter %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-12 col-md-6 mobile-order-2">
                 <div class="exp-contact-form__content">
                     {% if fields.is_show_title %}
                         {{ check_value(fields.title, 'h2', 'exp-contact-form__title') }}
@@ -23,11 +40,7 @@
                         {{ check_value(fields.text, 'p', 'exp-contact-form__text') }}
                     {% endif %}
 
-                    {% if fields.form %}
-                        {% filter shortcodes %}
-                            [gravityform id="{{ fields.form }}" title="false" description="false" ajax="true"]
-                        {% endfilter %}
-                    {% endif %}
+                    {% include 'layout/follow-us.twig' %}
                 </div>
             </div>
         </div>

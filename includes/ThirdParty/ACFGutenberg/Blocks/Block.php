@@ -48,6 +48,7 @@ class Block
             'BlockAnchorMenu',
             'BlockProcess',
             'BlockAdvertisements',
+            'BlockFollowUs',
 
             // Listings
             'BlockCompanyListing',

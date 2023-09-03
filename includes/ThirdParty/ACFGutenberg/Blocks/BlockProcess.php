@@ -13,13 +13,13 @@ class BlockProcess extends Blockable
 {
     protected $block_name = 'block_flow_process';
 
-    protected $block_title = 'بلاک فرآیند خرید/فروش';
+    protected $block_title = 'بلاک کارت ها';
 
     protected $block_category = 'process';
 
     protected $block_icon = 'slides';
 
-    protected $block_keywords = ['process', 'timeline' , 'buy'];
+    protected $block_keywords = ['process', 'timeline'];
 
     protected $block_jsx = true;
 

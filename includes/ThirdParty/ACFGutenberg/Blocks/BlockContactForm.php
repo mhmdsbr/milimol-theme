@@ -13,13 +13,13 @@ class BlockContactForm extends Blockable
 {
     protected $block_name = 'block_contact_form';
 
-    protected $block_title = 'Contact form';
+    protected $block_title = 'فرم تماس';
 
     protected $block_category = 'layout';
 
     protected $block_icon = 'phone';
 
-    protected $block_keywords = ['contact', 'form'];
+    protected $block_keywords = ['contact', 'form', 'فرم'];
 
     /**
      * Callback method that displays the block
@@ -34,6 +34,7 @@ class BlockContactForm extends Blockable
     {
         $context['block']      = $block;
         $context['fields']     = get_fields();
+        $context['options']    = get_fields('options');
         $context['is_preview'] = $is_preview;
 
         Timber::render('blocks/layout/contact-form.twig', $context);
