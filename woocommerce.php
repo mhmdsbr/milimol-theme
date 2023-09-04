@@ -1,5 +1,7 @@
 <?php
 // Ensure Timber is activated
+use Timber\Timber;
+
 if (!class_exists('Timber')) {
     echo 'Timber not activated. Make sure you activate the plugin in <a href="/wp-admin/plugins.php#timber">/wp-admin/plugins.php</a>';
     return;
@@ -29,6 +31,23 @@ $context['supplier_filter'] = $supplier_filter;
 $context['unit_filter'] = $unit_filter;
 $context['min_order_filter'] = $min_order_filter;
 $context['product_purity_filter'] = $product_purity_filter;
+function filter_products_by_taxonomy($taxonomy_name, $term_id): bool|array|null
+{
+    // Query setup
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => -1,
+        'tax_query' => array(
+            array(
+                'taxonomy' => $taxonomy_name, // Specify the taxonomy name
+                'field'    => 'id',
+                'terms'    => $term_id,
+            ),
+        ),
+    );
+    // Fetch and set product posts
+    return Timber::get_posts($args);
+}
 
 
 if (is_singular('product')) {
@@ -42,105 +61,118 @@ if (is_singular('product')) {
 
     // Render single product template
     Timber::render('templates/single-product.twig', $context);
+
 } else {
-    // Query setup
-    $args = array(
-        'post_type' => 'product',
-        'posts_per_page' => -1,
-    );
+    if (!is_shop()) {
 
-    // Add Brand filter to the query
-    if (!empty($_GET['product_brand'])) {
-        $args['meta_query'] = array(
-            array(
-                'key'     => 'product_brand',
-                'value'   => $brand_filter,
-                'compare' => 'IN',
-            ),
-        );
-    }
+        // Set category context
+        $queried_object = get_queried_object();
+        $term_id = $queried_object->term_id;
+        $context['category'] = get_term($term_id, 'product_cat');
+        $context['cas'] = get_term($term_id, 'product_cas_no');
+        $cas_image_url = get_field('cas_image', $context['cas']);
+        $context['cas_image'] = $cas_image_url;
+        $cas_fields = get_fields($context['cas']);
+        $context['cas_fields'] = $cas_fields;
 
-    // Add Country filter to the query
-    if (!empty($_GET['product_country'])) {
-        $args['meta_query'] = array(
-            array(
-                'key'     => 'product_country',
-                'value'   => $country_filter,
-                'compare' => 'IN',
-            ),
-        );
-    }
-
-    // Add Supplier filter to the query
-    if (!empty($_GET['product_supplier_linked'])) {
-        $args['meta_query'] = array(
-            array(
-                'key'     => 'product_supplier_linked',
-                'value'   => $supplier_filter,
-                'compare' => 'IN',
-            ),
-        );
-    }
-
-    // Add Weight filter to the query
-    if (!empty($_GET['product_unit'])) {
-        $args['meta_query'] = array(
-            array(
-                'key' => 'product_unit',
-                'value' => $unit_filter,
-                'compare' => 'IN',
-            ),
-        );
-    }
-
-    // Add Min order filter to the query
-    if ($min_order_filter > 0) {
-        $args['meta_query'][] = array(
-            'key' => 'product_order_quantity',
-            'value' => array(0, $min_order_filter),
-            'compare' => 'BETWEEN',
-            'type' => 'NUMERIC',
-        );
-    }
-    // Add product purity filter to the query
-    if ($product_purity_filter > 0) {
-        $args['meta_query'][] = array(
-            'key' => 'product_purity',
-            'value' => array(0, $product_purity_filter),
-            'compare' => 'BETWEEN',
-            'type' => 'NUMERIC',
-        );
-    }
-
-
-    // Fetch and set product posts
-    $posts = Timber::get_posts($args);
-    $context['products'] = $posts;
-
-    // Set category context
-    $queried_object = get_queried_object();
-    $term_id = $queried_object->term_id;
-    $context['category'] = get_term($term_id, 'product_cat');
-    $context['cas'] = get_term($term_id, 'product_cas_no');
-    $cas_image_url = get_field('cas_image', $context['cas']);
-    $context['cas_image'] = $cas_image_url;
-    $cas_fields = get_fields($context['cas']);
-    $context['cas_fields'] = $cas_fields;
-
-    // Set category thumbnail
-    $category_thumbnail_id = get_term_meta($term_id, 'thumbnail_id', true);
-    if ($category_thumbnail_id) {
-        $category_thumbnail = wp_get_attachment_image_src($category_thumbnail_id, 'medium');
-        if ($category_thumbnail) {
-            $context['product_cat_image_url'] = $category_thumbnail[0];
+        // Set category thumbnail
+        $category_thumbnail_id = get_term_meta($term_id, 'thumbnail_id', true);
+        if ($category_thumbnail_id) {
+            $category_thumbnail = wp_get_attachment_image_src($category_thumbnail_id, 'medium');
+            if ($category_thumbnail) {
+                $context['product_cat_image_url'] = $category_thumbnail[0];
+            }
         }
-    }
 
-    // Render appropriate template
-    $template_name = ($context['cas'] && $queried_object instanceof WP_Term)
-        ? 'templates/archive-product-cas.twig'
-        : 'templates/archive-product.twig';
-    Timber::render($template_name, $context);
+        // Add Brand filter to the query
+        if (!empty($_GET['product_brand'])) {
+            $args['meta_query'][] = array(
+                array(
+                    'key' => 'product_brand',
+                    'value' => $brand_filter,
+                    'compare' => 'IN',
+                ),
+            );
+        }
+
+        // Add Country filter to the query
+        if (!empty($_GET['product_country'])) {
+            $args['meta_query'][] = array(
+                array(
+                    'key' => 'product_country',
+                    'value' => $country_filter,
+                    'compare' => 'IN',
+                ),
+            );
+        }
+
+        // Add Supplier filter to the query
+        if (!empty($_GET['product_supplier_linked'])) {
+            $args['meta_query'][] = array(
+                array(
+                    'key' => 'product_supplier_linked',
+                    'value' => $supplier_filter,
+                    'compare' => 'IN',
+                ),
+            );
+        }
+
+        // Add Weight filter to the query
+        if (!empty($_GET['product_unit'])) {
+            $args['meta_query'][] = array(
+                array(
+                    'key' => 'product_unit',
+                    'value' => $unit_filter,
+                    'compare' => 'IN',
+                ),
+            );
+        }
+
+        // Add Min order filter to the query
+        if ($min_order_filter > 0) {
+            $args['meta_query'][] = array(
+                'key' => 'product_order_quantity',
+                'value' => array(0, $min_order_filter),
+                'compare' => 'BETWEEN',
+                'type' => 'NUMERIC',
+            );
+        }
+
+        // Add product purity filter to the query
+        if ($product_purity_filter > 0) {
+            $args['meta_query'][] = array(
+                'key' => 'product_purity',
+                'value' => array(0, $product_purity_filter),
+                'compare' => 'BETWEEN',
+                'type' => 'NUMERIC',
+            );
+        }
+
+        $products_cat = filter_products_by_taxonomy('product_cat', $term_id);
+        $products_cas = filter_products_by_taxonomy('product_cas_no', $term_id);
+
+        // Merge the two arrays of products
+        $context['products'] = array_merge($products_cat, $products_cas);
+
+        // Render appropriate template
+        $template_name = ($context['cas'] && $queried_object instanceof WP_Term)
+            ? 'templates/archive-product-cas.twig'
+            : 'templates/archive-product.twig';
+        Timber::render($template_name, $context);
+    }
+    else {
+        // This is the main shop page; display all products
+        $args = array(
+            'post_type' => 'product',
+            'posts_per_page' => -1,
+        );
+
+        // Fetch and set all product posts
+        $context['products'] = Timber::get_posts($args);
+
+        // Render appropriate template for the main shop page
+        Timber::render('templates/archive-product.twig', $context); // Change 'templates/shop.twig' to your actual template name
+    }
 }
 
 

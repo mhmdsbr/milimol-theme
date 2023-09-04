@@ -49,6 +49,7 @@ class ExtendTwig
         $twig->addFunction(new TwigFunction('acf_select_field_label', array($this, 'render_acf_select_field_label')));
         $twig->addFunction(new TwigFunction('acf_checkbox_field', array($this, 'render_acf_checkbox_field')));
         $twig->addFunction(new TwigFunction('acf_relationship_checkboxes', array($this, 'render_acf_relationship_checkboxes')));
+        $twig->addFunction(new TwigFunction('product_visit_number', array($this, 'product_page_visit_number')));
 
 
         return $twig;
@@ -231,6 +232,13 @@ function get_jalali_date(): string
             }
         }
         return $result;
+    }
+
+    function product_page_visit_number($postId): void
+    {
+        $product_searched = get_field('searched_numbers', $postId);
+        update_field('searched_numbers', $product_searched + 1, $postId);
+
     }
 
 }

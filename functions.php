@@ -119,3 +119,92 @@ function timber_set_product( $post ): void
 }
 
 
+/**
+ * Ajax Global Search
+ * @return array
+ *
+ */
+function ajax_search_results(): array
+{
+    $search_query = $_GET['search_query'] ?? '';
+    $templates = array('search.twig', 'archive.twig', 'index.twig');
+    $context = Timber::context();
+    $context['search_query'] = $search_query;
+    $search_query = urldecode($search_query); // Decode the search query
+
+    // Update 1: Sanitize the search query to prevent SQL injection
+    $search_query = sanitize_text_field($search_query);
+
+    // Update 2: Make sure the search query is not empty before performing the query
+
+    if (!empty($search_query)) {
+        // Query for products matching the search query in post content and titles
+        $product_args = array(
+            's' => $search_query,
+            'post_type' => 'product',
+            'post_status' => 'publish',
+            'posts_per_page' => -1, // Retrieve all matching results
+        );
+
+        $product_posts = new Timber\PostQuery($product_args);
+
+        $taxonomy_args = array(
+            'taxonomy'      => array( 'product_cas_no' ), // taxonomy name
+            'hide_empty'    => true,
+            'fields'        => 'all',
+            'name__like'    => $search_query,
+        );
+
+        $taxonomy_posts = get_terms( $taxonomy_args );
+
+        if( count($product_posts) == 0 && count($taxonomy_posts) > 0 ) {
+            $taxonomy_ids = array();
+            foreach( $taxonomy_posts as $taxonomy_product_item ) {
+                $taxonomy_ids[] = $taxonomy_product_item->term_id;
+            }
+            $product_args = array(
+                'post_type'             => 'product',
+                'post_status'           => 'publish',
+                'posts_per_page'        => -1, // Limit: two products
+                'tax_query'             => [
+                    [
+                        'taxonomy'      => 'product_cas_no',
+                        'field'         => 'term_id', // can be 'term_id', 'slug' or 'name'
+                        'terms'         => $taxonomy_ids,
+                    ],
+                ],
+            );
+            $product_posts = new Timber\PostQuery($product_args);
+        }
+
+        // Separate results for products and custom taxonomy-related products
+        $results = array(
+            'products' => $product_posts,
+            'taxonomy_related' => $taxonomy_posts,
+        );
+
+        // Store the results in the context
+        $context['results'] = $results;
+
+    } else {
+        // If the search query is empty, set empty arrays for both results
+        $context['results'] = array(
+            'products' => array(),
+            'taxonomy_related' => array(),
+        );
+    }
+
+    $context['pagination'] = Timber::get_pagination();
+
+    // Render the search results template and send it back as JSON
+    $html = Timber::compile($templates, $context);
+    wp_send_json_success(array('html' => $html));
+
+    return $html;
+}
+
+/** Ajax Search */
+add_action('wp_ajax_ajax_search', 'ajax_search_results');
+add_action('wp_ajax_nopriv_ajax_search', 'ajax_search_results');
+
+

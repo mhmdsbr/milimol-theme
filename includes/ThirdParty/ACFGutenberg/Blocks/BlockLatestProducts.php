@@ -74,14 +74,14 @@ class BlockLatestProducts extends Blockable
 
             $context['products'] = $selected_products;
 
-        } else {
+        } elseif (!empty($context['fields']['latest_product'])) {
             // If no selected products, get the latest 6 WooCommerce products
             $args_latest = array(
                 'post_type' => 'product',
                 'status' => 'publish',
                 'orderby' => 'date',
                 'order' => 'DESC',
-                'posts_per_page' => 10, // Display six latest products
+                'posts_per_page' => 10, // Display 10 latest products
             );
 
             $latest_products = wc_get_products($args_latest);
@@ -111,6 +111,45 @@ class BlockLatestProducts extends Blockable
             }
 
             $context['products'] = $latest_products;
+
+        } else { // show the most searched product
+            $args_most_searched = array(
+                'post_type' => 'product',
+                'status' => 'publish',
+                'meta_key'       => 'searched_numbers', // Specify the ACF custom field name
+                'orderby'        => 'meta_value_num',    // Order by the numeric value of the custom field
+                'order'          => 'DESC', // Order by the numeric value of the custom field
+                'posts_per_page' => 12, // Display 12 latest products
+            );
+
+            $most_searched_products = wc_get_products($args_most_searched);
+
+            foreach ($most_searched_products as $product) {
+
+                // Get the image URLs for each latest product
+                $product_image_id = $product->get_image_id();
+                if ($product_image_id) {
+                    $product_image = new Image($product_image_id);
+                    $product->image_url = $product_image;
+                }
+
+                $product_categories = get_the_terms($product->get_id(), 'product_cat');
+                $product->product_cat = $product_categories;
+
+                $product_cas_no = get_the_terms($product->get_id(), 'product_cas_no');
+                $product->product_cat_cas = $product_cas_no;
+
+
+                $product_purity = get_field('product_purity', $product->get_id());
+                $product->product_purity = $product_purity;
+
+                // Get the associated company from the custom ACF relationship field
+                $associated_company = get_field('product_supplier_linked', $product->get_id());
+                $product->associated_company = $associated_company;
+            }
+
+            $context['products'] = $most_searched_products;
+
         }
 
         Timber::render('blocks/sliders/latest-products.twig', $context);

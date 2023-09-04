@@ -2,6 +2,8 @@
 
 {% block content %}
 
+    {% do action('woocommerce_before_main_content') %}
+
     <header class="archive-product__category-content">
         <div class="archive-product__category-head">
             <div class="container">
@@ -85,18 +87,18 @@
             </div>
         </div>
     </header>
-        <section class="container">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="filters">
-
-                    </div>
-                </div>
+    <section class="container">
+        <div class="row">
+            <div class="col-md-3">
+                {% include 'components/products/products-filter-forms.twig' %}
+            </div>
+            <div class="col-md-9">
                 {% include 'components/products/category-related-product.twig' %}
             </div>
-        </section>
+        </div>
+    </section>
 
-        {% do action('woocommerce_after_shop_loop') %}
-        {% do action('woocommerce_after_main_content') %}
+    {% do action('woocommerce_after_shop_loop') %}
+    {% do action('woocommerce_after_main_content') %}
 
 {% endblock  %}

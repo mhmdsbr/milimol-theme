@@ -21,19 +21,6 @@
             </div>
         </div>
 
-        <div class="product-filters__supplier">
-            <h5>تامین کنندگان</h5>
-            <div class="product-filters__supplier-search">
-                <input type="text" id="supplier-search" placeholder="جست و جوی شرکت">
-            </div>
-            <div class="product-filters__supplier-items">
-                {{ acf_relationship_checkboxes('product_supplier_linked', supplier_filter) }}
-{#                <pre>#}
-{#                    {{ dump(acf_relationship_checkboxes('product_supplier_linked', supplier_filter)) }}#}
-{#                </pre>#}
-            </div>
-        </div>
-
         <div class="product-filters__unit">
             <h5>واحدها</h5>
             {{ acf_checkbox_field('product_unit', unit_filter) }}

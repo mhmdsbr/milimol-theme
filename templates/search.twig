@@ -4,34 +4,63 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    {% if posts is defined and posts|length > 0 %}
-                        <ul>
-                            {% for post in posts %}
-                                <li class="search__results-ajax-list">
-                                    <div class="search__results-ajax-image">
-                                        {% if post.thumbnail.src %}
-                                            <img src="{{post.thumbnail.src | resize(95, 95) }}" />
-                                        {% endif %}
-                                    </div> {# /.image #}
-                                    <div class="search__results-ajax-content">
-                                        <p><strong>{{post.title}}</strong></p>
-                                    </div> {# /.copy #}
-                                    <a href="{{ post.get_permalink() }}" class="search__results-ajax-link"></a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    {% else %}
-                        <p>متاسفم، محصول مورد نظرت پیدا نشد :(</p>
-                        {% include "partial/button.twig" with {
-                            url : '#',
-                            title : 'ثبت درخواست محصول جدید',
-                            target : '_blank',
-                            class : 'btn--primary',
-                            icon : 'arrow-left'
-                        } %}
+                    {% if results is defined %}
+                        {% if results.products %}
+                            <h2>Product Results</h2>
+                            <ul>
+                                {% for post in results.products %}
+                                    <li class="search__results-ajax-list">
+                                        <div class="search__results-ajax-image">
+                                            {% if post.thumbnail.src %}
+                                                <img src="{{ post.thumbnail.src | resize(95, 95) }}" />
+                                            {% endif %}
+                                        </div> {# /.image #}
+                                        {%  set productTaxonomyNo = post.get_terms('product_cas_no') %}
+                                        <div class="search__results-ajax-content">
+                                            <p><strong>{{ post.title }}</strong></p>
+                                            {% for productTaxonomy in productTaxonomyNo %}
+                                                <p>{{ productTaxonomy.name }}</p>
+                                            {% endfor %}
+                                        </div> {# /.copy #}
+                                        <a href="{{ post.get_permalink() }}" class="search__results-ajax-link"></a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                        {% if results.taxonomy_related %}
+                            <h2>Taxonomy Related Results</h2>
+                            <ul>
+                                {% for post in results.taxonomy_related %}
+                                    <li class="search__results-ajax-list">
+                                        <div class="search__results-ajax-image">
+                                            {% if post.thumbnail.src %}
+                                                <img src="{{ post.thumbnail.src | resize(95, 95) }}" />
+                                            {% endif %}
+                                        </div>
+                                        <div class="search__results-ajax-content">
+                                            <p><strong>{{ post.name }}</strong></p>
+                                        </div> {# /.copy #}
+                                        <a href="{{ post.get_permalink() }}" class="search__results-ajax-link"></a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                        {% if not results.products and not results.taxonomy_related %}
+                            <p>متاسفم، محصول یا دسته‌بندی مورد نظرت پیدا نشد :(</p>
+                            {% include "partial/button.twig" with {
+                                url : '#',
+                                title : 'ثبت درخواست محصول جدید',
+                                target : '_blank',
+                                class : 'btn--primary',
+                                icon : 'arrow-left'
+                            } %}
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>
         </div>
     </div>
+
 {% endblock %}
