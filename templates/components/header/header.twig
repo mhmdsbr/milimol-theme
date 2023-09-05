@@ -11,13 +11,33 @@
                                 </a>
 
                                 <nav id="nav-main" class="nav-main" role="navigation">
+                                    <a class="header__navbar-brand d-flex justify-content-center" href="{{ site.url }}" title="{{ site.name }}">
+                                        {% if options.header_logo is not empty %}
+                                            <img src="{{ options.header_logo.url }}" alt="{{ site.name }}" class="header__logo" />
+                                        {% else %}
+                                            <h1>{{ site.name }}</h1>
+                                        {% endif %}
+                                    </a>
                                     {% include "components/menu/menu-primary.twig" with {'items': primarymenu.get_items} %}
                                 </nav>
 
+                                <div class="header__cta">
+                                    {% include "partial/button.twig" with {
+                                        url : item.link,
+                                        title : 'درخواست خرید',
+                                        class : 'btn--buy-request',
+                                        icon : 'chemistry'
+                                    } %}
+                                </div>
+
                                 <div class="header__account">
-                                    <span id="js-open-search" class="header__search">
-                                        {{ fetch_svg('magnifyingglass') }}
-                                    </span>
+                                    {% include "partial/button.twig" with {
+                                        url : '#',
+                                        title : '',
+                                        class : 'btn--login-cta',
+                                        icon : 'profile',
+                                        id : 'js-open-login',
+                                    } %}
                                 </div>
                             </div>
                         {% else %}
@@ -69,13 +89,33 @@
                                 </a>
 
                                 <nav id="nav-main" class="nav-main" role="navigation">
+                                    <a class="header__navbar-brand d-flex justify-content-center" href="{{ site.url }}" title="{{ site.name }}">
+                                        {% if options.header_logo is not empty %}
+                                            <img src="{{ options.header_logo.url }}" alt="{{ site.name }}" class="header__logo" />
+                                        {% else %}
+                                            <h1>{{ site.name }}</h1>
+                                        {% endif %}
+                                    </a>
                                     {% include "components/menu/menu-primary.twig" with {'items': primarymenu.get_items} %}
                                 </nav>
 
+                                <div class="header__cta">
+                                    {% include "partial/button.twig" with {
+                                        url : item.link,
+                                        title : 'درخواست خرید',
+                                        class : 'btn--buy-request',
+                                        icon : 'chemistry'
+                                    } %}
+                                </div>
+
                                 <div class="header__account">
-                                    <span id="js-open-search" class="header__search">
-                                        {{ fetch_svg('magnifyingglass') }}
-                                    </span>
+                                    {% include "partial/button.twig" with {
+                                        url : '#',
+                                        title : '',
+                                        class : 'btn--login-cta',
+                                        icon : 'profile',
+                                        id : 'js-open-login',
+                                    } %}
                                 </div>
                             </div>
                         {% else %}
@@ -118,11 +158,15 @@
                     </div>
                 </div>
             </div>
-            <div class="header__nav header--nav-not-home">
-                <nav id="nav-main" class="nav-main" role="navigation">
-                    {% include "components/menu/menu-primary.twig" with {'items': primarymenu.get_items} %}
-                </nav>
-            </div>
+
+            {% if not exp_mobile()  %}
+                <div class="header__nav header--nav-not-home">
+                    <nav id="nav-main" class="nav-main" role="navigation">
+                        {% include "components/menu/menu-primary.twig" with {'items': primarymenu.get_items} %}
+                    </nav>
+                </div>
+            {% endif %}
+
         {% endif %}
     {% endblock %}
     {% include 'layout/login.twig' %}

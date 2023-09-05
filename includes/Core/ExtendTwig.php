@@ -131,7 +131,7 @@ class ExtendTwig
         return false;
     }
 
-    public function exp_is_mobile()
+    public function exp_is_mobile(): bool
     {
         return wp_is_mobile();
     }
