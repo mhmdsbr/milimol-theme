@@ -31,14 +31,16 @@
                                 </div>
 
                                 <div class="header__account">
-                                    {% include "partial/button.twig" with {
+                                    {% include "partial/dropdown.twig" with {
                                         url : '#',
-                                        title : '',
+                                        title : 'ثبت نام/عضویت',
+                                        linkItemOne : 'ورود',
+                                        linkItemTwo : 'ثبت نام',
                                         class : 'btn--login-cta',
                                         icon : 'profile',
-                                        id : 'js-open-login',
                                     } %}
                                 </div>
+
                             </div>
                         {% else %}
                             <div class="header__container">
@@ -64,12 +66,13 @@
                                 </div>
 
                                 <div class="header__account">
-                                    {% include "partial/button.twig" with {
+                                    {% include "partial/dropdown.twig" with {
                                         url : '#',
-                                        title : 'ورود | عضویت رایگان',
+                                        title : 'ثبت نام/عضویت',
+                                        linkItemOne : 'ورود',
+                                        linkItemTwo : 'ثبت نام',
                                         class : 'btn--login-cta',
                                         icon : 'profile',
-                                        id : 'js-open-login',
                                     } %}
                                 </div>
 
@@ -109,14 +112,16 @@
                                 </div>
 
                                 <div class="header__account">
-                                    {% include "partial/button.twig" with {
+                                    {% include "partial/dropdown.twig" with {
                                         url : '#',
-                                        title : '',
+                                        title : 'ثبت نام/عضویت',
+                                        linkItemOne : 'ورود',
+                                        linkItemTwo : 'ثبت نام',
                                         class : 'btn--login-cta',
                                         icon : 'profile',
-                                        id : 'js-open-login',
                                     } %}
                                 </div>
+
                             </div>
                         {% else %}
                             <div class="header__container">
@@ -144,15 +149,16 @@
                                 </div>
 
                                 <div class="header__account">
-                                    {% include "partial/button.twig" with {
+                                    {% include "partial/dropdown.twig" with {
                                         url : '#',
-                                        title : 'ورود | عضویت رایگان',
+                                        title : 'ثبت نام/عضویت',
+                                        linkItemOne : 'ورود',
+                                        linkItemTwo : 'ثبت نام',
                                         class : 'btn--login-cta',
                                         icon : 'profile',
-                                        id : 'js-open-login',
-
                                     } %}
                                 </div>
+
                             </div>
                         {% endif %}
                     </div>

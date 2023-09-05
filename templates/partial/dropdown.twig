@@ -1,0 +1,12 @@
+<div class="dropdown">
+    <a id="{{ id }}" href="{{ url }}" class="btn dropdown-toggle {{ class ? class : 'btn--primary' }}" title="{{ title }}" target="{{ target ? target : '_self' }}" {{ extra }} role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" >
+        <span class="btn__svg">{{ fetch_svg(icon) }}</span>
+        {{ exp_mobile() ? '' : title }}
+    </a>
+    <!-- Dropdown Menu -->
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">{{ linkItemOne }}</a>
+        <a class="dropdown-item" href="#">{{ linkItemTwo }}</a>
+    </div>
+</div>
+
