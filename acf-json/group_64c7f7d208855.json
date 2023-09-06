@@ -195,11 +195,11 @@
             "repeatable": true
         },
         {
-            "key": "field_64e7b6fa174c0",
+            "key": "field_64f83b0a628f2",
             "label": "محل تحویل",
             "name": "product_location",
             "aria-label": "",
-            "type": "text",
+            "type": "select",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -209,12 +209,22 @@
                 "id": ""
             },
             "acfe_save_meta": 0,
-            "default_value": "",
-            "maxlength": "",
+            "choices": {
+                "tehran": "تهران",
+                "gilan": "گیلان",
+                "yazd": "یزد",
+                "ahvaz": "اهواز",
+                "lorestan": "لرستان"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
             "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "repeatable": true
+            "allow_custom": 0,
+            "search_placeholder": ""
         },
         {
             "key": "field_64e7b70c174c1",
@@ -521,5 +531,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1693334372
+    "modified": 1693989798
 }

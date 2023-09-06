@@ -15,12 +15,13 @@ class Login
         add_shortcode( 'LOGIN_FORM_MILIMOL', [&$this, 'wc_login_form_milimol_callback'] );
 
         add_action( 'template_redirect', [&$this, 'milimol_redirect_login_registration_if_logged_in_callback'] );
+
         add_action( 'woocommerce_register_form_start', [&$this, 'milimol_display_account_registration_field'] );
-        add_action( 'woocommerce_edit_account_form_start', [&$this, 'milimol_display_account_registration_field'] );
+        add_action( 'woocommerce_edit_account_form_start', [&$this, 'woocommerce_edit_account_form_start_callback'] );
         add_action( 'woocommerce_created_customer', [&$this, 'milimol_save_account_registration_field'] );
         add_action( 'woocommerce_save_account_details', [&$this, 'milimol_save_my_account_billing_account_number'], 10, 1 );
 
-        add_filter( 'woocommerce_customer_meta_fields', [&$this, 'milimol_admin_user_custom_billing_field'], 10, 1 );
+        add_filter( 'woocommerce_customer_meta_fields', [&$this, 'woocommerce_customer_meta_fields_callback'], 10, 1 );
         add_filter( 'woocommerce_registration_errors', [&$this, 'milimol_account_registration_field_validation'], 10, 3 );
     }
 
@@ -30,9 +31,10 @@ class Login
         ob_start();
         do_action( 'woocommerce_before_customer_login_form' );
         $html = wc_get_template_html( 'myaccount/form-login.php' );
+        $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
         $dom = new DOMDocument();
-        $dom->encoding = 'utf-8';
-        $dom->loadHTML( utf8_decode( $html ) );
+        $dom->encoding = 'UTF-8';
+        $dom->loadHTML( $html );
         $xpath = new DOMXPath( $dom );
         $form = $xpath->query( '//form[contains(@class,"register")]' );
         $form = $form->item( 0 );
@@ -86,6 +88,10 @@ class Login
         if ( isset( $_POST['billing_account_number'] ) ) {
             update_user_meta( $customer_id, 'billing_account_number', sanitize_text_field( $_POST['billing_account_number'] ) );
         }
+
+        if ( isset( $_POST['billing_phone2'] ) ) {
+            update_user_meta( $customer_id, 'billing_phone2', sanitize_text_field( $_POST['billing_phone2'] ) );
+        }
     }
 
     // Save Field value in Edit account
@@ -107,5 +113,30 @@ class Login
         return $args;
     }
     /* registration form end */
+
+    function woocommerce_edit_account_form_start_callback(): array
+    {
+        $user = wp_get_current_user();
+        $value = isset($_POST['billing_phone2']) ? esc_attr($_POST['billing_phone2']) : $user->billing_phone2;
+        ?>
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+            <label for="reg_billing_account_number"><?php _e( 'Ship to/ Account number', 'woocommerce' ); ?> <span class="required">*</span></label>
+            <input type="text" maxlength="6" class="input-text" name="billing_phone2" id="billing_phone2" value="<?php echo $value ?>" />
+        </p>
+        <div class="clear"></div>
+        <?php
+    }
+
+    // Display field in admin user billing fields section
+    function woocommerce_customer_meta_fields_callback( $args ): array
+    {
+        $args['billing']['fields']['billing_phone2'] = array(
+            'label' => __( 'Billing phone2', 'woocommerce' ),
+            'description' => '',
+            'custom_attributes' => array('maxlength' => 12),
+        );
+        return $args;
+    }
+
 
 }
