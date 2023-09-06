@@ -40,6 +40,7 @@ class ExtendTwig
         $twig->addFunction(new TwigFunction('get_thumbnail', array($this, 'getThumbnail')));
         $twig->addTest(new TwigTest('array', [&$this, 'is_array']));
         $twig->addFunction(new TwigFunction('exp_mobile', array($this, 'exp_is_mobile')));
+        $twig->addFunction(new TwigFunction('is_logged_in', array($this, 'is_user_logged_in')));
         $twig->addFunction(new TwigFunction('get_value', array($this, 'check_get')));
         $twig->addFunction(new TwigFunction('is_home', array($this, 'is_home')));
         $twig->addFunction(new TwigFunction('jalali_date', array($this, 'get_jalali_date')));
@@ -134,6 +135,11 @@ class ExtendTwig
     public function exp_is_mobile(): bool
     {
         return wp_is_mobile();
+    }
+
+    public function is_user_logged_in(): bool
+    {
+        return is_user_logged_in();
     }
 
     public function check_get($getVar)

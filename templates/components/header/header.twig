@@ -31,14 +31,29 @@
                                 </div>
 
                                 <div class="header__account">
-                                    {% include "partial/dropdown.twig" with {
-                                        url : '#',
-                                        title : 'ثبت نام/عضویت',
-                                        linkItemOne : 'ورود',
-                                        linkItemTwo : 'ثبت نام',
-                                        class : 'btn--login-cta',
-                                        icon : 'profile',
-                                    } %}
+                                    {% if is_logged_in() %}
+                                        {% include "partial/dropdown.twig" with {
+                                            url : '#',
+                                            title : 'ثبت نام/عضویت',
+                                            titleItemOne : 'پروفایل',
+                                            titleItemTwo : 'خروج',
+                                            linkItemOne : '/my-account',
+                                            linkItemTwo : '/logout',
+                                            class : 'btn--login-cta',
+                                            icon : 'profile',
+                                        } %}
+                                    {% else %}
+                                        {% include "partial/dropdown.twig" with {
+                                            url : '#',
+                                            title : 'ثبت نام/عضویت',
+                                            titleItemOne : 'ورود',
+                                            titleItemTwo : 'ثبت نام',
+                                            linkItemOne : '/login',
+                                            linkItemTwo : '/register',
+                                            class : 'btn--login-cta',
+                                            icon : 'profile',
+                                        } %}
+                                    {% endif %}
                                 </div>
 
                             </div>
@@ -66,14 +81,29 @@
                                 </div>
 
                                 <div class="header__account">
-                                    {% include "partial/dropdown.twig" with {
-                                        url : '#',
-                                        title : 'ثبت نام/عضویت',
-                                        linkItemOne : 'ورود',
-                                        linkItemTwo : 'ثبت نام',
-                                        class : 'btn--login-cta',
-                                        icon : 'profile',
-                                    } %}
+                                    {% if is_logged_in() %}
+                                        {% include "partial/dropdown.twig" with {
+                                            url : '#',
+                                            title : 'ثبت نام/عضویت',
+                                            titleItemOne : 'پروفایل',
+                                            titleItemTwo : 'خروج',
+                                            linkItemOne : '/my-account',
+                                            linkItemTwo : '/logout',
+                                            class : 'btn--login-cta',
+                                            icon : 'profile',
+                                        } %}
+                                    {% else %}
+                                        {% include "partial/dropdown.twig" with {
+                                            url : '#',
+                                            title : 'ثبت نام/عضویت',
+                                            titleItemOne : 'ورود',
+                                            titleItemTwo : 'ثبت نام',
+                                            linkItemOne : '/login',
+                                            linkItemTwo : '/register',
+                                            class : 'btn--login-cta',
+                                            icon : 'profile',
+                                        } %}
+                                    {% endif %}
                                 </div>
 
                             </div>
@@ -112,14 +142,29 @@
                                 </div>
 
                                 <div class="header__account">
-                                    {% include "partial/dropdown.twig" with {
-                                        url : '#',
-                                        title : 'ثبت نام/عضویت',
-                                        linkItemOne : 'ورود',
-                                        linkItemTwo : 'ثبت نام',
-                                        class : 'btn--login-cta',
-                                        icon : 'profile',
-                                    } %}
+                                    {% if is_logged_in() %}
+                                        {% include "partial/dropdown.twig" with {
+                                            url : '#',
+                                            title : 'ثبت نام/عضویت',
+                                            titleItemOne : 'پروفایل',
+                                            titleItemTwo : 'خروج',
+                                            linkItemOne : '/my-account',
+                                            linkItemTwo : '/logout',
+                                            class : 'btn--login-cta',
+                                            icon : 'profile',
+                                        } %}
+                                    {% else %}
+                                        {% include "partial/dropdown.twig" with {
+                                            url : '#',
+                                            title : 'ثبت نام/عضویت',
+                                            titleItemOne : 'ورود',
+                                            titleItemTwo : 'ثبت نام',
+                                            linkItemOne : '/login',
+                                            linkItemTwo : '/register',
+                                            class : 'btn--login-cta',
+                                            icon : 'profile',
+                                        } %}
+                                    {% endif %}
                                 </div>
 
                             </div>
@@ -149,14 +194,29 @@
                                 </div>
 
                                 <div class="header__account">
-                                    {% include "partial/dropdown.twig" with {
-                                        url : '#',
-                                        title : 'ثبت نام/عضویت',
-                                        linkItemOne : 'ورود',
-                                        linkItemTwo : 'ثبت نام',
-                                        class : 'btn--login-cta',
-                                        icon : 'profile',
-                                    } %}
+                                    {% if is_logged_in() %}
+                                        {% include "partial/dropdown.twig" with {
+                                            url : '#',
+                                            title : 'ثبت نام/عضویت',
+                                            titleItemOne : 'پروفایل',
+                                            titleItemTwo : 'خروج',
+                                            linkItemOne : '/my-account',
+                                            linkItemTwo : '/logout',
+                                            class : 'btn--login-cta',
+                                            icon : 'profile',
+                                        } %}
+                                    {% else %}
+                                        {% include "partial/dropdown.twig" with {
+                                            url : '#',
+                                            title : 'ثبت نام/عضویت',
+                                            titleItemOne : 'ورود',
+                                            titleItemTwo : 'ثبت نام',
+                                            linkItemOne : '/login',
+                                            linkItemTwo : '/register',
+                                            class : 'btn--login-cta',
+                                            icon : 'profile',
+                                        } %}
+                                    {% endif %}
                                 </div>
 
                             </div>
@@ -175,5 +235,4 @@
 
         {% endif %}
     {% endblock %}
-    {% include 'layout/login.twig' %}
 </header>

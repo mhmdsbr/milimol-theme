@@ -33,7 +33,6 @@ new Exp\Core\Login();
 
 /** ThirdParty */
 new EXP\ThirdParty\ACF();
-//new EXP\ThirdParty\Facet\Facet();
 new EXP\ThirdParty\GravityForms();
 
 /**
@@ -207,34 +206,7 @@ function ajax_search_results(): array
 add_action('wp_ajax_ajax_search', 'ajax_search_results');
 add_action('wp_ajax_nopriv_ajax_search', 'ajax_search_results');
 
-function woocommerce_registration_errors_validation($reg_errors, $sanitized_user_login, $user_email) {
-    global $woocommerce;
-    extract( $_POST );
-    if ( strcmp( $password, $password2 ) !== 0 ) {
-        return new WP_Error( 'registration-error', __( 'Passwords do not match.', 'woocommerce' ) );
-    }
-    return $reg_errors;
-}
-add_filter('woocommerce_registration_errors', 'woocommerce_registration_errors_validation', 10, 3);
 
-function woocommerce_register_form_password_repeat(): void
-{
-    ?>
-    <p class="form-row form-row-wide">
-        <label for="reg_password2"><?php _e( 'Confirm password', 'woocommerce' ); ?> <span class="required">*</span></label>
-        <input type="password" class="input-text" name="password2" id="reg_password2" value="<?php if ( ! empty( $_POST['password2'] ) ) echo esc_attr( $_POST['password2'] ); ?>" />
-    </p>
 
-    <p class="form-row form-row-wide">
-        <label for="billing_phone"><?php _e( 'شماره تماس', 'woocommerce' ); ?> <span class="required">*</span></label>
-        <input type="text" class="input-text" name="billing_phone" id="billing_phone" value="<?php if ( ! empty( $_POST['billing_phone'] ) ) echo esc_attr( $_POST['billing_phone'] ); ?>" />
-    </p>
 
-    <p class="form-row form-row-wide">
-        <label for="billing_phone"><?php _e( '2شماره تماس', 'woocommerce' ); ?> <span class="required">*</span></label>
-        <input type="text" class="input-text" name="billing_phone2" id="billing_phone2" value="<?php if ( ! empty( $_POST['billing_phone2'] ) ) echo esc_attr( $_POST['billing_phone2'] ); ?>" />
-    </p>
-    <?php
-}
-add_action( 'woocommerce_register_form', 'woocommerce_register_form_password_repeat' );
 

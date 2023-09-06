@@ -6,6 +6,7 @@ namespace EXP\Core;
 
 use DOMDocument;
 use DOMXPath;
+use WP_Error;
 
 class Login
 {
@@ -16,21 +17,23 @@ class Login
 
         add_action( 'template_redirect', [&$this, 'milimol_redirect_login_registration_if_logged_in_callback'] );
 
-        add_action( 'woocommerce_register_form_start', [&$this, 'milimol_display_account_registration_field'] );
-        add_action( 'woocommerce_edit_account_form_start', [&$this, 'woocommerce_edit_account_form_start_callback'] );
-        add_action( 'woocommerce_created_customer', [&$this, 'milimol_save_account_registration_field'] );
-        add_action( 'woocommerce_save_account_details', [&$this, 'milimol_save_my_account_billing_account_number'], 10, 1 );
+//        add_action( 'woocommerce_register_form_start', [&$this, 'woocommerce_register_form_start_callback'] );
+//        add_action( 'woocommerce_edit_account_form_start', [&$this, 'woocommerce_register_form_start_callback'] );
+        add_action( 'woocommerce_created_customer', [&$this, 'woocommerce_created_customer_callback'] );
+        add_action( 'woocommerce_save_account_details', [&$this, 'woocommerce_save_account_details_callback'], 10, 1 );
 
-        add_filter( 'woocommerce_customer_meta_fields', [&$this, 'woocommerce_customer_meta_fields_callback'], 10, 1 );
-        add_filter( 'woocommerce_registration_errors', [&$this, 'milimol_account_registration_field_validation'], 10, 3 );
+//        add_filter( 'woocommerce_customer_meta_fields', [&$this, 'woocommerce_customer_meta_fields_callback'], 10, 1 );
+        add_filter( 'woocommerce_registration_errors', [&$this, 'woocommerce_registration_errors'], 10, 3 );
+        add_filter('woocommerce_registration_errors', [&$this, 'woocommerce_registration_errors_password_callback'], 10, 3);
     }
 
+    // Register form shortcode
     function wc_reg_form_milimol_callback(): bool|string
     {
         if ( is_user_logged_in() ) return '<p>You are already registered</p>';
         ob_start();
         do_action( 'woocommerce_before_customer_login_form' );
-        $html = wc_get_template_html( 'myaccount/form-login.php' );
+        $html = wc_get_template_html( '/woocommerce/templates/myaccount/form-login.php' );
         $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
         $dom = new DOMDocument();
         $dom->encoding = 'UTF-8';
@@ -42,12 +45,21 @@ class Login
         return ob_get_clean();
     }
 
+    // Login form shortcode
     function wc_login_form_milimol_callback(): bool|string
     {
         if ( is_user_logged_in() ) return '<p>You are already logged in</p>';
         ob_start();
+        $html = wc_get_template_html( '/woocommerce/templates/myaccount/form-login.php' );
+        $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
+        $dom = new DOMDocument();
+        $dom->encoding = 'UTF-8';
+        $dom->loadHTML( $html );
+        $xpath = new DOMXPath( $dom );
+        $form = $xpath->query( '//form[contains(@class,"login")]' );
+        $form = $form->item( 0 );
+        echo $dom->saveXML( $form );
         do_action( 'woocommerce_before_customer_login_form' );
-        woocommerce_login_form( array( 'redirect' => wc_get_page_permalink( 'myaccount' ) ) );
         return ob_get_clean();
     }
 
@@ -62,81 +74,68 @@ class Login
     /* registration form start */
 
     // Display a field in Registration / Edit account
-    function milimol_display_account_registration_field(): void
+    function woocommerce_register_form_start_callback(): void
     {
         $user = wp_get_current_user();
-        $value = isset($_POST['billing_account_number']) ? esc_attr($_POST['billing_account_number']) : $user->billing_account_number;
+        $phone = isset($_POST['billing_phone']) ? esc_attr($_POST['billing_phone']) : $user->billing_phone;
         ?>
+
         <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-            <label for="reg_billing_account_number"><?php _e( 'Ship to/ Account number', 'woocommerce' ); ?> <span class="required">*</span></label>
-            <input type="text" maxlength="6" class="input-text" name="billing_account_number" id="reg_billing_account_number" value="<?php echo $value ?>" />
+            <label for="reg_billing_phone"><?php _e( 'موبایل ', 'woocommerce' ); ?> <span class="required">*</span></label>
+            <input type="text" maxlength="12" class="input-text" name="billing_phone" id="reg_billing_phone" value="<?php echo $phone ?>" />
         </p>
-        <div class="clear"></div>
+
+        <p class="form-row form-row-wide">
+            <label for="reg_password2"><?php _e( 'تایید رمز عبور ', 'woocommerce' ); ?> <span class="required">*</span></label>
+            <input type="password" class="input-text" name="password2" id="reg_password2" value="<?php if ( ! empty( $_POST['password2'] ) ) echo esc_attr( $_POST['password2'] ); ?>" />
+        </p>
+
         <?php
     }
 
-    // registration Field validation
-    function milimol_account_registration_field_validation( $errors, $username, $email ) {
-        if ( isset( $_POST['billing_account_number'] ) && empty( $_POST['billing_account_number'] ) ) {
-            $errors->add( 'billing_account_number_error', __( '<strong>Error</strong>: account number is required!', 'woocommerce' ) ); }
-        return $errors;
-    }
-
     // Save registration Field value
-    function milimol_save_account_registration_field( $customer_id ): void
+    function woocommerce_created_customer_callback($customer_id): void
     {
-        if ( isset( $_POST['billing_account_number'] ) ) {
-            update_user_meta( $customer_id, 'billing_account_number', sanitize_text_field( $_POST['billing_account_number'] ) );
-        }
-
-        if ( isset( $_POST['billing_phone2'] ) ) {
-            update_user_meta( $customer_id, 'billing_phone2', sanitize_text_field( $_POST['billing_phone2'] ) );
+        if ( isset( $_POST['billing_phone'] ) ) {
+            update_user_meta( $customer_id, 'billing_phone', sanitize_text_field( $_POST['billing_phone'] ) );
         }
     }
 
     // Save Field value in Edit account
-    function milimol_save_my_account_billing_account_number( $user_id ): void
+    function woocommerce_save_account_details_callback($user_id): void
     {
-        if( isset( $_POST['billing_account_number'] ) ){
-            update_user_meta( $user_id, 'billing_account_number', sanitize_text_field( $_POST['billing_account_number'] ) );
+        if( isset( $_POST['billing_phone'] ) ){
+            update_user_meta( $user_id, 'billing_phone', sanitize_text_field( $_POST['billing_phone'] ) );
         }
-    }
 
-    // Display field in admin user billing fields section
-    function milimol_admin_user_custom_billing_field( $args ): array
-    {
-        $args['billing']['fields']['billing_account_number'] = array(
-            'label' => __( 'Ship to/ Account number', 'woocommerce' ),
-            'description' => '',
-            'custom_attributes' => array('maxlength' => 6),
-        );
-        return $args;
-    }
-    /* registration form end */
-
-    function woocommerce_edit_account_form_start_callback(): array
-    {
-        $user = wp_get_current_user();
-        $value = isset($_POST['billing_phone2']) ? esc_attr($_POST['billing_phone2']) : $user->billing_phone2;
-        ?>
-        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-            <label for="reg_billing_account_number"><?php _e( 'Ship to/ Account number', 'woocommerce' ); ?> <span class="required">*</span></label>
-            <input type="text" maxlength="6" class="input-text" name="billing_phone2" id="billing_phone2" value="<?php echo $value ?>" />
-        </p>
-        <div class="clear"></div>
-        <?php
     }
 
     // Display field in admin user billing fields section
     function woocommerce_customer_meta_fields_callback( $args ): array
     {
-        $args['billing']['fields']['billing_phone2'] = array(
-            'label' => __( 'Billing phone2', 'woocommerce' ),
+        $args['billing']['fields']['billing_phone'] = array(
+            'label' => __( 'موبایل: ', 'woocommerce' ),
             'description' => '',
             'custom_attributes' => array('maxlength' => 12),
         );
         return $args;
     }
 
+    // Registration Field validation
+    function woocommerce_registration_errors( $errors, $username, $email ) {
+        if ( isset( $_POST['billing_phone'] ) && empty( $_POST['billing_phone'] ) ) {
+            $errors->add( 'billing_phone_error', __( '<strong>Error</strong>: شماره تماس برای ثبت نام الزامی می باشد.', 'woocommerce' ) ); }
+        return $errors;
+    }
+
+    // Registration Field Password validation
+    function woocommerce_registration_errors_password_callback($reg_errors, $sanitized_user_login, $user_email) {
+        global $woocommerce;
+        extract( $_POST );
+        if ( strcmp( $password, $password2 ) !== 0 ) {
+            return new WP_Error( 'registration-error', __( 'رمز عبور ها مطابقت ندارند.', 'woocommerce' ) );
+        }
+        return $reg_errors;
+    }
 
 }
