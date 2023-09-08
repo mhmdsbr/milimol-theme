@@ -43,6 +43,7 @@ class ExtendTwig
         $twig->addFunction(new TwigFunction('is_logged_in', array($this, 'is_user_logged_in')));
         $twig->addFunction(new TwigFunction('get_value', array($this, 'check_get')));
         $twig->addFunction(new TwigFunction('is_home', array($this, 'is_home')));
+        $twig->addFunction(new TwigFunction('user_logout', array($this, 'get_wc_logout_url')));
         $twig->addFunction(new TwigFunction('jalali_date', array($this, 'get_jalali_date')));
         $twig->addFunction(new TwigFunction('expiry_date', array($this, 'get_jalali_expiry_date')));
         $twig->addFunction(new TwigFunction('english_numbers', array($this, 'get_english_to_persian')));
@@ -141,10 +142,15 @@ class ExtendTwig
     {
         return is_user_logged_in();
     }
+    public function get_wc_logout_url(): string
+    {
+        return wp_logout_url(home_url()); // Redirect to the site's homepage after logout
+
+    }
 
     public function check_get($getVar)
     {
-        if(isset($_GET[$getVar]) && !empty($_GET[$getVar])) {
+        if(!empty($_GET[$getVar])) {
             return $_GET[$getVar];
         }
     }

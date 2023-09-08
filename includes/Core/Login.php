@@ -19,12 +19,13 @@ class Login
 
 //        add_action( 'woocommerce_register_form_start', [&$this, 'woocommerce_register_form_start_callback'] );
 //        add_action( 'woocommerce_edit_account_form_start', [&$this, 'woocommerce_register_form_start_callback'] );
-        add_action( 'woocommerce_created_customer', [&$this, 'woocommerce_created_customer_callback'] );
-        add_action( 'woocommerce_save_account_details', [&$this, 'woocommerce_save_account_details_callback'], 10, 1 );
+//        add_action( 'woocommerce_created_customer', [&$this, 'woocommerce_created_customer_callback'] );
+//        add_action( 'woocommerce_save_account_details', [&$this, 'woocommerce_save_account_details_callback'], 10, 1 );
 
 //        add_filter( 'woocommerce_customer_meta_fields', [&$this, 'woocommerce_customer_meta_fields_callback'], 10, 1 );
-        add_filter( 'woocommerce_registration_errors', [&$this, 'woocommerce_registration_errors'], 10, 3 );
-        add_filter('woocommerce_registration_errors', [&$this, 'woocommerce_registration_errors_password_callback'], 10, 3);
+//        add_filter( 'woocommerce_registration_errors', [&$this, 'woocommerce_registration_errors'], 10, 3 );
+//        add_filter('woocommerce_registration_errors', [&$this, 'woocommerce_registration_errors_password_callback'], 10, 3);
+
     }
 
     // Register form shortcode
@@ -33,11 +34,11 @@ class Login
         if ( is_user_logged_in() ) return '<p>You are already registered</p>';
         ob_start();
         do_action( 'woocommerce_before_customer_login_form' );
-        $html = wc_get_template_html( '/woocommerce/templates/myaccount/form-login.php' );
+        $html = wc_get_template_html( '/woocommerce/templates/myaccount/form-signup.php' );
         $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
         $dom = new DOMDocument();
         $dom->encoding = 'UTF-8';
-        $dom->loadHTML( $html );
+        @$dom->loadHTML( $html );
         $xpath = new DOMXPath( $dom );
         $form = $xpath->query( '//form[contains(@class,"register")]' );
         $form = $form->item( 0 );
@@ -54,7 +55,7 @@ class Login
         $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
         $dom = new DOMDocument();
         $dom->encoding = 'UTF-8';
-        $dom->loadHTML( $html );
+        @$dom->loadHTML( $html );
         $xpath = new DOMXPath( $dom );
         $form = $xpath->query( '//form[contains(@class,"login")]' );
         $form = $form->item( 0 );
@@ -137,5 +138,6 @@ class Login
         }
         return $reg_errors;
     }
+
 
 }

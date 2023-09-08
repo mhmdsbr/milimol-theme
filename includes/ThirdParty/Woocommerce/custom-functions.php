@@ -91,15 +91,15 @@ function company_social_endpoint_callback()
 add_action('woocommerce_account_company_social_endpoint', 'company_social_endpoint_callback');
 
 
-function logout_confirmation()
-{
-    global $wp;
-    if (isset($wp->query_vars['customer-logout'])) {
-        wp_redirect(str_replace('&amp;', '&', wp_logout_url(wc_get_page_permalink('myaccount'))));
-        exit;
-    }
-}
-add_action('template_redirect', 'logout_confirmation');
+//function logout_confirmation()
+//{
+//    global $wp;
+//    if (isset($wp->query_vars['customer-logout'])) {
+//        wp_redirect(str_replace('&amp;', '&', wp_logout_url(wc_get_page_permalink('myaccount'))));
+//        exit;
+//    }
+//}
+//add_action('template_redirect', 'logout_confirmation');
 
 function my_acf_save_post_callback($post_id) // about data published
 {
