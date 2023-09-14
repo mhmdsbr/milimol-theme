@@ -4,16 +4,11 @@
  */
 namespace EXP\Core;
 
-use DOMDocument;
-use DOMXPath;
-use WP_Error;
 
 class Login
 {
     public function __construct()
     {
-        add_shortcode( 'REGISTER_FORM_MILIMOL', [&$this, 'wc_reg_form_milimol_callback']);
-        add_shortcode( 'LOGIN_FORM_MILIMOL', [&$this, 'wc_login_form_milimol_callback'] );
 
         add_action( 'template_redirect', [&$this, 'milimol_redirect_login_registration_if_logged_in_callback'] );
 
@@ -28,41 +23,6 @@ class Login
 
     }
 
-    // Register form shortcode
-    function wc_reg_form_milimol_callback(): bool|string
-    {
-        if ( is_user_logged_in() ) return '<p>You are already registered</p>';
-        ob_start();
-        do_action( 'woocommerce_before_customer_login_form' );
-        $html = wc_get_template_html( '/woocommerce/templates/myaccount/form-signup.php' );
-        $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
-        $dom = new DOMDocument();
-        $dom->encoding = 'UTF-8';
-        @$dom->loadHTML( $html );
-        $xpath = new DOMXPath( $dom );
-        $form = $xpath->query( '//form[contains(@class,"register")]' );
-        $form = $form->item( 0 );
-        echo $dom->saveXML( $form );
-        return ob_get_clean();
-    }
-
-    // Login form shortcode
-    function wc_login_form_milimol_callback(): bool|string
-    {
-        if ( is_user_logged_in() ) return '<p>You are already logged in</p>';
-        ob_start();
-        $html = wc_get_template_html( '/woocommerce/templates/myaccount/form-login.php' );
-        $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
-        $dom = new DOMDocument();
-        $dom->encoding = 'UTF-8';
-        @$dom->loadHTML( $html );
-        $xpath = new DOMXPath( $dom );
-        $form = $xpath->query( '//form[contains(@class,"login")]' );
-        $form = $form->item( 0 );
-        echo $dom->saveXML( $form );
-        do_action( 'woocommerce_before_customer_login_form' );
-        return ob_get_clean();
-    }
 
     function milimol_redirect_login_registration_if_logged_in_callback(): void
     {
@@ -72,7 +32,6 @@ class Login
         }
     }
 
-    /* registration form start */
 
     // Display a field in Registration / Edit account
     function woocommerce_register_form_start_callback(): void

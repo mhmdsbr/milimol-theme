@@ -5,7 +5,6 @@ require 'includes/timber.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
 define('MILIMOL_THEME_DIR', get_stylesheet_directory());
-require MILIMOL_THEME_DIR . '/includes/ThirdParty/Woocommerce/custom-functions.php';
 
 spl_autoload_register(function ($classname) {
     $parts = explode('\\', $classname);
@@ -30,6 +29,8 @@ new Exp\Core\ExtendTwig();
 new Exp\Core\Breadcrumbs();
 new Exp\Core\Woocommerce();
 new Exp\Core\Login();
+new Exp\Core\Account();
+new Exp\Core\Shortcodes();
 
 /** ThirdParty */
 new EXP\ThirdParty\ACF();

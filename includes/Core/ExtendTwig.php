@@ -2,13 +2,13 @@
 
 namespace EXP\Core;
 
-use EXP\Core\TwigFunctions\TwigFunctions;
 use Twig\Environment;
 use Twig\TwigFunction;
 use Twig\TwigTest;
 // Jalali date
 use Carbon\Carbon;
 use Morilog\Jalali\Jalalian;
+use WP_User;
 
 /**
  * Timber/Twig extend functions
@@ -52,6 +52,7 @@ class ExtendTwig
         $twig->addFunction(new TwigFunction('acf_checkbox_field', array($this, 'render_acf_checkbox_field')));
         $twig->addFunction(new TwigFunction('acf_relationship_checkboxes', array($this, 'render_acf_relationship_checkboxes')));
         $twig->addFunction(new TwigFunction('product_visit_number', array($this, 'product_page_visit_number')));
+        $twig->addFunction(new TwigFunction('user_display_name', array($this, 'get_user_display_name')));
 
 
         return $twig;
@@ -250,6 +251,14 @@ function get_jalali_date(): string
     {
         $product_searched = get_field('searched_numbers', $postId);
         update_field('searched_numbers', $product_searched + 1, $postId);
+
+    }
+
+    function get_user_display_name($user_id = null): string
+    {
+        $user_info = $user_id ? new WP_User( $user_id ) : wp_get_current_user();
+
+        return $user_info->first_name;
 
     }
 

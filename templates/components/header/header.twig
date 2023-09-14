@@ -31,10 +31,11 @@
                                 </div>
 
                                 <div class="header__account">
+                                    {%  set userDisplayName = user_display_name() %}
                                     {% if is_logged_in() %}
                                         {% include "partial/dropdown.twig" with {
                                             url : '#',
-                                            title : 'ثبت نام/عضویت',
+                                            title : ' کاربر ' ~ userDisplayName,
                                             titleItemOne : 'پروفایل',
                                             titleItemTwo : 'خروج',
                                             linkItemOne : '/my-account/my_dashboard',
@@ -82,9 +83,10 @@
 
                                 <div class="header__account">
                                     {% if is_logged_in() %}
+                                        {%  set userDisplayName = user_display_name() %}
                                         {% include "partial/dropdown.twig" with {
                                             url : '#',
-                                            title : 'کاربر عزیز خوش آمدید.',
+                                            title : ' کاربر ' ~ userDisplayName,
                                             titleItemOne : 'پروفایل',
                                             titleItemTwo : 'خروج',
                                             linkItemOne : '/my-account/my_dashboard',
@@ -143,9 +145,10 @@
 
                                 <div class="header__account">
                                     {% if is_logged_in() %}
+                                        {%  set userDisplayName = user_display_name() %}
                                         {% include "partial/dropdown.twig" with {
                                             url : '#',
-                                            title : 'کاربر عزیز خوش آمدید.',
+                                            title : ' کاربر ' ~ userDisplayName,
                                             titleItemOne : 'پروفایل',
                                             titleItemTwo : 'خروج',
                                             linkItemOne : '/my-account/my_dashboard',
@@ -195,9 +198,10 @@
 
                                 <div class="header__account">
                                     {% if is_logged_in() %}
+                                        {%  set userDisplayName = user_display_name() %}
                                         {% include "partial/dropdown.twig" with {
                                             url : '#',
-                                            title : 'کاربر عزیز خوش آمدید.',
+                                            title : ' کاربر ' ~ userDisplayName,
                                             titleItemOne : 'پروفایل',
                                             titleItemTwo : 'خروج',
                                             linkItemOne : '/my-account/my_dashboard',
