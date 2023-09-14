@@ -136,7 +136,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "80",
-                "class": "",
+                "class": "company-intro",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -1840,5 +1840,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1693732509
+    "modified": 1694607803
 }

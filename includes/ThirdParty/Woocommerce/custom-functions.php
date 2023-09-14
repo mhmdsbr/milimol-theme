@@ -3,6 +3,7 @@
 /* dashboard start */
 function my_custom_endpoints()
 {
+    add_rewrite_endpoint('my_dashboard', EP_ROOT | EP_PAGES);
     add_rewrite_endpoint('company_basic', EP_ROOT | EP_PAGES);
     add_rewrite_endpoint('company_content', EP_ROOT | EP_PAGES);
     add_rewrite_endpoint('company_customers', EP_ROOT | EP_PAGES);
@@ -14,6 +15,7 @@ add_action('init', 'my_custom_endpoints');
 
 function my_custom_query_vars($vars)
 {
+    $vars[] = 'my_dashboard';
     $vars[] = 'company_basic';
     $vars[] = 'company_content';
     $vars[] = 'company_customers';
@@ -33,8 +35,8 @@ add_action('wp_loaded', 'my_custom_flush_rewrite_rules');
 function my_custom_my_account_menu_items($items)
 {
     $items = array(
-        'dashboard'         => __('Dashboard', 'woocommerce'),
-        // 'orders'            => __( 'Orders', 'woocommerce' ),
+        //'dashboard'         => __('Dashboard', 'woocommerce'),
+        //'orders'            => __( 'Orders', 'woocommerce' ),
         //'downloads'       => __( 'Downloads', 'woocommerce' ),
         //'edit-address'    => __( 'Addresses', 'woocommerce' ),
         //'payment-methods' => __( 'Payment Methods', 'woocommerce' ),
@@ -46,12 +48,14 @@ function my_custom_my_account_menu_items($items)
     $roles = ( array ) $user->roles; // obtaining the role 
     if (in_array('company', $roles))
     {
+        $items['my_dashboard'] = __('پیشخوان');
+        $items['profile_management'] = __('مدیریت پروفایل');
         $items['company_basic'] = __('اطلاعات پایه');
-        $items['company_content'] = __('اطلاعات محتوی');
-        $items['company_customers'] = __('اطلاعات مشتریان');
-        $items['company_catalog'] = __('اطلاعات کاتالوگ ها');
-        $items['company_documents'] = __('اطلاعات گواهی و مجوز ها');
-        $items['company_social'] = __('اطلاعات شبکه های اجتماعی');
+        $items['company_content'] = __('محتوای شرکتی');
+        $items['company_customers'] = __('مشتریان');
+        $items['company_catalog'] = __('کاتالوگ ها');
+        $items['company_documents'] = __('گواهی و مجوز ها');
+        $items['company_social'] = __('شبکه های اجتماعی');
     }
     //
     $items['customer-logout'] = __('Logout', 'woocommerce');
@@ -59,6 +63,12 @@ function my_custom_my_account_menu_items($items)
 }
 add_filter('woocommerce_account_menu_items', 'my_custom_my_account_menu_items');
 
+
+function my_dashboard_endpoint_callback()
+{
+    include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/my_dashboard.php';
+}
+add_action('woocommerce_account_my_dashboard_endpoint', 'my_dashboard_endpoint_callback');
 function company_basic_endpoint_callback()
 {
     include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/company_basic.php';
@@ -214,5 +224,25 @@ function my_acf_save_post_callback($post_id) // about data published
 }
 add_action('acf/save_post', 'my_acf_save_post_callback');
 
+
+function wc_acc_nav_milimol_callback(): bool|string
+{
+    if ( is_user_logged_in() ) {
+        ob_start();
+        wc_get_template('/woocommerce/templates/myaccount/navigation.php');
+    };
+    return ob_get_clean();
+}
+add_shortcode( 'ACCOUNT_NAV_MILIMOL', 'wc_acc_nav_milimol_callback' );
+
+function wc_acc_content_milimol_callback(): bool|string
+{
+    if ( is_user_logged_in() ) {
+        ob_start();
+        wc_get_template('/woocommerce/templates/myaccount/my-account.php');
+    };
+    return ob_get_clean();
+}
+add_shortcode( 'ACCOUNT_CONTENT_MILIMOL', 'wc_acc_content_milimol_callback' );
 
 /* dashboard end */

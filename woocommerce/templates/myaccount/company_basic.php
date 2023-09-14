@@ -3,7 +3,7 @@
 /**
  * Edit company basic form
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/myaccount/form-edit-account.php.
+ * This template can be overridden by copying it to milimol/woocommerce/myaccount/form-edit-account.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -83,23 +83,20 @@ if ($cdata_status == 'publish') {
 }
 //
 if ($cdata_status == 'pending') {
-    echo '<div class="fsection_container" style="">';
-    echo '<div class="fsection_body" style="background: lightgreen;
-    border-radius: 5px;
-    text-align: center;">';
-    //
-    echo '<span sytle="font-size:14px;font-weight:bold;">' . $myout . '
+    echo '<div class="account__company-basic" style="">';
+    echo '<div class="account__company-basic-content">';
+    echo '<span class="account__company-basic-admin-check">
     اطلاعات این قسمت توسط مدیر سیستم در حال بررسی است...
     </span>';
     echo '</div>';  //end of body
     echo '</div>';  // end of section
 } else {
     // company info
-    echo '<div class="fsection_container" style="">';
-    echo '<div class="fsection_head" style="">';
-    echo '<span class="head_number">1</span> <span style="">اطلاعات شرکت</span>';
+    echo '<div class="account__company-basic" style="">';
+    echo '<div class="account__company-basic-header" style="">';
+    echo '<h3 class="account__company-basic-title">اطلاعات پایه</h3>';
     echo '</div>';
-    echo '<div class="fsection_body">';
+    echo '<div class="account__company-basic-content">';
     $formsetting = array(
         'post_id' => $com_id,
         'id' => 'cform',
@@ -135,78 +132,7 @@ if ($cdata_status == 'pending') {
     echo '</div>';  // end of section
 }
 ?>
-<style>
-    article {
-        background-color: rgba(210, 210, 210, .1);
-    }
 
-    article::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 0;
-        background-image: url(https://image.freepik.com/free-vector/abstract-line-hexagon-geometric-texture_1035-17373.jpg);
-        opacity: 0.07;
-    }
-
-    .acf-fields>.acf-field.acf-field-acfe-column {
-        float: right !important;
-    }
-
-    .fsection_container {
-        padding: 7px;
-    }
-
-    .head_number {
-        border-radius: 50%;
-        background-color: white;
-        width: 25px;
-        display: block;
-        float: right;
-        margin-left: 5px;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-    }
-
-    .fsection_head {
-        display: block;
-        border: 1px solid #446084;
-        padding: 5px;
-        width: 270px;
-        border-top-left-radius: 30px;
-        color: white;
-        border-bottom: 0px;
-        background-color: #446084;
-    }
-
-    .fsection_body {
-        border: 1px solid #446084;
-        padding: 11px;
-        background-color: rgba(255, 255, 255, 1);
-        width: 100%;
-        position: relative
-    }
-
-    .fsection_body:after {
-        content: "";
-        height: inherit;
-        width: inherit;
-    }
-
-    [data-name="c_savedata"] {
-        display: none;
-        visibility: hidden;
-    }
-
-    .image-wrap img {
-        border: 1px solid lightgray;
-        border-radius: 5px;
-    }
-</style>
 <script>
     jQuery(document).ready(function($) {
         jQuery(".acf-form-submit").append('<input type="submit" id="btnsend" name="btnsend" value="ارسال برای تایید و انتشار"/>');

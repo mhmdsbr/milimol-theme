@@ -1,0 +1,24 @@
+<section class="account">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="account__header">
+                    <h1>پروفایل کاربری</h1>
+                    <p>به میلی مول خوش آمدید.</p>
+                </div>
+            </div>
+            <div class="col-12 row">
+                <div class="col-12 col-md-2 account__navigation">
+                    {% filter shortcodes %}
+                        [ACCOUNT_NAV_MILIMOL]
+                    {% endfilter %}
+                </div>
+                <div class="col-12 col-md-10 account__main-content">
+                    {% filter shortcodes %}
+                        [ACCOUNT_CONTENT_MILIMOL]
+                    {% endfilter %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
