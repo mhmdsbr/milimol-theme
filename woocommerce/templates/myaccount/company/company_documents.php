@@ -32,7 +32,7 @@ if ($cdata_status == 'pending') {
     // company info
     echo '<div class="account__company-documents">';
     echo '<div class="account__company-documents-header">';
-    echo '<span class="account__company-documents-title">مستندات</span>';
+    echo '<h3 class="account__company-documents-title">مستندات</h3>';
     echo '</div>';
     echo '<div class="account__company-documents-content">';
     $formsetting = array(

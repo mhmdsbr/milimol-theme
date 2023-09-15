@@ -56,7 +56,7 @@ if ($cdata_status == 'pending') {
     // company info
     echo '<div class="account__company-social">';
     echo '<div class="account__company-social-header">';
-    echo '<span class="account__company-social-title">شبکه های مجازی</span>';
+    echo '<h3 class="account__company-social-title">شبکه های مجازی</h3>';
     echo '</div>';
     echo '<div class="account__company-social-content">';
     $formsetting = array(

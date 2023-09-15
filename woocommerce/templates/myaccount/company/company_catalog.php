@@ -32,7 +32,7 @@ if ($cdata_status == 'pending') {
     // company info
     echo '<div class="account__company-catalog" style="">';
     echo '<div class="account__company-catalog-header" style="">';
-    echo '<span class="account__company-catalog-title">1</span> <span style="">کاتالوگ ها</span>';
+    echo '<h3 class="account__company-catalog-title">1کاتالوگ ها</h3>';
     echo '</div>';
     echo '<div class="account__company-catalog-content">';
     $formsetting = array(

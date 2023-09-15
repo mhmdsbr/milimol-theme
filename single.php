@@ -52,6 +52,14 @@ foreach ($company_products as $product) {
 
 $context['products'] = $company_products;
 
+// Retrieve the ACF field "company_map" value
+$leafletMapData = get_field('company_map');
+if ($leafletMapData) {
+    // Add the map data to the context
+    $context['leafletMapData'] = $leafletMapData;
+}
+
+
 if ( post_password_required( $timber_post->ID ) ) {
     Timber::render( 'single-password.twig', $context );
 } else {

@@ -362,7 +362,32 @@ class Account
         }
     }
 
+    /**
+     * Add a new company post by the user.
+     */
+    public function addCompanyPost($companyName)
+    {
+        // Get the user ID of the current user
+        $current_user = wp_get_current_user();
+        $user_id = $current_user->ID;
 
+        // Prepare the new company post data
+        $new_company_post = array(
+            'post_title' => sanitize_text_field($companyName),
+            'post_content' => '', // You can set content if needed
+            'post_type' => 'company', // Replace with your custom post type
+            'post_status' => 'pending', // Set to 'pending' for review
+            'post_author' => $user_id,
+        );
+
+        // Insert the new company post
+        $new_post_id = wp_insert_post($new_company_post);
+
+
+        // Redirect the user to a confirmation page
+//        wp_redirect('confirmation-page-url'); // Replace with your confirmation page URL
+        exit;
+    }
 
 
 }

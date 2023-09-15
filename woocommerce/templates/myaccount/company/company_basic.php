@@ -83,7 +83,7 @@ if ($cdata_status == 'publish') {
 }
 //
 if ($cdata_status == 'pending') {
-    echo '<div class="account__company-basic" style="">';
+    echo '<div class="account__company-basic">';
     echo '<div class="account__company-basic-content">';
     echo '<span class="account__company-basic-admin-check">
     اطلاعات این قسمت توسط مدیر سیستم در حال بررسی است...
@@ -92,8 +92,8 @@ if ($cdata_status == 'pending') {
     echo '</div>';  // end of section
 } else {
     // company info
-    echo '<div class="account__company-basic" style="">';
-    echo '<div class="account__company-basic-header" style="">';
+    echo '<div class="account__company-basic">';
+    echo '<div class="account__company-basic-header">';
     echo '<h3 class="account__company-basic-title">اطلاعات پایه</h3>';
     echo '</div>';
     echo '<div class="account__company-basic-content">';
@@ -124,7 +124,7 @@ if ($cdata_status == 'pending') {
         'html_after_fields' => '<input type="hidden" name="frontend_acf" value="1"/>
         <input type="hidden" id="acf-field_64e0cbb1417e7" name="acf[field_64e0cbb1417e7]" value="draft"/>
         ',
-        'updated_message' => 'اظلاعات با موفقیت ذخیره شد.',
+        'updated_message' => ' اطلاعات با موفقیت ذخیره شد.',
         'submit_value' => __("ذخیره", 'acf'),
     );
     acf_form($formsetting);
