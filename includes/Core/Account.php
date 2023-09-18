@@ -41,8 +41,9 @@ class Account
         add_action('woocommerce_account_company_social_endpoint', [&$this, 'company_social_endpoint_callback']);
         add_action('woocommerce_account_request_endpoint', [&$this, 'request_endpoint_callback']);
         add_action('woocommerce_account_message_management_endpoint', [&$this, 'message_management_endpoint_callback']);
-//        add_action('woocommerce_account_message_send_endpoint', [&$this, 'message_send_endpoint_callback']);
-//        add_action('woocommerce_account_message_inbox_endpoint', [&$this, 'message_inbox_endpoint_callback']);
+
+        add_action('woocommerce_account_company_productlist_endpoint', [&$this,'company_productlist_endpoint_callback']);
+        add_action('woocommerce_account_company_productmodify_endpoint', [&$this,'company_productmodify_endpoint_callback']);
 
         add_action('template_redirect', [&$this, 'logout_confirmation']);
 
@@ -70,9 +71,9 @@ class Account
         add_rewrite_endpoint('company_documents', EP_ROOT | EP_PAGES);
         add_rewrite_endpoint('company_social', EP_ROOT | EP_PAGES);
         add_rewrite_endpoint('request', EP_ROOT | EP_PAGES);
-//        add_rewrite_endpoint('message_management', EP_ROOT | EP_PAGES);
-//        add_rewrite_endpoint('message_send', EP_ROOT | EP_PAGES);
-//        add_rewrite_endpoint('message_inbox', EP_ROOT | EP_PAGES);
+        add_rewrite_endpoint('company_productlist', EP_ROOT | EP_PAGES);
+        add_rewrite_endpoint('company_productmodify', EP_ROOT | EP_PAGES);
+        add_rewrite_endpoint('message_management', EP_ROOT | EP_PAGES);
     }
 
     /**
@@ -95,10 +96,10 @@ class Account
         $vars[] = 'company_catalog';
         $vars[] = 'company_documents';
         $vars[] = 'company_social';
+        $vars[] = 'company_productlist';
+        $vars[] = 'company_productmodify';
         $vars[] = 'request';
-//        $vars[] = 'message_management';
-//        $vars[] = 'message_send';
-//        $vars[] = 'message_inbox';
+        $vars[] = 'message_management';
         return $vars;
     }
 
@@ -157,11 +158,11 @@ class Account
             $items['company_documents'] = __('گواهی و مجوز ها');
             $items['company_social'] = __('شبکه های اجتماعی');
             $items['product_management'] = __('مدیریت محصولات');
+            $items['company_productlist'] = __('لیست محصولات');
+            $items['company_productmodify'] = __('محصول جدید');
             $items['request_management'] = __('مدیریت درخواست ها');
             $items['request'] = __('ارسال درخواست خرید');
             $items['message_management'] = __('مدیریت پیام ها');
-//            $items['message_send'] = __('ارسال پیام');
-//            $items['message_inbox'] = __('صندوق پیام');
         }
 
         // Always include the logout item
@@ -220,6 +221,16 @@ class Account
     {
         include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/company/company_social.php';
     }
+
+    function company_productlist_endpoint_callback(): void
+    {
+        include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/company_productlist.php';
+    }
+
+    function company_productmodify_endpoint_callback(): void
+    {
+        include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/company_productmodify.php';
+    }
     function request_endpoint_callback(): void
     {
         include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/request.php';
@@ -227,16 +238,7 @@ class Account
 
     function message_management_endpoint_callback(): void
     {
-        include MILIMOL_THEME_DIR . '/message.php';
-    }
-    function message_send_endpoint_callback(): void
-    {
         include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/message/form-message.php';
-    }
-
-    function message_inbox_endpoint_callback(): void
-    {
-        include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/message/box-message.php';
     }
 
     /**
@@ -277,142 +279,219 @@ class Account
      */
     function my_acf_save_post_callback($post_id): void // about data published
     {
-        if (!isset($_POST['frontend_acf']) && $_POST['basic_status'] == 'publish')
+
+        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_64f3496d77597'] == 'publish')
         {
-            $company_icon = get_field('company_icon_draft', $post_id);
-            update_field('company_icon', $company_icon, $post_id);
-            //
-            $company_intro = get_field('company_intro_draft', $post_id);
-            update_field('company_intro', $company_intro, $post_id);
-            //
-            $company_country = get_field('company_country_draft', $post_id);
-            update_field('company_country', $company_country, $post_id);
-            //
-            $company_city = get_field('company_city_draft', $post_id);
-            update_field('company_city', $company_city, $post_id);
-            //
-            $company_start_date = get_field('company_start_date_draft', $post_id);
-            update_field('company_start_date', $company_start_date, $post_id);
-            //
-            $company_job_field = get_field('company_job_field_draft', $post_id);
-            update_field('company_job_field', $company_job_field, $post_id);
-            //
-            $company_ceo = get_field('company_ceo_draft', $post_id);
-            update_field('company_ceo', $company_ceo, $post_id);
-            //
-            $company_personnel = get_field('company_personnel_draft', $post_id);
-            update_field('company_personnel', $company_personnel, $post_id);
-            //
-            $company_office_phone = get_field('company_office_phone_draft', $post_id);
-            update_field('company_office_phone', $company_office_phone, $post_id);
-            //
-            $company_phone = get_field('company_phone_draft', $post_id);
-            update_field('company_phone', $company_phone, $post_id);
-            //
-            $company_office_address = get_field('company_office_address_draft', $post_id);
-            update_field('company_office_address', $company_office_address, $post_id);
-            //
-            $company_address = get_field('company_address_draft', $post_id);
-            update_field('company_address', $company_address, $post_id);
-            //
-            $company_mobile = get_field('company_mobile_draft', $post_id);
-            update_field('company_mobile', $company_mobile, $post_id);
-            //
-            $company_fax = get_field('company_fax_draft', $post_id);
-            update_field('company_fax', $company_fax, $post_id);
-            //
-            $company_email = get_field('company_email_draft', $post_id);
-            update_field('company_email', $company_email, $post_id);
+            $this->publish_basic_info($post_id);
         }
-        if (!isset($_POST['frontend_acf']) && $_POST['content_status'] == 'publish')
+        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'publish')
         {
-            $company_map = get_field('company_map_draft', $post_id);
-            update_field('company_map', $company_map, $post_id);
-            //
-            $company_map = get_field('company_map_draft', $post_id);
-            update_field('company_map', $company_map, $post_id);
-            //
-            $company_video_bg = get_field('company_video_bg_draft', $post_id);
-            update_field('company_video_bg', $company_video_bg, $post_id);
-            //
-            $company_ad_banner = get_field('company_ad_banner_draft', $post_id);
-            update_field('company_ad_banner', $company_ad_banner, $post_id);
-            //
-            $company_img_gallery = get_field('company_img_gallery_draft', $post_id);
-            update_field('company_img_gallery', $company_img_gallery, $post_id);
+            $this->publish_content_info($post_id);
         }
-        if (!isset($_POST['frontend_acf']) && $_POST['customers_status'] == 'publish')
+        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'publish')
         {
-            $company_clients = get_field('company_clients_draft', $post_id);
-            update_field('company_clients', $company_clients, $post_id);
+            $this->publish_customers_info($post_id);
         }
-        if (!isset($_POST['frontend_acf']) && $_POST['catalog_status'] == 'publish')
+        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'publish')
         {
-            $company_catalog = get_field('company_catalog_draft', $post_id);
-            update_field('company_catalog', $company_catalog, $post_id);
+            $this->publish_catalog_info($post_id);
         }
-        if (!isset($_POST['frontend_acf']) && $_POST['documents_status'] == 'publish')
+        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'publish')
         {
-            $company_documents = get_field('company_documents_draft', $post_id);
-            update_field('company_documents', $company_documents, $post_id);
+            $this->publish_documents_info($post_id);
         }
-        if (!isset($_POST['frontend_acf']) && $_POST['social_status'] == 'publish')
+        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'publish')
         {
-            $company_website = get_field('company_website_draft', $post_id);
-            update_field('company_website', $company_website, $post_id);
-            //
-            $company_whatsapp = get_field('company_whatsapp_draft', $post_id);
-            update_field('company_whatsapp', $company_whatsapp, $post_id);
-            //
-            $company_instagram = get_field('company_instagram_draft', $post_id);
-            update_field('company_instagram', $company_instagram, $post_id);
-            //
-            $company_email_icon = get_field('company_email_icon_draft', $post_id);
-            update_field('company_email_icon', $company_email_icon, $post_id);
-            //
-            $company_aparat = get_field('company_aparat_draft', $post_id);
-            update_field('company_aparat', $company_aparat, $post_id);
-            //
-            $company_facebook = get_field('company_facebook_draft', $post_id);
-            update_field('company_facebook', $company_facebook, $post_id);
-            //
-            $company_twitter = get_field('company_twitter_draft', $post_id);
-            update_field('company_twitter', $company_twitter, $post_id);
-            //
-            $company_telegram = get_field('company_telegram_draft', $post_id);
-            update_field('company_telegram', $company_telegram, $post_id);
-            //
-            $company_youtube = get_field('company_youtube_draft', $post_id);
-            update_field('company_youtube', $company_youtube, $post_id);
+            $this->publish_social_info($post_id);
+        }
+
+        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'publish')
+        {
+            $this->publish_product_info($post_id);
+
         }
     }
 
-    /**
-     * Add a new company post by the user.
-     */
-    public function addCompanyPost($companyName)
+    function publish_basic_info($post_id): void
     {
-        // Get the user ID of the current user
-        $current_user = wp_get_current_user();
-        $user_id = $current_user->ID;
-
-        // Prepare the new company post data
-        $new_company_post = array(
-            'post_title' => sanitize_text_field($companyName),
-            'post_content' => '', // You can set content if needed
-            'post_type' => 'company', // Replace with your custom post type
-            'post_status' => 'pending', // Set to 'pending' for review
-            'post_author' => $user_id,
-        );
-
-        // Insert the new company post
-        $new_post_id = wp_insert_post($new_company_post);
-
-
-        // Redirect the user to a confirmation page
-//        wp_redirect('confirmation-page-url'); // Replace with your confirmation page URL
-        exit;
+        $company_icon = get_field('company_icon_draft', $post_id);
+        update_field('company_icon', $company_icon, $post_id);
+        //
+        $company_intro = get_field('company_intro_draft', $post_id);
+        update_field('company_intro', $company_intro, $post_id);
+        //
+        $company_country = get_field('company_country_draft', $post_id);
+        update_field('company_country', $company_country, $post_id);
+        //
+        $company_city = get_field('company_city_draft', $post_id);
+        update_field('company_city', $company_city, $post_id);
+        //
+        $company_start_date = get_field('company_start_date_draft', $post_id);
+        update_field('company_start_date', $company_start_date, $post_id);
+        //
+        $company_job_field = get_field('company_job_field_draft', $post_id);
+        update_field('company_job_field', $company_job_field, $post_id);
+        //
+        $company_ceo = get_field('company_ceo_draft', $post_id);
+        update_field('company_ceo', $company_ceo, $post_id);
+        //
+        $company_personnel = get_field('company_personnel_draft', $post_id);
+        update_field('company_personnel', $company_personnel, $post_id);
+        //
+        $company_office_phone = get_field('company_office_phone_draft', $post_id);
+        update_field('company_office_phone', $company_office_phone, $post_id);
+        //
+        $company_phone = get_field('company_phone_draft', $post_id);
+        update_field('company_phone', $company_phone, $post_id);
+        //
+        $company_office_address = get_field('company_office_address_draft', $post_id);
+        update_field('company_office_address', $company_office_address, $post_id);
+        //
+        $company_address = get_field('company_address_draft', $post_id);
+        update_field('company_address', $company_address, $post_id);
+        //
+        $company_mobile = get_field('company_mobile_draft', $post_id);
+        update_field('company_mobile', $company_mobile, $post_id);
+        //
+        $company_fax = get_field('company_fax_draft', $post_id);
+        update_field('company_fax', $company_fax, $post_id);
+        //
+        $company_email = get_field('company_email_draft', $post_id);
+        update_field('company_email', $company_email, $post_id);
     }
 
+    function publish_content_info($post_id): void
+    {
+        $company_map = get_field('company_map_draft', $post_id);
+        update_field('company_map', $company_map, $post_id);
+        //
+        $company_map = get_field('company_map_draft', $post_id);
+        update_field('company_map', $company_map, $post_id);
+        //
+        $company_video_bg = get_field('company_video_bg_draft', $post_id);
+        update_field('company_video_bg', $company_video_bg, $post_id);
+        //
+        $company_ad_banner = get_field('company_ad_banner_draft', $post_id);
+        update_field('company_ad_banner', $company_ad_banner, $post_id);
+        //
+        $company_img_gallery = get_field('company_img_gallery_draft', $post_id);
+        update_field('company_img_gallery', $company_img_gallery, $post_id);
+    }
+
+    function publish_customers_info($post_id): void
+    {
+        $company_clients = get_field('company_clients_draft', $post_id);
+        update_field('company_clients', $company_clients, $post_id);
+    }
+
+    function publish_catalog_info($post_id): void
+    {
+        $company_catalog = get_field('company_catalog_draft', $post_id);
+        update_field('company_catalog', $company_catalog, $post_id);
+    }
+
+    function publish_documents_info($post_id): void
+    {
+        $company_documents = get_field('company_documents_draft', $post_id);
+        update_field('company_documents', $company_documents, $post_id);
+    }
+
+    function publish_social_info($post_id): void
+    {
+        $company_website = get_field('company_website_draft', $post_id);
+        update_field('company_website', $company_website, $post_id);
+        //
+        $company_whatsapp = get_field('company_whatsapp_draft', $post_id);
+        update_field('company_whatsapp', $company_whatsapp, $post_id);
+        //
+        $company_instagram = get_field('company_instagram_draft', $post_id);
+        update_field('company_instagram', $company_instagram, $post_id);
+        //
+        $company_email_icon = get_field('company_email_icon_draft', $post_id);
+        update_field('company_email_icon', $company_email_icon, $post_id);
+        //
+        $company_aparat = get_field('company_aparat_draft', $post_id);
+        update_field('company_aparat', $company_aparat, $post_id);
+        //
+        $company_facebook = get_field('company_facebook_draft', $post_id);
+        update_field('company_facebook', $company_facebook, $post_id);
+        //
+        $company_twitter = get_field('company_twitter_draft', $post_id);
+        update_field('company_twitter', $company_twitter, $post_id);
+        //
+        $company_telegram = get_field('company_telegram_draft', $post_id);
+        update_field('company_telegram', $company_telegram, $post_id);
+        //
+        $company_youtube = get_field('company_youtube_draft', $post_id);
+        update_field('company_youtube', $company_youtube, $post_id);
+    }
+
+    function publish_product_info($post_id): void
+    {
+        $product_header_bg = get_field('product_header_bg_draft', $post_id);
+        update_field('product_header_bg', $product_header_bg, $post_id);
+        //
+        $product_brand = get_field('product_brand_draft', $post_id);
+        $product_brand_other_draft = get_field('product_brand_other_draft', $post_id);
+
+        if($product_brand == 'other' && !empty($product_brand_other_draft)) {
+            $finfo = $this->myacf_getField('1412', 'product_brand_draft');
+            $finfoOriginal = $this->myacf_getField('1412', 'product_brand');
+
+            $is_found = false;
+            foreach ($finfo['choices'] as $key => $item) {
+                if($item == $product_brand_other_draft) {
+                    $is_found = true;
+                    break;
+                }
+            }
+
+            if(!$is_found) {
+                $finfo['choices'][] = $product_brand_other_draft;
+                $finfoOriginal['choices'][] = $product_brand_other_draft;
+                // Save the new choices as options for the field
+                acf_update_field($finfo);
+                acf_update_field($finfoOriginal);
+            }
+
+            update_field('product_brand_other_draft', '', $post_id);
+
+            $finfo = $this->myacf_getField('1412', 'product_brand_draft');
+            foreach ($finfo['choices'] as $key => $value) {
+                if($value == $product_brand_other_draft) {
+                    update_field('product_brand_draft', $key, $post_id);
+                    break;
+                }
+            }
+
+            $finfoOriginal = $this->myacf_getField('1412', 'product_brand');
+            foreach ($finfoOriginal['choices'] as $key => $value) {
+                if($value == $product_brand_other_draft) {
+                    update_field('product_brand', $key, $post_id);
+                    break;
+                }
+            }
+        }
+        //
+        $product_appearence = get_field('product_appearence_draft', $post_id);
+        update_field('product_appearence', $product_appearence, $post_id);
+    }
+
+    function myacf_getField($groupId, $fieldName)
+    {
+        $result = array();
+        $tmp_fields = acf_get_fields_by_id($groupId);
+        foreach ($tmp_fields as $tmpitem)
+        {
+            if ($tmpitem['name'] == $fieldName)
+            {
+                $result = $tmpitem;
+                break;
+            }
+
+        }
+        return $result;
+    }
 
 }
+

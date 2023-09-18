@@ -165,7 +165,7 @@ function ajax_search_results(): array
             $product_args = array(
                 'post_type'             => 'product',
                 'post_status'           => 'publish',
-                'posts_per_page'        => -1, // Limit: two products
+                'posts_per_page'        => -1, //  No Limit
                 'tax_query'             => [
                     [
                         'taxonomy'      => 'product_cas_no',
@@ -186,12 +186,12 @@ function ajax_search_results(): array
         // Store the results in the context
         $context['results'] = $results;
 
-    } else {
-        // If the search query is empty, set empty arrays for both results
-        $context['results'] = array(
-            'products' => array(),
-            'taxonomy_related' => array(),
-        );
+//    } else {
+//        // If the search query is empty, set empty arrays for both results
+//        $context['results'] = array(
+//            'products' => array(),
+//            'taxonomy_related' => array(),
+//        );
     }
 
     $context['pagination'] = Timber::get_pagination();

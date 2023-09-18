@@ -6,7 +6,7 @@
                 <div class="col-12">
                     {% if results is defined %}
                         {% if results.products %}
-                            <h2>Product Results</h2>
+                            <h4>محصولات موجود:</h4>
                             <ul>
                                 {% for post in results.products %}
                                     <li class="search__results-ajax-list">
@@ -14,14 +14,14 @@
                                             {% if post.thumbnail.src %}
                                                 <img src="{{ post.thumbnail.src | resize(95, 95) }}" />
                                             {% endif %}
-                                        </div> {# /.image #}
+                                        </div>
                                         {%  set productTaxonomyNo = post.get_terms('product_cas_no') %}
                                         <div class="search__results-ajax-content">
                                             <p><strong>{{ post.title }}</strong></p>
                                             {% for productTaxonomy in productTaxonomyNo %}
                                                 <p>{{ productTaxonomy.name }}</p>
                                             {% endfor %}
-                                        </div> {# /.copy #}
+                                        </div>
                                         <a href="{{ post.get_permalink() }}" class="search__results-ajax-link"></a>
                                     </li>
                                 {% endfor %}
@@ -29,7 +29,7 @@
                         {% endif %}
 
                         {% if results.taxonomy_related %}
-                            <h2>Taxonomy Related Results</h2>
+                            <h4>Cas No. های موجود</h4>
                             <ul>
                                 {% for post in results.taxonomy_related %}
                                     <li class="search__results-ajax-list">
@@ -40,7 +40,7 @@
                                         </div>
                                         <div class="search__results-ajax-content">
                                             <p><strong>{{ post.name }}</strong></p>
-                                        </div> {# /.copy #}
+                                        </div>
                                         <a href="{{ post.get_permalink() }}" class="search__results-ajax-link"></a>
                                     </li>
                                 {% endfor %}

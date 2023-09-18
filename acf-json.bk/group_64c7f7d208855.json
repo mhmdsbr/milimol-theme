@@ -87,6 +87,34 @@
             "repeatable": true
         },
         {
+            "key": "field_65081167b633c",
+            "label": "تصویر پس زمینه (پیش نمایش)",
+            "name": "product_header_bg_draft",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "uploader": "",
+            "return_format": "array",
+            "acfe_thumbnail": 0,
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "thumbnail",
+            "library": "all"
+        },
+        {
             "key": "field_64e7b6a1174bc",
             "label": "برند",
             "name": "product_brand",
@@ -119,6 +147,76 @@
             "search_placeholder": ""
         },
         {
+            "key": "field_6508118eb633d",
+            "label": "برند (پیش نمایش)",
+            "name": "product_brand_draft",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "choices": {
+                "other": "سایر",
+                "adidas": "Adidas",
+                "nike": "Nike",
+                "gucci": "Gucci",
+                "agilent-technologie": "Agilent Technologie",
+                "krayden": "Krayden",
+                "0": "newbasijluxury : newbasijluxury",
+                "1": "newbasijluxury : newbasijluxury",
+                "2": "newbasijluxury : newbasijluxury",
+                "3": "newbasijluxury : newbasijluxury",
+                "4": "abasijmohandes",
+                "5": "abasijmohandes",
+                "6": "abasijmohandes",
+                "7": "abasijmohandes"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": ""
+        },
+        {
+            "key": "field_650811a9b633e",
+            "label": "برند جدید",
+            "name": "product_brand_other_draft",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6508118eb633d",
+                        "operator": "==",
+                        "value": "other"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_64e7b6d0174bd",
             "label": "شکل ظاهری",
             "name": "product_appearence",
@@ -139,6 +237,27 @@
             "prepend": "",
             "append": "",
             "repeatable": true
+        },
+        {
+            "key": "field_650811f0b633f",
+            "label": "شکل ظاهری (پیش نمایش)",
+            "name": "product_appearence_draft",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_64e7b6db174be",
@@ -495,6 +614,57 @@
             "preview_size": "thumbnail",
             "library": "all",
             "repeatable": true
+        },
+        {
+            "key": "field_6508127b649a7",
+            "label": "وضعیت",
+            "name": "product_status",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "choices": {
+                "draft": "draft",
+                "pending": "pending",
+                "publish": "publish"
+            },
+            "default_value": "draft",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": ""
+        },
+        {
+            "key": "field_650831b2a0cdf",
+            "label": "temp_text",
+            "name": "temp_text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         }
     ],
     "location": [
@@ -531,5 +701,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1693989798
+    "modified": 1695036481
 }
