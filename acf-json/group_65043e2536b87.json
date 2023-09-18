@@ -1,5 +1,5 @@
 {
-    "key": "group_64f349f44eecb",
+    "key": "group_65043e2536b87",
     "title": "تنظیمات CTP: شرکت ها",
     "fields": [
         {
@@ -34,7 +34,11 @@
                 "class": "",
                 "id": ""
             },
-            "choices": [],
+            "acfe_save_meta": 0,
+            "choices": {
+                "publish": "انتشار",
+                "pending": "در حال انتظار"
+            },
             "default_value": false,
             "return_format": "value",
             "multiple": 0,
@@ -55,8 +59,8 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
-                "class": "",
+                "width": "30",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -71,8 +75,7 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "thumbnail",
-            "library": "all",
-            "repeatable": true
+            "library": "all"
         },
         {
             "key": "field_64f345fa77571",
@@ -84,8 +87,8 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
-                "class": "",
+                "width": "30",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -112,8 +115,8 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "80",
-                "class": "",
+                "width": "60",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -122,8 +125,7 @@
             "maxlength": "",
             "rows": "",
             "placeholder": "",
-            "new_lines": "",
-            "repeatable": true
+            "new_lines": ""
         },
         {
             "key": "field_64f345fd77572",
@@ -135,8 +137,8 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "80",
-                "class": "company-intro",
+                "width": "60",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -158,7 +160,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -166,8 +168,7 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64f3460077573",
@@ -180,7 +181,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -201,7 +202,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -209,8 +210,7 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64f3460277574",
@@ -223,7 +223,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -244,7 +244,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -252,8 +252,7 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64f3460577575",
@@ -266,7 +265,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -287,7 +286,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -295,8 +294,7 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64f3460777576",
@@ -309,7 +307,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -330,7 +328,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -338,8 +336,7 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64f3460977577",
@@ -352,7 +349,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -373,7 +370,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -381,8 +378,7 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64f3460c77578",
@@ -395,7 +391,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -416,7 +412,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -424,8 +420,7 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64f3460e77579",
@@ -438,7 +433,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -459,7 +454,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -467,8 +462,7 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64f346107757a",
@@ -481,7 +475,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -502,7 +496,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -510,8 +504,7 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64f346127757b",
@@ -524,7 +517,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -545,7 +538,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -553,8 +546,7 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64f346147757c",
@@ -567,7 +559,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -588,7 +580,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -596,8 +588,7 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64f346177757d",
@@ -610,7 +601,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -631,7 +622,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -639,8 +630,7 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64f346197757e",
@@ -653,7 +643,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -674,15 +664,14 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
             "default_value": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "repeatable": true
+            "append": ""
         },
         {
             "key": "field_64f3461b7757f",
@@ -695,7 +684,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -723,44 +712,56 @@
             "repeatable": true
         },
         {
+            "center_lat": 53.5507112,
+            "center_lng": 10.0006485,
+            "zoom": 12,
+            "height": 400,
+            "return_format": "leaflet",
+            "allow_map_layers": 1,
+            "max_markers": 1,
+            "layers": [
+                "OpenStreetMap.Mapnik"
+            ],
             "key": "field_64c50c21c0c95",
             "label": "نقشه",
             "name": "company_map",
             "aria-label": "",
-            "type": "google_map",
+            "type": "open_street_map",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
-                "class": "",
+                "width": "100",
+                "class": "company-info-item",
                 "id": ""
             },
-            "center_lat": "",
-            "center_lng": "",
-            "zoom": "",
-            "height": "",
-            "repeatable": true
+            "acfe_save_meta": 0
         },
         {
+            "center_lat": 53.5507112,
+            "center_lng": 10.0006485,
+            "zoom": 12,
+            "height": 400,
+            "return_format": "leaflet",
+            "allow_map_layers": 1,
+            "max_markers": 1,
+            "layers": [
+                "OpenStreetMap.Mapnik"
+            ],
             "key": "field_64f3462377580",
             "label": "نقشه (پیش نمایش)",
             "name": "company_map_draft",
             "aria-label": "",
-            "type": "google_map",
+            "type": "open_street_map",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
-                "class": "",
+                "width": "100",
+                "class": "company-info-item",
                 "id": ""
             },
-            "acfe_save_meta": 0,
-            "center_lat": "",
-            "center_lng": "",
-            "zoom": "",
-            "height": ""
+            "acfe_save_meta": 0
         },
         {
             "key": "field_64de39ebdc18a",
@@ -773,34 +774,15 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "repeatable": true
-        },
-        {
-            "key": "field_64dd26ae2f2e6",
-            "label": "توییتر",
-            "name": "company_twitter",
-            "aria-label": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
             "default_value": "",
+            "maxlength": "",
             "placeholder": "",
-            "repeatable": true
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_64f3462777581",
@@ -813,7 +795,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -834,11 +816,13 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
+            "acfe_save_meta": 0,
+            "uploader": "",
             "return_format": "array",
-            "library": "all",
+            "acfe_thumbnail": 0,
             "min_width": "",
             "min_height": "",
             "min_size": "",
@@ -847,47 +831,7 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium",
-            "repeatable": true,
-            "uploader": "",
-            "acfe_thumbnail": 0
-        },
-        {
-            "key": "field_64dd26ad2f2e5",
-            "label": "تلگرام",
-            "name": "company_telegram",
-            "aria-label": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "acfe_save_meta": 0,
-            "default_value": "",
-            "placeholder": "",
-            "repeatable": true
-        },
-        {
-            "key": "field_64dd26ac2f2e4",
-            "label": "یوتیوب",
-            "name": "company_youtube",
-            "aria-label": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "acfe_save_meta": 0,
-            "default_value": "",
-            "placeholder": "",
-            "repeatable": true
+            "library": "all"
         },
         {
             "key": "field_64f3462977582",
@@ -900,7 +844,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -928,11 +872,13 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
+            "acfe_save_meta": 0,
+            "uploader": "",
             "return_format": "array",
-            "library": "all",
+            "acfe_thumbnail": 0,
             "min_width": "",
             "min_height": "",
             "min_size": "",
@@ -941,9 +887,7 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium",
-            "repeatable": true,
-            "uploader": "",
-            "acfe_thumbnail": 0
+            "library": "all"
         },
         {
             "key": "field_64f3462c77583",
@@ -956,7 +900,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "30",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -983,37 +927,8 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "library": "all",
-            "min": "",
-            "max": "",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "insert": "append",
-            "preview_size": "medium",
-            "repeatable": true
-        },
-        {
-            "key": "field_64f3462e77584",
-            "label": "گالری تصاویر (پیش نمایش)",
-            "name": "company_img_gallery_draft",
-            "aria-label": "",
-            "type": "gallery",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
+                "width": "100",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -1029,7 +944,36 @@
             "max_size": "",
             "mime_types": "",
             "insert": "append",
-            "preview_size": "medium"
+            "preview_size": "thumbnail"
+        },
+        {
+            "key": "field_64f3462e77584",
+            "label": "گالری تصاویر (پیش نمایش)",
+            "name": "company_img_gallery_draft",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "company-info-item",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "return_format": "array",
+            "library": "all",
+            "min": "",
+            "max": 10,
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "thumbnail"
         },
         {
             "key": "field_64e862af1e7d1",
@@ -1042,37 +986,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
-                "class": "",
-                "id": ""
-            },
-            "acfe_save_meta": 0,
-            "return_format": "array",
-            "library": "all",
-            "min": "",
-            "max": "",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "insert": "append",
-            "preview_size": "medium",
-            "repeatable": true
-        },
-        {
-            "key": "field_64f3463077585",
-            "label": "جوایز و استاندارد ها (پیش نمایش)",
-            "name": "comapny_reward_draft",
-            "aria-label": "",
-            "type": "gallery",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -1593,14 +1507,13 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
-                "class": "",
+                "width": "45",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": "",
-            "repeatable": true
+            "placeholder": ""
         },
         {
             "key": "field_64f346427758e",
@@ -1612,8 +1525,116 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
-                "class": "",
+                "width": "45",
+                "class": "company-info-item",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_64dd26ac2f2e4",
+            "label": "یوتیوب",
+            "name": "company_youtube",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "45",
+                "class": "company-info-item",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_65045e8c51916",
+            "label": "یوتیوب (پیش نمایش)",
+            "name": "company_youtube_draft",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "45",
+                "class": "company-info-item",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_65045e6851915",
+            "label": "توییتر",
+            "name": "company_twitter",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "45",
+                "class": "company-info-item",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_65045ea951917",
+            "label": "توییتر (پیش نمایش)",
+            "name": "company_twitter_draft",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "45",
+                "class": "company-info-item",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_64dd26ad2f2e5",
+            "label": "تلگرام",
+            "name": "company_telegram",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "45",
+                "class": "company-info-item",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_65045ebb51918",
+            "label": "تلگرام (پیش نمایش)",
+            "name": "company_telegram_draft",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "45",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -1630,14 +1651,13 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
-                "class": "",
+                "width": "45",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": "",
-            "repeatable": true
+            "placeholder": ""
         },
         {
             "key": "field_64f346487758f",
@@ -1649,8 +1669,8 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
-                "class": "",
+                "width": "45",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -1667,14 +1687,13 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
-                "class": "",
+                "width": "45",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": "",
-            "repeatable": true
+            "placeholder": ""
         },
         {
             "key": "field_64f3464a77590",
@@ -1686,8 +1705,8 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
-                "class": "",
+                "width": "45",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -1704,14 +1723,13 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
-                "class": "",
+                "width": "45",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": "",
-            "repeatable": true
+            "placeholder": ""
         },
         {
             "key": "field_64f3464e77591",
@@ -1723,8 +1741,8 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
-                "class": "",
+                "width": "45",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -1741,14 +1759,13 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
-                "class": "",
+                "width": "45",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": "",
-            "repeatable": true
+            "placeholder": ""
         },
         {
             "key": "field_64f3465077592",
@@ -1760,8 +1777,8 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
-                "class": "",
+                "width": "45",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -1778,14 +1795,13 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
-                "class": "",
+                "width": "45",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
             "default_value": "",
-            "placeholder": "",
-            "repeatable": true
+            "placeholder": ""
         },
         {
             "key": "field_64f3465377593",
@@ -1795,10 +1811,10 @@
             "type": "url",
             "instructions": "",
             "required": 0,
-            "conditional_logic": false,
+            "conditional_logic": 0,
             "wrapper": {
-                "width": "",
-                "class": "",
+                "width": "45",
+                "class": "company-info-item",
                 "id": ""
             },
             "acfe_save_meta": 0,
@@ -1840,5 +1856,5 @@
     },
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1694607803
+    "modified": 1694788781
 }

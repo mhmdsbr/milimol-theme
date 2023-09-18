@@ -24,18 +24,10 @@ $current_user = wp_get_current_user();
 $user_id = $current_user->ID;
 $com_obj = get_field('p2p_user_company', 'user_' . $user_id);
 $com_id = $com_obj[0]->ID;
-// $com_obj = get_page_by_path($usercom_slug, OBJECT, 'sup_company');
 //
 // check status
 $cdata_status = get_field('basic_status', $com_id);
 if ($cdata_status == 'publish') {
-    // replace main data to this fields
-    // $c_namefa = $com_obj->post_title;
-    // update_field('c_namefa', $c_namefa, $com_id);
-    // // logo is hear
-    // $turl = wp_get_attachment_image_src(get_post_thumbnail_id($com_id), $size = 'thumbnail', $icon = false);
-    // update_field('field_61d6adba77401', get_post_thumbnail_id($com_id), $com_id);
-    //
     $company_icon = get_field('company_icon', $com_id);
     update_field('company_icon_draft', $company_icon, $com_id);
     //
@@ -122,7 +114,7 @@ if ($cdata_status == 'pending') {
             'company_email_draft',
         ),
         'html_after_fields' => '<input type="hidden" name="frontend_acf" value="1"/>
-        <input type="hidden" id="acf-field_64e0cbb1417e7" name="acf[field_64e0cbb1417e7]" value="draft"/>
+        <input type="hidden" id="acf-field_65043e2536b87" name="acf[group_65043e2536b87]" value="draft"/>
         ',
         'updated_message' => ' اطلاعات با موفقیت ذخیره شد.',
         'submit_value' => __("ذخیره", 'acf'),
@@ -141,7 +133,7 @@ if ($cdata_status == 'pending') {
                 event.preventDefault();
             } else {
                 event.preventDefault();
-                $('#acf-field_64e0cbb1417e7').val('pending');
+                $('#acf-field_65043e2536b87').val('pending');
                 $('form#cform').submit();
             }
         });

@@ -40,6 +40,9 @@ class Account
         add_action('woocommerce_account_company_documents_endpoint', [&$this, 'company_documents_endpoint_callback']);
         add_action('woocommerce_account_company_social_endpoint', [&$this, 'company_social_endpoint_callback']);
         add_action('woocommerce_account_request_endpoint', [&$this, 'request_endpoint_callback']);
+        add_action('woocommerce_account_message_management_endpoint', [&$this, 'message_management_endpoint_callback']);
+//        add_action('woocommerce_account_message_send_endpoint', [&$this, 'message_send_endpoint_callback']);
+//        add_action('woocommerce_account_message_inbox_endpoint', [&$this, 'message_inbox_endpoint_callback']);
 
         add_action('template_redirect', [&$this, 'logout_confirmation']);
 
@@ -67,6 +70,9 @@ class Account
         add_rewrite_endpoint('company_documents', EP_ROOT | EP_PAGES);
         add_rewrite_endpoint('company_social', EP_ROOT | EP_PAGES);
         add_rewrite_endpoint('request', EP_ROOT | EP_PAGES);
+//        add_rewrite_endpoint('message_management', EP_ROOT | EP_PAGES);
+//        add_rewrite_endpoint('message_send', EP_ROOT | EP_PAGES);
+//        add_rewrite_endpoint('message_inbox', EP_ROOT | EP_PAGES);
     }
 
     /**
@@ -90,6 +96,9 @@ class Account
         $vars[] = 'company_documents';
         $vars[] = 'company_social';
         $vars[] = 'request';
+//        $vars[] = 'message_management';
+//        $vars[] = 'message_send';
+//        $vars[] = 'message_inbox';
         return $vars;
     }
 
@@ -151,6 +160,8 @@ class Account
             $items['request_management'] = __('مدیریت درخواست ها');
             $items['request'] = __('ارسال درخواست خرید');
             $items['message_management'] = __('مدیریت پیام ها');
+//            $items['message_send'] = __('ارسال پیام');
+//            $items['message_inbox'] = __('صندوق پیام');
         }
 
         // Always include the logout item
@@ -212,6 +223,20 @@ class Account
     function request_endpoint_callback(): void
     {
         include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/request.php';
+    }
+
+    function message_management_endpoint_callback(): void
+    {
+        include MILIMOL_THEME_DIR . '/message.php';
+    }
+    function message_send_endpoint_callback(): void
+    {
+        include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/message/form-message.php';
+    }
+
+    function message_inbox_endpoint_callback(): void
+    {
+        include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/message/box-message.php';
     }
 
     /**
