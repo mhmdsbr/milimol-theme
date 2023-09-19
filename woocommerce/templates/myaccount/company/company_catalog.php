@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Edit company customers form
+ * Edit company catalog form
  *
  */
 
@@ -46,7 +46,7 @@ if ($cdata_status == 'pending') {
             'company_catalog_draft',
         ),
         'html_after_fields' => '<input type="hidden" name="frontend_acf" value="1"/>
-        <input type="hidden" id="acf-field_64e466f35c099" name="acf[field_64e466f35c099]" value="draft"/>
+        <input type="hidden" id="acf-field_65084a8e639b0" name="acf[field_65084a8e639b0]" value="draft"/>
         ',
         'updated_message' => 'اظلاعات با موفقیت ذخیره شد.',
         'submit_value' => __("ذخیره", 'acf'),
@@ -65,7 +65,7 @@ if ($cdata_status == 'pending') {
                 event.preventDefault();
             } else {
                 event.preventDefault();
-                $('#acf-field_64e466f35c099').val('pending');
+                $('#acf-field_65084a8e639b0').val('pending');
                 $('form#cform').submit();
             }
         });

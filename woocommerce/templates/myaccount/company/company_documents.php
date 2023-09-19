@@ -46,7 +46,7 @@ if ($cdata_status == 'pending') {
             'company_documents_draft',
         ),
         'html_after_fields' => '<input type="hidden" name="frontend_acf" value="1"/>
-        <input type="hidden" id="acf-field_64e46ad0ed4b1" name="acf[field_64e46ad0ed4b1]" value="draft"/>
+        <input type="hidden" id="acf-field_65084ac7639b1" name="acf[field_65084ac7639b1]" value="draft"/>
         ',
         'updated_message' => 'اظلاعات با موفقیت ذخیره شد.',
         'submit_value' => __("ذخیره", 'acf'),
@@ -65,7 +65,7 @@ if ($cdata_status == 'pending') {
                 event.preventDefault();
             } else {
                 event.preventDefault();
-                $('#acf-field_64e46ad0ed4b1').val('pending');
+                $('#acf-field_65084ac7639b1``').val('pending');
                 $('form#cform').submit();
             }
         });

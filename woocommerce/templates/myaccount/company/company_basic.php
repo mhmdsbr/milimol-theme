@@ -79,6 +79,7 @@ if ($cdata_status == 'pending') {
     echo '<div class="account__company-basic-content">';
     echo '<span class="account__company-basic-admin-check">
     اطلاعات این قسمت توسط مدیر سیستم در حال بررسی است...
+    در صورت وجود هرگونه مشکلی، همکاران ما با شما در تماس خواهند بود.
     </span>';
     echo '</div>';  //end of body
     echo '</div>';  // end of section

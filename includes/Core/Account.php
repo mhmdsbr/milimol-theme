@@ -224,12 +224,12 @@ class Account
 
     function company_productlist_endpoint_callback(): void
     {
-        include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/company_productlist.php';
+        include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/product/company_productlist.php';
     }
 
     function company_productmodify_endpoint_callback(): void
     {
-        include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/company_productmodify.php';
+        include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/product/company_productmodify.php';
     }
     function request_endpoint_callback(): void
     {
@@ -284,23 +284,23 @@ class Account
         {
             $this->publish_basic_info($post_id);
         }
-        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'publish')
+        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_65084a1e639ae'] == 'publish')
         {
             $this->publish_content_info($post_id);
         }
-        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'publish')
+        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_65084a64639af'] == 'publish')
         {
             $this->publish_customers_info($post_id);
         }
-        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'publish')
+        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_65084a8e639b0'] == 'publish')
         {
             $this->publish_catalog_info($post_id);
         }
-        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'publish')
+        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_65084ac7639b1'] == 'publish')
         {
             $this->publish_documents_info($post_id);
         }
-        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'publish')
+        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_65084af2639b2'] == 'publish')
         {
             $this->publish_social_info($post_id);
         }
@@ -365,8 +365,8 @@ class Account
         $company_map = get_field('company_map_draft', $post_id);
         update_field('company_map', $company_map, $post_id);
         //
-        $company_map = get_field('company_map_draft', $post_id);
-        update_field('company_map', $company_map, $post_id);
+        $company_video_id = get_field('company_video_id_draft', $post_id);
+        update_field('company_video_id', $company_video_id, $post_id);
         //
         $company_video_bg = get_field('company_video_bg_draft', $post_id);
         update_field('company_video_bg', $company_video_bg, $post_id);
@@ -431,50 +431,85 @@ class Account
         $product_header_bg = get_field('product_header_bg_draft', $post_id);
         update_field('product_header_bg', $product_header_bg, $post_id);
         //
-        $product_brand = get_field('product_brand_draft', $post_id);
-        $product_brand_other_draft = get_field('product_brand_other_draft', $post_id);
 
-        if($product_brand == 'other' && !empty($product_brand_other_draft)) {
-            $finfo = $this->myacf_getField('1412', 'product_brand_draft');
-            $finfoOriginal = $this->myacf_getField('1412', 'product_brand');
-
-            $is_found = false;
-            foreach ($finfo['choices'] as $key => $item) {
-                if($item == $product_brand_other_draft) {
-                    $is_found = true;
-                    break;
-                }
-            }
-
-            if(!$is_found) {
-                $finfo['choices'][] = $product_brand_other_draft;
-                $finfoOriginal['choices'][] = $product_brand_other_draft;
-                // Save the new choices as options for the field
-                acf_update_field($finfo);
-                acf_update_field($finfoOriginal);
-            }
-
-            update_field('product_brand_other_draft', '', $post_id);
-
-            $finfo = $this->myacf_getField('1412', 'product_brand_draft');
-            foreach ($finfo['choices'] as $key => $value) {
-                if($value == $product_brand_other_draft) {
-                    update_field('product_brand_draft', $key, $post_id);
-                    break;
-                }
-            }
-
-            $finfoOriginal = $this->myacf_getField('1412', 'product_brand');
-            foreach ($finfoOriginal['choices'] as $key => $value) {
-                if($value == $product_brand_other_draft) {
-                    update_field('product_brand', $key, $post_id);
-                    break;
-                }
-            }
-        }
-        //
         $product_appearence = get_field('product_appearence_draft', $post_id);
         update_field('product_appearence', $product_appearence, $post_id);
+        //
+
+        $product_unique_id = get_field('product_unique_id_draft', $post_id);
+        update_field('product_unique_id', $product_unique_id, $post_id);
+        //
+        $product_purity = get_field('product_purity_draft', $post_id);
+        update_field('product_purity', $product_purity, $post_id);
+        //
+        $product_grade = get_field('product_grade_draft', $post_id);
+        update_field('product_grade', $product_grade, $post_id);
+        //
+        $product_package = get_field('product_package_draft', $post_id);
+        update_field('product_package', $product_package, $post_id);
+        //
+        $product_weight = get_field('product_weight_draft', $post_id);
+        update_field('product_weight', $product_weight, $post_id);
+        //
+        $product_order_quantity = get_field('product_order_quantity_draft', $post_id);
+        update_field('product_order_quantity', $product_order_quantity, $post_id);
+        //
+        $product_price = get_field('product_price_draft', $post_id);
+        update_field('product_price', $product_price, $post_id);
+        //
+        $product_analyse_download = get_field('product_analyse_download_draft', $post_id);
+        update_field('product_analyse_download', $product_analyse_download, $post_id);
+        //
+        $product_ad_banner_first = get_field('product_ad_banner_first_draft', $post_id);
+        update_field('product_ad_banner_first', $product_ad_banner_first, $post_id);
+        //
+        $product_ad_banner_second = get_field('product_ad_banner_second_draft', $post_id);
+        update_field('product_ad_banner_second', $product_ad_banner_second, $post_id);
+        //
+
+        $this->updateSelectFields($post_id, 'product_brand_other_draft');
+
+    }
+
+    function updateSelectFields($post_id, $otherFieldKey): void
+    {
+        $product_brand_other_draft = get_field($otherFieldKey, $post_id);
+
+        if (!empty($product_brand_other_draft)) {
+            // Get the choices for both fields
+            $finfo_brand = $this->myacf_getField('1412', 'product_brand');
+            $finfo_brand_draft = $this->myacf_getField('1412', 'product_brand_draft');
+
+            $is_found = false;
+            $new_choice_key = null;
+
+            // Check if the value already exists in the choices
+            foreach ($finfo_brand['choices'] as $key => $item) {
+                if ($item == $product_brand_other_draft) {
+                    $is_found = true;
+                    $new_choice_key = $key;
+                    break;
+                }
+            }
+
+            // If the value doesn't exist, add it to the choices
+            if (!$is_found) {
+                $new_choice_key = count($finfo_brand['choices']);
+                $finfo_brand['choices'][$new_choice_key] = $product_brand_other_draft;
+                $finfo_brand_draft['choices'][$new_choice_key] = $product_brand_other_draft;
+
+                // Save the new choices as options for the fields
+                acf_update_field($finfo_brand);
+                acf_update_field($finfo_brand_draft);
+            }
+
+            // Update both fields with the new choice key
+            update_field('product_brand', $new_choice_key, $post_id);
+            update_field('product_brand_draft', $new_choice_key, $post_id);
+
+            // Clear the value in product_brand_other_draft
+            update_field($otherFieldKey, '', $post_id);
+        }
     }
 
     function myacf_getField($groupId, $fieldName)
