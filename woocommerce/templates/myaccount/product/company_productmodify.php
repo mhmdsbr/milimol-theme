@@ -32,59 +32,75 @@ else
 }
 
 // check status
-$cdata_status = get_field('product_status', $com_id);
+$cdata_status = get_field('product_status', $pid);
 if ($cdata_status == 'publish') {
+    $product_title = get_the_title($pid);
+    update_field('product_title_draft', $product_title, $pid);
+    //
+    $product_cas_no = wp_get_post_terms($pid, 'product_cas_no');
+    if($product_cas_no)
+    {
+        $product_cas_no_id = $product_cas_no[0]->term_id;
+        update_field('product_cas_no_draft', $product_cas_no_id, $pid);
+    }
+    //
+    $product_category = wp_get_post_terms($pid, 'product_cat');
+    if($product_category)
+    {
+        $product_category_id = $product_category[0]->term_id;
+        update_field('product_category_draft', $product_category_id, $pid);
+    }
 
-    $product_brand = get_field('product_brand', $com_id);
-    update_field('product_brand_draft', $product_brand, $com_id);
+    $product_brand = get_field('product_brand', $pid);
+    update_field('product_brand_draft', $product_brand, $pid);
     //
-    $product_appearence = get_field('product_appearence', $com_id);
-    update_field('product_appearence_draft', $product_appearence, $com_id);
+    $product_appearence = get_field('product_appearence', $pid);
+    update_field('product_appearence_draft', $product_appearence, $pid);
     //
-    $product_country = get_field('product_country', $com_id);
-    update_field('product_country_draft', $product_country, $com_id);
+    $product_country = get_field('product_country', $pid);
+    update_field('product_country_draft', $product_country, $pid);
     //
-    $product_analyse = get_field('product_analyse', $com_id);
-    update_field('product_analyse_draft', $product_analyse, $com_id);
+    $product_analyse = get_field('product_analyse', $pid);
+    update_field('product_analyse_draft', $product_analyse, $pid);
     //
-    $product_location = get_field('product_location', $com_id);
-    update_field('product_location_draft', $product_location, $com_id);
+    $product_location = get_field('product_location', $pid);
+    update_field('product_location_draft', $product_location, $pid);
     //
-    $product_unique_id = get_field('product_unique_id', $com_id);
-    update_field('product_unique_id_draft', $product_unique_id, $com_id);
+    $product_unique_id = get_field('product_unique_id', $pid);
+    update_field('product_unique_id_draft', $product_unique_id, $pid);
     //
-    $product_purity = get_field('product_purity', $com_id);
-    update_field('product_purity_draft', $product_purity, $com_id);
+    $product_purity = get_field('product_purity', $pid);
+    update_field('product_purity_draft', $product_purity, $pid);
     //
-    $product_grade = get_field('product_grade', $com_id);
-    update_field('product_grade_draft', $product_grade, $com_id);
+    $product_grade = get_field('product_grade', $pid);
+    update_field('product_grade_draft', $product_grade, $pid);
     //
-    $product_package = get_field('product_package', $com_id);
-    update_field('product_package_draft', $product_package, $com_id);
+    $product_package = get_field('product_package', $pid);
+    update_field('product_package_draft', $product_package, $pid);
     //
-    $product_unit = get_field('product_unit', $com_id);
-    update_field('product_unit_draft', $product_unit, $com_id);
+    $product_unit = get_field('product_unit', $pid);
+    update_field('product_unit_draft', $product_unit, $pid);
     //
-    $product_weight = get_field('product_weight', $com_id);
-    update_field('product_weight_draft', $product_weight, $com_id);
+    $product_weight = get_field('product_weight', $pid);
+    update_field('product_weight_draft', $product_weight, $pid);
     //
-    $product_order_quantity = get_field('product_order_quantity', $com_id);
-    update_field('product_order_quantity_draft', $product_order_quantity, $com_id);
+    $product_order_quantity = get_field('product_order_quantity', $pid);
+    update_field('product_order_quantity_draft', $product_order_quantity, $pid);
     //
-    $product_price = get_field('product_price', $com_id);
-    update_field('product_price_draft', $product_price, $com_id);
+    $product_price = get_field('product_price', $pid);
+    update_field('product_price_draft', $product_price, $pid);
     //
-    $product_analyse_download = get_field('product_analyse_download', $com_id);
-    update_field('product_analyse_download_draft', $product_analyse_download, $com_id);
+    $product_analyse_download = get_field('product_analyse_download', $pid);
+    update_field('product_analyse_download_draft', $product_analyse_download, $pid);
     //
-    $product_ad_banner_first = get_field('product_ad_banner_first', $com_id);
-    update_field('product_ad_banner_first_draft', $product_ad_banner_first, $com_id);
+    $product_ad_banner_first = get_field('product_ad_banner_first', $pid);
+    update_field('product_ad_banner_first_draft', $product_ad_banner_first, $pid);
     //
-    $product_ad_banner_second = get_field('product_ad_banner_second', $com_id);
-    update_field('product_ad_banner_second_draft', $product_ad_banner_second, $com_id);
+    $product_ad_banner_second = get_field('product_ad_banner_second', $pid);
+    update_field('product_ad_banner_second_draft', $product_ad_banner_second, $pid);
     //
-    $product_header_bg = get_field('product_header_bg', $com_id);
-    update_field('product_header_bg_draft', $product_header_bg, $com_id);
+    $product_header_bg = get_field('product_header_bg', $pid);
+    update_field('product_header_bg_draft', $product_header_bg, $pid);
     //
 }
 //
@@ -105,6 +121,7 @@ if ($cdata_status == 'pending') {
     echo '</div>';
     echo '<div class="account__company-product-new-content">';
 
+
     if(empty($pid)) {
         $formsetting = [
             'post_id' => 'new_post',
@@ -117,10 +134,15 @@ if ($cdata_status == 'pending') {
             'post_title' => false,
             'field_groups' => ['1412'],
             'fields' => array(
+                'product_title_draft',
+                'product_category_draft',
+                'product_cas_no_draft',
+                'product_cas_no_other_draft',
                 'product_brand_draft',
                 'product_brand_other_draft',
                 'product_appearence_draft',
                 'product_country_draft',
+                'product_country_other_draft',
                 'product_analyse_draft',
                 'product_location_draft',
                 'product_unique_id_draft',
@@ -152,10 +174,15 @@ if ($cdata_status == 'pending') {
             'post_title' => false,
             'field_groups' => array('1412'),
             'fields' => array(
+                'product_title_draft',
+                'product_category_draft',
+                'product_cas_no_draft',
+                'product_cas_no_other_draft',
                 'product_brand_draft',
                 'product_brand_other_draft',
                 'product_appearence_draft',
                 'product_country_draft',
+                'product_country_other_draft',
                 'product_analyse_draft',
                 'product_location_draft',
                 'product_unique_id_draft',

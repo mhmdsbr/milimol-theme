@@ -374,8 +374,24 @@ class Account
         $company_ad_banner = get_field('company_ad_banner_draft', $post_id);
         update_field('company_ad_banner', $company_ad_banner, $post_id);
         //
-        $company_img_gallery = get_field('company_img_gallery_draft', $post_id);
-        update_field('company_img_gallery', $company_img_gallery, $post_id);
+
+        $company_img_gallery_draft = get_field('company_img_gallery_draft', $post_id);
+        if(is_array($company_img_gallery_draft)) {
+            $company_gallery_ids = [];
+            foreach($company_img_gallery_draft as $item) {
+                $company_gallery_ids[] = $item['company_img_gallery_item'];
+            }
+
+            ob_start();
+            var_dump($company_map);
+            $output = ob_get_clean();
+            ob_end_flush();
+            update_field('temp', $output, $post_id);
+
+            update_field('company_img_gallery', $company_gallery_ids, $post_id);
+        }
+
+
     }
 
     function publish_customers_info($post_id): void
@@ -428,6 +444,28 @@ class Account
 
     function publish_product_info($post_id): void
     {
+        $product_title = get_field('product_title_draft', $post_id);
+        $my_post = array(
+            'ID'           => $post_id,
+            'post_title'   => $product_title,
+        );
+        wp_update_post( $my_post );
+        //
+
+        $product_cas_no = get_field('product_cas_no_draft', $post_id);
+        $product_cas_no_new = get_field('product_cas_no_other_draft', $post_id);
+        if(!$product_cas_no && !empty($product_cas_no_new)) {
+            $newAddedCasID = $this->find_or_insert_category($product_cas_no_new, 'product_cas_no');
+            wp_set_post_terms($post_id, [$newAddedCasID], 'product_cas_no', false);
+        }
+        //
+
+        $product_category = get_field('product_category_draft', $post_id);
+        if($product_category) {
+            wp_set_post_terms($post_id, [$product_category], 'product_cat', false);
+        }
+        //
+
         $product_header_bg = get_field('product_header_bg_draft', $post_id);
         update_field('product_header_bg', $product_header_bg, $post_id);
         //
@@ -467,25 +505,40 @@ class Account
         update_field('product_ad_banner_second', $product_ad_banner_second, $post_id);
         //
 
-        $this->updateSelectFields($post_id, 'product_brand_other_draft');
+        $this->updateSelectFields($post_id,'product_brand', 'product_brand_draft' , 'product_brand_other_draft');
+        $this->updateSelectFields($post_id,'product_country', 'product_country_draft' , 'product_country_other_draft');
 
     }
-
-    function updateSelectFields($post_id, $otherFieldKey): void
+    function find_or_insert_category($cat_title, $taxonomy_name)
     {
-        $product_brand_other_draft = get_field($otherFieldKey, $post_id);
+        $term = term_exists( trim($cat_title), $taxonomy_name);
+        if ( $term !== 0 && $term !== null ) {
+            return $term['term_id'];
+        }
+        else
+        {
+            $term = wp_insert_term(trim($cat_title), $taxonomy_name, array(
+                'description' => '',
+            ));
+        }
+        return $term['term_id'];
+    }
 
-        if (!empty($product_brand_other_draft)) {
+    function updateSelectFields($post_id, $product_info_select, $product_info_select_draft, $otherFieldKey): void
+    {
+        $product_new_item = get_field($otherFieldKey, $post_id);
+
+        if (!empty($product_new_item)) {
             // Get the choices for both fields
-            $finfo_brand = $this->myacf_getField('1412', 'product_brand');
-            $finfo_brand_draft = $this->myacf_getField('1412', 'product_brand_draft');
+            $finfo = $this->myacf_getField('1412', $product_info_select);
+            $finfo_draft = $this->myacf_getField('1412', $product_info_select_draft);
 
             $is_found = false;
             $new_choice_key = null;
 
             // Check if the value already exists in the choices
-            foreach ($finfo_brand['choices'] as $key => $item) {
-                if ($item == $product_brand_other_draft) {
+            foreach ($finfo['choices'] as $key => $item) {
+                if ($item == $product_new_item) {
                     $is_found = true;
                     $new_choice_key = $key;
                     break;
@@ -494,18 +547,18 @@ class Account
 
             // If the value doesn't exist, add it to the choices
             if (!$is_found) {
-                $new_choice_key = count($finfo_brand['choices']);
-                $finfo_brand['choices'][$new_choice_key] = $product_brand_other_draft;
-                $finfo_brand_draft['choices'][$new_choice_key] = $product_brand_other_draft;
+                $new_choice_key = count($finfo['choices']);
+                $finfo['choices'][$new_choice_key] = $product_new_item;
+                $finfo_draft['choices'][$new_choice_key] = $product_new_item;
 
                 // Save the new choices as options for the fields
-                acf_update_field($finfo_brand);
-                acf_update_field($finfo_brand_draft);
+                acf_update_field($finfo);
+                acf_update_field($finfo_draft);
             }
 
             // Update both fields with the new choice key
-            update_field('product_brand', $new_choice_key, $post_id);
-            update_field('product_brand_draft', $new_choice_key, $post_id);
+            update_field($product_info_select, $new_choice_key, $post_id);
+            update_field($product_info_select_draft, $new_choice_key, $post_id);
 
             // Clear the value in product_brand_other_draft
             update_field($otherFieldKey, '', $post_id);

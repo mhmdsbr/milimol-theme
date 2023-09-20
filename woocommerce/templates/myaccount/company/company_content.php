@@ -28,7 +28,18 @@ if ($cdata_status == 'publish') {
     update_field('company_ad_banner_draft', $company_ad_banner, $com_id);
     //
     $company_img_gallery = get_field('company_img_gallery', $com_id);
-    update_field('company_img_gallery_draft', $company_img_gallery, $com_id);
+//    $company_img_gallery_draft = get_field('company_img_gallery_draft', $com_id);
+//    var_dump($company_img_gallery);
+//    echo '<pre>';
+//    var_dump($company_img_gallery_draft);
+//    echo '</pre>';
+    if(is_array($company_img_gallery)) {
+        $company_gallery_ids = [];
+        foreach($company_img_gallery as $item) {
+            $company_gallery_ids[]['company_img_gallery_item'] = $item;
+        }
+        update_field('company_img_gallery_draft', $company_gallery_ids, $com_id);
+    }
 }
 //
 if ($cdata_status == 'pending') {
