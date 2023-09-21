@@ -39,8 +39,11 @@ class Account
         add_action('woocommerce_account_company_catalog_endpoint', [&$this, 'company_catalog_endpoint_callback']);
         add_action('woocommerce_account_company_documents_endpoint', [&$this, 'company_documents_endpoint_callback']);
         add_action('woocommerce_account_company_social_endpoint', [&$this, 'company_social_endpoint_callback']);
-        add_action('woocommerce_account_request_endpoint', [&$this, 'request_endpoint_callback']);
         add_action('woocommerce_account_message_management_endpoint', [&$this, 'message_management_endpoint_callback']);
+
+
+        add_action('woocommerce_account_product_request_list_endpoint', [&$this, 'product_request_list_endpoint_callback']);
+        add_action('woocommerce_account_product_request_modify_endpoint', [&$this, 'product_request_modify_endpoint_callback']);
 
         add_action('woocommerce_account_company_productlist_endpoint', [&$this,'company_productlist_endpoint_callback']);
         add_action('woocommerce_account_company_productmodify_endpoint', [&$this,'company_productmodify_endpoint_callback']);
@@ -73,6 +76,8 @@ class Account
         add_rewrite_endpoint('request', EP_ROOT | EP_PAGES);
         add_rewrite_endpoint('company_productlist', EP_ROOT | EP_PAGES);
         add_rewrite_endpoint('company_productmodify', EP_ROOT | EP_PAGES);
+        add_rewrite_endpoint('product_request_modify', EP_ROOT | EP_PAGES);
+        add_rewrite_endpoint('product_request_list', EP_ROOT | EP_PAGES);
         add_rewrite_endpoint('message_management', EP_ROOT | EP_PAGES);
     }
 
@@ -98,7 +103,8 @@ class Account
         $vars[] = 'company_social';
         $vars[] = 'company_productlist';
         $vars[] = 'company_productmodify';
-        $vars[] = 'request';
+        $vars[] = 'product_request_list';
+        $vars[] = 'product_request_modify';
         $vars[] = 'message_management';
         return $vars;
     }
@@ -161,7 +167,8 @@ class Account
             $items['company_productlist'] = __('لیست محصولات');
             $items['company_productmodify'] = __('محصول جدید');
             $items['request_management'] = __('مدیریت درخواست ها');
-            $items['request'] = __('ارسال درخواست خرید');
+            $items['product_request_list'] = __('لیست درخواست ها');
+            $items['product_request_modify'] = __('درخواست خرید');
             $items['message_management'] = __('مدیریت پیام ها');
         }
 
@@ -231,9 +238,13 @@ class Account
     {
         include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/product/company_productmodify.php';
     }
-    function request_endpoint_callback(): void
+    function product_request_modify_endpoint_callback(): void
     {
-        include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/request.php';
+        include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/product/product_request_modify.php';
+    }
+    function product_request_list_endpoint_callback(): void
+    {
+        include MILIMOL_THEME_DIR . '/woocommerce/templates/myaccount/product/product_request_list.php';
     }
 
     function message_management_endpoint_callback(): void
@@ -300,6 +311,7 @@ class Account
         {
             $this->publish_documents_info($post_id);
         }
+
         if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_65084af2639b2'] == 'publish')
         {
             $this->publish_social_info($post_id);
@@ -310,6 +322,31 @@ class Account
             $this->publish_product_info($post_id);
 
         }
+
+        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_650c0c6a4fd03'] == 'publish')
+        {
+
+            $this->publish_request_info($post_id, $_POST['frontend_acf']);
+
+        }
+//
+//        ob_start();
+//        var_dump($_POST);
+//        $output = ob_end_clean();
+//        ob_end_flush();
+//        update_field('temp',$output ,$post_id);
+//
+//        if (!isset($_POST['frontend_acf']) && $_POST['frontend_acf'] == 'new')
+//        {
+//            $request_title = get_field('request_title_draft', $post_id);
+//            $my_post = array(
+//                'ID'           => $post_id,
+//                'post_title'   => $request_title,
+//            );
+//            wp_update_post( $my_post );
+//            //
+//
+//        }
     }
 
     function publish_basic_info($post_id): void
@@ -381,12 +418,12 @@ class Account
             foreach($company_img_gallery_draft as $item) {
                 $company_gallery_ids[] = $item['company_img_gallery_item'];
             }
-
-            ob_start();
-            var_dump($company_map);
-            $output = ob_get_clean();
-            ob_end_flush();
-            update_field('temp', $output, $post_id);
+//
+//            ob_start();
+//            var_dump($company_map);
+//            $output = ob_get_clean();
+//            ob_end_flush();
+//            update_field('temp', $output, $post_id);
 
             update_field('company_img_gallery', $company_gallery_ids, $post_id);
         }
@@ -453,10 +490,16 @@ class Account
         //
 
         $product_cas_no = get_field('product_cas_no_draft', $post_id);
+        $term = get_term($product_cas_no, 'product_cas_no');
+        $term_name = $term->name;
         $product_cas_no_new = get_field('product_cas_no_other_draft', $post_id);
         if(!$product_cas_no && !empty($product_cas_no_new)) {
             $newAddedCasID = $this->find_or_insert_category($product_cas_no_new, 'product_cas_no');
             wp_set_post_terms($post_id, [$newAddedCasID], 'product_cas_no', false);
+            update_field('product_cas_no_other_draft', '' ,$post_id);
+        } else {
+            $changedCasID = $this->find_or_insert_category($term_name, 'product_cas_no');
+            wp_set_post_terms($post_id, [$changedCasID], 'product_cas_no', false);
         }
         //
 
@@ -505,10 +548,95 @@ class Account
         update_field('product_ad_banner_second', $product_ad_banner_second, $post_id);
         //
 
-        $this->updateSelectFields($post_id,'product_brand', 'product_brand_draft' , 'product_brand_other_draft');
-        $this->updateSelectFields($post_id,'product_country', 'product_country_draft' , 'product_country_other_draft');
+        $product_brand_draft = get_field('product_brand_draft', $post_id);
+        $product_brand_new = get_field('product_brand_other_draft', $post_id);
+        if(!empty($product_brand_new)) {
+            $this->updateSelectFields($post_id, 'product_brand', 'product_brand_draft', 'product_brand_other_draft');
+        } else {
+            update_field('product_brand', $product_brand_draft, $post_id);
+        }
+
+        $product_country_draft = get_field('product_country_draft', $post_id);
+        $product_country_new = get_field('product_country_other_draft', $post_id);
+        if(!empty($product_country_new)) {
+            $this->updateSelectFields($post_id,'product_country', 'product_country_draft' , 'product_country_other_draft');
+
+        } else {
+            update_field('product_country', $product_country_draft, $post_id);
+        }
+
+        $product_location_draft = get_field('product_location_draft', $post_id);
+        $product_location_new = get_field('product_location_other_draft', $post_id);
+        if(!empty($product_location_new)) {
+            $this->updateSelectFields($post_id,'product_location', 'product_location_draft' , 'product_location_other_draft');
+
+        } else {
+            update_field('product_location', $product_location_draft, $post_id);
+        }
+
+        $product_unit_draft = get_field('product_unit_draft', $post_id);
+        $product_unit_new = get_field('product_unit_other_draft', $post_id);
+        if(!empty($product_unit_new)) {
+            $this->updateSelectFields($post_id,'product_unit', 'product_unit_draft' , 'product_unit_other_draft');
+
+        } else {
+            update_field('product_unit', $product_unit_draft, $post_id);
+        }
 
     }
+
+    function publish_request_info($post_id, $new_status = ''): void
+    {
+
+//        if($new_status == 'new') {
+//        }
+
+        $request_title = get_field('request_title_draft', $post_id);
+        $my_post = array(
+            'ID'           => $post_id,
+            'post_title'   => $request_title,
+        );
+        wp_update_post( $my_post );
+
+        $request_description = get_field('request_desc_draft', $post_id);
+        update_field('request_desc', $request_description, $post_id);
+        //
+
+        $request_purity = get_field('request_purity_draft', $post_id);
+        update_field('request_purity', $request_description, $post_id);
+        //
+
+        $request_duration = get_field('request_duration_draft', $post_id);
+        update_field('request_duration', $request_duration, $post_id);
+        //
+
+        $request_weight = get_field('request_weight_draft', $post_id);
+        update_field('request_weight', $request_weight, $post_id);
+        //
+
+        $request_cas_no_id = get_field('cas_number_draft', $post_id);
+        $term = get_term($request_cas_no_id, 'request_cas_no');
+        $term_name = $term->name;
+        $request_cas_no_id_new = get_field('cas_number_other_draft', $post_id);
+        if(!$request_cas_no_id && !empty($request_cas_no_id_new)) {
+            $newAddedCasID = $this->find_or_insert_category($request_cas_no_id_new, 'request_cas_no');
+            wp_set_post_terms($post_id, [$newAddedCasID], 'request_cas_no', false);
+            update_field('cas_number_other_draft', '' ,$post_id);
+        } else {
+            $changedCasID = $this->find_or_insert_category($term_name, 'request_cas_no');
+            wp_set_post_terms($post_id, [$changedCasID], 'request_cas_no', false);
+        }
+//
+//            ob_start();
+//            var_dump($term_name);
+//            $output = ob_get_clean();
+//            ob_end_flush();
+//            update_field('temp', $output, $post_id);
+//
+        //
+
+    }
+
     function find_or_insert_category($cat_title, $taxonomy_name)
     {
         $term = term_exists( trim($cat_title), $taxonomy_name);
@@ -580,6 +708,8 @@ class Account
         }
         return $result;
     }
+
+
 
 }
 

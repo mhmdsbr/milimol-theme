@@ -79,6 +79,14 @@ class PostType
             ['product'],
             'product_cas_no',
         );
+
+        $this->registerTaxonomy(
+            'شماره هویت',
+            ' شماره هویت',
+            'request_cas_no',
+            ['request'],
+            'request_cas_no',
+        );
     }
 
     protected function registerPostType (string $reg_name, string $plural_name, string $singular_name, string $slug, bool $front, string $show_in_menu,  bool $public, bool $has_archive, array $taxonomies, bool $hierarchical, string $dashicon, bool $rest, array $supports) : void
