@@ -57,6 +57,7 @@ $leafletMapData = get_field('company_map');
 if ($leafletMapData) {
     // Add the map data to the context
     $context['leafletMapData'] = $leafletMapData;
+
 }
 
 

@@ -15,8 +15,12 @@ $com_id = $com_obj[0]->ID;
 // check status
 $cdata_status = get_field('content_status', $com_id);
 if ($cdata_status == 'publish') {
-    $company_map = get_field('company_map', $com_id);
-    update_field('company_map_draft', $company_map, $com_id);
+    global $wpdb;
+    $result = $wpdb->get_results( "SELECT * FROM `wp_postmeta` WHERE post_id = '{$com_id}' AND meta_key = 'company_map';");
+    $serializedData = $result[0]->meta_value;
+    $unserializedData = unserialize($serializedData);
+    update_post_meta($com_id, 'company_map_draft', $unserializedData);
+
     //
     $company_video_id = get_field('company_video_id', $com_id);
     update_field('company_video_id_draft', $company_video_id, $com_id);
@@ -28,11 +32,7 @@ if ($cdata_status == 'publish') {
     update_field('company_ad_banner_draft', $company_ad_banner, $com_id);
     //
     $company_img_gallery = get_field('company_img_gallery', $com_id);
-//    $company_img_gallery_draft = get_field('company_img_gallery_draft', $com_id);
-//    var_dump($company_img_gallery);
-//    echo '<pre>';
-//    var_dump($company_img_gallery_draft);
-//    echo '</pre>';
+
     if(is_array($company_img_gallery)) {
         $company_gallery_ids = [];
         foreach($company_img_gallery as $item) {
@@ -98,3 +98,4 @@ if ($cdata_status == 'pending') {
     });
 </script>
 <?php
+

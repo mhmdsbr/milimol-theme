@@ -326,27 +326,28 @@ class Account
         if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_650c0c6a4fd03'] == 'publish')
         {
 
-            $this->publish_request_info($post_id, $_POST['frontend_acf']);
+//            $this->publish_request_info($post_id);
 
         }
 //
-//        ob_start();
-//        var_dump($_POST);
-//        $output = ob_end_clean();
-//        ob_end_flush();
-//        update_field('temp',$output ,$post_id);
-//
-//        if (!isset($_POST['frontend_acf']) && $_POST['frontend_acf'] == 'new')
-//        {
-//            $request_title = get_field('request_title_draft', $post_id);
-//            $my_post = array(
-//                'ID'           => $post_id,
-//                'post_title'   => $request_title,
-//            );
-//            wp_update_post( $my_post );
-//            //
-//
-//        }
+
+            ob_start();
+            var_dump($_POST['frontend_acf']['acf']);
+            $output = ob_get_clean();
+            ob_end_flush();
+            update_field('temp', $output, $post_id);
+
+        if (isset($_POST['acf']['frontend_acf']) && $_POST['acf']['frontend_acf'] == 'new')
+        {
+            $request_title = get_field('request_title_draft', $post_id);
+            $my_post = array(
+                'ID'           => $post_id,
+                'post_title'   => $request_title,
+            );
+            wp_update_post( $my_post );
+            //
+
+        }
     }
 
     function publish_basic_info($post_id): void
@@ -399,8 +400,14 @@ class Account
 
     function publish_content_info($post_id): void
     {
-        $company_map = get_field('company_map_draft', $post_id);
-        update_field('company_map', $company_map, $post_id);
+
+        global $wpdb;
+        $result = $wpdb->get_results( "SELECT * FROM `wp_postmeta` WHERE post_id = '{$post_id}' AND meta_key = 'company_map_draft';");
+        $serializedData = $result[0]->meta_value;
+        $unserializedData = unserialize($serializedData);
+        update_post_meta($post_id, 'company_map', $unserializedData);
+//
+
         //
         $company_video_id = get_field('company_video_id_draft', $post_id);
         update_field('company_video_id', $company_video_id, $post_id);
@@ -585,11 +592,8 @@ class Account
 
     }
 
-    function publish_request_info($post_id, $new_status = ''): void
+    function publish_request_info($post_id): void
     {
-
-//        if($new_status == 'new') {
-//        }
 
         $request_title = get_field('request_title_draft', $post_id);
         $my_post = array(
@@ -708,7 +712,6 @@ class Account
         }
         return $result;
     }
-
 
 
 }

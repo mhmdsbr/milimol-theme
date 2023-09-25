@@ -98,7 +98,7 @@ $posts = $query->posts;
                     <a href="<?php echo $request_edit_link; ?>" class="account__company-products-edit-button">
                         اصلاح
                     </a>
-                    <form method="POST" action="" onsubmit="return confirm('Are you sure you want to delete this request?');">
+                    <form method="POST" action="" onsubmit="return confirm('آیا برای حذف درخواست مورد نظر مطمئن هستید؟');">
                         <input type="hidden" name="action" value="delete_request">
                         <input type="hidden" name="request_id" value="<?php echo $requestId; ?>">
                         <button type="submit" class="account__company-products-delete-button">
@@ -111,7 +111,7 @@ $posts = $query->posts;
             // Check if the session variable exists and is true
             if (isset($_SESSION['request_deleted']) && $_SESSION['request_deleted'] === true) {
                 // Display the success message
-                echo '<div class="success-message">The request has been deleted.</div>';
+                echo '<div class="account__company-products-success-message">درخواست مورد نظر با موفقیت حذف شد. شما میتوانید برای بازیابی درخواست باهمکاران ما در ارتباط باشید.</div>';
                 // Reset the session variable
                 $_SESSION['request_deleted'] = false;
             }
