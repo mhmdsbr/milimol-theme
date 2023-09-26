@@ -217,9 +217,12 @@ function get_jalali_date(): string
         return $result;
     }
 
-    function render_acf_select_field_label($fieldName, $selectedValue): string
+    function render_acf_select_field_label($fieldName, $selectedValue)
     {
         $result = '';
+        if (is_array($selectedValue)) {
+            $selectedValue = $selectedValue['value'];
+        }
         $fieldInfo = acf_maybe_get_field($fieldName, false, false);
 
         if (isset($fieldInfo['choices'][$selectedValue])) {
@@ -227,6 +230,7 @@ function get_jalali_date(): string
         }
         return $result;
     }
+
     function render_acf_relationship_checkboxes($fieldName, $currentValue): string
     {
         $result = '';

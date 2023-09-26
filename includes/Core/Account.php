@@ -52,6 +52,8 @@ class Account
 
         add_action('acf/save_post', [&$this, 'my_acf_save_post_callback']);
 
+        add_action('fep_menu_button', [&$this,'custom_fep_menu_button']);
+
     }
 
     /**
@@ -152,10 +154,11 @@ class Account
 //            'edit-account'      => __( 'Edit Account', 'woocommerce' ),
             //'customer-logout'   => __('Logout', 'woocommerce'),
         );
+        $items['my_dashboard'] = __('پیشخوان');
+        $items['user_basic_info'] = __('اطلاعات کاربر');
+
         if (in_array('company', $roles)) {
             // Add custom menu items for users with the 'company' role
-            $items['my_dashboard'] = __('پیشخوان');
-            $items['user_basic_info'] = __('اطلاعات کاربر');
             $items['profile_management'] = __('مدیریت شرکت');
             $items['company_basic'] = __('اطلاعات پایه');
             $items['company_content'] = __('محتوای شرکتی');
@@ -166,11 +169,13 @@ class Account
             $items['product_management'] = __('مدیریت محصولات');
             $items['company_productlist'] = __('لیست محصولات');
             $items['company_productmodify'] = __('محصول جدید');
-            $items['request_management'] = __('مدیریت درخواست ها');
-            $items['product_request_list'] = __('لیست درخواست ها');
-            $items['product_request_modify'] = __('درخواست خرید');
-            $items['message_management'] = __('مدیریت پیام ها');
+
         }
+
+        $items['request_management'] = __('مدیریت درخواست ها');
+        $items['product_request_list'] = __('لیست درخواست ها');
+        $items['product_request_modify'] = __('درخواست خرید');
+        $items['message_management'] = __('مدیریت پیام ها');
 
         // Always include the logout item
         $items['customer-logout'] = __('Logout', 'woocommerce');
@@ -326,27 +331,29 @@ class Account
         if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_650c0c6a4fd03'] == 'publish')
         {
 
-//            $this->publish_request_info($post_id);
+            $this->publish_request_info($post_id);
 
         }
 //
 
-            ob_start();
-            var_dump($_POST['frontend_acf']['acf']);
-            $output = ob_get_clean();
-            ob_end_flush();
-            update_field('temp', $output, $post_id);
+//            ob_start();
+//            var_dump($_POST);
+//            $output = ob_get_clean();
+//            ob_end_flush();
+//            update_field('temp', $output, $post_id);
 
-        if (isset($_POST['acf']['frontend_acf']) && $_POST['acf']['frontend_acf'] == 'new')
+        if ((isset($_POST['frontend_acf']) && $_POST['frontend_acf'] == 'product_new') || (isset($_POST['frontend_acf']) && $_POST['frontend_acf'] == 'product_edit' && $_POST['acf']['field_6508127b649a7'] == 'draft'))
+        {
+            $product_title = get_field('product_title_draft', $post_id);
+            $this->updateTitle($post_id, $product_title);
+            //
+        }
+
+        if ((isset($_POST['frontend_acf']) && $_POST['frontend_acf'] == 'new') || (isset($_POST['frontend_acf']) && $_POST['frontend_acf'] == 'edit' && $_POST['acf']['field_650c0c6a4fd03'] == 'draft'))
         {
             $request_title = get_field('request_title_draft', $post_id);
-            $my_post = array(
-                'ID'           => $post_id,
-                'post_title'   => $request_title,
-            );
-            wp_update_post( $my_post );
+            $this->updateTitle($post_id, $request_title);
             //
-
         }
     }
 
@@ -596,11 +603,7 @@ class Account
     {
 
         $request_title = get_field('request_title_draft', $post_id);
-        $my_post = array(
-            'ID'           => $post_id,
-            'post_title'   => $request_title,
-        );
-        wp_update_post( $my_post );
+        $this->updateTitle($post_id, $request_title);
 
         $request_description = get_field('request_desc_draft', $post_id);
         update_field('request_desc', $request_description, $post_id);
@@ -631,14 +634,16 @@ class Account
             wp_set_post_terms($post_id, [$changedCasID], 'request_cas_no', false);
         }
 //
-//            ob_start();
-//            var_dump($term_name);
-//            $output = ob_get_clean();
-//            ob_end_flush();
-//            update_field('temp', $output, $post_id);
-//
-        //
 
+    }
+
+
+    function custom_fep_menu_button(): void
+    {
+        // Check if the current page matches your custom endpoint
+        echo '<a class="fep-button" href="/my-account/message_management/?fepaction=newmessage">پیام جدید</a>';
+        echo '<a class="fep-button" href="/my-account/message_management/?fepaction=messagebox">صندوق پیام</a>';
+        echo '<a class="fep-button" href="/my-account/message_management/?fepaction=settings">تنظیمات</a>';
     }
 
     function find_or_insert_category($cat_title, $taxonomy_name)
@@ -713,6 +718,17 @@ class Account
         return $result;
     }
 
+    function updateTitle($post_id, $new_title): void
+    {
+
+        $my_post = array(
+            'ID'           => $post_id,
+            'post_title'   => $new_title,
+        );
+        wp_update_post( $my_post );
+        //
+
+    }
 
 }
 

@@ -8,9 +8,12 @@
 defined('ABSPATH') || exit;
 acf_form_head();
 $current_user = wp_get_current_user();
+$user_roles = $current_user->roles;
+
+if(!in_array('customer', $user_roles) && !in_array('company', $user_roles)) {
+    exit;
+}
 $user_id = $current_user->ID;
-$com_obj = get_field('p2p_user_company', 'user_' . $user_id);
-$com_id = $com_obj[0]->ID;
 
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 $args = [
@@ -21,9 +24,9 @@ $args = [
 $args['meta_query'] = [
     'relation' => 'AND', // default relation
     [
-        'key' => 'company_request_linked', // name of custom field
-        'value' => '"' .$com_id . "", //
-        'compare' => 'LIKE',
+        'key' => 'user_request_linked', // name of custom field
+        'value' => $user_id,
+        'compare' => '=',
     ],
 ];
 $query = new WP_Query($args);
@@ -64,6 +67,14 @@ $posts = $query->posts;
 
             ?>
             <?php $i = ($paged - 1); ?>
+            <?php function get_english_to_persian(string $product_date)
+            {
+                $persianDate = \Morilog\Jalali\CalendarUtils::strftime('Y-m-d', strtotime($product_date)); // 1395-02-19
+                $persianDateFa = \Morilog\Jalali\CalendarUtils::convertNumbers($persianDate); // ۱۳۹۵-۰۲-۱۹
+
+                return $persianDateFa;
+            }
+            ?>
             <?php foreach ($posts as $request): ?>
                 <?php
                     $i++;
@@ -76,14 +87,14 @@ $posts = $query->posts;
                     }
                     $request_status = get_field('request_status', $requestId);
                     $request_date = $request->post_date;
-                    $formatted_date = date('Y-m-d', strtotime($request_date));
+                    $request_date_fa = get_english_to_persian($request_date);
                     $request_edit_link = '/my-account/product_request_modify/?requestId=' . $requestId;
                 ?>
                 <div class="account__company-products-details-item">
                     <p><?php echo $i; ?></p>
                     <p><?php echo $request->post_title; ?></p>
                     <p><?php echo $cas_no; ?></p>
-                    <p><?php echo $formatted_date; ?></p>
+                    <p><?php echo $request_date_fa; ?></p>
                     <p><?php if($request_status == 'publish') {
                         echo 'منتشر شده';
                         } elseif ($request_status == 'pending')
@@ -94,17 +105,20 @@ $posts = $query->posts;
 
                             echo 'ذخیره موقت';
                         }
-                        ?></p>
-                    <a href="<?php echo $request_edit_link; ?>" class="account__company-products-edit-button">
-                        اصلاح
-                    </a>
-                    <form method="POST" action="" onsubmit="return confirm('آیا برای حذف درخواست مورد نظر مطمئن هستید؟');">
-                        <input type="hidden" name="action" value="delete_request">
-                        <input type="hidden" name="request_id" value="<?php echo $requestId; ?>">
-                        <button type="submit" class="account__company-products-delete-button">
-                            حذف
-                        </button>
-                    </form>
+                        ?>
+                    </p>
+                    <div class="account__company-products-group-btn">
+                        <a href="<?php echo $request_edit_link; ?>" class="account__company-products-edit-button">
+                            اصلاح
+                        </a>
+                        <form method="POST" action="" onsubmit="return confirm('آیا برای حذف درخواست مورد نظر مطمئن هستید؟');">
+                            <input type="hidden" name="action" value="delete_request">
+                            <input type="hidden" name="request_id" value="<?php echo $requestId; ?>">
+                            <button type="submit" class="account__company-products-delete-button">
+                                حذف
+                            </button>
+                        </form>
+                    </div>
                 </div>
             <?php endforeach; ?>
             <?php

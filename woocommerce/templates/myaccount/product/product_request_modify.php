@@ -8,9 +8,13 @@
 defined('ABSPATH') || exit;
 acf_form_head();
 $current_user = wp_get_current_user();
+$user_roles = $current_user->roles;
+
+if(!in_array('customer', $user_roles) && !in_array('company', $user_roles)) {
+    exit;
+}
 $user_id = $current_user->ID;
-$com_obj = get_field('p2p_user_company', 'user_' . $user_id);
-$com_id = $com_obj[0]->ID;
+
 
 $requestId = $_GET['requestId'] ? $_GET['requestId'] : '';
 
@@ -18,8 +22,8 @@ if (!empty($requestId))
 {
     $request = get_post( $requestId );
 
-    $company_request_linked = get_field('company_request_linked', $requestId);
-    if ($company_request_linked[0]->ID !== $com_id)
+    $user_request_linked = get_field('user_request_linked', $requestId);
+    if ($user_request_linked !== $user_id)
     {
         // this product is not yours
         exit(0);
@@ -100,7 +104,7 @@ if ($cdata_status == 'pending') {
             ),
             'html_after_fields' => '<input type="hidden" name="frontend_acf" value="new"/>
             <input type="hidden" id="acf-field_650c0c6a4fd03" name="acf[field_650c0c6a4fd03]" value="draft"/>
-            <input type="hidden" name="acf[field_650c093c058e2][]" value="' . $com_id . '">
+            <input type="hidden" name="acf[field_650c093c058e2]" value="' . $user_id . '">
         ',
             'updated_message' => ' اطلاعات با موفقیت ذخیره شد.',
             'submit_value' => __("ذخیره", 'acf'),
@@ -124,7 +128,7 @@ if ($cdata_status == 'pending') {
                 'request_desc_draft',
 
             ),
-            'html_after_fields' => '<input type="hidden" name="frontend_acf" value="1"/>
+            'html_after_fields' => '<input type="hidden" name="frontend_acf" value="edit"/>
             <input type="hidden" id="acf-field_650c0c6a4fd03" name="acf[field_650c0c6a4fd03]" value="draft"/>
         ',
             'updated_message' => ' اطلاعات با موفقیت ذخیره شد.',

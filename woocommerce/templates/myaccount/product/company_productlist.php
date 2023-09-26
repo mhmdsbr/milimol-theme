@@ -5,6 +5,8 @@
  *
  */
 
+use Morilog\Jalali\Jalalian;
+
 defined('ABSPATH') || exit;
 acf_form_head();
 $current_user = wp_get_current_user();
@@ -30,7 +32,22 @@ $query = new WP_Query($args);
 $posts = $query->posts;
 ?>
 <div class="container account__company-products">
+    <?php
+    session_start();
+    if (isset($_POST['action']) && $_POST['action'] === 'delete_product') {
+        $pid = $_POST['product_id'];
 
+        // Use WordPress function to send the post to trash
+        $deleted = wp_trash_post($pid);
+
+        if ($deleted) {
+            $_SESSION['product_deleted'] = true;
+            wp_safe_redirect($_SERVER['REQUEST_URI']);
+            exit;
+        }
+    }
+
+    ?>
     <div class="row account__company-products-header">
         <h3 class="account__company-products-title">لیست محصولات</h3>
         <a class="account__company-products-add-new-button" href="/my-account/company_productmodify/"> افزودن محصول جدید</a>
@@ -48,7 +65,15 @@ $posts = $query->posts;
         </div>
         <div class="col-12 account__company-products-details">
             <?php $i = ($paged - 1); ?>
-            <?php foreach ($posts as $product): ?>
+            <?php function get_english_to_persian(string $product_date)
+            {
+                $persianDate = \Morilog\Jalali\CalendarUtils::strftime('Y-m-d', strtotime($product_date)); // 1395-02-19
+                $persianDateFa = \Morilog\Jalali\CalendarUtils::convertNumbers($persianDate); // ۱۳۹۵-۰۲-۱۹
+
+                return $persianDateFa;
+            }
+
+            foreach ($posts as $product): ?>
                 <?php
                     $i++;
                     $pid = $product->ID;
@@ -60,15 +85,16 @@ $posts = $query->posts;
                         $cas_no = $cas_no_tax[0]->name;
                     }
                     $product_date = $product->post_date;
-                    $formatted_date = date('Y-m-d', strtotime($product_date));
+                    $product_date_fa = get_english_to_persian($product_date);
                     $product_edit_link = '/my-account/company_productmodify/?pid=' . $pid;
                 ?>
                 <div class="account__company-products-details-item">
                     <p><?php echo $i; ?></p>
                     <p><?php echo $product->post_title; ?></p>
                     <p><?php echo $cas_no; ?></p>
-                    <p><?php echo $formatted_date; ?></p>
-                    <p><?php if($product_status == 'publish') {
+                    <p><?php echo $product_date_fa; ?></p>
+                    <p>
+                        <?php if($product_status == 'publish') {
                         echo 'منتشر شده';
                         } elseif ($product_status == 'pending')
                         {
@@ -78,12 +104,31 @@ $posts = $query->posts;
 
                             echo 'ذخیره موقت';
                         }
-                        ?></p>
-                    <a href="<?php echo $product_edit_link; ?>" class="account__company-products-edit-button">
-                        اصلاح
-                    </a>
+                        ?>
+                    </p>
+                    <div class="account__company-products-group-btn">
+                        <a href="<?php echo $product_edit_link; ?>" class="account__company-products-edit-button">
+                            اصلاح
+                        </a>
+                        <form method="POST" action="" onsubmit="return confirm('آیا برای حذف محصول مورد نظر مطمئن هستید؟');">
+                            <input type="hidden" name="action" value="delete_product">
+                            <input type="hidden" name="product_id" value="<?php echo $pid; ?>">
+                            <button type="submit" class="account__company-products-delete-button">
+                                حذف
+                            </button>
+                        </form>
+                    </div>
                 </div>
             <?php endforeach; ?>
+            <?php
+            // Check if the session variable exists and is true
+            if (isset($_SESSION['product_deleted']) && $_SESSION['product_deleted'] === true) {
+                // Display the success message
+                echo '<div class="account__company-products-success-message">درخواست مورد نظر با موفقیت حذف شد. شما میتوانید برای بازیابی درخواست باهمکاران ما در ارتباط باشید.</div>';
+                // Reset the session variable
+                $_SESSION['product_deleted'] = false;
+            }
+            ?>
         </div>
     </section>
 

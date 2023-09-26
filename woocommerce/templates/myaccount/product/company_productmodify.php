@@ -160,8 +160,9 @@ if ($cdata_status == 'pending') {
                 'product_ad_banner_second_draft',
                 'product_header_bg_draft',
             ),
-            'html_after_fields' => '<input type="hidden" name="frontend_acf" value="1"/>
+            'html_after_fields' => '<input type="hidden" name="frontend_acf" value="product_new"/>
             <input type="hidden" id="acf-field_6508127b649a7" name="acf[field_6508127b649a7]" value="draft"/>
+            <input type="hidden" name="acf[field_64c7fa1de0d78][]" value="' . $com_id . '">
         ',
             'updated_message' => ' اطلاعات با موفقیت ذخیره شد.',
             'submit_value' => __("ذخیره", 'acf'),
@@ -202,7 +203,7 @@ if ($cdata_status == 'pending') {
                 'product_ad_banner_second_draft',
                 'product_header_bg_draft',
             ),
-            'html_after_fields' => '<input type="hidden" name="frontend_acf" value="1"/>
+            'html_after_fields' => '<input type="hidden" name="frontend_acf" value="product_edit"/>
             <input type="hidden" id="acf-field_6508127b649a7" name="acf[field_6508127b649a7]" value="draft"/>
         ',
             'updated_message' => ' اطلاعات با موفقیت ذخیره شد.',

@@ -1,6 +1,6 @@
 {% if products is not empty %}
     {% for post in products %}
-        <div class="row mb-6">
+        <div class="row mb-6 bg-primary-gray rounded-4">
             <div class="col-md-8">
                 <article itemscope itemtype="http://schema.org/Product" id="post-{{ post.ID }}" class="archive-product__main-content post-{{ post.ID }} single-{{ post.post_type }}">
                     <div class="row archive-product__info">
@@ -64,7 +64,8 @@
                                     </div>
                                     <div class="archive-product__info-content-main product-single--office-address">
                                         <span>بسته بندی: </span>
-                                        <p>{{ post.product_package }} {{ english_numbers(post.product_weight) }} {{ acf_select_field_label('product_unit', post.product_unit )}}</p>
+                                            {% set productUnit = post.product_unit %}
+                                        <p>{{ post.product_package }} {{ english_numbers(post.product_weight) }} {{ acf_select_field_label('product_unit', productUnit) }}</p>
                                     </div>
                                     <div class="archive-product__info-content-main product-single--company-address">
                                         <span>حداقل سفارش: </span>
