@@ -1,4 +1,8 @@
 {% if products is not empty %}
+{#    <div class="col-12">#}
+{#        <!-- Add a button to trigger the action -->#}
+{#        <button id="send-selected-users-button" class="btn btn-primary">Send Selected Users</button>#}
+{#    </div>#}
     {% for post in products %}
         <div class="row mb-6 bg-primary-gray rounded-4">
             <div class="col-md-8">
@@ -20,10 +24,14 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="archive-product__info-content-head">
-                                        <h4 class="archive-product__product-name">{{ post.title }}</h4>
+                                        <a href="{{ post.link }}">
+                                            <h4 class="archive-product__product-name">{{ post.title }}</h4>
+                                        </a>
                                         {% set productCasNumbers = post.terms('product_cas_no') %}
                                         {% for productCasNo in productCasNumbers %}
-                                            <p class="archive-product__cas-number">{{ 'Cas No: ' ~  productCasNo.name }}</p>
+                                            <a class="archive-product__cas-number" href="{{ productCasNo.link }}">
+                                                <p >{{ 'Cas No: ' ~  productCasNo.name }}</p>
+                                            </a>
                                         {% endfor %}
                                         <p class="archive-product__product-date">{{'تاریخ ثبت: ' ~ english_numbers(post.date('d-m-Y')) }}</p>
                                     </div>
@@ -93,6 +101,7 @@
             <div class="col-md-4 m-auto">
                 <div class="archive-product__sidebar">
                     {% set productSuppliers = post.get_field('product_supplier_linked') %}
+                    {% set productUser = users_list(post.ID) %}
                     {% set productIcon = Image(post.product_icon) %}
                     {% for productSupplier in productSuppliers %}
                         {% set supplierIcon = Image(productSupplier.get_field('company_icon')) %}
@@ -104,7 +113,9 @@
                                  loading="lazy"
                             />
                         </div>
-                        <h3 class="archive-product__product-supplier">{{ productSupplier.post_title }}</h3>
+                        <a href="{{ productSupplier.link}}">
+                            <h3 class="archive-product__product-supplier">{{ productSupplier.post_title }}</h3>
+                        </a>
                         <div class="archive-product__contact-btn">
                             {% include "partial/button.twig" with {
                                 url : 'tel:' ~ productSupplier.get_field('company_mobile'),
@@ -113,6 +124,21 @@
                                 class : 'btn--primary product-single__button',
                                 icon : 'phone'
                             } %}
+                        </div>
+                        <div class="archive-product__contact-btn">
+                            {% include "partial/button.twig" with {
+                                url : '/my-account/message_management/?fepaction=newmessage&recipient=' ~ productUser,
+                                title : 'ارسال پیام',
+                                target : fields.button.target,
+                                class : 'btn--primary product-single__button',
+                                icon : 'phone'
+                            } %}
+
+{#                            <div class="archive-product__select-checkbox">#}
+{#                                <label for="select-product-{{ post.post.ID}}">Select Product</label>#}
+{#                                <input type="checkbox" id="select-product-{{ post.ID }}" name="selected-products[]" value="{{ post.ID }}" data-userauthor="{{ productUser }}" />#}
+{#                            </div>#}
+
                         </div>
                         <div class="archive-product__supplier-gallery">
                             {% set companyImgGallery = Image(productSupplier.get_field('company_reward')) %}

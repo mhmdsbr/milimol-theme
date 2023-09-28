@@ -9,6 +9,7 @@ use Twig\TwigTest;
 use Carbon\Carbon;
 use Morilog\Jalali\Jalalian;
 use WP_User;
+use WP_User_Query;
 
 /**
  * Timber/Twig extend functions
@@ -53,6 +54,7 @@ class ExtendTwig
         $twig->addFunction(new TwigFunction('acf_relationship_checkboxes', array($this, 'render_acf_relationship_checkboxes')));
         $twig->addFunction(new TwigFunction('product_visit_number', array($this, 'product_page_visit_number')));
         $twig->addFunction(new TwigFunction('user_display_name', array($this, 'get_user_display_name')));
+        $twig->addFunction(new TwigFunction('users_list', array($this, 'get_users_list')));
 
 
         return $twig;
@@ -264,6 +266,13 @@ function get_jalali_date(): string
 
         return $user_info->first_name;
 
+    }
+
+    function get_users_list($product_id): string
+    {
+        $author_id = get_post_field('post_author', $product_id);
+        $author_data = get_userdata($author_id);
+        return $author_data->user_login;
     }
 
 }

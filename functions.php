@@ -30,6 +30,7 @@ new Exp\Core\Breadcrumbs();
 new Exp\Core\Woocommerce();
 new Exp\Core\Login();
 new Exp\Core\Account();
+new Exp\Core\Message();
 new Exp\Core\Shortcodes();
 
 /** ThirdParty */
@@ -206,8 +207,4 @@ function ajax_search_results(): array
 /** Ajax Search */
 add_action('wp_ajax_ajax_search', 'ajax_search_results');
 add_action('wp_ajax_nopriv_ajax_search', 'ajax_search_results');
-
-
-
-
 
