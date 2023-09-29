@@ -29,10 +29,63 @@ class Message
             '";
          </script>';
 
-
-
     }
 
+    function mili_message_send_single($subject, $message, $participant) {
+
+        global $wpdb;
+
+        $current_user = wp_get_current_user();
+        $msg_author = $current_user->ID;
+
+        // Insert data into the 'wp_fep_messages' table
+        $table_name_messages = $wpdb->prefix . 'fep_messages';
+        $wpdb->insert(
+            $table_name_messages,
+            array(
+                'mgs_title' => $subject,
+                'mgs_content' => $message,
+                'mgs_author' => $msg_author,
+                'mgs_last_reply_by' => $msg_author,
+                'mgs_status' => 'publish',
+                'mgs_created' => date('Y-m-d H:i:s'),
+                'mgs_last_reply_time' => date('Y-m-d H:i:s'),
+            )
+        );
+
+        $message_id = $wpdb->insert_id;
+
+        // Insert data into the 'wp_fep_participants' table
+        $random_number = time();
+        $table_name_participants = $wpdb->prefix . 'fep_participants';
+        $wpdb->insert(
+            $table_name_participants,
+            array(
+                'mgs_participant' => $msg_author,
+                'mgs_parent_read' => $random_number,
+                'mgs_id' => $message_id,
+            )
+        );
+        $wpdb->insert(
+            $table_name_participants,
+            array(
+                'mgs_participant' => $participant,
+                'mgs_id' => $message_id,
+            )
+        );
+
+        // Insert data into the 'wp_fep_messagemeta' table
+        $table_name_messagemeta = $wpdb->prefix . 'fep_messagemeta';
+        $wpdb->insert(
+            $table_name_messagemeta,
+            array(
+                'fep_message_id' => $message_id,
+                'meta_value' => $random_number,
+                'meta_key' => '_fep_email_sent',
+            )
+        );
+
+    }
     function mili_message_callback(): void
     {
         global $wpdb;
@@ -49,6 +102,19 @@ class Message
                 $message_participants = $user_object->ID;
             }
 
+            if(str_contains($message_participants, ',')) {
+                $participantsArray = explode(',', $message_participants);
+                // Remove any leading or trailing spaces from each element and make the array values unique
+                $participantsArray = array_map('trim', $participantsArray);
+                $participantsArray = array_unique($participantsArray);
+                foreach ($participantsArray as $participant) {
+                    $this->mili_message_send_single($message_subject, $message_body, $participant);
+                }
+
+            } else {
+                $this->mili_message_send_single($message_subject, $message_body, $message_participants);
+            }
+
 //                // Output the raw data for debugging.
 //                ob_start();
 //                var_dump($message_participants);
@@ -56,59 +122,6 @@ class Message
 //                $output = ob_get_clean();
 //                ob_end_flush();
 //                update_field('temp', $output, 'option');
-
-
-            // Get the current user's ID as the message author
-            $current_user = wp_get_current_user();
-            $msg_author = $current_user->ID;
-
-            // Insert data into the 'wp_fep_messages' table
-            $table_name_messages = $wpdb->prefix . 'fep_messages';
-            $wpdb->insert(
-                $table_name_messages,
-                array(
-                    'mgs_title' => $message_subject,
-                    'mgs_content' => $message_body,
-                    'mgs_author' => $msg_author,
-                    'mgs_last_reply_by' => $msg_author,
-                    'mgs_status' => 'publish',
-                    'mgs_created' => date('Y-m-d H:i:s'),
-                    'mgs_last_reply_time' => date('Y-m-d H:i:s'),
-                )
-            );
-
-            $message_id = $wpdb->insert_id;
-
-
-            // Insert data into the 'wp_fep_participants' table
-            $random_number = time();
-            $table_name_participants = $wpdb->prefix . 'fep_participants';
-            $wpdb->insert(
-                $table_name_participants,
-                array(
-                    'mgs_participant' => $msg_author,
-                    'mgs_parent_read' => $random_number,
-                    'mgs_id' => $message_id,
-                )
-            );
-            $wpdb->insert(
-                $table_name_participants,
-                array(
-                    'mgs_participant' => $message_participants,
-                    'mgs_id' => $message_id,
-                )
-            );
-
-            // Insert data into the 'wp_fep_messagemeta' table
-            $table_name_messagemeta = $wpdb->prefix . 'fep_messagemeta';
-            $wpdb->insert(
-                $table_name_messagemeta,
-                array(
-                    'fep_message_id' => $message_id,
-                    'meta_value' => $random_number,
-                    'meta_key' => '_fep_email_sent',
-                )
-            );
 
             // Respond with a success message
             wp_send_json(array('success' => true, 'message' => 'Message sent successfully.'));

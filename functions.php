@@ -208,3 +208,12 @@ function ajax_search_results(): array
 add_action('wp_ajax_ajax_search', 'ajax_search_results');
 add_action('wp_ajax_nopriv_ajax_search', 'ajax_search_results');
 
+function dmp($value, $title = null): void
+{
+    if($title !== null){
+        echo '<h1>' . $title . '</h1>';
+    }
+    echo '<pre>';
+    var_dump($value);
+    echo '</pre>';
+}

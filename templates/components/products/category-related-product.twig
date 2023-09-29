@@ -1,8 +1,31 @@
 {% if products is not empty %}
-{#    <div class="col-12">#}
-{#        <!-- Add a button to trigger the action -->#}
-{#        <button id="send-selected-users-button" class="btn btn-primary">Send Selected Users</button>#}
-{#    </div>#}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-primary">ارسال پیام به چند شرکت</button>
+            </div>
+            <div class="col-12">
+                <form class="row company-single__message-form" id="message-form-{{ post.ID }}" action="" method="POST">
+
+                    <div class="col-12 mb-4 company-single__message-form-content">
+                        <label for="message-subject">موضوع: </label>
+                        <input class="company-single__message-input" type="text" id="message-subject" name="subject" required placeholder="عنوان پیام را وارد کنید." {{ is_logged_in() ? '' : 'disabled' }} >
+                    </div>
+                    <div class="col-12 mb-4 company-single__message-form-content">
+                        <label for="message-body">توضیحات: </label>
+                        <textarea {{ is_logged_in() ? '' : 'disabled' }}  class="company-single__message-input" id="message-body" name="message-body" rows="5" required placeholder="لطفا محتوای پیام خود را وارد کنید." ></textarea>
+                    </div>
+
+                    <!-- Hidden input for message participants -->
+                    <input class="company-single__message-input" type="hidden" id="message-participants" name="message-participants" value="">
+
+                    <input class="company-single__message-input" type="hidden" id="message-company-id" name="message-company-id" value="{{ post.ID }}">
+
+                    <button id="send-selected-users-button" class="company-single__message-submit message-sent-submit" type="submit">ارسال</button>
+                </form>
+            </div>
+        </div>
+    </div>
     {% for post in products %}
         <div class="row mb-6 bg-primary-gray rounded-4">
             <div class="col-md-8">
@@ -90,7 +113,7 @@
                                 <div class="col-12">
                                     <h5 class="archive-product__intro-content-label">توضیحات:</h5>
                                     <div class="archive-product__intro-content">
-                                        {{ check_value(post.content, 'p', '')}}
+                                        {{ check_value(post.content, 'p', '')|slice(0, 150) ~ '...' }}
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +124,7 @@
             <div class="col-md-4 m-auto">
                 <div class="archive-product__sidebar">
                     {% set productSuppliers = post.get_field('product_supplier_linked') %}
-                    {% set productUser = users_list(post.ID) %}
+                    {% set productUser = recipient_user(post.ID) %}
                     {% set productIcon = Image(post.product_icon) %}
                     {% for productSupplier in productSuppliers %}
                         {% set supplierIcon = Image(productSupplier.get_field('company_icon')) %}
@@ -118,7 +141,7 @@
                         </a>
                         <div class="archive-product__contact-btn">
                             {% include "partial/button.twig" with {
-                                url : 'tel:' ~ productSupplier.get_field('company_mobile'),
+                                url : is_logged_in() ? 'tel:' ~ productSupplier.get_field('company_mobile') : '/register',
                                 title : 'تماس با شرکت',
                                 target : fields.button.target,
                                 class : 'btn--primary product-single__button',
@@ -127,17 +150,17 @@
                         </div>
                         <div class="archive-product__contact-btn">
                             {% include "partial/button.twig" with {
-                                url : '/my-account/message_management/?fepaction=newmessage&recipient=' ~ productUser,
+                                url : is_logged_in() ? '/my-account/message_management/?fepaction=newmessage&recipient=' ~ productUser : '/register',
                                 title : 'ارسال پیام',
                                 target : fields.button.target,
                                 class : 'btn--primary product-single__button',
-                                icon : 'phone'
+                                icon : 'envelope'
                             } %}
 
-{#                            <div class="archive-product__select-checkbox">#}
-{#                                <label for="select-product-{{ post.post.ID}}">Select Product</label>#}
-{#                                <input type="checkbox" id="select-product-{{ post.ID }}" name="selected-products[]" value="{{ post.ID }}" data-userauthor="{{ productUser }}" />#}
-{#                            </div>#}
+                            <div class="archive-product__select-checkbox">
+                                <label for="select-product-{{ post.post.ID}}">Select Product</label>
+                                <input class="select-company-message" type="checkbox" id="select-product-{{ post.ID }}" name="company-cas-select" value="{{ post.ID }}" data-userauthor="{{ productUser }}" />
+                            </div>
 
                         </div>
                         <div class="archive-product__supplier-gallery">

@@ -54,7 +54,7 @@ class ExtendTwig
         $twig->addFunction(new TwigFunction('acf_relationship_checkboxes', array($this, 'render_acf_relationship_checkboxes')));
         $twig->addFunction(new TwigFunction('product_visit_number', array($this, 'product_page_visit_number')));
         $twig->addFunction(new TwigFunction('user_display_name', array($this, 'get_user_display_name')));
-        $twig->addFunction(new TwigFunction('users_list', array($this, 'get_users_list')));
+        $twig->addFunction(new TwigFunction('recipient_user', array($this, 'get_recipient_user')));
 
 
         return $twig;
@@ -268,11 +268,20 @@ function get_jalali_date(): string
 
     }
 
-    function get_users_list($product_id): string
+    function get_recipient_user($product_id): string
     {
-        $author_id = get_post_field('post_author', $product_id);
-        $author_data = get_userdata($author_id);
-        return $author_data->user_login;
+        $company_object = get_field('product_supplier_linked', $product_id);
+        $author_object = get_field('p2p_company_user', $company_object[0]->ID);
+
+//        dmp($product_id, 'product-id');
+//        dmp($company_object, 'company-object');
+//        dmp($author_object, 'author-object');
+
+        if($author_object == null) {
+            return '';
+        } else {
+            return $author_object->user_login;
+        }
     }
 
 }

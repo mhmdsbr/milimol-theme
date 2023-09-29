@@ -152,7 +152,9 @@
                                      loading="lazy"
                                 />
                             </div>
-                            <h3 class="product-single__product-supplier">{{ productSupplier.post_title }}</h3>
+                            <a href="{{ productSupplier.link}}">
+                                <h3 class="product-single__product-supplier">{{ productSupplier.post_title }}</h3>
+                            </a>
                             <div class="product-single__contact-btn">
                                 {% include "partial/button.twig" with {
                                     url : 'tel:' ~ productSupplier.get_field('company_mobile'),
@@ -162,6 +164,28 @@
                                     icon : 'phone'
                                 } %}
                             </div>
+
+                            <div class="container gx-0 company-single__message">
+                                <form class="row company-single__message-form" id="message-form-{{ post.ID }}" action="" method="POST">
+
+                                    <div class="col-12 mb-4 company-single__message-form-content">
+                                        <label for="message-subject">موضوع: </label>
+                                        <input class="company-single__message-input" type="text" id="message-subject" name="subject" required placeholder="عنوان پیام را وارد کنید." {{ is_logged_in() ? '' : 'disabled' }} >
+                                    </div>
+                                    <div class="col-12 mb-4 company-single__message-form-content">
+                                        <label for="message-body">توضیحات: </label>
+                                        <textarea {{ is_logged_in() ? '' : 'disabled' }}  class="company-single__message-input" id="message-body" name="message-body" rows="5" required placeholder="لطفا محتوای پیام خود را وارد کنید." ></textarea>
+                                    </div>
+
+                                    <!-- Hidden input for message participants -->
+                                    <input class="company-single__message-input" type="hidden" id="message-participants" name="message-participants" value="">
+
+                                    <input class="company-single__message-input" type="hidden" id="message-company-id" name="message-company-id" value="{{ post.ID }}">
+
+                                    <button class="company-single__message-submit message-sent-submit" type="submit">ارسال</button>
+                                </form>
+                            </div>
+
                             <div class="product-single__supplier-gallery">
                                 {% set companyImgGallery = Image(productSupplier.get_field('company_reward')) %}
                                 {% for gallery in companyImgGallery %}

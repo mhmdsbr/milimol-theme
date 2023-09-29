@@ -79,7 +79,7 @@
 					<h3 class="company-single__company-name">{{ post.title }}</h3>
 					<div class="company-single__contact-btn">
 						{% include "partial/button.twig" with {
-							url : 'tel:' ~ post.get_field('company_mobile'),
+							url : is_logged_in() ? 'tel:' ~ post.get_field('company_mobile') : '/register',
 							title : 'تماس با شرکت',
 							target : fields.button.target,
 							class : 'btn--primary company-single__button',
@@ -92,11 +92,11 @@
 
 							<div class="col-12 mb-4 company-single__message-form-content">
 								<label for="message-subject">موضوع: </label>
-								<input class="company-single__message-input" type="text" id="message-subject" name="subject" required placeholder="عنوان پیام را وارد کنید.">
+								<input class="company-single__message-input" type="text" id="message-subject" name="subject" required placeholder="عنوان پیام را وارد کنید." {{ is_logged_in() ? '' : 'disabled' }} >
 							</div>
 							<div class="col-12 mb-4 company-single__message-form-content">
 								<label for="message-body">توضیحات: </label>
-								<textarea class="company-single__message-input" id="message-body" name="message-body" rows="5" required placeholder="لطفا محتوای پیام خود را وارد کنید." ></textarea>
+								<textarea {{ is_logged_in() ? '' : 'disabled' }}  class="company-single__message-input" id="message-body" name="message-body" rows="5" required placeholder="لطفا محتوای پیام خود را وارد کنید." ></textarea>
 							</div>
 
 							<!-- Hidden input for message participants -->
@@ -108,13 +108,14 @@
 						</form>
 					</div>
 					<div class="company-single__image-gallery">
-						{% set companyImgGallery = post.get_field('company_img_gallery') %}
-						{% for image in companyImgGallery %}
+						{% for image in company_gallery_img_urls %}
 							<div class="company-single__image-gallery-item">
-								<img src="{{ image.url }}"
-									 alt="image-gallery"
-									 loading="lazy"
-								/>
+								<a href="{{ image }}" target="_blank">
+									<img src="{{ image }}"
+										 alt="image-gallery"
+										 loading="lazy"
+									/>
+								</a>
 							</div>
 						{% endfor %}
 					</div>
@@ -228,7 +229,6 @@
 
 					{% set relatedProducts = [] %}
 					{% for product in products %}
-						{% set relatedCompaniesTitle =  product.associated_company[0].post_title %}
 						{% set productsImg =  product.image_url %}
 						{% set productsName =  product.get_name %}
 						{% set productsCat =  product.product_cat|slice(0,1) %}
@@ -238,7 +238,7 @@
 							'post_title' : post.title,
 							'image_url' : productsImg,
 							'name' : productsName,
-							'company_title' : relatedCompaniesTitle,
+							'company_title' : post.title,
 							'product_cat' : productsCat,
 							'product_cat_cas' : productsCatCas,
 							'product_purity' : productsPurity,

@@ -19,34 +19,32 @@ $cas_numbers = get_terms(array(
 $context['cas_numbers'] = $cas_numbers;
 
 $brand_filter = isset($_GET['product_brand']) ? ($_GET['product_brand']) : array();
-$country_filter = isset($_GET['product_country']) ? ($_GET['product_country']) : array();
-$supplier_filter = isset($_GET['product_supplier_linked']) ? ($_GET['product_supplier_linked']) : array();
-$unit_filter = isset($_GET['product_unit']) ? ($_GET['product_unit']) : array();
-$min_order_filter = isset($_GET['min_order_quantity']) ? intval($_GET['min_order_quantity']) : 0;
-$product_purity_filter = isset($_GET['product_purity_filter']) ? intval($_GET['product_purity_filter']) : 0;
-
 $context['brand_filter'] = $brand_filter;
+
+$country_filter = isset($_GET['product_country']) ? ($_GET['product_country']) : array();
 $context['country_filter'] = $country_filter;
+
+$supplier_filter = isset($_GET['product_supplier_linked']) ? ($_GET['product_supplier_linked']) : array();
 $context['supplier_filter'] = $supplier_filter;
+
+$unit_filter = isset($_GET['product_unit']) ? ($_GET['product_unit']) : array();
 $context['unit_filter'] = $unit_filter;
+
+$min_order_filter = isset($_GET['min_order_quantity']) ? intval($_GET['min_order_quantity']) : 0;
 $context['min_order_filter'] = $min_order_filter;
+
+$product_purity_filter = isset($_GET['product_purity_filter']) ? intval($_GET['product_purity_filter']) : 0;
 $context['product_purity_filter'] = $product_purity_filter;
-function filter_products_by_taxonomy($taxonomy_name, $term_id): bool|array|null
+
+function filter_products_by_taxonomy($taxonomy_name, $term_id, $args): bool|array|null
 {
     // Query setup
-    $args = array(
-        'post_type' => 'product',
-        'posts_per_page' => -1,
-        'tax_query' => array(
-            array(
-                'taxonomy' => $taxonomy_name, // Specify the taxonomy name
-                'field'    => 'id',
-                'terms'    => $term_id,
-            ),
-        ),
-    );
+    $arg_generator = new Exp\Core\ArgsGenerator('product', -1);
+    $arg_generator->add_tax_query($taxonomy_name, 'id', $term_id);
+    $arg_generator->add_meta_query_external_array($args);
+    $productArgs = $arg_generator->generate_arguments();
     // Fetch and set product posts
-    return Timber::get_posts($args);
+    return Timber::get_posts($productArgs);
 }
 
 
@@ -63,8 +61,8 @@ if (is_singular('product')) {
     Timber::render('templates/single-product.twig', $context);
 
 } else {
+    $arg_generator = new Exp\Core\ArgsGenerator('product', -1);
     if (!is_shop()) {
-
         // Set category context
         $queried_object = get_queried_object();
         $term_id = $queried_object->term_id;
@@ -86,70 +84,37 @@ if (is_singular('product')) {
 
         // Add Brand filter to the query
         if (!empty($_GET['product_brand'])) {
-            $args['meta_query'][] = array(
-                array(
-                    'key' => 'product_brand',
-                    'value' => $brand_filter,
-                    'compare' => 'IN',
-                ),
-            );
+            $arg_generator->add_meta_query('product_brand', $brand_filter, 'IN');
         }
 
         // Add Country filter to the query
         if (!empty($_GET['product_country'])) {
-            $args['meta_query'][] = array(
-                array(
-                    'key' => 'product_country',
-                    'value' => $country_filter,
-                    'compare' => 'IN',
-                ),
-            );
+            $arg_generator->add_meta_query('product_country', $country_filter, 'IN');
         }
 
         // Add Supplier filter to the query
         if (!empty($_GET['product_supplier_linked'])) {
-            $args['meta_query'][] = array(
-                array(
-                    'key' => 'product_supplier_linked',
-                    'value' => $supplier_filter,
-                    'compare' => 'IN',
-                ),
-            );
+            $arg_generator->add_meta_query('product_supplier_linked', $supplier_filter, 'IN');
         }
 
         // Add Weight filter to the query
         if (!empty($_GET['product_unit'])) {
-            $args['meta_query'][] = array(
-                array(
-                    'key' => 'product_unit',
-                    'value' => $unit_filter,
-                    'compare' => 'IN',
-                ),
-            );
+            $arg_generator->add_meta_query('product_unit', $unit_filter, 'IN');
         }
 
         // Add Min order filter to the query
         if ($min_order_filter > 0) {
-            $args['meta_query'][] = array(
-                'key' => 'product_order_quantity',
-                'value' => array(0, $min_order_filter),
-                'compare' => 'BETWEEN',
-                'type' => 'NUMERIC',
-            );
+            $arg_generator->add_meta_query('product_order_quantity', array(0, $min_order_filter), 'BETWEEN', 'NUMERIC');
         }
 
         // Add product purity filter to the query
         if ($product_purity_filter > 0) {
-            $args['meta_query'][] = array(
-                'key' => 'product_purity',
-                'value' => array(0, $product_purity_filter),
-                'compare' => 'BETWEEN',
-                'type' => 'NUMERIC',
-            );
+            $arg_generator->add_meta_query('product_purity', array(0, $product_purity_filter), 'BETWEEN', 'NUMERIC');
         }
 
-        $products_cat = filter_products_by_taxonomy('product_cat', $term_id);
-        $products_cas = filter_products_by_taxonomy('product_cas_no', $term_id);
+        $products_cat = filter_products_by_taxonomy('product_cat', $term_id, $arg_generator->generate_arguments());
+        $products_cas = filter_products_by_taxonomy('product_cas_no', $term_id, $arg_generator->generate_arguments());
+
 
         // Merge the two arrays of products
         $context['products'] = array_merge($products_cat, $products_cas);
@@ -162,17 +127,41 @@ if (is_singular('product')) {
     }
     else {
         // This is the main shop page; display all products
-        $args = array(
-            'post_type' => 'product',
-            'posts_per_page' => -1,
-        );
+
+        // Add Brand filter to the query
+        if (!empty($_GET['product_brand'])) {
+            $arg_generator->add_meta_query('product_brand', $brand_filter, 'IN');
+        }
+
+        // Add Country filter to the query
+        if (!empty($_GET['product_country'])) {
+            $arg_generator->add_meta_query('product_country', $country_filter, 'IN');
+        }
+
+        // Add Supplier filter to the query
+        if (!empty($_GET['product_supplier_linked'])) {
+            $arg_generator->add_meta_query('product_supplier_linked', $supplier_filter, 'IN');
+        }
+
+        // Add Weight filter to the query
+        if (!empty($_GET['product_unit'])) {
+            $arg_generator->add_meta_query('product_unit', $unit_filter, 'IN');
+        }
+
+        // Add Min order filter to the query
+        if ($min_order_filter > 0) {
+            $arg_generator->add_meta_query('product_order_quantity', array(0, $min_order_filter), 'BETWEEN', 'NUMERIC');
+        }
+
+        // Add product purity filter to the query
+        if ($product_purity_filter > 0) {
+            $arg_generator->add_meta_query('product_purity', array(0, $product_purity_filter), 'BETWEEN', 'NUMERIC');
+        }
 
         // Fetch and set all product posts
-        $context['products'] = Timber::get_posts($args);
+        $context['products'] = Timber::get_posts($arg_generator->generate_arguments());
 
         // Render appropriate template for the main shop page
         Timber::render('templates/archive-product.twig', $context); // Change 'templates/shop.twig' to your actual template name
     }
 }
-
-
