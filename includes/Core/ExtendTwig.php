@@ -55,6 +55,7 @@ class ExtendTwig
         $twig->addFunction(new TwigFunction('product_visit_number', array($this, 'product_page_visit_number')));
         $twig->addFunction(new TwigFunction('user_display_name', array($this, 'get_user_display_name')));
         $twig->addFunction(new TwigFunction('recipient_user', array($this, 'get_recipient_user')));
+        $twig->addFunction(new TwigFunction('company_user', array($this, 'get_company_user')));
 
 
         return $twig;
@@ -268,14 +269,20 @@ function get_jalali_date(): string
 
     }
 
-    function get_recipient_user($product_id): string
+    function get_recipient_user($product_id): string // retrieve user for receiving message from product cas-no page
     {
         $company_object = get_field('product_supplier_linked', $product_id);
         $author_object = get_field('p2p_company_user', $company_object[0]->ID);
 
-//        dmp($product_id, 'product-id');
-//        dmp($company_object, 'company-object');
-//        dmp($author_object, 'author-object');
+        if($author_object == null) {
+            return '';
+        } else {
+            return $author_object->user_login;
+        }
+    }
+    function get_company_user($company_id): string
+    {
+        $author_object = get_field('p2p_company_user', $company_id);
 
         if($author_object == null) {
             return '';

@@ -87,7 +87,7 @@
 						} %}
 					</div>
 					<div class="container gx-0 company-single__message">
-{#						{% set companyAuthor = company_author_username(post.ID) %}#}
+						{% set companyAuthor = company_user(post.ID) %}
 						<form class="row company-single__message-form" id="message-form-{{ post.ID }}" action="" method="POST">
 
 							<div class="col-12 mb-4 company-single__message-form-content">
@@ -100,7 +100,7 @@
 							</div>
 
 							<!-- Hidden input for message participants -->
-							<input class="company-single__message-input" type="hidden" id="message-participants" name="message-participants" value="">
+							<input class="company-single__message-input" type="hidden" id="message-participants" name="message-participants" value="{{ companyAuthor }}">
 
 							<input class="company-single__message-input" type="hidden" id="message-company-id" name="message-company-id" value="{{ post.ID }}">
 

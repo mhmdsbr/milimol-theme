@@ -141,6 +141,7 @@
                 <div class="col-md-4">
                     <div class="product-single__sidebar">
                         {% set productSuppliers = post.get_field('product_supplier_linked') %}
+                        {% set productUser = recipient_user(post.ID) %}
                         {% set productIcon = Image(post.product_icon) %}
                         {% for productSupplier in productSuppliers %}
                             {% set supplierIcon = Image(productSupplier.get_field('company_icon')) %}
@@ -178,7 +179,7 @@
                                     </div>
 
                                     <!-- Hidden input for message participants -->
-                                    <input class="company-single__message-input" type="hidden" id="message-participants" name="message-participants" value="">
+                                    <input class="company-single__message-input" type="hidden" id="message-participants" name="message-participants" value="{{ productUser }}">
 
                                     <input class="company-single__message-input" type="hidden" id="message-company-id" name="message-company-id" value="{{ post.ID }}">
 
