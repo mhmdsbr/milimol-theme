@@ -1,6 +1,7 @@
 <?php
 
 
+
 require 'includes/timber.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -32,6 +33,7 @@ new Exp\Core\Login();
 new Exp\Core\Account();
 new Exp\Core\Message();
 new Exp\Core\Shortcodes();
+$dashboardWidget = new Exp\Core\DashboardWidgets();
 
 /** ThirdParty */
 new EXP\ThirdParty\ACF();

@@ -158,4 +158,32 @@ class General
         return $classes;
     }
 
+
+    public static function generate_excerpt($text, $max_words = 20, $append_ellipsis = true): string
+    {
+        // Remove any HTML tags and extra whitespace
+        $text = strip_tags($text);
+        $text = trim(preg_replace('/\s+/', ' ', $text));
+
+        // Split the text into words
+        $words = explode(' ', $text);
+
+        // Ensure the excerpt doesn't exceed the maximum number of words
+        if (count($words) > $max_words) {
+            $words = array_slice($words, 0, $max_words);
+            if ($append_ellipsis) {
+                $excerpt = implode(' ', $words) . '...';
+            } else {
+                $excerpt = implode(' ', $words);
+            }
+        } else {
+            $excerpt = implode(' ', $words);
+        }
+
+        return $excerpt;
+    }
+
+
 }
+
+

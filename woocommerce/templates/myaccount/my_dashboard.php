@@ -1,4 +1,4 @@
-<?php
+<?php  global $dashboardWidget;
 /**
  * My Account Dashboard
  *
@@ -23,3 +23,15 @@ if ( ! defined( 'ABSPATH' ) )
 }
 	?>
 	<h2>به صفحه کاربری خود خوش آمدید.</h2>
+
+    <div class="dashboard__message-notification">
+        <?php $dashboardWidget->render_widget_message_notification(); ?>
+    </div>
+
+    <div class="dashboard__userpanel-advertisement">
+        <?php $dashboardWidget->render_widget_advertisement(); ?>
+    </div>
+
+    <div class="dashboard__userpanel-product-info">
+        <?php $dashboardWidget->render_widget_product_info(); ?>
+    </div>

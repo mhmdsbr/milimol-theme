@@ -25,10 +25,15 @@ $user = wp_get_current_user();
         اطلاعات پایه
     </h3>
 </div>
+<div class="account__userprofile">
+    <?php echo do_shortcode('[avatar_upload user="mhmdsbr"]'); ?>
+</div>
 <div class="account__basic-info-content">
     <form class="account__basic-info-form woocommerce-EditAccountForm edit-account" action="" method="post" <?php do_action( 'woocommerce_edit_account_form_tag' ); ?> >
 
         <?php do_action( 'woocommerce_edit_account_form_start' ); ?>
+
+
 
         <div class="account__basic-info-item account__basic-info-first-name">
             <label for="account_first_name"><?php esc_html_e( 'First name', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>

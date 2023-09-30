@@ -56,5 +56,9 @@ class ArgsGenerator
 
     }
 
+    public function clear_meta_query(): void {
+        $this->metaQuery = [];
+    }
+
 }
 

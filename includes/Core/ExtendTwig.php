@@ -53,6 +53,7 @@ class ExtendTwig
         $twig->addFunction(new TwigFunction('acf_checkbox_field', array($this, 'render_acf_checkbox_field')));
         $twig->addFunction(new TwigFunction('acf_relationship_checkboxes', array($this, 'render_acf_relationship_checkboxes')));
         $twig->addFunction(new TwigFunction('product_visit_number', array($this, 'product_page_visit_number')));
+        $twig->addFunction(new TwigFunction('current_user_login', array($this, 'get_current_user_login')));
         $twig->addFunction(new TwigFunction('user_display_name', array($this, 'get_user_display_name')));
         $twig->addFunction(new TwigFunction('recipient_user', array($this, 'get_recipient_user')));
         $twig->addFunction(new TwigFunction('company_user', array($this, 'get_company_user')));
@@ -266,6 +267,14 @@ function get_jalali_date(): string
         $user_info = $user_id ? new WP_User( $user_id ) : wp_get_current_user();
 
         return $user_info->first_name;
+
+    }
+
+    function get_current_user_login(): string
+    {
+        $user_info = wp_get_current_user();
+
+        return $user_info->user_login;
 
     }
 

@@ -1,4 +1,4 @@
-<?php
+<?php global $dashboardWidget;
 /**
  * My Account navigation
  *
@@ -23,6 +23,7 @@ do_action( 'woocommerce_before_account_navigation' );
 ?>
 
 <nav class="account__nav woocommerce-MyAccount-navigation nav">
+    <?php $dashboardWidget->render_widget_avatar(); ?>
 	<ul>
 		<?php foreach ( wc_get_account_menu_items() as $endpoint => $label ) : ?>
 			<li class="<?php echo wc_get_account_menu_item_classes( $endpoint ); ?>" id="<?php echo $endpoint . '-nav-item'; ?>">
