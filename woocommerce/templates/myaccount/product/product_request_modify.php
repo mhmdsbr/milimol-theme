@@ -81,6 +81,7 @@ if ($cdata_status == 'pending') {
     echo '</div>';
     echo '<div class="account__company-product-new-content">';
 
+
     if(empty($requestId)) {
         $formsetting = [
             'post_id' => 'new_post',
@@ -111,6 +112,13 @@ if ($cdata_status == 'pending') {
 
         ];
     } else {
+
+        $rejection_reason = get_field('rejection_reason_request', $requestId);
+        if(!empty($rejection_reason)) {
+            echo '<div class="account__company-product-reason-rejection">';
+            echo $rejection_reason;
+            echo '</div>';
+        }
         $formsetting = array(
             'post_id' => $requestId,
             'id' => 'cform',

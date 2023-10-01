@@ -26,7 +26,7 @@ $user = wp_get_current_user();
     </h3>
 </div>
 <div class="account__userprofile">
-    <?php echo do_shortcode('[avatar_upload user="mhmdsbr"]'); ?>
+    <?php echo do_shortcode('[avatar_upload]'); ?>
 </div>
 <div class="account__basic-info-content">
     <form class="account__basic-info-form woocommerce-EditAccountForm edit-account" action="" method="post" <?php do_action( 'woocommerce_edit_account_form_tag' ); ?> >

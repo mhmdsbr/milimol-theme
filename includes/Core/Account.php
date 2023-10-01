@@ -17,6 +17,7 @@
  */
 namespace EXP\Core;
 
+use Exp\Core\SmsHandler;
 
 class Account
 {
@@ -295,6 +296,7 @@ class Account
      */
     function my_acf_save_post_callback($post_id): void // about data published
     {
+        global $smsHandler;
 
         if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_64f3496d77597'] == 'publish')
         {
@@ -325,22 +327,35 @@ class Account
         if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'publish')
         {
             $this->publish_product_info($post_id);
+        }
 
+        if (isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'pending')
+        {
+            $product_name = get_field('product_title_draft', $post_id);
+            $adminMessageText = ' ادمین گرامی محصول ' . $product_name . ' با شماره آی دی' . $post_id . ' برای بازبینی ارسال شد' ;
+
+            $smsHandler->clear_all_sms();
+            $smsHandler->add_to_all_sms_for_admin($adminMessageText);
+            $smsHandler->send_to_all();
+        }
+
+        $rejection_reason = get_field('rejection_reason', $post_id);
+        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'draft' && !empty($rejection_reason))
+        {
+            $product_name = get_field('product_title_draft', $post_id);
+            $rejectText = ' کاربر گرامی محصول ' . $product_name . ' برای انتشار در سایت نیاز به بازبینی مجدد دارد. لطفا به پنل خود در میلی مول مراجعه کنید.' ;
+//            render_ob($product_name, 'aaaaaa', true);
+//            render_ob($rejectText, 'aaaaaa', false);
+
+            $smsHandler->clear_all_sms();
+            $smsHandler->add_to_all_sms_by_product_id($rejectText, $post_id);
+            $smsHandler->send_to_all();
         }
 
         if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_650c0c6a4fd03'] == 'publish')
         {
-
             $this->publish_request_info($post_id);
-
         }
-//
-
-//            ob_start();
-//            var_dump($_POST);
-//            $output = ob_get_clean();
-//            ob_end_flush();
-//            update_field('temp', $output, $post_id);
 
         if ((isset($_POST['frontend_acf']) && $_POST['frontend_acf'] == 'product_new') || (isset($_POST['frontend_acf']) && $_POST['frontend_acf'] == 'product_edit' && $_POST['acf']['field_6508127b649a7'] == 'draft'))
         {
@@ -359,6 +374,8 @@ class Account
 
     function publish_basic_info($post_id): void
     {
+        update_field('rejection_reason_basic_info', '', $post_id);
+
         $company_icon = get_field('company_icon_draft', $post_id);
         update_field('company_icon', $company_icon, $post_id);
         //
@@ -408,6 +425,8 @@ class Account
     function publish_content_info($post_id): void
     {
 
+        update_field('rejection_reason_content', '', $post_id);
+
         global $wpdb;
         $result = $wpdb->get_results( "SELECT * FROM `wp_postmeta` WHERE post_id = '{$post_id}' AND meta_key = 'company_map_draft';");
         $serializedData = $result[0]->meta_value;
@@ -432,39 +451,36 @@ class Account
             foreach($company_img_gallery_draft as $item) {
                 $company_gallery_ids[] = $item['company_img_gallery_item'];
             }
-//
-//            ob_start();
-//            var_dump($company_map);
-//            $output = ob_get_clean();
-//            ob_end_flush();
-//            update_field('temp', $output, $post_id);
 
             update_field('company_img_gallery', $company_gallery_ids, $post_id);
         }
-
 
     }
 
     function publish_customers_info($post_id): void
     {
+        update_field('rejection_reason_customer', '', $post_id);
         $company_clients = get_field('company_clients_draft', $post_id);
         update_field('company_clients', $company_clients, $post_id);
     }
 
     function publish_catalog_info($post_id): void
     {
+        update_field('rejection_reason_catalog', '', $post_id);
         $company_catalog = get_field('company_catalog_draft', $post_id);
         update_field('company_catalog', $company_catalog, $post_id);
     }
 
     function publish_documents_info($post_id): void
     {
+        update_field('rejection_reason_document', '', $post_id);
         $company_documents = get_field('company_documents_draft', $post_id);
         update_field('company_documents', $company_documents, $post_id);
     }
 
     function publish_social_info($post_id): void
     {
+        update_field('rejection_reason_social_media', '', $post_id);
         $company_website = get_field('company_website_draft', $post_id);
         update_field('company_website', $company_website, $post_id);
         //
@@ -495,6 +511,9 @@ class Account
 
     function publish_product_info($post_id): void
     {
+        global $smsHandler;
+        update_field('rejection_reason', '', $post_id);
+
         $product_title = get_field('product_title_draft', $post_id);
         $my_post = array(
             'ID'           => $post_id,
@@ -504,17 +523,20 @@ class Account
         //
 
         $product_cas_no = get_field('product_cas_no_draft', $post_id);
-        $term = get_term($product_cas_no, 'product_cas_no');
-        $term_name = $term->name;
         $product_cas_no_new = get_field('product_cas_no_other_draft', $post_id);
+        $term = get_term($product_cas_no, 'product_cas_no');
+
+
         if(!$product_cas_no && !empty($product_cas_no_new)) {
             $newAddedCasID = $this->find_or_insert_category($product_cas_no_new, 'product_cas_no');
             wp_set_post_terms($post_id, [$newAddedCasID], 'product_cas_no', false);
-            update_field('product_cas_no_other_draft', '' ,$post_id);
+
         } else {
-            $changedCasID = $this->find_or_insert_category($term_name, 'product_cas_no');
-            wp_set_post_terms($post_id, [$changedCasID], 'product_cas_no', false);
+            if(!empty($product_cas_no)) {
+                wp_set_post_terms($post_id, [$product_cas_no], 'product_cas_no', false);
+            }
         }
+        update_field('product_cas_no_other_draft', '' ,$post_id);
         //
 
         $product_category = get_field('product_category_draft', $post_id);
@@ -597,10 +619,16 @@ class Account
             update_field('product_unit', $product_unit_draft, $post_id);
         }
 
+        // Send SMS to User
+        $smsHandler->clear_all_sms();
+        $smsHandler->add_to_all_sms_by_product_id('محصول شما منتشر شد', $post_id);
+        $smsHandler->send_to_all();
     }
 
     function publish_request_info($post_id): void
     {
+
+        update_field('rejection_reason_request', '', $post_id);
 
         $request_title = get_field('request_title_draft', $post_id);
         $this->updateTitle($post_id, $request_title);
@@ -648,15 +676,18 @@ class Account
 
     function find_or_insert_category($cat_title, $taxonomy_name)
     {
+
         $term = term_exists( trim($cat_title), $taxonomy_name);
         if ( $term !== 0 && $term !== null ) {
             return $term['term_id'];
         }
         else
         {
+
             $term = wp_insert_term(trim($cat_title), $taxonomy_name, array(
                 'description' => '',
             ));
+
         }
         return $term['term_id'];
     }

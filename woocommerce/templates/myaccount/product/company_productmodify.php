@@ -122,6 +122,8 @@ if ($cdata_status == 'pending') {
     echo '<div class="account__company-product-new-content">';
 
 
+
+
     if(empty($pid)) {
         $formsetting = [
             'post_id' => 'new_post',
@@ -129,7 +131,7 @@ if ($cdata_status == 'pending') {
             'form' => true,
             'new_post' => [
                 'post_type' => 'product',
-                'post_status' => 'publish',
+                'post_status' => 'draft',
             ],
             'post_title' => false,
             'field_groups' => ['1412'],
@@ -169,6 +171,12 @@ if ($cdata_status == 'pending') {
 
         ];
     } else {
+        $rejection_reason = get_field('rejection_reason', $pid);
+        if(!empty($rejection_reason)) {
+            echo '<div class="account__company-product-reason-rejection">';
+            echo $rejection_reason;
+            echo '</div>';
+        }
         $formsetting = array(
             'post_id' => $pid,
             'id' => 'cform',
@@ -210,6 +218,7 @@ if ($cdata_status == 'pending') {
             'submit_value' => __("ذخیره", 'acf'),
         );
 
+
     }
     acf_form($formsetting);
 
@@ -230,5 +239,6 @@ if ($cdata_status == 'pending') {
             }
         });
     });
+
 </script>
 <?php

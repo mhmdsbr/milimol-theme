@@ -1,6 +1,6 @@
 <?php
 /**
- * Avatar Handler
+ * Dashboard Widget Handler
  */
 namespace EXP\Core;
 use EXP\Core\ArgsGenerator;
@@ -16,16 +16,16 @@ class DashboardWidgets
     public function render_widget_avatar(): void
     {
         $user_display_name = $this->current_user->display_name;
-        $user_avatar = get_wp_user_avatar( $this->current_user->ID, 96 );
+        $user_avatar = get_wp_user_avatar( $this->current_user->ID, 100 );
         ?>
 
-        <div class="">
-            <div class="">
+        <div class="account__user">
+            <div class="account__user-avatar">
                 <?php echo $user_avatar; ?>
             </div>
-            <div class="">
-                کاربر گرامی <?php echo $user_display_name; ?> خوش آمدید.
-            </div>
+            <p class="account__user-display-name">
+                کاربر گرامی <strong><?php echo $user_display_name; ?></strong> خوش آمدید.
+            </p>
         </div>
 
         <?php
@@ -87,10 +87,13 @@ class DashboardWidgets
         ?>
 
         <div class="userpanel_product">
+            تعداد کل محصولات ثبت شده
                 <?php echo $total_products; ?>
             <hr>
+            محصولات در حال بررسی
                 <?php echo $products_status_pending_total; ?>
             <hr>
+            محصولات منتشر شده
                 <?php echo $products_status_publish_total; ?>
         </div>
 

@@ -18,6 +18,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 $args = [
     'posts_per_page' => 30,
     'paged' => $paged,
+    'post_status' => ['draft', 'publish'],
     'post_type' => 'product',    
 ];
 $args['meta_query'] = [

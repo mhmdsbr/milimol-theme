@@ -33,6 +33,7 @@ new Exp\Core\Login();
 new Exp\Core\Account();
 new Exp\Core\Message();
 new Exp\Core\Shortcodes();
+$smsHandler = new Exp\Core\SmsHandler();
 $dashboardWidget = new Exp\Core\DashboardWidgets();
 
 /** ThirdParty */
@@ -219,3 +220,65 @@ function dmp($value, $title = null): void
     var_dump($value);
     echo '</pre>';
 }
+
+function render_ob($value, $title = '', $clear = false): void
+{
+    ob_start();
+    dmp($value, $title);
+    $output = ob_get_clean();
+    ob_end_flush();
+    if ($clear === false) {
+        $temp_field = get_field('temp', 'option');
+        $output = $temp_field.'</hr>'.$output;
+    }
+    update_field('temp', $output, 'option');
+
+}
+
+
+// product new status woocommerce
+
+
+add_filter( 'manage_edit-product_columns', 'custom_product_column', 11);
+function custom_product_column($columns): array
+{
+    unset($columns['sku']);
+    unset($columns['price']);
+    unset($columns['is_in_stock']);
+    $new_columns = array();
+    foreach( $columns as $key => $column ){
+        $new_columns[$key] = $column;
+        if( $key === 'name' ) {
+            $new_columns['edit_status'] = __('وضعیت کنونی محصول');
+        }
+    }
+    error_log('Custom column function called'); // Add this line for debugging
+
+    return $new_columns;
+}
+
+function custom_status_column($column, $post_id): void
+{
+    switch ($column) {
+        case 'edit_status':
+             $status = get_field('product_status', $post_id);
+             switch ($status) {
+                 case 'publish';
+                     echo '<span style="width: 100px;">منتشر شده</span>';
+                     break;
+                 case 'draft';
+                    echo 'ذخیره موقت';
+                    break;
+                 case 'pending';
+                    echo 'در حال بررسی';
+                    break;
+             }
+            break;
+    }
+}
+add_action(
+    'manage_product_posts_custom_column',
+    'custom_status_column',
+    10,
+    2
+);

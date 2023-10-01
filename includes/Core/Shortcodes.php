@@ -49,7 +49,8 @@ class Shortcodes
     private function render_woocommerce_form(string $form_class, string $template_path): bool|string
     {
         if ( is_user_logged_in() ) {
-            return '<p>You are already registered</p>';
+            wp_safe_redirect( wc_get_page_permalink( 'myaccount/my_dashboard/' ) );
+            exit;
         } else {
             ob_start();
             do_action( 'woocommerce_before_customer_login_form' );

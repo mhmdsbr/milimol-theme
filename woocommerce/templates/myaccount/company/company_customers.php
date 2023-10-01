@@ -35,6 +35,14 @@ if ($cdata_status == 'pending') {
     echo '<h3 class="account__company-customer-title">مشتریان</h3>';
     echo '</div>';
     echo '<div class="account__company-customer-content">';
+
+    $rejection_reason = get_field('rejection_reason_customer', $com_id);
+    if(!empty($rejection_reason)) {
+        echo '<div class="account__company-product-reason-rejection">';
+        echo $rejection_reason;
+        echo '</div>';
+    }
+
     $formsetting = array(
         'post_id' => $com_id,
         'id' => 'cform',
