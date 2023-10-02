@@ -1,32 +1,5 @@
 {% extends "base.twig" %}
 
-{#{% block content %}#}
-
-{#    {% do action('woocommerce_before_single_product') %}#}
-
-{#    <article itemscope itemtype="http://schema.org/Product" class="single-product-details {{ post.class }}">#}
-
-{#        <div class="entry-images">#}
-{#            {% do action('woocommerce_before_single_product_summary') %}#}
-
-{#            <img src="{{ post.thumbnail.src('shop_single') }}" />#}
-{#        </div>#}
-
-{#        <div class="summary entry-summary">#}
-{#            {% do action('woocommerce_single_product_summary') %}#}
-{#        </div>#}
-
-{#        {% do action('woocommerce_after_single_product_summary') %}#}
-
-{#        <meta itemprop="url" content="{{ post.link }}" />#}
-
-{#    </article>#}
-
-{#    {% include ["tease-product.twig"] with { products: related_products } %}#}
-
-{#    {% do action('woocommerce_after_single_product') %}#}
-
-{#{% endblock  %}#}
 
 {% block content %}
 
@@ -67,7 +40,9 @@
                                             <h4 class="product-single__product-name">{{ post.title }}</h4>
                                             {% set productCasNumbers = post.terms('product_cas_no') %}
                                             {% for productCasNo in productCasNumbers %}
-                                                <p class="product-single__cas_number">{{ 'Cas No: ' ~  productCasNo.name }}</p>
+                                                <a class="product-single__cas-number" href="{{ productCasNo.link }}">
+                                                    <p class="product-single__cas_number">{{ 'Cas No: ' ~  productCasNo.name }}</p>
+                                                </a>
                                             {% endfor %}
                                             <p class="product-single__product_date">{{'تاریخ ثبت: ' ~ english_numbers(post.date('d-m-Y')) }}</p>
                                         </div>

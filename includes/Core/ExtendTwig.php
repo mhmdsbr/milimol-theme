@@ -56,6 +56,7 @@ class ExtendTwig
         $twig->addFunction(new TwigFunction('current_user_login', array($this, 'get_current_user_login')));
         $twig->addFunction(new TwigFunction('user_display_name', array($this, 'get_user_display_name')));
         $twig->addFunction(new TwigFunction('recipient_user', array($this, 'get_recipient_user')));
+        $twig->addFunction(new TwigFunction('recipient_user_request', array($this, 'get_recipient_user_request')));
         $twig->addFunction(new TwigFunction('company_user', array($this, 'get_company_user')));
 
 
@@ -266,7 +267,7 @@ function get_jalali_date(): string
     {
         $user_info = $user_id ? new WP_User( $user_id ) : wp_get_current_user();
 
-        return $user_info->first_name;
+        return $user_info->display_name;
 
     }
 
@@ -289,6 +290,19 @@ function get_jalali_date(): string
             return $author_object->user_login;
         }
     }
+
+    function get_recipient_user_request($request_id): string
+    {
+        $author_id = get_field('user_request_linked', $request_id);
+
+        if($author_id == null) {
+            return '';
+        } else {
+            $user_data = get_userdata($author_id);
+            return $user_data->user_login;
+        }
+    }
+
     function get_company_user($company_id): string
     {
         $author_object = get_field('p2p_company_user', $company_id);

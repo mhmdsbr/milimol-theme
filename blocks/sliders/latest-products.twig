@@ -46,7 +46,7 @@
                                 image : product.image_url.src,
                                 title : product.get_name,
                                 content: productCasNo,
-                                url : get_link(product.ID),
+                                url : product.link,
                                 customClass : ' card--searchedproduct'
                             } %}
                         </div>
@@ -102,7 +102,7 @@
 
                                             {{ check_value('تاریخ انتشار: '  ~ english_numbers(product.post_date|date('d-m-Y')) , 'p', 'product-slider__slide-product-date') }}
                                         </div>
-                                        <a href="{{ product.get_permalink() }}" class="product-slider__slide-product-link"></a>
+                                        <a href="{{ product.link }}" class="product-slider__slide-product-link"></a>
                                     </div>
                                 {% endfor %}
                             {% endif %}

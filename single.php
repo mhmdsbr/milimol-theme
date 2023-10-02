@@ -39,7 +39,6 @@ switch ($postType) {
         $productArray = [];
         foreach ($company_products->posts as $product_post_object) {
             $product = wc_get_product($product_post_object->ID);
-//            var_dump($product);
 
             //Get the image URLs for each latest product
             $product_image_id = $product->get_image_id();

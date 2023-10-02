@@ -62,6 +62,9 @@ class BlockLatestProducts extends Blockable
                     $associated_company = get_field('product_supplier_linked', $product->ID);
                     $product->associated_company = $associated_company;
                 }
+
+                $product_link = get_permalink($product);
+                $product->link = $product_link;
             }
 
             $context['products'] = $selectedProducts;
@@ -92,6 +95,9 @@ class BlockLatestProducts extends Blockable
                 // Get the associated company from the custom ACF relationship field
                 $associated_company = get_field('product_supplier_linked', $product->ID);
                 $product->associated_company = $associated_company;
+
+                $product_link = get_permalink($product);
+                $product->link = $product_link;
             }
 
             $context['products'] = $latest_products;
@@ -130,6 +136,9 @@ class BlockLatestProducts extends Blockable
                 // Get the associated company from the custom ACF relationship field
                 $associated_company = get_field('product_supplier_linked', $product->get_id());
                 $product->associated_company = $associated_company;
+
+                $product_link = $product->get_permalink();
+                $product->link = $product_link;
             }
 
             $context['products'] = $most_searched_products;
