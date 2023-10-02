@@ -64,10 +64,11 @@
                                 {% for product in products %}
                                     <div class="swiper-slide product-slider__slide">
                                         <div class="product-slider__slide-product-header">
-                                            {% if product.image_url %}
+                                            {% set productImage = Image(product) %}
+                                            {% if productImage %}
                                                 <img class="product-slider__slide-product-image"
-                                                     src="{{ product.image_url.src }}"
-                                                     srcset="{{ product.image_url.srcset }}"
+                                                     src="{{ productImage.src }}"
+                                                     srcset="{{ productImage.srcset }}"
                                                      alt="{{ product.get_title }}"
                                                      title="{{ product.thumbnail.title }}"
                                                      loading="lazy"
@@ -81,7 +82,7 @@
                                                 </div>
                                             {% endif %}
 
-                                            {{ check_value(product.get_name, 'p', 'product-slider__slide-product-name') }}
+                                            {{ check_value(product.post_title, 'p', 'product-slider__slide-product-name') }}
 
                                             {% if product.product_cat %}
                                                 {% for category in product.product_cat|slice(0,1) %}

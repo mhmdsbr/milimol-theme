@@ -67,21 +67,22 @@ class DashboardWidgets
 
     public function render_widget_product_info(): void
     {
+        global $argsGenerator;
         $com_obj = get_field('p2p_user_company', 'user_' . $this->current_user->ID);
         $com_id = $com_obj[0]->ID;
-        $args_generator = new ArgsGenerator('product', -1);
-        $args_generator->add_meta_query('product_supplier_linked', '"' .$com_id . '"', 'LIKE');
-        $products = new \WP_Query($args_generator->generate_arguments());
+        $argsGenerator->reset('product', -1);
+        $argsGenerator->add_meta_query('product_supplier_linked', '"' .$com_id . '"', 'LIKE');
+        $products = new \WP_Query($argsGenerator->generate_arguments());
         $total_products = $products->found_posts;
 
-        $args_generator->add_meta_query('product_status', 'pending', '=');
-        $products_status_pending = new \WP_Query($args_generator->generate_arguments());
+        $argsGenerator->add_meta_query('product_status', 'pending', '=');
+        $products_status_pending = new \WP_Query($argsGenerator->generate_arguments());
         $products_status_pending_total = $products_status_pending->found_posts;
 
-        $args_generator->clear_meta_query();
-        $args_generator->add_meta_query('product_supplier_linked', '"' .$com_id . '"', 'LIKE');
-        $args_generator->add_meta_query('product_status', 'publish', '=');
-        $products_status_publish = new \WP_Query($args_generator->generate_arguments());
+        $argsGenerator->clear_meta_query();
+        $argsGenerator->add_meta_query('product_supplier_linked', '"' .$com_id . '"', 'LIKE');
+        $argsGenerator->add_meta_query('product_status', 'publish', '=');
+        $products_status_publish = new \WP_Query($argsGenerator->generate_arguments());
         $products_status_publish_total = $products_status_publish->found_posts;
 
         ?>

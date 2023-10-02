@@ -43,7 +43,7 @@ class BlockRequestsSlider extends Blockable
 
         $context['requests'] = Timber::get_posts([
             'post_type' => 'request',
-            'posts_per_page' => -1,
+            'posts_per_page' => 10,
             'post_status' => 'publish',
             'post__in' => $collectRequests,
         ]);

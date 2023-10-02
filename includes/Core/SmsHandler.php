@@ -35,7 +35,6 @@ class SmsHandler
     {
         foreach ($this->all_sms as $singleSms) {
             $sms = SMSIRAppClass::sendBulkSMS($singleSms['text'], [$singleSms['mobile']]);
-            render_ob($sms, 'sms', true);
         }
     }
 
@@ -77,6 +76,12 @@ class SmsHandler
             $user_object = get_field('p2p_company_user', $company_object[0]->ID);
             $this->add_to_all_sms_by_user_id($text, $user_object->ID);
         }
+    }
+
+    public function add_to_all_sms_by_request_id($text, $request_id): void
+    {
+        $user_request_linked = get_field('user_request_linked', $request_id);
+        $this->add_to_all_sms_by_user_id($text, $user_request_linked);
     }
 
     public function add_to_all_sms_by_company_id($text, $company_id): void

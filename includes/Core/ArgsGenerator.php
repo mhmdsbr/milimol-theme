@@ -8,13 +8,13 @@ namespace EXP\Core;
 
 class ArgsGenerator
 {
-    private string $postTypes = 'post';
+    private string $postType = 'post';
     private int $postsPerPage = -1;
     private array $taxQuery = [];
     private array $metaQuery = [];
-    public function __construct($postTypes, $postsPerPage)
+    public function __construct($postType, $postsPerPage)
     {
-        $this->postTypes = $postTypes;
+        $this->postType = $postType;
         $this->postsPerPage = $postsPerPage;
     }
 
@@ -47,7 +47,7 @@ class ArgsGenerator
     {
 
         $finalArgs = [];
-        $finalArgs['post_type'] = $this->postTypes;
+        $finalArgs['post_type'] = $this->postType;
         $finalArgs['posts_per_page'] = $this->postsPerPage;
         $finalArgs['tax_query'] = $this->taxQuery;
         $finalArgs['meta_query'] = $this->metaQuery;
@@ -60,5 +60,11 @@ class ArgsGenerator
         $this->metaQuery = [];
     }
 
+    public function reset($post_type, $posts_per_page): void {
+
+        $this->postType = $post_type;
+        $this->postsPerPage = $posts_per_page;
+
+    }
 }
 

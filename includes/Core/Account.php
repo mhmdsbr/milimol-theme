@@ -329,6 +329,13 @@ class Account
             $this->publish_product_info($post_id);
         }
 
+        if ((isset($_POST['frontend_acf']) && $_POST['frontend_acf'] == 'product_new') || (isset($_POST['frontend_acf']) && $_POST['frontend_acf'] == 'product_edit' && $_POST['acf']['field_6508127b649a7'] == 'draft'))
+        {
+            $product_title = get_field('product_title_draft', $post_id);
+            $this->updateTitle($post_id, $product_title);
+            //
+        }
+
         if (isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'pending')
         {
             $product_name = get_field('product_title_draft', $post_id);
@@ -339,17 +346,19 @@ class Account
             $smsHandler->send_to_all();
         }
 
-        $rejection_reason = get_field('rejection_reason', $post_id);
-        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'draft' && !empty($rejection_reason))
+        $rejection_reason_product = get_field('rejection_reason', $post_id);
+        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'draft' && !empty($rejection_reason_product))
         {
             $product_name = get_field('product_title_draft', $post_id);
             $rejectText = ' کاربر گرامی محصول ' . $product_name . ' برای انتشار در سایت نیاز به بازبینی مجدد دارد. لطفا به پنل خود در میلی مول مراجعه کنید.' ;
-//            render_ob($product_name, 'aaaaaa', true);
-//            render_ob($rejectText, 'aaaaaa', false);
 
-            $smsHandler->clear_all_sms();
-            $smsHandler->add_to_all_sms_by_product_id($rejectText, $post_id);
-            $smsHandler->send_to_all();
+            $is_send_sms_rejection_notification = get_field('is_send_sms_product_notification', $post_id);
+            if($is_send_sms_rejection_notification) {
+                $smsHandler->clear_all_sms();
+                $smsHandler->add_to_all_sms_by_product_id($rejectText, $post_id);
+                $smsHandler->send_to_all();
+                update_field('is_send_sms_product_notification', false, $post_id);
+            }
         }
 
         if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_650c0c6a4fd03'] == 'publish')
@@ -357,11 +366,19 @@ class Account
             $this->publish_request_info($post_id);
         }
 
-        if ((isset($_POST['frontend_acf']) && $_POST['frontend_acf'] == 'product_new') || (isset($_POST['frontend_acf']) && $_POST['frontend_acf'] == 'product_edit' && $_POST['acf']['field_6508127b649a7'] == 'draft'))
+        $rejection_reason_request = get_field('rejection_reason_request', $post_id);
+        if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_650c0c6a4fd03'] == 'draft' && !empty($rejection_reason_request))
         {
-            $product_title = get_field('product_title_draft', $post_id);
-            $this->updateTitle($post_id, $product_title);
-            //
+            $request_name = get_field('request_title_draft', $post_id);
+            $rejectText = ' کاربر گرامی درخواست ' . $request_name . ' برای انتشار در سایت نیاز به بازبینی مجدد دارد. لطفا به پنل خود در میلی مول مراجعه کنید.' ;
+
+            $is_send_sms_rejection_notification = get_field('is_send_sms_request_notification', $post_id);
+            if($is_send_sms_rejection_notification) {
+                $smsHandler->clear_all_sms();
+                $smsHandler->add_to_all_sms_by_request_id($rejectText, $post_id);
+                $smsHandler->send_to_all();
+                update_field('is_send_sms_request_notification', false, $post_id);
+            }
         }
 
         if ((isset($_POST['frontend_acf']) && $_POST['frontend_acf'] == 'new') || (isset($_POST['frontend_acf']) && $_POST['frontend_acf'] == 'edit' && $_POST['acf']['field_650c0c6a4fd03'] == 'draft'))
@@ -432,7 +449,6 @@ class Account
         $serializedData = $result[0]->meta_value;
         $unserializedData = unserialize($serializedData);
         update_post_meta($post_id, 'company_map', $unserializedData);
-//
 
         //
         $company_video_id = get_field('company_video_id_draft', $post_id);
@@ -627,6 +643,7 @@ class Account
 
     function publish_request_info($post_id): void
     {
+        global $smsHandler;
 
         update_field('rejection_reason_request', '', $post_id);
 
@@ -661,7 +678,11 @@ class Account
             $changedCasID = $this->find_or_insert_category($term_name, 'request_cas_no');
             wp_set_post_terms($post_id, [$changedCasID], 'request_cas_no', false);
         }
-//
+
+        // Send SMS to User
+        $smsHandler->clear_all_sms();
+        $smsHandler->add_to_all_sms_by_request_id('درخواست شما منتشر شد', $post_id);
+        $smsHandler->send_to_all();
 
     }
 
@@ -676,18 +697,15 @@ class Account
 
     function find_or_insert_category($cat_title, $taxonomy_name)
     {
-
         $term = term_exists( trim($cat_title), $taxonomy_name);
         if ( $term !== 0 && $term !== null ) {
             return $term['term_id'];
         }
         else
         {
-
             $term = wp_insert_term(trim($cat_title), $taxonomy_name, array(
                 'description' => '',
             ));
-
         }
         return $term['term_id'];
     }

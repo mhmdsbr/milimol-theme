@@ -37,76 +37,60 @@ class BlockLatestProducts extends Blockable
         $context['fields'] = get_fields();
         $context['is_preview'] = $is_preview;
 
+        $is_show_product = $context['fields']['is_show_product'];
+
         // Check if selected products are available in the block fields
-        if (!empty($context['fields']['selected_products'])) {
-            $selectedProductIDs = $context['fields']['selected_products'];
+        if ($is_show_product == 'select_product') {
 
-            $selected_products = array();
+            $selectedProducts = $context['fields']['selected_products'];
+            foreach ($selectedProducts as $product) {
 
-            foreach ($selectedProductIDs as $productID) {
-                $product = wc_get_product($productID);
-
-                // Get the image URLs for each selected product
+                $productID = $product->ID; // Get the product ID
                 if ($product) {
-                    $product_image_id = $product->get_image_id();
-                    if ($product_image_id) {
-                        $product_image = new Image($product_image_id);
-                        $product->image_url = $product_image;
-                    }
 
+                    // Get the image URLs for each selected product
                     $product_categories = get_the_terms($productID, 'product_cat');
                     $product->product_cat = $product_categories;
-                    $selected_products[] = $product;
 
                     $product_cas_no = get_the_terms($productID, 'product_cas_no');
                     $product->product_cat_cas = $product_cas_no;
-                    $selected_products[] = $product;
 
-                    $product_purity = get_field('product_purity', $product->get_id());
+                    $product_purity = get_field('product_purity', $product->ID);
                     $product->product_purity = $product_purity;
-                    $selected_products[] = $product;
 
                     // Get the associated company from the custom ACF relationship field
-                    $associated_company = get_field('product_supplier_linked', $product->get_id());
+                    $associated_company = get_field('product_supplier_linked', $product->ID);
                     $product->associated_company = $associated_company;
                 }
             }
 
-            $context['products'] = $selected_products;
+            $context['products'] = $selectedProducts;
 
-        } elseif (!empty($context['fields']['latest_product'])) {
+        } elseif ($is_show_product == 'latest_product') {
             // If no selected products, get the latest 6 WooCommerce products
             $args_latest = array(
                 'post_type' => 'product',
                 'status' => 'publish',
                 'orderby' => 'date',
                 'order' => 'DESC',
-                'posts_per_page' => 10, // Display 10 latest products
+                'posts_per_page' => 8, // Display 10 latest products
             );
-
-            $latest_products = wc_get_products($args_latest);
+            $latest_products = get_posts($args_latest);
 
             foreach ($latest_products as $product) {
 
-                // Get the image URLs for each latest product
-                $product_image_id = $product->get_image_id();
-                if ($product_image_id) {
-                    $product_image = new Image($product_image_id);
-                    $product->image_url = $product_image;
-                }
-
-                $product_categories = get_the_terms($product->get_id(), 'product_cat');
+                $product_categories = get_the_terms($product->ID, 'product_cat');
                 $product->product_cat = $product_categories;
 
-                $product_cas_no = get_the_terms($product->get_id(), 'product_cas_no');
+                $product_cas_no = get_the_terms($product->ID, 'product_cas_no');
                 $product->product_cat_cas = $product_cas_no;
 
 
-                $product_purity = get_field('product_purity', $product->get_id());
+                $product_purity = get_field('product_purity', $product->ID);
                 $product->product_purity = $product_purity;
 
                 // Get the associated company from the custom ACF relationship field
-                $associated_company = get_field('product_supplier_linked', $product->get_id());
+                $associated_company = get_field('product_supplier_linked', $product->ID);
                 $product->associated_company = $associated_company;
             }
 
