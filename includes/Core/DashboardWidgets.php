@@ -56,11 +56,7 @@ class DashboardWidgets
     {
         $ad_url = get_field('userpanel_ad', 'option')
         ?>
-
-        <div class="userpanel_ad">
             <img src="<?php echo $ad_url; ?>" alt="" />
-        </div>
-
         <?php
 
     }
@@ -86,18 +82,9 @@ class DashboardWidgets
         $products_status_publish_total = $products_status_publish->found_posts;
 
         ?>
-
-        <div class="userpanel_product">
-            تعداد کل محصولات ثبت شده
-                <?php echo $total_products; ?>
-            <hr>
-            محصولات در حال بررسی
-                <?php echo $products_status_pending_total; ?>
-            <hr>
-            محصولات منتشر شده
-                <?php echo $products_status_publish_total; ?>
-        </div>
-
+        <p>شما در حال حاضر <?php echo $total_products; ?> محصول ثبت شده دارید. </p>
+        <p> <?php echo $products_status_pending_total; ?> محصول در حال بررسی برای انتشار نهایی میباشد.</p>
+        <p> <?php echo $products_status_publish_total; ?> محصول در حال حاضر با موفقیت منتشر شده است.</p>
         <?php
 
     }

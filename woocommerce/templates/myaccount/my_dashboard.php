@@ -24,18 +24,33 @@ if ( ! defined( 'ABSPATH' ) )
 	?>
 
     <div class="dashboard-widgets">
-
-        <h2 class="dashboard-widget__title">پیشخوان</h2>
-
-        <div class="dashboard__message-notification">
-            <?php $dashboardWidget->render_widget_message_notification(); ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="dashboard-widgets__title">پیشخوان</h3>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="dashboard-widgets__message-notification">
+                        <h4 class="dashboard-widgets__message-title">
+                            وضعیت پیام ها
+                        </h4>
+                        <?php $dashboardWidget->render_widget_message_notification(); ?>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="dashboard-widgets__product-info">
+                        <h4 class="dashboard-widgets__message-title">
+                            وضعیت محصولات
+                        </h4>
+                        <?php $dashboardWidget->render_widget_product_info(); ?>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="dashboard-widgets__advertisement">
+                        <?php $dashboardWidget->render_widget_advertisement(); ?>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="dashboard__userpanel-advertisement">
-            <?php $dashboardWidget->render_widget_advertisement(); ?>
-        </div>
-
-        <div class="dashboard__userpanel-product-info">
-            <?php $dashboardWidget->render_widget_product_info(); ?>
-        </div>
     </div>
