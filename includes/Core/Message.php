@@ -5,6 +5,7 @@
 namespace EXP\Core;
 
 
+use JetBrains\PhpStorm\NoReturn;
 use WP_User_Query;
 use WPMailSMTP\Admin\Pages\VersusTab;
 
@@ -17,6 +18,18 @@ class Message
 
         add_action('wp_ajax_mili_message', [&$this, 'mili_message_callback']);
         add_action('wp_ajax_nopriv_mili_message', [&$this, 'mili_message_callback']);
+
+        // Add the AJAX action hook for checking user login status
+        add_action('wp_ajax_check_user_logged_in', [&$this, 'check_user_logged_in']);
+        add_action('wp_ajax_nopriv_check_user_logged_in', [&$this, 'check_user_logged_in']); // Allow non-logged-in users to check as well
+
+
+    }
+
+    #[NoReturn] function check_user_logged_in(): void
+    {
+        echo is_user_logged_in() ? 'yes' : 'no';
+        die();
     }
 
 // send message ajax
@@ -57,18 +70,12 @@ class Message
 
         global $wpdb;
 
+
         if ($productId !== null) {
             $product_object = wc_get_product($productId);
             $product_name = $product_object->name;
             $message = '<h5 class="message-product-name">این پیام برای محصول <span>' . $product_name . '</span> می باشد.</h5>' . $message;
 
-            // Output the raw data for debugging.
-            ob_start();
-            dmp($product_object);
-            dmp($productId, 'ID');
-            $output = ob_get_clean();
-            ob_end_flush();
-            update_field('temp', $output, 'option');
         }
 
 
@@ -140,7 +147,7 @@ class Message
         $current_user = wp_get_current_user();
 
         // Check if the 'message_subject', 'message_body', and 'message_participants' fields exist in the POST data
-        if (isset($_POST['message_subject'], $_POST['message_body'], $_POST['message_participants'], $_POST['message_company_id'])) {
+        if (!empty($_POST['message_subject']) && !empty($_POST['message_body']) && !empty($_POST['message_participants']) && !empty($_POST['message_company_id'])) {
             $message_subject = sanitize_text_field($_POST['message_subject']);
             $message_body = sanitize_text_field($_POST['message_body']);
             $message_participants = sanitize_text_field($_POST['message_participants']);
@@ -171,8 +178,6 @@ class Message
             } else {
                 $this->mili_message_send_single($message_subject, $message_body, $message_participants);
             }
-
-
 
             // Respond with a success message
             wp_send_json(array('success' => true, 'message' => 'Message sent successfully.'));

@@ -52,7 +52,7 @@
 
                             {{ check_value('تاریخ انتشار: '  ~ english_numbers(product.post_date|date('d-m-Y')) , 'p', 'related-product-slider__product-publish-date') }}
                         </div>
-                        <a href="{{ product.get_permalink() }}" class="related-product-slider__product-link"></a>
+                        <a href="{{ product.product_link }}" class="related-product-slider__product-link"></a>
                     </div>
                 {% endfor %}
             </div>

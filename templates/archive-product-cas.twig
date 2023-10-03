@@ -1,7 +1,13 @@
 {% extends 'base.twig' %}
 
 {% block content %}
-
+    {% include "partial/button.twig" with {
+        url : '#',
+        title : 'ارسال پیام گروهی',
+        class : 'btn--primary archive-product__message-group-button',
+        icon : 'paperplane',
+        id : 'show-message-form-button',
+    } %}
     <header class="archive-product__category-content">
         <div class="archive-product__category-head">
             <div class="container">

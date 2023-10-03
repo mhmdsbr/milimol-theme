@@ -47,6 +47,9 @@ switch ($postType) {
                 $product->image_url = $product_image;
             }
 
+            $product_link = $product->get_permalink();
+            $product->product_link = $product_link;
+
             $product_categories = get_the_terms($product->get_id(), 'product_cat');
             $product->product_cat = $product_categories;
 
@@ -84,6 +87,17 @@ switch ($postType) {
         $context['company_gallery_img_urls'] = $company_gallery_img_urls;
 
         break;
+
+    case 'request':
+
+        $terms = wp_get_post_terms($timber_post->ID, 'request_cas_no', array("fields" => "all"));
+        foreach ($terms as $term) {
+            $request_cas_no = $term->name;
+        }
+        $context['requestCas'] = $request_cas_no;
+
+        break;
+
 
 }
 

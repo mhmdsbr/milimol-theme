@@ -3,29 +3,29 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <button class="btn btn-primary">ارسال پیام به چند شرکت</button>
-                </div>
-                <div class="col-12">
-                    <form class="row company-single__message-form" id="message-form-{{ post.ID }}" action="" method="POST">
+                    <div id="group-message-modal" class="group-message-modal">
+                        <div class="message-modal-content">
+                            <form class="row single__message-form" id="message-form-{{ post.ID }}" action="" method="POST">
+                                <div class="col-12 mb-4 single__message-form-content">
+                                    <label for="message-subject">موضوع: </label>
+                                    <input class="single__message-input" type="text" id="message-subject" name="subject" required placeholder="عنوان پیام را وارد کنید." {{ is_logged_in() ? '' : 'disabled' }} >
+                                </div>
+                                <div class="col-12 mb-4 single__message-form-content">
+                                    <label for="message-body">توضیحات: </label>
+                                    <textarea {{ is_logged_in() ? '' : 'disabled' }}  class="single__message-input" id="message-body" name="message-body" rows="5" required placeholder="لطفا محتوای پیام خود را وارد کنید." ></textarea>
+                                </div>
 
-                        <div class="col-12 mb-4 company-single__message-form-content">
-                            <label for="message-subject">موضوع: </label>
-                            <input class="company-single__message-input" type="text" id="message-subject" name="subject" required placeholder="عنوان پیام را وارد کنید." {{ is_logged_in() ? '' : 'disabled' }} >
+                                <!-- Hidden input for message participants -->
+                                <input class="single__message-input" type="hidden" id="message-participants" name="message-participants" value="">
+
+                                <input class="single__message-input" type="hidden" id="message-product-ids" name="message-product-ids" value="">
+
+                                <input class="single__message-input" type="hidden" id="message-company-id" name="message-company-id" value="{{ post.ID }}">
+
+                                <button id="send-selected-users-button" class="single__message-submit message-sent-submit" type="submit">ارسال پیام به شرکت های انتخاب شده</button>
+                            </form>
                         </div>
-                        <div class="col-12 mb-4 company-single__message-form-content">
-                            <label for="message-body">توضیحات: </label>
-                            <textarea {{ is_logged_in() ? '' : 'disabled' }}  class="company-single__message-input" id="message-body" name="message-body" rows="5" required placeholder="لطفا محتوای پیام خود را وارد کنید." ></textarea>
-                        </div>
-
-                        <!-- Hidden input for message participants -->
-                        <input class="company-single__message-input" type="hidden" id="message-participants" name="message-participants" value="">
-
-                        <input class="company-single__message-input" type="hidden" id="message-product-ids" name="message-product-ids" value="">
-
-                        <input class="company-single__message-input" type="hidden" id="message-company-id" name="message-company-id" value="{{ post.ID }}">
-
-                        <button id="send-selected-users-button" class="company-single__message-submit message-sent-submit" type="submit">ارسال</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -132,6 +132,12 @@
                     {% set productIcon = Image(post.product_icon) %}
                     {% for productSupplier in productSuppliers %}
                         {% set supplierIcon = Image(productSupplier.get_field('company_icon')) %}
+                        {% if productUser != current_user_login() %}
+                            <div class="archive-product__select-checkbox">
+                                <label for="select-product-{{ post.ID }}">انتخاب شرکت</label>
+                                <input class="select-company-message" type="checkbox" id="select-product-{{ post.ID }}" name="company-cas-select" value="{{ post.ID }}" data-userauthor="{{ productUser }}" />
+                            </div>
+                        {% endif %}
                         <div class="archive-product__supplier-icon">
                             <img src="{{ supplierIcon.src }}"
                                  srcset="{{ supplierIcon.srcset }}"
@@ -155,16 +161,12 @@
                         <div class="archive-product__contact-btn">
                             {% include "partial/button.twig" with {
                                 url : is_logged_in() ? '/my-account/message_management/?fepaction=newmessage&recipient=' ~ productUser : '/register',
-                                title : 'ارسال پیام',
+                                title : 'ارسال پیام به شرکت',
                                 target : fields.button.target,
                                 class : 'btn--primary product-single__button',
                                 icon : 'envelope'
                             } %}
-                            {% if productUser != current_user_login() %}
-                                <div class="archive-product__select-checkbox">
-                                    <input class="select-company-message" type="checkbox" id="select-product-{{ post.ID }}" name="company-cas-select" value="{{ post.ID }}" data-userauthor="{{ productUser }}" />
-                                </div>
-                            {% endif %}
+
                         </div>
                         <div class="archive-product__supplier-gallery">
                             {% set companyImgGallery = Image(productSupplier.get_field('company_reward')) %}
@@ -181,7 +183,7 @@
                         </div>
                         <div class="archive-product__company-products-btn">
                             {% include "partial/button.twig" with {
-                                url : productSupplier.permalink,
+                                url : productSupplier.link,
                                 title : 'همه محصولات تامین کننده',
                                 target : fields.button.target,
                                 class : 'btn--primary product-single__button',

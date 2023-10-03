@@ -23,7 +23,7 @@
 
                                 <div class="header__cta">
                                     {% include "partial/button.twig" with {
-                                        url : item.link,
+                                        url : is_logged_in() ? '/my-account/product_request_modify/' : '/register',
                                         title : 'درخواست خرید',
                                         class : 'btn--buy-request',
                                         icon : 'chemistry'
@@ -74,7 +74,7 @@
 
                                 <div class="header__cta">
                                     {% include "partial/button.twig" with {
-                                        url : item.link,
+                                        url : is_logged_in() ? '/my-account/product_request_modify/' : '/register',
                                         title : 'درخواست خرید',
                                         class : 'btn--buy-request',
                                         icon : 'chemistry'
@@ -136,7 +136,7 @@
 
                                 <div class="header__cta">
                                     {% include "partial/button.twig" with {
-                                        url : item.link,
+                                        url : is_logged_in() ? '/my-account/product_request_modify/' : '/register',
                                         title : 'درخواست خرید',
                                         class : 'btn--buy-request',
                                         icon : 'chemistry'
@@ -189,7 +189,7 @@
 
                                 <div class="header__cta">
                                     {% include "partial/button.twig" with {
-                                        url : item.link,
+                                        url : is_logged_in() ? '/my-account/product_request_modify/' : '/register',
                                         title : 'درخواست خرید',
                                         class : 'btn--buy-request',
                                         icon : 'chemistry'

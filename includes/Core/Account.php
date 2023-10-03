@@ -655,11 +655,11 @@ class Account
         //
 
         $request_purity = get_field('request_purity_draft', $post_id);
-        update_field('request_purity', $request_description, $post_id);
+        update_field('request_purity', $request_purity, $post_id);
         //
 
-        $request_duration = get_field('request_duration_draft', $post_id);
-        update_field('request_duration', $request_duration, $post_id);
+        $request_duration = get_field('expire_duration_draft', $post_id);
+        update_field('expire_duration', $request_duration, $post_id);
         //
 
         $request_weight = get_field('request_weight_draft', $post_id);
@@ -673,6 +673,7 @@ class Account
         if(!$request_cas_no_id && !empty($request_cas_no_id_new)) {
             $newAddedCasID = $this->find_or_insert_category($request_cas_no_id_new, 'request_cas_no');
             wp_set_post_terms($post_id, [$newAddedCasID], 'request_cas_no', false);
+            update_field('cas_number_draft', $newAddedCasID ,$post_id);
             update_field('cas_number_other_draft', '' ,$post_id);
         } else {
             $changedCasID = $this->find_or_insert_category($term_name, 'request_cas_no');

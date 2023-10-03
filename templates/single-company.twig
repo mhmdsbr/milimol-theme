@@ -86,25 +86,26 @@
 							icon : 'phone'
 						} %}
 					</div>
-					<div class="container gx-0 company-single__message">
+					<div class="container gx-0 single__message">
 						{% set companyAuthor = company_user(post.ID) %}
-						<form class="row company-single__message-form" id="message-form-{{ post.ID }}" action="" method="POST">
+						<form class="row single__message-form" id="message-form-{{ post.ID }}" action="" method="POST">
 
-							<div class="col-12 mb-4 company-single__message-form-content">
+							<div class="col-12 mb-4 single__message-form-content">
 								<label for="message-subject">موضوع: </label>
-								<input class="company-single__message-input" type="text" id="message-subject" name="subject" required placeholder="عنوان پیام را وارد کنید." {{ is_logged_in() ? '' : 'disabled' }} >
+								<input class="single__message-input" type="text" id="message-subject" name="subject" required placeholder="عنوان پیام را وارد کنید." {{ is_logged_in() ? '' : 'disabled' }}
+								{{ current_user_login() == companyAuthor ? 'disabled' : '' }} >
 							</div>
-							<div class="col-12 mb-4 company-single__message-form-content">
+							<div class="col-12 mb-4 single__message-form-content">
 								<label for="message-body">توضیحات: </label>
-								<textarea {{ is_logged_in() ? '' : 'disabled' }}  class="company-single__message-input" id="message-body" name="message-body" rows="5" required placeholder="لطفا محتوای پیام خود را وارد کنید." ></textarea>
+								<textarea {{ is_logged_in() ? '' : 'disabled' }} {{ current_user_login() == companyAuthor ? 'disabled' : '' }} class="single__message-input" id="message-body" name="message-body" rows="5" required placeholder="لطفا محتوای پیام خود را وارد کنید." ></textarea>
 							</div>
 
 							<!-- Hidden input for message participants -->
-							<input class="company-single__message-input" type="hidden" id="message-participants" name="message-participants" value="{{ companyAuthor }}">
+							<input class="single__message-input" type="hidden" id="message-participants" name="message-participants" value="{{ companyAuthor }}">
 
-							<input class="company-single__message-input" type="hidden" id="message-company-id" name="message-company-id" value="{{ post.ID }}">
+							<input class="single__message-input" type="hidden" id="message-company-id" name="message-company-id" value="{{ post.ID }}">
 
-							<button class="company-single__message-submit message-sent-submit" type="submit">ارسال</button>
+							<button {{ current_user_login() == companyAuthor ? 'disabled' : '' }} class="single__message-submit message-sent-submit" type="submit">ارسال</button>
 						</form>
 					</div>
 					<div class="company-single__image-gallery">
@@ -230,6 +231,7 @@
 					{% set relatedProducts = [] %}
 					{% for product in products %}
 						{% set productsImg =  product.image_url %}
+						{% set productLink = product.product_link %}
 						{% set productsName =  product.get_name %}
 						{% set productsCat =  product.product_cat|slice(0,1) %}
 						{% set productsCatCas =  product.product_cat_cas %}
@@ -242,6 +244,7 @@
 							'product_cat' : productsCat,
 							'product_cat_cas' : productsCatCas,
 							'product_purity' : productsPurity,
+							'product_link' : productLink,
 						}]) %}
 					{% endfor %}
 					{% include 'blocks/sliders/related-products-slider.twig' with {

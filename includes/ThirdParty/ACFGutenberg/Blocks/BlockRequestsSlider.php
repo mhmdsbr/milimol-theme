@@ -39,18 +39,24 @@ class BlockRequestsSlider extends Blockable
         $context['is_preview'] = $is_preview;
         $context['post_fields'] = get_fields($timber_post);
 
-        $collectRequests = [];
 
-        $context['requests'] = Timber::get_posts([
+        $args_latest = array(
             'post_type' => 'request',
-            'posts_per_page' => 10,
-            'post_status' => 'publish',
-            'post__in' => $collectRequests,
-        ]);
+            'status' => 'publish',
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'posts_per_page' => 10, // Display 10 latest products
+        );
+        $latest_requests = get_posts($args_latest);
 
-        if (empty($context['requests'])) {
-            return;
+        foreach ($latest_requests as $request) {
+
+            $request_cas_no = get_the_terms($request->ID, 'request_cas_no');
+            $request->request_cat_cas = $request_cas_no;
+
         }
+        $context['requests'] = $latest_requests;
+
         Timber::render('blocks/sliders/requests-slider.twig', $context);
     }
 }
