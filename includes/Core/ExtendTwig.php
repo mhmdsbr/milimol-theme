@@ -44,6 +44,7 @@ class ExtendTwig
         $twig->addFunction(new TwigFunction('is_logged_in', array($this, 'is_user_logged_in')));
         $twig->addFunction(new TwigFunction('get_value', array($this, 'check_get')));
         $twig->addFunction(new TwigFunction('is_home', array($this, 'is_home')));
+        $twig->addFunction(new TwigFunction('is_shop', array($this, 'is_shop')));
         $twig->addFunction(new TwigFunction('user_logout', array($this, 'get_wc_logout_url')));
         $twig->addFunction(new TwigFunction('jalali_date', array($this, 'get_jalali_date')));
         $twig->addFunction(new TwigFunction('expiry_date', array($this, 'get_jalali_expiry_date')));
@@ -161,17 +162,22 @@ class ExtendTwig
         }
     }
 
-    public function is_home( )
+    public function is_home( ): bool
     {
         return is_front_page();
     }
 
-function get_jalali_date(): string
-{
-    return Jalalian::now()->format('Y-m-d');
-}
+    public function is_shop( ): bool
+    {
+        return is_shop();
+    }
 
-// Calculate Jalali expiry date based on published date and ACF field
+    function get_jalali_date(): string
+    {
+        return Jalalian::now()->format('Y-m-d');
+    }
+
+    // Calculate Jalali expiry date based on published date and ACF field
     function get_jalali_expiry_date($publishedDate, $expiryDuration)
     {
         $now = Jalalian::now()->format('Y-m-d');

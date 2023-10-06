@@ -637,7 +637,7 @@ class Account
 
         // Send SMS to User
         $smsHandler->clear_all_sms();
-        $smsHandler->add_to_all_sms_by_product_id('محصول شما منتشر شد', $post_id);
+        $smsHandler->add_to_all_sms_by_product_id('محصول شما در پلتفرم میلی مول منتشر شد', $post_id);
         $smsHandler->send_to_all();
     }
 
@@ -682,7 +682,7 @@ class Account
 
         // Send SMS to User
         $smsHandler->clear_all_sms();
-        $smsHandler->add_to_all_sms_by_request_id('درخواست شما منتشر شد', $post_id);
+        $smsHandler->add_to_all_sms_by_request_id('درخواست شما در پلتفرم میلی مول منتشر شد', $post_id);
         $smsHandler->send_to_all();
 
     }

@@ -162,7 +162,7 @@ function ajax_search_results(): array
 
         $taxonomy_posts = get_terms( $taxonomy_args );
 
-        if( count($product_posts) == 0 && count($taxonomy_posts) > 0 ) {
+        if( $product_posts->found_posts == 0 && count($taxonomy_posts) > 0 ) {
             $taxonomy_ids = array();
             foreach( $taxonomy_posts as $taxonomy_product_item ) {
                 $taxonomy_ids[] = $taxonomy_product_item->term_id;
@@ -191,12 +191,6 @@ function ajax_search_results(): array
         // Store the results in the context
         $context['results'] = $results;
 
-//    } else {
-//        // If the search query is empty, set empty arrays for both results
-//        $context['results'] = array(
-//            'products' => array(),
-//            'taxonomy_related' => array(),
-//        );
     }
 
     $context['pagination'] = Timber::get_pagination();
@@ -283,3 +277,29 @@ add_action(
     10,
     2
 );
+
+
+// Define a custom function to handle the redirection
+function custom_redirect_after_account_update($user_id) {
+    // Define the custom URL where you want to redirect the user
+    $redirect_url = '/my-account/user_basic_info/'; // Replace with your desired URL
+
+    // Redirect the user to the custom URL
+    wp_redirect($redirect_url);
+    exit;
+}
+
+// Hook the custom function to run after the user account details are updated
+add_action('woocommerce_save_account_details', 'custom_redirect_after_account_update', 10, 1);
+
+
+// Customize the number of products per page
+add_action('pre_get_posts', 'custom_shop_page_query');
+
+function custom_shop_page_query($query): void
+{
+    if (is_shop() || is_product_category() || is_tax('product_cas_no')) {
+        $query->set('posts_per_page', 8); // Adjust this number as needed
+    }
+}
+

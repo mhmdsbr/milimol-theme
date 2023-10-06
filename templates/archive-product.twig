@@ -14,8 +14,13 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
-                        <h1>{{ category.name }}</h1>
-                        <p>{{ category.description }}</p>
+                        {% if is_shop() %}
+                            <h1>فروشگاه</h1>
+                            <p>به فروشگاه میلی مول خوش آمدید.</p>
+                        {% else %}
+                            <h1>{{ category.name }}</h1>
+                            <p>{{ category.description }}</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -30,9 +35,8 @@
                 {% include 'components/products/category-related-product.twig' %}
             </div>
         </div>
-    </section>
-
         {% do action('woocommerce_after_shop_loop') %}
         {% do action('woocommerce_after_main_content') %}
+    </section>
 
 {% endblock  %}
