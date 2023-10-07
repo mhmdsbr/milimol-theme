@@ -91,7 +91,11 @@ $posts = $query->posts;
                 ?>
                 <div class="account__company-products-details-item">
                     <p><?php echo $i; ?></p>
-                    <p><?php echo $product->post_title; ?></p>
+                    <p>
+                        <a class="account__company-products-details-title" href="<?php echo get_permalink($product->ID); ?>">
+                            <?php echo $product->post_title; ?>
+                        </a>
+                    </p>
                     <p><?php echo $cas_no; ?></p>
                     <p><?php echo $product_date_fa; ?></p>
                     <p>

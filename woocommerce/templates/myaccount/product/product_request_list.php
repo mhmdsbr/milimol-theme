@@ -92,7 +92,9 @@ $posts = $query->posts;
                 ?>
                 <div class="account__company-products-details-item">
                     <p><?php echo $i; ?></p>
-                    <p><?php echo $request->post_title; ?></p>
+                    <a class="account__company-products-details-title" href="<?php echo get_permalink($request->ID); ?>">
+                        <p><?php echo $request->post_title; ?></p>
+                    </a>
                     <p><?php echo $cas_no; ?></p>
                     <p><?php echo $request_date_fa; ?></p>
                     <p><?php if($request_status == 'publish') {

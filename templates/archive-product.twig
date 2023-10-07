@@ -1,42 +1,64 @@
 {% extends 'base.twig' %}
-
 {% block content %}
-
-    {% include "partial/button.twig" with {
-        url : '#',
-        title : 'ارسال پیام گروهی',
-        class : 'btn--primary archive-product__message-group-button',
-        icon : 'paperplane',
-        id : 'show-message-form-button',
-    } %}
-    <header class="archive-product__category-content">
-        <div class="archive-product__category-head">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        {% if is_shop() %}
-                            <h1>فروشگاه</h1>
-                            <p>به فروشگاه میلی مول خوش آمدید.</p>
-                        {% else %}
-                            <h1>{{ category.name }}</h1>
-                            <p>{{ category.description }}</p>
-                        {% endif %}
+    <main class="archive-product">
+        {% include "partial/button.twig" with {
+            url : '#',
+            title : 'ارسال پیام گروهی',
+            class : 'btn--primary archive-product__message-group-button',
+            icon : 'paperplane',
+            id : 'show-message-form-button',
+        } %}
+        <header class="archive-product__category-header">
+            <div class="archive-product__category-head">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            {% if is_shop() %}
+                                <h1>فروشگاه</h1>
+                                <p>به فروشگاه میلی مول خوش آمدید.</p>
+                            {% else %}
+                                <h1>{{ category.name }}</h1>
+                                <p>{{ category.description }}</p>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
-    <section class="container">
-        <div class="row">
-            <div class="col-md-3">
-                {% include 'components/products/products-filter-forms.twig' %}
+        </header>
+        <section class="archive-product__category-content">
+            <div class="container">
+                {% if not exp_mobile() %}
+                    <div class="row">
+                        <div class="col-md-3">
+                            {% include 'components/products/products-filter-forms.twig' %}
+                        </div>
+                        <div class="col-md-9">
+                            {% include 'components/products/category-related-product.twig' %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="#" id="openSidebar">فیلتر ها</a>
+                        </div>
+                        <div id="filterSidebar" class="col-md-3">
+                            {% include "partial/button.twig" with {
+                                url : '#',
+                                id : 'closeSidebar',
+                                title : '',
+                                class : 'btn--primary',
+                                icon : 'close',
+                            } %}
+                            {% include 'components/products/products-filter-forms.twig' %}
+                        </div>
+                        <div class="col-md-9">
+                            {% include 'components/products/category-related-product.twig' %}
+                        </div>
+                    </div>
+                {% endif %}
+                {% do action('woocommerce_after_shop_loop') %}
+                {% do action('woocommerce_after_main_content') %}
             </div>
-            <div class="col-md-9">
-                {% include 'components/products/category-related-product.twig' %}
-            </div>
-        </div>
-        {% do action('woocommerce_after_shop_loop') %}
-        {% do action('woocommerce_after_main_content') %}
-    </section>
-
+        </section>
+    </main>
 {% endblock  %}
