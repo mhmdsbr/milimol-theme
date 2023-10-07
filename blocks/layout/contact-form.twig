@@ -1,7 +1,7 @@
 <section class="exp-contact-form">
     <div class="container">
 
-        <div class="row col-10 gx-0 p-3 exp-contact-form__cards-container justify-content-center">
+        <div class="row col-12 gx-0 p-3 exp-contact-form__cards-container justify-content-center">
             {% for element in fields.elements %}
                 <div class="col-lg-3 gx-3 col-12 {{ exp_mobile() ? 'text-center' : 'text-left'}} ">
                     <div class="exp-contact-form__cards step-{{ loop.index }}">

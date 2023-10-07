@@ -5,7 +5,7 @@
                 <div class="col-12">
                     {% if results is defined %}
                         {% if results.products.found_posts > 0 %}
-                            <h4>محصولات موجود:</h4>
+                            <h5>محصولات موجود:</h5>
                             <ul>
                                 {% for post in results.products %}
                                     <li class="search__results-ajax-list">
@@ -28,7 +28,7 @@
                         {% endif %}
 
                         {% if results.taxonomy_related %}
-                            <h4>Cas No. های موجود</h4>
+                            <h5>Cas No های موجود:</h5>
                             <ul>
                                 {% for post in results.taxonomy_related %}
                                     <li class="search__results-ajax-list">
@@ -40,7 +40,7 @@
                                         <div class="search__results-ajax-content">
                                             <p><strong>{{ post.name }}</strong></p>
                                         </div>
-                                        <a href="{{ post.get_permalink() }}" class="search__results-ajax-link"></a>
+                                        <a href="product_cas_no/{{ post.slug }}" class="search__results-ajax-link"></a>
                                     </li>
                                 {% endfor %}
                             </ul>

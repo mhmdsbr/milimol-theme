@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) )
                 <div class="col-12">
                     <h3 class="dashboard-widgets__title">پیشخوان</h3>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 <?php echo wp_is_mobile() ? 'mb-4 gx-0' : ''; ?> col-md-6">
                     <div class="dashboard-widgets__message-notification">
                         <h4 class="dashboard-widgets__message-title">
                             وضعیت پیام ها
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) )
                         <?php $dashboardWidget->render_widget_message_notification(); ?>
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 <?php echo wp_is_mobile() ? 'mb-4 gx-0' : ''; ?> col-md-6">
                     <div class="dashboard-widgets__product-info">
                         <h4 class="dashboard-widgets__message-title">
                             وضعیت محصولات

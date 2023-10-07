@@ -6,7 +6,7 @@
            <div class="col-12">
                {{ post.content }}
            </div>
-           <div class="col-12">
+           <div class="col-12 {{ exp_mobile() ? 'gx-0' : '' }}">
                {% include 'blocks/layout/account.twig' %}
            </div>
         </div>

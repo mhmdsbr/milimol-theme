@@ -32,7 +32,7 @@ if ($cdata_status == 'pending') {
     // company info
     echo '<div class="account__company-catalog" style="">';
     echo '<div class="account__company-catalog-header" style="">';
-    echo '<h3 class="account__company-catalog-title">1کاتالوگ ها</h3>';
+    echo '<h3 class="account__company-catalog-title">کاتالوگ ها</h3>';
     echo '</div>';
     echo '<div class="account__company-catalog-content">';
 

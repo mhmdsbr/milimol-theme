@@ -7,18 +7,43 @@
                     <p>به میلی مول خوش آمدید.</p>
                 </div>
             </div>
-            <div class="col-12 row">
-                <div class="col-12 col-md-2 account__navigation">
-                    {% filter shortcodes %}
-                        [ACCOUNT_NAV_MILIMOL]
-                    {% endfilter %}
+            {% if not exp_mobile() %}
+                <div class="col-12 row">
+                    <div class="col-12 col-md-2 account__navigation">
+                        {% filter shortcodes %}
+                            [ACCOUNT_NAV_MILIMOL]
+                        {% endfilter %}
+                    </div>
+                    <div class="col-12 col-md-10 account__main-content">
+                        {% filter shortcodes %}
+                            [ACCOUNT_CONTENT_MILIMOL]
+                        {% endfilter %}
+                    </div>
                 </div>
-                <div class="col-12 col-md-10 account__main-content">
-                    {% filter shortcodes %}
-                        [ACCOUNT_CONTENT_MILIMOL]
-                    {% endfilter %}
+            {% else %}
+                <div class="col-12 row gx-0">
+                    <div class="col-12 {{ exp_mobile() ? 'gx-6' : '' }}">
+                        <a href="#" id="openSidebar">تنظیمات</a>
+                    </div>
+                    <div id="filterSidebar" class="col-12 col-md-2 account__navigation">
+                        {% include "partial/button.twig" with {
+                            url : '#',
+                            id : 'closeSidebar',
+                            title : '',
+                            class : 'btn--white',
+                            icon : 'close',
+                        } %}
+                        {% filter shortcodes %}
+                            [ACCOUNT_NAV_MILIMOL]
+                        {% endfilter %}
+                    </div>
+                    <div class="col-12 col-md-10 account__main-content">
+                        {% filter shortcodes %}
+                            [ACCOUNT_CONTENT_MILIMOL]
+                        {% endfilter %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
     </div>
 </section>
