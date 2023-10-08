@@ -59,7 +59,7 @@
 		</div>
 		<div class="company-single__url">
 			<a href="{{ post.company_website }}" title="{{ post.company_website }}" target="_blank" rel="noindex nofollow">
-				{{ post.company_website }}
+				{{ post.company_website|replace({'https://': ''})|upper }}
             </a>
         </div>
 	</header>

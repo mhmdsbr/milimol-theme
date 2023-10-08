@@ -90,38 +90,87 @@ $posts = $query->posts;
                     $request_date_fa = get_english_to_persian($request_date);
                     $request_edit_link = '/my-account/product_request_modify/?requestId=' . $requestId;
                 ?>
-                <div class="account__company-products-details-item">
-                    <p><?php echo $i; ?></p>
-                    <a class="account__company-products-details-title" href="<?php echo get_permalink($request->ID); ?>">
-                        <p><?php echo $request->post_title; ?></p>
-                    </a>
-                    <p><?php echo $cas_no; ?></p>
-                    <p><?php echo $request_date_fa; ?></p>
-                    <p><?php if($request_status == 'publish') {
-                        echo 'منتشر شده';
-                        } elseif ($request_status == 'pending')
-                        {
-                            echo 'در حال بررسی';
-
-                        } elseif ($request_status == 'draft') {
-
-                            echo 'ذخیره موقت';
-                        }
-                        ?>
-                    </p>
-                    <div class="account__company-products-group-btn">
-                        <a href="<?php echo $request_edit_link; ?>" class="account__company-products-edit-button">
-                            اصلاح
+                <?php if(!wp_is_mobile()) { ?>
+                    <div class="account__company-products-details-item">
+                        <p><?php echo $i; ?></p>
+                        <a class="account__company-products-details-title" href="<?php echo get_permalink($request->ID); ?>">
+                            <p><?php echo $request->post_title; ?></p>
                         </a>
-                        <form method="POST" action="" onsubmit="return confirm('آیا برای حذف درخواست مورد نظر مطمئن هستید؟');">
-                            <input type="hidden" name="action" value="delete_request">
-                            <input type="hidden" name="request_id" value="<?php echo $requestId; ?>">
-                            <button type="submit" class="account__company-products-delete-button">
-                                حذف
-                            </button>
-                        </form>
+                        <p><?php echo $cas_no; ?></p>
+                        <p><?php echo $request_date_fa; ?></p>
+                        <p><?php if($request_status == 'publish') {
+                            echo 'منتشر شده';
+                            } elseif ($request_status == 'pending')
+                            {
+                                echo 'در حال بررسی';
+
+                            } elseif ($request_status == 'draft') {
+
+                                echo 'ذخیره موقت';
+                            }
+                            ?>
+                        </p>
+                        <div class="account__company-products-group-btn">
+                            <a href="<?php echo $request_edit_link; ?>" class="account__company-products-edit-button">
+                                اصلاح
+                            </a>
+                            <form method="POST" action="" onsubmit="return confirm('آیا برای حذف درخواست مورد نظر مطمئن هستید؟');">
+                                <input type="hidden" name="action" value="delete_request">
+                                <input type="hidden" name="request_id" value="<?php echo $requestId; ?>">
+                                <button type="submit" class="account__company-products-delete-button">
+                                    حذف
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                </div>
+                <?php }
+                else { ?>
+                    <div class="account__company-products-details-item accordion" id="product-list-accordion">
+                        <div class="accordion-item">
+                            <h4 class="accordion-header" id="productListAccordionHeading-<?php echo $i ?>">
+                                <div class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#productListCollapse-<?php echo $i ?>" aria-expanded="true" aria-controls="collapseOne">
+                                    <p><?php echo $i; ?></p>
+                                </div>
+                                <p>
+                                    <a class="account__company-products-details-title" href="<?php echo get_permalink($request->ID); ?>">
+                                        <?php echo $request->post_title; ?>
+                                    </a>
+                                </p>
+                            </h4>
+                            <div id="productListCollapse-<?php echo $i ?>" class="accordion-collapse collapse show" aria-labelledby="productListAccordionHeading-<?php echo $i ?>" data-bs-parent="#product-list-accordion">
+                                <div class="accordion-body">
+                                    <p><?php echo $cas_no; ?></p>
+                                    <p><?php echo $request_date_fa; ?></p>
+                                    <p>
+                                        <?php if($request_status == 'publish') {
+                                            echo 'منتشر شده';
+                                        } elseif ($request_status == 'pending')
+                                        {
+                                            echo 'در حال بررسی';
+
+                                        } elseif ($request_status == 'draft') {
+
+                                            echo 'ذخیره موقت';
+                                        }
+                                        ?>
+                                    </p>
+                                    <div class="account__company-products-group-btn">
+                                        <a href="<?php echo $request_edit_link; ?>" class="account__company-products-edit-button">
+                                            اصلاح
+                                        </a>
+                                        <form method="POST" action="" onsubmit="return confirm('آیا برای حذف درخواست مورد نظر مطمئن هستید؟');">
+                                            <input type="hidden" name="action" value="delete_product">
+                                            <input type="hidden" name="product_id" value="<?php echo $requestId; ?>">
+                                            <button type="submit" class="account__company-products-delete-button">
+                                                حذف
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
             <?php endforeach; ?>
             <?php
             // Check if the session variable exists and is true

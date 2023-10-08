@@ -11,6 +11,8 @@ use WPMailSMTP\Admin\Pages\VersusTab;
 
 class Message
 {
+    private $lastGroupMessageTime = null;
+
     public function __construct()
     {
 
@@ -65,11 +67,20 @@ class Message
         //
     }
 
-    function mili_message_send_single($subject, $message, $participant, $productId = null): void
+    function mili_message_send_single($subject, $message, $participant, $productId = null, $group_message = false): string|bool
     {
 
         global $wpdb;
 
+        if(!$group_message) {
+            // Check for message delay
+            $message_delay_result = $this->mili_message_delay_check();
+
+            if (!empty($message_delay_result)) {
+                // Display an error message to the user
+                return $message_delay_result;
+            }
+        }
 
         if ($productId !== null) {
             $product_object = wc_get_product($productId);
@@ -128,7 +139,6 @@ class Message
         $this->mili_message_update_message_count($participant_id);
 
 
-
         // Insert data into the 'wp_fep_messagemeta' table
         $table_name_messagemeta = $wpdb->prefix . 'fep_messagemeta';
         $wpdb->insert(
@@ -140,11 +150,47 @@ class Message
             )
         );
 
+        return '';
     }
+
+    private function mili_message_delay_check(): bool|string
+    {
+        global $wpdb;
+        // Fetch the latest message's creation time from the database
+        $latest_message_created_time = $wpdb->get_var("SELECT mgs_created FROM wp_fep_messages ORDER BY mgs_created DESC LIMIT 1");
+
+        if (!$latest_message_created_time) {
+            return '';
+        } else {
+            // Calculate the time difference
+            $latest_message_created_time = strtotime($latest_message_created_time);
+            $current_time = time();
+            $time_difference = $current_time - $latest_message_created_time;
+            $time_message_group_difference = $current_time - $this->lastGroupMessageTime;
+
+            // Define the desired delay (1 minute = 60 seconds)
+            $desired_delay = 60;
+
+            if ($time_difference >= $desired_delay) {
+
+                if($time_message_group_difference >= $desired_delay) {
+                    return '';
+                } else {
+                    $remaining_seconds = $desired_delay - $time_message_group_difference;
+                    return "شما باید $remaining_seconds ثانیه برای ارسال پیام بعدی منتظر بمانید.";
+                }
+            } else {
+                $remaining_seconds = $desired_delay - $time_difference;
+                return "شما باید $remaining_seconds ثانیه برای ارسال پیام بعدی منتظر بمانید.";
+            }
+        }
+    }
+
     function mili_message_callback()
     {
 
         $current_user = wp_get_current_user();
+        $message_sent_result = '';
 
         // Check if the 'message_subject', 'message_body', and 'message_participants' fields exist in the POST data
         if (!empty($_POST['message_subject']) && !empty($_POST['message_body']) && !empty($_POST['message_participants']) && !empty($_POST['message_company_id'])) {
@@ -171,16 +217,20 @@ class Message
                 foreach ($participantsArray as $participant) {
                     if($current_user->user_login == $participant) continue;
                     $product_id = $productIdsArray[$i];
-                    $this->mili_message_send_single($message_subject, $message_body, $participant, $product_id);
+                    $this->mili_message_send_single($message_subject, $message_body, $participant, $product_id, true);
                     $i++;
                 }
-
+                $this->lastGroupMessageTime = time();
             } else {
-                $this->mili_message_send_single($message_subject, $message_body, $message_participants);
+                $message_sent_result = $this->mili_message_send_single($message_subject, $message_body, $message_participants);
             }
 
             // Respond with a success message
-            wp_send_json(array('success' => true, 'message' => 'Message sent successfully.'));
+            if(!empty($message_sent_result)) {
+                wp_send_json(array('success' => false, 'message' => $message_sent_result));
+            } else {
+                wp_send_json(array('success' => true, 'message' => 'Message sent successfully.'));
+            }
         } else {
             wp_send_json(array('success' => false, 'message' => 'Missing POST data'));
         }
