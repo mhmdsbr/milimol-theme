@@ -29,11 +29,13 @@
             <div class="container">
                 {% if not exp_mobile() %}
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-3 position-relative">
                             {% include 'components/products/products-filter-forms.twig' %}
                         </div>
                         <div class="col-md-9">
-                            {% include 'components/products/category-related-product.twig' %}
+                            <div class="archive-product__category-products-container">
+                                {% include 'components/products/category-related-product.twig' %}
+                            </div>
                         </div>
                     </div>
                 {% else %}

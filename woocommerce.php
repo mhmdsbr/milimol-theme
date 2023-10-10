@@ -24,6 +24,9 @@ $context['brand_filter'] = $brand_filter;
 $country_filter = isset($_GET['product_country']) ? ($_GET['product_country']) : array();
 $context['country_filter'] = $country_filter;
 
+$location_filter = isset($_GET['product_location']) ? ($_GET['product_location']) : array();
+$context['location_filter'] = $location_filter;
+
 $supplier_filter = isset($_GET['product_supplier_linked']) ? ($_GET['product_supplier_linked']) : array();
 $context['supplier_filter'] = $supplier_filter;
 
@@ -94,6 +97,11 @@ if (is_singular('product')) {
             $argsGenerator->add_meta_query('product_country', $country_filter, 'IN');
         }
 
+        // Add City filter to the query
+        if (!empty($_GET['product_location'])) {
+            $argsGenerator->add_meta_query('product_location', $location_filter, 'IN');
+        }
+
         // Add Supplier filter to the query
         if (!empty($_GET['product_supplier_linked'])) {
             $argsGenerator->add_meta_query('product_supplier_linked', $supplier_filter, 'IN');
@@ -138,6 +146,11 @@ if (is_singular('product')) {
         // Add Country filter to the query
         if (!empty($_GET['product_country'])) {
             $argsGenerator->add_meta_query('product_country', $country_filter, 'IN');
+        }
+
+        // Add City filter to the query
+        if (!empty($_GET['product_location'])) {
+            $argsGenerator->add_meta_query('product_location', $location_filter, 'IN');
         }
 
         // Add Supplier filter to the query

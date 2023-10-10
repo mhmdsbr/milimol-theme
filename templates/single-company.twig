@@ -77,6 +77,18 @@
 						/>
 					</div>
 					<h3 class="company-single__company-name">{{ post.title }}</h3>
+					<div class="company-single__company-rewards">
+						{% for image in company_reward_img_urls %}
+							<div class="company-single__rewards-item">
+								<a href="{{ image }}" target="_blank">
+									<img src="{{ image }}"
+										 alt="image-gallery"
+										 loading="lazy"
+									/>
+								</a>
+							</div>
+						{% endfor %}
+					</div>
 					<div class="company-single__contact-btn">
 						{% include "partial/button.twig" with {
 							url : is_logged_in() ? 'tel:' ~ post.get_field('company_mobile') : '/register',

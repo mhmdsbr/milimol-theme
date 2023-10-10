@@ -1,55 +1,65 @@
 <div class="product-filters">
-    <form action="{{ app.request.uri }}" method="get">
-
-        <div class="product-filters__brand">
-            <h5>برندها</h5>
-            <div class="product-filters__brand-search">
-                <input type="text" id="brand-search" placeholder="جست و جوی برند">
+    <div class="product-filters__container">
+        <form action="{{ app.request.uri }}" method="get">
+            <div class="product-filters__brand">
+                <h5>برندها</h5>
+                <div class="product-filters__brand-search">
+                    <input type="text" id="brand-search" placeholder="جست و جوی برند">
+                </div>
+                <div class="product-filters__brand-items">
+                    {{ acf_checkbox_field('product_brand', brand_filter) }}
+                </div>
             </div>
-            <div class="product-filters__brand-items">
-                {{ acf_checkbox_field('product_brand', brand_filter) }}
+
+            <div class="product-filters__country">
+                <h5>کشورها</h5>
+                <div class="product-filters__country-search">
+                    <input type="text" id="country-search" placeholder="جست و جوی کشور">
+                </div>
+                <div class="product-filters__country-items">
+                    {{ acf_checkbox_field('product_country', country_filter) }}
+                </div>
             </div>
-        </div>
 
-        <div class="product-filters__country">
-            <h5>کشورها</h5>
-            <div class="product-filters__country-search">
-                <input type="text" id="country-search" placeholder="جست و جوی کشور">
+            <div class="product-filters__location">
+                <h5>شهرها</h5>
+                <div class="product-filters__location-search">
+                    <input type="text" id="location-search" placeholder="جست و جوی شهرها">
+                </div>
+                <div class="product-filters__location-items">
+                    {{ acf_checkbox_field('product_location', location_filter) }}
+                </div>
             </div>
-            <div class="product-filters__country-items">
-                {{ acf_checkbox_field('product_country', country_filter) }}
+
+            <div class="product-filters__unit">
+                <h5>واحدها</h5>
+                {{ acf_checkbox_field('product_unit', unit_filter) }}
             </div>
-        </div>
 
-        <div class="product-filters__unit">
-            <h5>واحدها</h5>
-            {{ acf_checkbox_field('product_unit', unit_filter) }}
-        </div>
-
-        <div class="product-filters__min-order-quantity">
-            <h5>حداکثر سفارش</h5>
-            <div class="range-input-container">
-                <input type="range" name="min_order_quantity" id="min-order-quantity"
-                       min="0" max="100" step="1"
-                       value="{{ min_order_filter|default('') }}">
-                <output for="min-order-quantity" id="min-order-quantity-value">{{ min_order_filter|default('') }}</output>
+            <div class="product-filters__min-order-quantity">
+                <h5>حداکثر سفارش</h5>
+                <div class="range-input-container">
+                    <input type="range" name="min_order_quantity" id="min-order-quantity"
+                           min="0" max="100" step="1"
+                           value="{{ min_order_filter|default('') }}">
+                    <output for="min-order-quantity" id="min-order-quantity-value">{{ min_order_filter|default('') }}</output>
+                </div>
             </div>
-        </div>
 
-        <div class="product-filters__purity">
-            <h5>درصد خلوص</h5>
-            <div class="range-input-container">
-                <input type="range" name="product_purity_filter" id="product-purity-filter"
-                       min="0" max="100" step="1"
-                       value="{{ product_purity_filter|default(0) }}">
-                <output for="product-purity-filter" id="product-purity-filter-value">{{ product_purity_filter|default(0) }}</output>
+            <div class="product-filters__purity">
+                <h5>درصد خلوص</h5>
+                <div class="range-input-container">
+                    <input type="range" name="product_purity_filter" id="product-purity-filter"
+                           min="0" max="100" step="1"
+                           value="{{ product_purity_filter|default(0) }}">
+                    <output for="product-purity-filter" id="product-purity-filter-value">{{ product_purity_filter|default(0) }}</output>
+                </div>
             </div>
-        </div>
 
-        <div class="product-filters__search-button">
-            <input type="submit" value="جست و جو">
-            <a href="#" id="reset-link">بازنشانی</a>
-        </div>
-
-    </form>
+            <div class="product-filters__search-button">
+                <input type="submit" value="جست و جو">
+                <a href="#" id="reset-link">بازنشانی</a>
+            </div>
+        </form>
+    </div>
 </div>

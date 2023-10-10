@@ -27,7 +27,7 @@ class Login
     function milimol_redirect_login_registration_if_logged_in_callback(): void
     {
         if ( is_page() && is_user_logged_in() && ( has_shortcode( get_the_content(), 'LOGIN_FORM_MILIMOL' ) || has_shortcode( get_the_content(), 'REGISTER_FORM_MILIMOL' ) ) ) {
-            wp_safe_redirect( wc_get_page_permalink( 'myaccount/my_dashboard/' ) );
+            wp_safe_redirect( wc_get_page_permalink( 'my-account/my_dashboard/' ) );
             exit;
         }
     }

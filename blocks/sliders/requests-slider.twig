@@ -55,7 +55,7 @@
 
                                         {% set casNumbers = slide.request_cat_cas  %}
                                         {%  for cas in casNumbers %}
-                                            {{ check_value(cas.name,'p', 'requests-slider__request-number') }}
+                                            {{ check_value('Cas No: ' ~ cas.name,'p', 'requests-slider__request-number') }}
                                         {% endfor %}
                                         <span>{{ __('توضیحات: ', 'expedition') }}</span>
                                         {{ check_value(slide.request_desc|slice(0,100) ~ '...', 'p', 'requests-slider__request-desc') }}

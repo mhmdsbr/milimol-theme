@@ -4,6 +4,26 @@
             <div class="row">
                 <div class="col-12">
                     {% if results is defined %}
+
+                        {% if results.taxonomy_related %}
+                            <h5>Cas No های موجود:</h5>
+                            <ul>
+                                {% for post in results.taxonomy_related %}
+                                    <li class="search__results-ajax-list">
+                                        <div class="search__results-ajax-image">
+                                            {% if post.thumbnail.src %}
+                                                <img src="{{ post.thumbnail.src | resize(95, 95) }}" />
+                                            {% endif %}
+                                        </div>
+                                        <div class="search__results-ajax-content">
+                                            <p><strong>{{ post.name }}</strong></p>
+                                        </div>
+                                        <a href="product_cas_no/{{ post.slug }}" class="search__results-ajax-link"></a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
                         {% if results.products.found_posts > 0 %}
                             <h5>محصولات موجود:</h5>
                             <ul>
@@ -27,29 +47,10 @@
                             </ul>
                         {% endif %}
 
-                        {% if results.taxonomy_related %}
-                            <h5>Cas No های موجود:</h5>
-                            <ul>
-                                {% for post in results.taxonomy_related %}
-                                    <li class="search__results-ajax-list">
-                                        <div class="search__results-ajax-image">
-                                            {% if post.thumbnail.src %}
-                                                <img src="{{ post.thumbnail.src | resize(95, 95) }}" />
-                                            {% endif %}
-                                        </div>
-                                        <div class="search__results-ajax-content">
-                                            <p><strong>{{ post.name }}</strong></p>
-                                        </div>
-                                        <a href="product_cas_no/{{ post.slug }}" class="search__results-ajax-link"></a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-
                         {% if not results.products.found_posts and not results.taxonomy_related %}
                             <p>متاسفم، محصول یا دسته‌بندی مورد نظرت پیدا نشد :(</p>
                             {% include "partial/button.twig" with {
-                                url : '#',
+                                url : is_logged_in() ? '/my-account/' : '/register',
                                 title : 'ثبت درخواست محصول جدید',
                                 target : '_blank',
                                 class : 'btn--primary',

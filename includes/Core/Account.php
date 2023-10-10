@@ -276,7 +276,7 @@ class Account
         // Check if the 'customer-logout' query variable is present
         if (isset($wp->query_vars['customer-logout'])) {
             // Redirect the user to the logout URL
-            wp_redirect(str_replace('&amp;', '&', wp_logout_url(wc_get_page_permalink('myaccount'))));
+            wp_redirect(str_replace('&amp;', '&', wp_logout_url(wc_get_page_permalink('my-account'))));
             exit;
         }
     }
