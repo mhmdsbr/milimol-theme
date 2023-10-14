@@ -13,106 +13,108 @@
 			</picture>
 		</div>
 	</header>
-	<section class="container">
-		<div class="row">
-			<div class="col-md-4">
-				<div class="request-single__sidebar">
-					{% set requestUser = recipient_user_request(post.ID) %}
-					<div class="request-single__username">
-						<span>نام کاربری: </span>
-						<p>{{ user_display_name(post.user_request_linked) }}</p>
-					</div>
-					<div class="request-single__contact-btn">
-						{% include "partial/button.twig" with {
-							url : 'tel:' ~ post.get_field('request_mobile'),
-							title : 'تماس با خریدار',
-							target : fields.button.target,
-							class : 'btn--primary request-single__button',
-							icon : 'phone'
-						} %}
-					</div>
-					<div class="container gx-0 single__message">
-						<form class="row single__message-form" id="message-form-{{ post.ID }}" action="" method="POST">
+	<section class="request-single__content">
+		<div class="container">
+			<div class="row align-items-baseline">
+				<div class="col-md-4">
+					<div class="request-single__sidebar">
+						{% set requestUser = recipient_user_request(post.ID) %}
+						<div class="request-single__username">
+							<span>نام کاربری: </span>
+							<p>{{ user_display_name(post.user_request_linked) }}</p>
+						</div>
+						<div class="request-single__contact-btn">
+							{% include "partial/button.twig" with {
+								url : is_logged_in ? 'tel:' ~ user_mobile_number(post.user_request_linked) : '/login',
+								title : 'تماس با خریدار',
+								target : fields.button.target,
+								class : 'btn--primary request-single__button',
+								icon : 'phone'
+							} %}
+						</div>
+						<div class="container gx-0 single__message">
+							<form class="row single__message-form" id="message-form-{{ post.ID }}" action="" method="POST">
 
-							<div class="col-12 mb-4 single__message-form-content">
-								<label for="message-subject">موضوع: </label>
-								<input class="single__message-input" type="text" id="message-subject" name="subject" required placeholder="عنوان پیام را وارد کنید."  {{ current_user_login() == requestUser ? 'disabled' : '' }} {{ is_logged_in() ? '' : 'disabled' }} >
-							</div>
-							<div class="col-12 mb-4 single__message-form-content">
-								<label for="message-body">توضیحات: </label>
-								<textarea {{ is_logged_in() ? '' : 'disabled' }} {{ current_user_login() == requestUser ? 'disabled' : '' }} class="single__message-input" id="message-body" name="message-body" rows="5" required placeholder="لطفا محتوای پیام خود را وارد کنید." ></textarea>
-							</div>
+								<div class="col-12 mb-4 single__message-form-content">
+									<label for="message-subject">موضوع: </label>
+									<input class="single__message-input" type="text" id="message-subject" name="subject" required placeholder="عنوان پیام را وارد کنید."  {{ current_user_login() == requestUser ? 'disabled' : '' }} {{ is_logged_in() ? '' : 'disabled' }} >
+								</div>
+								<div class="col-12 mb-4 single__message-form-content">
+									<label for="message-body">توضیحات: </label>
+									<textarea {{ is_logged_in() ? '' : 'disabled' }} {{ current_user_login() == requestUser ? 'disabled' : '' }} class="single__message-input" id="message-body" name="message-body" rows="5" required placeholder="لطفا محتوای پیام خود را وارد کنید." ></textarea>
+								</div>
 
-							<!-- Hidden input for message participants -->
-							<input class="single__message-input" type="hidden" id="message-participants" name="message-participants" value="{{ requestUser }}">
+								<!-- Hidden input for message participants -->
+								<input class="single__message-input" type="hidden" id="message-participants" name="message-participants" value="{{ requestUser }}">
 
-							<input class="single__message-input" type="hidden" id="message-company-id" name="message-company-id" value="{{ post.ID }}">
+								<input class="single__message-input" type="hidden" id="message-company-id" name="message-company-id" value="{{ post.ID }}">
 
-							<button {{ current_user_login() == requestUser ? 'disabled' : '' }} class="single__message-submit message-sent-submit" type="submit">ارسال</button>
-						</form>
+								<button {{ current_user_login() == requestUser ? 'disabled' : '' }} class="single__message-submit message-sent-submit" type="submit">ارسال</button>
+							</form>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-8">
-				<article id="post-{{ post.ID }}" class="container request-single__main-content post-{{ post.ID }} single-{{ post.post_type }}">
-					<div class="row request-single__intro">
-						<div class="col-12">
-							<h3 class="request-single__company-name">{{ post.title }}</h3>
-							<div class="request-single__intro-content">
-								<label>توضیحات:</label>
-								<p>
-									{{ post.request_desc }}
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="row request-single__info">
-						<div class="col-12 mb-3 col-lg-6 ">
-							<div class="request-single__info-content request-single--date">
-								{{ fetch_svg('meta-calendar') }}
-								<div class="request-single__info-text">
-									<span>تاریخ ثبت:</span>
-									<p>{{ english_numbers(post.date('Y-m-d')) }}</p>
-								</div>
-							</div>
-							<div class="request-single__info-content request-single--cas">
-								{{ fetch_svg('numbers') }}
-								<div class="request-single__info-text">
-									<span>Cas No:</span>
-										<p>{{ requestCas }}</p>
-								</div>
-							</div>
-							<div class="request-single__info-content request-single--expire">
-								{{ fetch_svg('expire') }}
-								<div class="request-single__info-text">
-									{% set publishedDate = post.date %}
-									{% set expiryDuration = post.expire_duration|default(0) %}
-									{% set remainingDays = expiry_date(publishedDate, expiryDuration) %}
-									<span>مدت اعتبار:</span>
-									{% if remainingDays < 0 %}
-										<p>منقضی شده</p>
-									{% else %}
-										<p>{{ english_numbers(remainingDays) }} روز</p>
-									{% endif %}
-								</div>
-							</div>
-							<div class="request-single__info-content request-single--purity">
-								{{ fetch_svg('chemic-container') }}
-								<div class="request-single__info-text">
-									<span>درصد خلوص:</span>
-									<p>{{ post.request_purity ~ '%' }}</p>
-								</div>
-							</div>
-							<div class="request-single__info-content request-single--weight">
-								{{ fetch_svg('weight') }}
-								<div class="request-single__info-text">
-									<span>مقدار سفارش:</span>
-									<p>{{ post.request_weight }}</p>
+				<div class="col-md-8">
+					<article id="post-{{ post.ID }}" class="container request-single__main-content post-{{ post.ID }} single-{{ post.post_type }}">
+						<div class="row request-single__intro">
+							<div class="col-12">
+								<h3 class="request-single__company-name">{{ post.title }}</h3>
+								<div class="request-single__intro-content">
+									<label>توضیحات:</label>
+									<p>
+										{{ post.request_desc }}
+									</p>
 								</div>
 							</div>
 						</div>
-					</div>
-				</article>
+						<div class="row request-single__info">
+							<div class="col-12 mb-3 col-lg-6 ">
+								<div class="request-single__info-content request-single--date">
+									{{ fetch_svg('meta-calendar') }}
+									<div class="request-single__info-text">
+										<span>تاریخ ثبت:</span>
+										<p>{{ english_numbers(post.date('Y-m-d')) }}</p>
+									</div>
+								</div>
+								<div class="request-single__info-content request-single--cas">
+									{{ fetch_svg('numbers') }}
+									<div class="request-single__info-text">
+										<span>Cas No:</span>
+											<p>{{ requestCas }}</p>
+									</div>
+								</div>
+								<div class="request-single__info-content request-single--expire">
+									{{ fetch_svg('expire') }}
+									<div class="request-single__info-text">
+										{% set publishedDate = post.date %}
+										{% set expiryDuration = post.expire_duration|default(0) %}
+										{% set remainingDays = expiry_date(publishedDate, expiryDuration) %}
+										<span>مدت اعتبار:</span>
+										{% if remainingDays < 0 %}
+											<p>منقضی شده</p>
+										{% else %}
+											<p>{{ english_numbers(remainingDays) }} روز</p>
+										{% endif %}
+									</div>
+								</div>
+								<div class="request-single__info-content request-single--purity">
+									{{ fetch_svg('chemic-container') }}
+									<div class="request-single__info-text">
+										<span>درصد خلوص:</span>
+										<p>{{ post.request_purity ~ '%' }}</p>
+									</div>
+								</div>
+								<div class="request-single__info-content request-single--weight">
+									{{ fetch_svg('weight') }}
+									<div class="request-single__info-text">
+										<span>مقدار سفارش:</span>
+										<p>{{ post.request_weight }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</article>
+				</div>
 			</div>
 		</div>
 	</section>

@@ -166,7 +166,8 @@
                                 class : 'btn--primary product-single__button',
                                 icon : 'envelope'
                             } %}
-
+                            <input class="single__message-input current-user-shop" type="hidden" name="current-user-shop" value="{{ current_user_login() }}">
+                            <input class="single__message-input product-user" type="hidden" name="product-user" value="{{ productUser }}">
                         </div>
                         <div class="archive-product__supplier-gallery">
                             {% set companyImgGallery = Image(productSupplier.get_field('company_reward')) %}
@@ -195,6 +196,8 @@
             </div>
         </div>
     {% endfor %}
+    {% do action('woocommerce_after_shop_loop') %}
+    {% do action('woocommerce_after_main_content') %}
 {% else %}
-    <p>No Products Found</p>
+    <p>هیچ محصولی یافت نشد.</p>
 {% endif %}

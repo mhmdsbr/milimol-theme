@@ -81,6 +81,11 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
             </div>
 
             <?php do_action( 'woocommerce_register_form_end' ); ?>
+
+            <div class="login__form-not-logged-in">
+                <p>آیا قبلا عضو شده اید؟</p>
+                <a href="<?php echo esc_url( '/login' ); ?>"><?php esc_html_e( 'هم اکنون وارد شوید.', 'woocommerce' ); ?></a>
+            </div>
         </form>
 
 </div>

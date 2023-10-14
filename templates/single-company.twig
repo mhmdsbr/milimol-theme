@@ -1,7 +1,6 @@
 {% extends 'single.twig' %}
 
 {% block content %}
-
 	<header class="company-single__banner image-header">
 		<div class="image-header__background">
 			<picture>
@@ -77,18 +76,29 @@
 						/>
 					</div>
 					<h3 class="company-single__company-name">{{ post.title }}</h3>
-					<div class="company-single__company-rewards">
-						{% for image in company_reward_img_urls %}
-							<div class="company-single__rewards-item">
-								<a href="{{ image }}" target="_blank">
-									<img src="{{ image }}"
-										 alt="image-gallery"
-										 loading="lazy"
-									/>
-								</a>
-							</div>
-						{% endfor %}
-					</div>
+					{% if post.company_credits %}
+						<div class="company-single__company-credits">
+							{% for credit in post.company_credits %}
+								{% if credit == 'shield' %}
+									<div class="company-single__credits-item company-single--item-shield">
+										{{ fetch_svg('shield') }}
+									</div>
+								{% elseif credit == 'atlassian' %}
+									<div class="company-single__credits-item company-single--item-atlassian">
+										{{ fetch_svg('atlassian') }}
+									</div>
+								{% elseif credit == 'usp' %}
+									<div class="company-single__credits-item company-single--item-ups">
+										{{ fetch_svg('ups') }}
+									</div>
+								{% else  %}
+									<div class="company-single__credits-item company-single--item-check">
+										{{ fetch_svg('check-circle') }}
+									</div>
+								{% endif %}
+							{% endfor %}
+						</div>
+					{% endif %}
 					<div class="company-single__contact-btn">
 						{% include "partial/button.twig" with {
 							url : is_logged_in() ? 'tel:' ~ post.get_field('company_mobile') : '/register',
@@ -265,7 +275,8 @@
 					} %}
 
 					{% set poster = post.get_field('company_video_bg') %}
-					{% set aparatId = post.get_field('company_video_id') %}
+					{% set aparatUrl = post.get_field('company_video_id') %}
+					{% set aparatId = aparat_id(aparatUrl) %}
 					{% include 'blocks/layout/video-company.twig' with {
 						videoPoster : poster,
 						aparat : aparatId

@@ -33,8 +33,6 @@ $user = wp_get_current_user();
 
         <?php do_action( 'woocommerce_edit_account_form_start' ); ?>
 
-
-
         <div class="account__basic-info-item account__basic-info-first-name">
             <label for="account_first_name"><?php esc_html_e( 'First name', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
             <input type="text" class="account__basic-info-form-input" name="account_first_name" id="account_first_name" autocomplete="given-name" value="<?php echo esc_attr( $user->first_name ); ?>" />

@@ -1,6 +1,6 @@
 <div class="product-filters">
     <div class="product-filters__container">
-        <form action="{{ app.request.uri }}" method="get">
+        <form id="product-filter-form" action="{{ app.request.uri }}" method="get">
             <div class="product-filters__brand">
                 <h5>برندها</h5>
                 <div class="product-filters__brand-search">
@@ -55,10 +55,9 @@
                     <output for="product-purity-filter" id="product-purity-filter-value">{{ product_purity_filter|default(0) }}</output>
                 </div>
             </div>
-
             <div class="product-filters__search-button">
-                <input type="submit" value="جست و جو">
-                <a href="#" id="reset-link">بازنشانی</a>
+                <input id="product-filter-submit" type="submit" value="جست و جو">
+                <a href="/فروشگاه/" id="reset-link">بازنشانی</a>
             </div>
         </form>
     </div>

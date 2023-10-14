@@ -14,7 +14,6 @@
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             <h1>{{ cas_fields.cas_fa_name }}</h1>
-                            <p>{{ cas.description }}</p>
                         </div>
                     </div>
                 </div>
@@ -78,11 +77,19 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
+                                    <div class="archive-product__category-info-content-main archive-product--description">
+                                        <span>توضیحات:</span>
+                                        <p>{{ cas.description }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-12">
                                     <div class="archive-product__category-info-content-main archive-product--synonyms">
                                         <span>هم خانواده ها:</span>
-                                        {% for synonym in cas_fields.cas_synonyms %}
-                                            <p>{{ synonym.cas_synonym }}</p>
-                                        {% endfor %}
+                                        <div class="archive-product__category-info-content-main archive-product--synonyms-item">
+                                            {% for synonym in cas_fields.cas_synonyms %}
+                                                <p>{{ synonym.cas_synonym }}</p>
+                                            {% endfor %}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

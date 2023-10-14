@@ -13,9 +13,14 @@
                     <div class="swiper-slide related-content-slider__slide">
                         <div class="related-content-slider__content-header">
                             <img class="related-content-slider__content-image"
-                                 src="{{ item.src.url }}"
-                                 alt="{{ item.src.title }}"
-                                 loading="lazy"
+                                 {% if item.src is not empty %}
+                                     src="{{ item.src.url }}"
+                                     alt="{{ item.src.title }}"
+                                     loading="lazy"
+                                 {% else %}
+                                     src="/wp-content/uploads/2023/09/Buying-from-Chemical-Suppliers-8.jpg"
+                                     alt="No Default image"
+                                 {% endif %}
                             />
                         </div>
                         <div class="related-content-slider__content-text">

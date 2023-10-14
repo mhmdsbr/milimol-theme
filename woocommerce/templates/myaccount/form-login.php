@@ -66,6 +66,11 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
             <div class="login__form-lost-password lost_password">
                 <a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'رمز عبور خود را فراموش کرده اید؟', 'woocommerce' ); ?></a>
             </div>
+
+            <div class="login__form-not-logged-in">
+                <p>آیا عضو نیستید؟</p>
+                <a href="<?php echo esc_url( '/register' ); ?>"><?php esc_html_e( 'هم اکنون عضو شوید.', 'woocommerce' ); ?></a>
+            </div>
         </form>
 
     </div>

@@ -87,18 +87,15 @@ switch ($postType) {
         $context['company_gallery_img_urls'] = $company_gallery_img_urls;
 
         // Retrieve Company rewards img Urls
-        $company_reward_ids = get_field('company_img_rewards');
-        $company_reward_img_urls = array();
+        $company_credits = get_field('company_credits');
+        $company_credits_keys = array();
 
-        if ($company_reward_ids) {
-            foreach ($company_reward_ids as $image_id) {
-                $image_url = wp_get_attachment_image_url($image_id);
-                if ($image_url) {
-                    $company_reward_img_urls[] = $image_url;
-                }
+        if ($company_credits) {
+            foreach ($company_credits as $credit) {
+                $company_credits_keys[] = $credit;
             }
         }
-        $context['company_reward_img_urls'] = $company_reward_img_urls;
+        $context['company_credits'] = $company_credits_keys;
 
         break;
 

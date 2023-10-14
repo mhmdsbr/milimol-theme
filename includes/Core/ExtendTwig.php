@@ -56,10 +56,12 @@ class ExtendTwig
         $twig->addFunction(new TwigFunction('product_visit_number', array($this, 'product_page_visit_number')));
         $twig->addFunction(new TwigFunction('current_user_login', array($this, 'get_current_user_login')));
         $twig->addFunction(new TwigFunction('user_display_name', array($this, 'get_user_display_name')));
+        $twig->addFunction(new TwigFunction('user_mobile_number', array($this, 'get_user_mobile_number')));
         $twig->addFunction(new TwigFunction('recipient_user', array($this, 'get_recipient_user')));
         $twig->addFunction(new TwigFunction('recipient_user_request', array($this, 'get_recipient_user_request')));
         $twig->addFunction(new TwigFunction('company_user', array($this, 'get_company_user')));
-
+        $twig->addFunction(new TwigFunction('aparat_id', array($this, 'extract_aparat_video_id')));
+        $twig->addFunction(new TwigFunction('pagination_bar', array($this, 'render_pagination_bar')));
 
         return $twig;
     }
@@ -277,6 +279,14 @@ class ExtendTwig
 
     }
 
+    function get_user_mobile_number($user_id)
+    {
+        // Retrieve the user's mobile number from user meta using the provided user ID
+        $mobile_number = get_user_meta($user_id, 'digits_phone_no', true);
+        return $mobile_number;
+    }
+
+
     function get_current_user_login(): string
     {
         $user_info = wp_get_current_user();
@@ -317,6 +327,30 @@ class ExtendTwig
             return '';
         } else {
             return $author_object->user_login;
+        }
+    }
+
+    function extract_aparat_video_id($url): ?string
+    {
+        // Use regular expressions to extract the video ID from the URL
+        preg_match('/\/v\/([a-zA-Z0-9]+)/', $url, $matches);
+        return $matches[1] ?? null;
+    }
+
+
+
+    public static function render_pagination_bar($total_pages, $per_page): void
+    {
+        $big = 999999999;
+        $max_page = ceil($total_pages / $per_page);
+        if ($total_pages > 1) {
+            $current_page = max(1, get_query_var('paged'));
+            echo paginate_links([
+                'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+                'format' => '?paged=%#%',
+                'current' => $current_page,
+                'total' => $max_page,
+            ]);
         }
     }
 

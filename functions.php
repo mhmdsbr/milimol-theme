@@ -33,7 +33,7 @@ new Exp\Core\Login();
 new Exp\Core\Account();
 new Exp\Core\Message();
 new Exp\Core\Shortcodes();
-$argsGenerator = new Exp\Core\ArgsGenerator('product', '-1');
+$argsGenerator = new Exp\Core\ArgsGenerator('product', -1);
 $smsHandler = new Exp\Core\SmsHandler();
 $dashboardWidget = new Exp\Core\DashboardWidgets();
 
@@ -229,5 +229,3 @@ function render_ob($value, $title = '', $clear = false): void
     update_field('temp', $output, 'option');
 
 }
-
-
