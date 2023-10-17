@@ -399,6 +399,9 @@ class Account
         $company_intro = get_field('company_intro_draft', $post_id);
         update_field('company_intro', $company_intro, $post_id);
         //
+        $company_national_id = get_field('company_national_id_draft', $post_id);
+        update_field('company_national_id', $company_national_id, $post_id);
+        //
         $company_country = get_field('company_country_draft', $post_id);
         update_field('company_country', $company_country, $post_id);
         //

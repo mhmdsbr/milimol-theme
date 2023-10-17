@@ -34,6 +34,9 @@ if ($cdata_status == 'publish') {
     $company_intro = get_field('company_intro', $com_id);
     update_field('company_intro_draft', $company_intro, $com_id);
     //
+    $company_national_id = get_field('company_national_id', $com_id);
+    update_field('company_national_id_draft', $company_national_id, $com_id);
+    //
     $company_country = get_field('company_country', $com_id);
     update_field('company_country_draft', $company_country, $com_id);
     //
@@ -107,6 +110,7 @@ if ($cdata_status == 'pending') {
         'fields' => array(
             'company_icon_draft',
             'company_intro_draft',
+            'company_national_id_draft',
             'company_country_draft',
             'company_city_draft',
             'company_start_date_draft',

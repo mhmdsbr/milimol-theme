@@ -193,7 +193,13 @@
 							<div class="company-single__info-icon company-single--job-field">
 								{{ fetch_svg('chemistry') }}
 								<span>نوع فعالیت:</span>
-								<p>{{ post.company_job_field }}</p>
+								{% if post.company_job_field == 'commerce' %}
+									<p>بازرگانی</p>
+								{% elseif post.company_job_field == 'production' %}
+									<p>تولیدی</p>
+								{% else %}
+									<p>تولیدی و بازرگانی</p>
+								{% endif %}
 							</div>
 							<div class="company-single__info-icon company-single--start-date">
 								{{ fetch_svg('meta-calendar') }}
