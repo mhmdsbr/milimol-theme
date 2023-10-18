@@ -11,8 +11,18 @@
                 </div>
             </div>
 
+            <div class="product-filters__grade">
+                <h5>گریدها</h5>
+                <div class="product-filters__grade-search">
+                    <input type="text" id="grade-search" placeholder="جست و جوی گرید">
+                </div>
+                <div class="product-filters__grade-items">
+                    {{ acf_checkbox_field('product_grade', grade_filter) }}
+                </div>
+            </div>
+
             <div class="product-filters__country">
-                <h5>کشورها</h5>
+                <h5>کشور تولید کننده</h5>
                 <div class="product-filters__country-search">
                     <input type="text" id="country-search" placeholder="جست و جوی کشور">
                 </div>
@@ -22,7 +32,7 @@
             </div>
 
             <div class="product-filters__location">
-                <h5>شهرها</h5>
+                <h5>محل تحویل</h5>
                 <div class="product-filters__location-search">
                     <input type="text" id="location-search" placeholder="جست و جوی شهرها">
                 </div>

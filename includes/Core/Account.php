@@ -567,11 +567,9 @@ class Account
         $product_header_bg = get_field('product_header_bg_draft', $post_id);
         update_field('product_header_bg', $product_header_bg, $post_id);
         //
-
         $product_appearence = get_field('product_appearence_draft', $post_id);
         update_field('product_appearence', $product_appearence, $post_id);
         //
-
         $product_unique_id = get_field('product_unique_id_draft', $post_id);
         update_field('product_unique_id', $product_unique_id, $post_id);
         //
@@ -592,6 +590,9 @@ class Account
         //
         $product_price = get_field('product_price_draft', $post_id);
         update_field('product_price', $product_price, $post_id);
+        //
+        $product_analyse = get_field('product_analyse_draft', $post_id);
+        update_field('product_analyse', $product_analyse, $post_id);
         //
         $product_analyse_download = get_field('product_analyse_download_draft', $post_id);
         update_field('product_analyse_download', $product_analyse_download, $post_id);
@@ -638,9 +639,10 @@ class Account
             update_field('product_unit', $product_unit_draft, $post_id);
         }
 
+        $rejectText = ' کاربر گرامی محصول ' . $product_title . ' با موفقیت در پلت فرم میلی مول منتشر شد.' ;
         // Send SMS to User
         $smsHandler->clear_all_sms();
-        $smsHandler->add_to_all_sms_by_product_id('محصول شما در پلتفرم میلی مول منتشر شد', $post_id);
+        $smsHandler->add_to_all_sms_by_product_id($rejectText, $post_id);
         $smsHandler->send_to_all();
     }
 
@@ -682,10 +684,10 @@ class Account
             $changedCasID = $this->find_or_insert_category($term_name, 'request_cas_no');
             wp_set_post_terms($post_id, [$changedCasID], 'request_cas_no', false);
         }
-
+        $rejectText = ' کاربر گرامی درخواست ' . $request_title . ' با موفقیت در پلت فرم میلی مول منتشر شد.' ;
         // Send SMS to User
         $smsHandler->clear_all_sms();
-        $smsHandler->add_to_all_sms_by_request_id('درخواست شما در پلتفرم میلی مول منتشر شد', $post_id);
+        $smsHandler->add_to_all_sms_by_request_id($rejectText, $post_id);
         $smsHandler->send_to_all();
 
     }

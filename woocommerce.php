@@ -21,6 +21,9 @@ $context['cas_numbers'] = $cas_numbers;
 $brand_filter = isset($_GET['product_brand']) ? ($_GET['product_brand']) : array();
 $context['brand_filter'] = $brand_filter;
 
+$grade_filter = isset($_GET['product_grade']) ? ($_GET['product_grade']) : array();
+$context['grade_filter'] = $grade_filter;
+
 $country_filter = isset($_GET['product_country']) ? ($_GET['product_country']) : array();
 $context['country_filter'] = $country_filter;
 

@@ -115,6 +115,7 @@ class Woocommerce
         $argsGenerator->reset('product', 4);
 
         $brand_filter = isset($_GET['product_brand']) ? ($_GET['product_brand']) : array();
+        $grade_filter = isset($_GET['product_grade']) ? ($_GET['product_grade']) : array();
         $country_filter = isset($_GET['product_country']) ? ($_GET['product_country']) : array();
         $location_filter = isset($_GET['product_location']) ? ($_GET['product_location']) : array();
         $unit_filter = isset($_GET['product_unit']) ? ($_GET['product_unit']) : array();
@@ -125,6 +126,10 @@ class Woocommerce
             // Add Brand filter to the query
             if (!empty($_GET['product_brand'])) {
                 $argsGenerator->add_meta_query('product_brand', $brand_filter, 'IN');
+            }
+            // Add Brand filter to the query
+            if (!empty($_GET['product_grade'])) {
+                $argsGenerator->add_meta_query('product_grade', $grade_filter, 'IN');
             }
             // Add Country filter to the query
             if (!empty($_GET['product_country'])) {
@@ -162,6 +167,10 @@ class Woocommerce
             // Add Brand filter to the query
             if (!empty($_GET['product_brand'])) {
                 $argsGenerator->add_meta_query('product_brand', $brand_filter, 'IN');
+            }
+            // Add Brand filter to the query
+            if (!empty($_GET['product_grade'])) {
+                $argsGenerator->add_meta_query('product_grade', $grade_filter, 'IN');
             }
             // Add Country filter to the query
             if (!empty($_GET['product_country'])) {

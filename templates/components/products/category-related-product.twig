@@ -64,53 +64,54 @@
                                     </div>
                                 </div>
                                 <div class="col-12 mb-3 col-lg-6 ">
-                                    <div class="archive-product__info-content-main product-single--country">
+                                    <div class="archive-product__info-content-main archive-product--brand">
                                         <span>برند: </span>
                                         <p>{{ acf_select_field_label('product_brand', post.product_brand) }}</p>
                                     </div>
-                                    <div class="archive-product__info-content-main product-single--city">
+                                    <div class="archive-product__info-content-main archive-product--appearance">
                                         <span>شکل ظاهری: </span>
                                         <p>{{ post.product_appearence }}</p>
                                     </div>
-                                    <div class="archive-product__info-content-main product-single--job-field">
+                                    <div class="archive-product__info-content-main archive-product--country">
                                         <span>کشور تولید کننده: </span>
                                         <p>{{ acf_select_field_label('product_country', post.product_country) }}</p>
                                     </div>
-                                    <div class="archive-product__info-content-main product-single--start-date">
+                                    <div class="archive-product__info-content-main archive-product--analyse">
                                         <span>برگه آنالیز: </span>
-                                        <p>{{ post.product_analyse }}</p>
+                                        <p>{{ acf_select_field_label('product_analyse', post.product_analyse) }}</p>
                                     </div>
-                                    <div class="archive-product__info-content-main product-single--ceo">
+                                    <div class="archive-product__info-content-main archive-product--location">
                                         <span>محل تحویل: </span>
                                         <p>{{ acf_select_field_label('product_location', post.product_location) }}</p>
                                     </div>
-                                    <div class="archive-product__info-content-main product-single--personnel-no">
+                                    <div class="archive-product__info-content-main archive-product--unique-id">
                                         <span>کد شناسایی یا نام اختصاصی: </span>
                                         <p>{{ post.product_unique_id }}</p>
                                     </div>
                                 </div>
                                 <div class="col-12 mb-3 col-lg-6 ">
-                                    <div class="archive-product__info-content-main product-single--office-phone">
+                                    <div class="archive-product__info-content-main archive-product--purity">
                                         <span>درصد خلوص: </span>
-                                        <p>{{ post.product_purity }}</p>
+                                        <p>{{ post.product_purity }}%</p>
                                     </div>
-                                    <div class="archive-product__info-content-main product-single--company-phone">
+                                    <div class="archive-product__info-content-main archive-product--grade">
                                         <span>گرید: </span>
+                                        <p>{{ acf_select_field_label('product_grade', post.product_grade) }}</p>
                                     </div>
-                                    <div class="archive-product__info-content-main product-single--office-address">
+                                    <div class="archive-product__info-content-main archive-product--package">
                                         <span>بسته بندی: </span>
-                                            {% set productUnit = post.product_unit %}
-                                        <p>{{ post.product_package }} {{ english_numbers(post.product_weight) }} {{ acf_select_field_label('product_unit', productUnit) }}</p>
+                                        {% set productUnit = post.product_unit %}
+                                        <p>{{ post.product_package }}، {{ english_numbers(post.product_weight) }} {{ acf_select_field_label('product_unit', productUnit) }}</p>
                                     </div>
-                                    <div class="archive-product__info-content-main product-single--company-address">
+                                    <div class="archive-product__info-content-main archive-product--order-quantity">
                                         <span>حداقل سفارش: </span>
-                                        <p>{{ post.product_order_quantity }}</p>
+                                        <p>{{ english_numbers(post.product_order_quantity) }} {{ post.product_package }}</p>
                                     </div>
-                                    <div class="archive-product__info-content-main product-single--mobile">
+                                    <div class="archive-product__info-content-main archive-product--price">
                                         <span>قیمت: </span>
-                                        <p>{{ post.product_price }}</p>
+                                        <p>{{ post.product_price ? post.product_price : 'تماس بگیرید.' }}</p>
                                     </div>
-                                    <div class="archive-product__info-content-main product-single--analyse-download">
+                                    <div class="archive-product__info-content-main archive-product--analyse-download">
                                         <a href="{{ post.get_field('product_analyse_download').url }}">دانلود برگه آنالیز(COA)</a>
                                     </div>
                                 </div>
