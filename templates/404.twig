@@ -7,46 +7,19 @@
 			<div class="row justify-content-center">
 				<div class="col-md-8">
 					<div class="error__heading">
-						<h1>{{ __('We’re sorry...', 'expedition') }}</h1>
-						<p>{{ __('The page you are looking for might be moved or doesn’t exist. Sorry for the inconvenience. Check the URL or try these alternatives', 'expedition') }}:</p>
+						<h1>{{ __('خطای ۴۰۴', 'expedition') }}</h1>
+						<p>{{ __('متاسفانه، صفحه ای که به دنبال آن هستید، یا وجود ندارد یا به آدرس دیگری منتقل شده، شما می توانید از گزینه های زیر یکی را انتخاب کنید', 'expedition') }}:</p>
 					</div>
+				</div>
+				<div class="col-md-8">
+					{% include "partial/button.twig" with {
+						url : '/',
+						title : 'بازگشت به خانه',
+						class : 'btn--primary justify-content-center w-100',
+						icon : 'arrow-left'
+					} %}
 				</div>
 			</div>
-
-			{% if options.error_content is array %}
-				<div class="error__box-wrapper">
-					<div class="row">
-						{% for item in options.error_content %}
-							<div class="col-lg-4">
-								<div class="error__box{{ loop.last ? ' last' : '' }}">
-									<span class="error__box-icon">
-										{% for icon in item.icon %}
-											{% set icon = icon.icons %}
-											{{ fetch_svg(icon) }}
-										{% endfor %}
-									</span>
-
-									<span class="error__box-title">{{ item.title }}</span>
-
-									{% if item.text is not empty %}
-										<p>{{ item.text }}</p>
-									{% endif %}
-
-									{% if item.link is not empty %}
-										{% include "partial/button.twig" with {
-											url : item.link.link,
-											title : item.link.title,
-											target : item.link.target,
-											class : 'btn--primary',
-											icon : 'arrow-right'
-										} %}
-									{% endif %}
-								</div>
-							</div>
-						{% endfor %}
-					</div>
-				</div>
-			{% endif %}
 		</div>
 	</div>
 

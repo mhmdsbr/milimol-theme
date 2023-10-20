@@ -15,18 +15,10 @@ class Block
         // add your block class name here
         return [
             // Templates
-            'BlockIndustriesTemplate',
-            'BlockInsightsTemplate',
             'BlockWorkingAreasTemplate',
 
            //Headers
-            'BlockHomepageHeader',
-            'BlockInsightHeader',
-            'BlockSplitContentHeader',
-            'BlockTrainingHeader',
             'BlockImageHeader',
-            'BlockFeaturedInsightHeader',
-            'BlockBigVisualHeader',
 
             // Blocks
             'BlockSummary',

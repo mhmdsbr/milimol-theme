@@ -58,20 +58,21 @@ class ACF
             'menu_slug'  => 'theme-footer-settings',
             'parent_slug' => 'theme-general-settings',
         ));
+//
+//        acf_add_options_sub_page(array(
+//            'page_title'  => __('404 Error Settings', 'expedition'),
+//            'menu_title'  => __('۴۰۴', 'expedition'),
+//            'menu_slug'  => 'theme-404-settings',
+//            'parent_slug' => 'theme-general-settings',
+//        ));
 
-        acf_add_options_sub_page(array(
-            'page_title'  => __('404 Error Settings', 'expedition'),
-            'menu_title'  => __('۴۰۴', 'expedition'),
-            'parent_slug' => 'theme-general-settings',
-        ));
-
-        acf_add_options_page(array(
-            'page_title' => __('Breadcrumbs Settings', 'expedition'),
-            'menu_title' => __('تنظیمات Breadcrumbs', 'expedition'),
-            'menu_slug'  => 'breadcrumbs-settings',
-            'capability' => 'manage_options',
-            'redirect'   => false
-        ));
+//        acf_add_options_page(array(
+//            'page_title' => __('Breadcrumbs Settings', 'expedition'),
+//            'menu_title' => __('تنظیمات Breadcrumbs', 'expedition'),
+//            'menu_slug'  => 'breadcrumbs-settings',
+//            'capability' => 'manage_options',
+//            'redirect'   => false
+//        ));
 
     }
 
