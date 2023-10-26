@@ -18,6 +18,7 @@ $user_id = $current_user->ID;
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 $args = [
     'posts_per_page' => 30,
+    'post_status' => ['draft', 'publish'],
     'paged' => $paged,
     'post_type' => 'request',
 ];

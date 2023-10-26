@@ -93,14 +93,14 @@ if ($cdata_status == 'publish') {
     $product_analyse_download = get_field('product_analyse_download', $pid);
     update_field('product_analyse_download_draft', $product_analyse_download, $pid);
     //
-    $product_ad_banner_first = get_field('product_ad_banner_first', $pid);
-    update_field('product_ad_banner_first_draft', $product_ad_banner_first, $pid);
-    //
-    $product_ad_banner_second = get_field('product_ad_banner_second', $pid);
-    update_field('product_ad_banner_second_draft', $product_ad_banner_second, $pid);
-    //
-    $product_header_bg = get_field('product_header_bg', $pid);
-    update_field('product_header_bg_draft', $product_header_bg, $pid);
+//    $product_ad_banner_first = get_field('product_ad_banner_first', $pid);
+//    update_field('product_ad_banner_first_draft', $product_ad_banner_first, $pid);
+//    //
+//    $product_ad_banner_second = get_field('product_ad_banner_second', $pid);
+//    update_field('product_ad_banner_second_draft', $product_ad_banner_second, $pid);
+//    //
+//    $product_header_bg = get_field('product_header_bg', $pid);
+//    update_field('product_header_bg_draft', $product_header_bg, $pid);
     //
 }
 //
@@ -120,9 +120,6 @@ if ($cdata_status == 'pending') {
     echo '<h3 class="account__company-product-new-title">اطلاعات محصول</h3>';
     echo '</div>';
     echo '<div class="account__company-product-new-content">';
-
-
-
 
     if(empty($pid)) {
         $formsetting = [
@@ -158,9 +155,9 @@ if ($cdata_status == 'pending') {
                 'product_order_quantity_draft',
                 'product_analyse_draft',
                 'product_analyse_download_draft',
-                'product_ad_banner_first_draft',
-                'product_ad_banner_second_draft',
-                'product_header_bg_draft',
+//                'product_ad_banner_first_draft',
+//                'product_ad_banner_second_draft',
+//                'product_header_bg_draft',
             ),
             'html_after_fields' => '<input type="hidden" name="frontend_acf" value="product_new"/>
             <input type="hidden" id="acf-field_6508127b649a7" name="acf[field_6508127b649a7]" value="draft"/>

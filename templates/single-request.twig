@@ -15,7 +15,7 @@
 	</header>
 	<section class="request-single__content">
 		<div class="container">
-			<div class="row align-items-baseline">
+			<div class="row align-items-center">
 				<div class="col-md-4">
 					<div class="request-single__sidebar">
 						{% set requestUser = recipient_user_request(post.ID) %}
@@ -25,7 +25,7 @@
 						</div>
 						<div class="request-single__contact-btn">
 							{% include "partial/button.twig" with {
-								url : is_logged_in ? 'tel:' ~ user_mobile_number(post.user_request_linked) : '/login',
+								url : is_logged_in() ? 'tel:' ~ user_mobile_number(post.user_request_linked) : '/login',
 								title : 'تماس با خریدار',
 								target : fields.button.target,
 								class : 'btn--primary request-single__button',

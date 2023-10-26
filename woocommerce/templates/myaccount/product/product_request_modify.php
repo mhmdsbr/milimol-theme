@@ -89,7 +89,7 @@ if ($cdata_status == 'pending') {
             'form' => true,
             'new_post' => [
                 'post_type' => 'request',
-                'post_status' => 'publish',
+                'post_status' => 'draft',
             ],
             'post_title' => false,
             'field_groups' => ['1195'],

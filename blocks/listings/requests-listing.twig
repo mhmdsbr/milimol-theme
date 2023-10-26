@@ -43,6 +43,7 @@
                             title : item.post_title,
                             content : 'Cas No: ' ~ item.cas_number,
                             weight : 'مقدار: ' ~ item.request_weight|default('-'),
+                            publishedDate : 'تاریخ انتشار: ' ~ english_numbers(publishedDate),
                             expireDate : 'مدت اعتبار: ' ~ remainingDays,
                             btnTitle : 'تماس با خریدار',
                             url : get_link(item.ID),

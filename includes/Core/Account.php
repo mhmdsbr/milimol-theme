@@ -350,7 +350,7 @@ class Account
         if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_6508127b649a7'] == 'draft' && !empty($rejection_reason_product))
         {
             $product_name = get_field('product_title_draft', $post_id);
-            $rejectText = ' کاربر گرامی محصول ' . $product_name . ' برای انتشار در سایت نیاز به بازبینی مجدد دارد. لطفا به پنل خود در میلی مول مراجعه کنید.' ;
+            $rejectText = ' کاربر گرامی محصول ' . $product_name . ' برای انتشار در سایت نیاز به بازبینی مجدد دارد. لطفا به پنل خود در میلی مول مراجعه کنید. میلی مول مقصد نهایی خرید و فروش مواد شیمیایی' ;
 
             $is_send_sms_rejection_notification = get_field('is_send_sms_product_notification', $post_id);
             if($is_send_sms_rejection_notification) {
@@ -370,7 +370,7 @@ class Account
         if (!isset($_POST['frontend_acf']) && $_POST['acf']['field_650c0c6a4fd03'] == 'draft' && !empty($rejection_reason_request))
         {
             $request_name = get_field('request_title_draft', $post_id);
-            $rejectText = ' کاربر گرامی درخواست ' . $request_name . ' برای انتشار در سایت نیاز به بازبینی مجدد دارد. لطفا به پنل خود در میلی مول مراجعه کنید.' ;
+            $rejectText = ' کاربر گرامی درخواست ' . $request_name . ' برای انتشار در سایت نیاز به بازبینی مجدد دارد. لطفا به پنل خود در میلی مول مراجعه کنید.  میلی مول مقصد نهایی خرید و فروش مواد شیمیایی' ;
 
             $is_send_sms_rejection_notification = get_field('is_send_sms_request_notification', $post_id);
             if($is_send_sms_rejection_notification) {
@@ -460,8 +460,8 @@ class Account
         $company_video_bg = get_field('company_video_bg_draft', $post_id);
         update_field('company_video_bg', $company_video_bg, $post_id);
         //
-        $company_ad_banner = get_field('company_ad_banner_draft', $post_id);
-        update_field('company_ad_banner', $company_ad_banner, $post_id);
+//        $company_ad_banner = get_field('company_ad_banner_draft', $post_id);
+//        update_field('company_ad_banner', $company_ad_banner, $post_id);
         //
 
         $company_img_gallery_draft = get_field('company_img_gallery_draft', $post_id);
@@ -564,8 +564,8 @@ class Account
         }
         //
 
-        $product_header_bg = get_field('product_header_bg_draft', $post_id);
-        update_field('product_header_bg', $product_header_bg, $post_id);
+//        $product_header_bg = get_field('product_header_bg_draft', $post_id);
+//        update_field('product_header_bg', $product_header_bg, $post_id);
         //
         $product_appearence = get_field('product_appearence_draft', $post_id);
         update_field('product_appearence', $product_appearence, $post_id);
@@ -597,11 +597,11 @@ class Account
         $product_analyse_download = get_field('product_analyse_download_draft', $post_id);
         update_field('product_analyse_download', $product_analyse_download, $post_id);
         //
-        $product_ad_banner_first = get_field('product_ad_banner_first_draft', $post_id);
-        update_field('product_ad_banner_first', $product_ad_banner_first, $post_id);
+//        $product_ad_banner_first = get_field('product_ad_banner_first_draft', $post_id);
+//        update_field('product_ad_banner_first', $product_ad_banner_first, $post_id);
         //
-        $product_ad_banner_second = get_field('product_ad_banner_second_draft', $post_id);
-        update_field('product_ad_banner_second', $product_ad_banner_second, $post_id);
+//        $product_ad_banner_second = get_field('product_ad_banner_second_draft', $post_id);
+//        update_field('product_ad_banner_second', $product_ad_banner_second, $post_id);
         //
 
         $product_brand_draft = get_field('product_brand_draft', $post_id);
@@ -639,7 +639,7 @@ class Account
             update_field('product_unit', $product_unit_draft, $post_id);
         }
 
-        $rejectText = ' کاربر گرامی محصول ' . $product_title . ' با موفقیت در پلت فرم میلی مول منتشر شد.' ;
+        $rejectText = ' کاربر گرامی محصول ' . $product_title . ' با موفقیت در پلت فرم میلی مول منتشر شد. میلی مول مقصد نهایی خرید و فروش مواد شیمیایی ' ;
         // Send SMS to User
         $smsHandler->clear_all_sms();
         $smsHandler->add_to_all_sms_by_product_id($rejectText, $post_id);
@@ -684,7 +684,7 @@ class Account
             $changedCasID = $this->find_or_insert_category($term_name, 'request_cas_no');
             wp_set_post_terms($post_id, [$changedCasID], 'request_cas_no', false);
         }
-        $rejectText = ' کاربر گرامی درخواست ' . $request_title . ' با موفقیت در پلت فرم میلی مول منتشر شد.' ;
+        $rejectText = ' کاربر گرامی درخواست ' . $request_title . ' با موفقیت در پلت فرم میلی مول منتشر شد. میلی مول مقصد نهایی خرید و فروش مواد شیمیایی ' ;
         // Send SMS to User
         $smsHandler->clear_all_sms();
         $smsHandler->add_to_all_sms_by_request_id($rejectText, $post_id);

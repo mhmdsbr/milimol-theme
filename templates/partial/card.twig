@@ -22,9 +22,14 @@
                 <p>{{ weight }}</p>
             {% endif %}
 
+            {% if publishedDate is not empty %}
+                <p>{{ publishedDate }}</p>
+            {% endif %}
+
             {% if expireDate is not empty %}
                 <p>{{ expireDate }}</p>
             {% endif %}
+
             {% if btnTitle is not empty %}
                 <a href="{{ btnTitle }}" title="{{ btnTitle }}" class="card__contact-btn">
                     {{ btnTitle }}

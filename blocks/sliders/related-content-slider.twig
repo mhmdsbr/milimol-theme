@@ -14,12 +14,11 @@
                         <div class="related-content-slider__content-header">
                             <img class="related-content-slider__content-image"
                                  {% if item.src is not empty %}
-                                     src="{{ item.src.url }}"
+                                     src="{{ item.src.url ? item.src.url : item.src }}"
                                      alt="{{ item.src.title }}"
                                      loading="lazy"
                                  {% else %}
-                                     src="/wp-content/uploads/2023/09/Buying-from-Chemical-Suppliers-8.jpg"
-                                     alt="No Default image"
+                                     src={{ theme.link ~ '/images/image-header-placeholder.jpg' }}
                                  {% endif %}
                             />
                         </div>

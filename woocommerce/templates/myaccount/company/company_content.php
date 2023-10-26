@@ -77,7 +77,7 @@ if ($cdata_status == 'pending') {
             'company_map_draft',
             'company_video_id_draft',
             'company_video_bg_draft',
-            'company_ad_banner_draft',
+//            'company_ad_banner_draft',
             'company_img_gallery_draft',
         ),
         'html_after_fields' => '<input type="hidden" name="frontend_acf" value="1"/>

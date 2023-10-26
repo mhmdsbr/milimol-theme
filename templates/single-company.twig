@@ -15,44 +15,60 @@
 		<div class="company-single__socials footer__socials">
 			<ul>
 				<li>
-					<a href="{{ post.company_email_icon }}" title="{{ __('ایمیل', 'expedition') }}" target="_blank" rel="noindex nofollow">
-						{{ fetch_svg('envelope') }}
-					</a>
+					{% if post.company_email_icon is not empty %}
+						<a href="{{ post.company_email_icon }}" title="{{ __('ایمیل', 'expedition') }}" target="_blank" rel="noindex nofollow">
+							{{ fetch_svg('envelope') }}
+						</a>
+					{% endif %}
 				</li>
 				<li>
-					<a href="{{ post.company_whatsapp }}" title="{{ __('واتس اپ', 'expedition') }}" target="_blank" rel="noindex nofollow">
-						{{ fetch_svg('whatsapp') }}
-					</a>
+					{% if post.company_whatsapp is not empty %}
+						<a href="{{ post.company_whatsapp }}" title="{{ __('واتس اپ', 'expedition') }}" target="_blank" rel="noindex nofollow">
+							{{ fetch_svg('whatsapp') }}
+						</a>
+					{% endif %}
 				</li>
 				<li>
-					<a href="{{ post.company_instagram }}" title="{{ __('اینستاگرام', 'expedition') }}" target="_blank" rel="noindex nofollow">
-						{{ fetch_svg('instagram') }}
-					</a>
+					{% if post.company_instagram is not empty %}
+						<a href="{{ post.company_instagram }}" title="{{ __('اینستاگرام', 'expedition') }}" target="_blank" rel="noindex nofollow">
+							{{ fetch_svg('instagram') }}
+						</a>
+					{% endif %}
 				</li>
 				<li>
-					<a href="{{ post.company_youtube }}" title="{{ __('یوتیوب', 'expedition') }}" target="_blank" rel="noindex nofollow">
-						{{ fetch_svg('youtube') }}
-					</a>
+					{% if post.company_youtube is not empty %}
+						<a href="{{ post.company_youtube }}" title="{{ __('یوتیوب', 'expedition') }}" target="_blank" rel="noindex nofollow">
+							{{ fetch_svg('youtube') }}
+						</a>
+					{% endif %}
 				</li>
 				<li>
-					<a href="{{ post.company_telegram }}" title="{{ __('تلگرام', 'expedition') }}" target="_blank" rel="noindex nofollow">
-						{{ fetch_svg('paperplane') }}
-					</a>
+					{% if post.company_telegram is not empty %}
+						<a href="{{ post.company_telegram }}" title="{{ __('تلگرام', 'expedition') }}" target="_blank" rel="noindex nofollow">
+							{{ fetch_svg('paperplane') }}
+						</a>
+					{% endif %}
 				</li>
 				<li>
-					<a href="{{ post.company_twitter }}" title="{{ __('توییتر', 'expedition') }}" target="_blank" rel="noindex nofollow">
-						{{ fetch_svg('twitter') }}
-					</a>
+					{% if post.company_twitter is not empty %}
+						<a href="{{ post.company_twitter }}" title="{{ __('توییتر', 'expedition') }}" target="_blank" rel="noindex nofollow">
+							{{ fetch_svg('twitter') }}
+						</a>
+					{% endif %}
 				</li>
 				<li>
-					<a href="{{ post.company_facebook }}" title="{{ __('فیسبوک', 'expedition') }}" target="_blank" rel="noindex nofollow">
-						{{ fetch_svg('facebook') }}
-					</a>
+					{% if post.company_facebook is not empty %}
+						<a href="{{ post.company_facebook }}" title="{{ __('فیسبوک', 'expedition') }}" target="_blank" rel="noindex nofollow">
+							{{ fetch_svg('facebook') }}
+						</a>
+					{% endif %}
 				</li>
 				<li>
-					<a href="{{ post.company_aparat }}" title="{{ __('آپارات', 'expedition') }}" target="_blank" rel="noindex nofollow">
-						{{ fetch_svg('aparat') }}
-					</a>
+					{% if post.company_aparat is not empty %}
+						<a href="{{ post.company_aparat }}" title="{{ __('آپارات', 'expedition') }}" target="_blank" rel="noindex nofollow">
+							{{ fetch_svg('aparat') }}
+						</a>
+					{% endif %}
 				</li>
 			</ul>
 		</div>
@@ -303,8 +319,9 @@
 
 					{% set companyCatalogs = post.get_field('company_catalog') %}
 					{% set catalogs = [] %}
+					{% set catalogImg = theme.link ~ '/images/PDF_file_icon.svg' %}
 					{% for catalog in companyCatalogs %}
-						{% set catalogImg = catalog.catalog_img %}
+{#						{% set catalogImg = catalog.catalog_img %}#}
 						{% set catalogUpload = catalog.catalog_upload %}
 						{% set catalogs = catalogs|merge([{'src' : catalogImg, 'catalog_upload' : catalogUpload}]) %}
 					{% endfor %}
