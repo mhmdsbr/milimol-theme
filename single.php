@@ -72,6 +72,16 @@ switch ($postType) {
 
         }
 
+        $company_catalogs = get_field('company_catalog');
+        $company_catalog_ids = $company_catalogs['catalog_upload'];
+        $company_catalog_urls = [];
+
+        foreach ($company_catalogs as $catalog_id) {
+            $company_catalog_url = wp_get_attachment_url($catalog_id['catalog_upload']);
+            $company_catalog_urls[] = $company_catalog_url;
+        }
+        $context['company_catalog'] = $company_catalog_urls;
+
         // Retrieve Company Gallery img Urls
         $company_gallery_ids = get_field('company_img_gallery');
         $company_gallery_img_urls = array();

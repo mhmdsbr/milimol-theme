@@ -317,13 +317,13 @@
 						items: clientImages
 					} %}
 
-					{% set companyCatalogs = post.get_field('company_catalog') %}
+					{% set companyCatalogs = company_catalog %}
 					{% set catalogs = [] %}
 					{% set catalogImg = theme.link ~ '/images/PDF_file_icon.svg' %}
 					{% for catalog in companyCatalogs %}
 {#						{% set catalogImg = catalog.catalog_img %}#}
-						{% set catalogUpload = catalog.catalog_upload %}
-						{% set catalogs = catalogs|merge([{'src' : catalogImg, 'catalog_upload' : catalogUpload}]) %}
+{#						{% set catalogUpload = catalog.catalog_upload %}#}
+						{% set catalogs = catalogs|merge([{'src' : catalogImg, 'catalog_upload' : catalog}]) %}
 					{% endfor %}
 					{% include 'blocks/sliders/related-content-slider.twig' with {
 						relatedContentTitle : 'کاتالوگ',

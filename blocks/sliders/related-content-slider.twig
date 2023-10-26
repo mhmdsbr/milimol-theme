@@ -24,8 +24,9 @@
                         </div>
                         <div class="related-content-slider__content-text">
                             {%  if item.catalog_upload %}
-                                <a href="{{ item.catalog_upload }}" class="related-content-slider__content-title">دانلود</a>
-                            {% else %}
+                                <a target="_blank" href="{{ item.catalog_upload }}" class="related-content-slider__content-title">دانلود</a>
+                            {% endif %}
+                            {% if item.document_title %}
                                 <p  class="related-content-slider__content-title"> {{ item.document_title}} </p>
                             {% endif %}
                         </div>
