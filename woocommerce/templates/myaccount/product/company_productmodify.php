@@ -37,6 +37,12 @@ if ($cdata_status == 'publish') {
     $product_title = get_the_title($pid);
     update_field('product_title_draft', $product_title, $pid);
     //
+    $product_image = get_post_thumbnail_id($pid);
+    update_field('product_image_draft', $product_image, $pid);
+    //
+    $product_desc = $post_content = get_post_field('post_content', $pid);
+    update_field('product_desc_draft', $product_desc, $pid);
+    //
     $product_cas_no = wp_get_post_terms($pid, 'product_cas_no');
     if($product_cas_no)
     {
@@ -134,6 +140,8 @@ if ($cdata_status == 'pending') {
             'field_groups' => ['1412'],
             'fields' => array(
                 'product_title_draft',
+                'product_image_draft',
+                'product_desc_draft',
                 'product_category_draft',
                 'product_cas_no_draft',
                 'product_cas_no_other_draft',
@@ -183,6 +191,8 @@ if ($cdata_status == 'pending') {
             'field_groups' => array('1412'),
             'fields' => array(
                 'product_title_draft',
+                'product_image_draft',
+                'product_desc_draft',
                 'product_category_draft',
                 'product_cas_no_draft',
                 'product_cas_no_other_draft',
@@ -204,9 +214,9 @@ if ($cdata_status == 'pending') {
                 'product_order_quantity_draft',
                 'product_analyse_draft',
                 'product_analyse_download_draft',
-                'product_ad_banner_first_draft',
-                'product_ad_banner_second_draft',
-                'product_header_bg_draft',
+//                'product_ad_banner_first_draft',
+//                'product_ad_banner_second_draft',
+//                'product_header_bg_draft',
             ),
             'html_after_fields' => '<input type="hidden" name="frontend_acf" value="product_edit"/>
             <input type="hidden" id="acf-field_6508127b649a7" name="acf[field_6508127b649a7]" value="draft"/>

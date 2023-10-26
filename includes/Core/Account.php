@@ -540,6 +540,15 @@ class Account
         );
         wp_update_post( $my_post );
         //
+        $product_image = get_field('product_image_draft', $post_id);
+        set_post_thumbnail($post_id, $product_image);
+
+        $product_desc = get_field('product_desc_draft', $post_id);
+        $post_data = array(
+            'ID'           => $post_id,
+            'post_content' => $product_desc,
+        );
+        wp_update_post( $post_data) ;
 
         $product_cas_no = get_field('product_cas_no_draft', $post_id);
         $product_cas_no_new = get_field('product_cas_no_other_draft', $post_id);
