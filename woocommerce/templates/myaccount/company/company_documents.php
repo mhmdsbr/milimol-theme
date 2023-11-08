@@ -32,7 +32,7 @@ if ($cdata_status == 'pending') {
     // company info
     echo '<div class="account__company-documents">';
     echo '<div class="account__company-documents-header">';
-    echo '<h3 class="account__company-documents-title">مستندات</h3>';
+    echo '<h3 class="account__company-documents-title">گواهی و مجوز ها</h3>';
     echo '</div>';
     echo '<div class="account__company-documents-content">';
 
@@ -73,7 +73,7 @@ if ($cdata_status == 'pending') {
                 event.preventDefault();
             } else {
                 event.preventDefault();
-                $('#acf-field_65084ac7639b1``').val('pending');
+                $('#acf-field_65084ac7639b1').val('pending');
                 $('form#cform').submit();
             }
         });

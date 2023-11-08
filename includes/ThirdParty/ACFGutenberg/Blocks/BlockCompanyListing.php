@@ -44,7 +44,7 @@ class BlockCompanyListing extends Blockable
 
         // Prepare the data based on the checkbox value
         if ($showAllCompanies) {
-            // Show all industries
+            // Show all companies
             $context['companies'] = $allCompanies;
         } else {
             // Show the 6 latest companies
@@ -66,6 +66,12 @@ class BlockCompanyListing extends Blockable
             'no_found_rows' => true
         ];
 
-        return get_posts($args);
+        $companies = get_posts($args);
+
+        foreach ($companies as &$company) {
+            $company->companyLogo = get_field('company_icon', $company->ID);
+        }
+
+        return $companies;
     }
 }

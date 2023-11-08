@@ -49,6 +49,14 @@ class BlockRequestsListing extends Blockable
         if (empty($context['requests'])) {
             return;
         }
+
+        foreach ($context['requests'] as $request) {
+            $request_cas_no_terms = get_the_terms($request->ID, 'request_cas_no');
+            if (!empty($request_cas_no_terms)) {
+                $request->cas_no_terms = $request_cas_no_terms;
+            }
+        }
+
         Timber::render(array('blocks/listings/requests-listing.twig'), $context);
     }
 }

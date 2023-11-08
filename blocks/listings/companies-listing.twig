@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row col-10 m-auto">
             {% for item in companies %}
-                {% set featuredImage = Image(item) %}
+                {% set featuredImage = item.companyLogo['url'] %}
                 <div class="col-12 col-md-6 gx-0 col-lg-2">
                     {% include "partial/card.twig" with {
                         id : item.ID,

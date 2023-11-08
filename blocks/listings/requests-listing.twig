@@ -41,7 +41,7 @@
                             id : item.ID,
                             image : '',
                             title : item.post_title,
-                            content : 'Cas No: ' ~ item.cas_number,
+                            content : 'Cas No: ' ~ item.cas_no_terms[0].name,
                             weight : 'مقدار: ' ~ item.request_weight|default('-'),
                             publishedDate : 'تاریخ انتشار: ' ~ english_numbers(publishedDate),
                             expireDate : 'مدت اعتبار: ' ~ remainingDays,
